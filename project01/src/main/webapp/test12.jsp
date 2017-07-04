@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-고이쨩 수정 합니다. 
+고이쨩 수정 합니다.  만황를 보시겠다?
 </body>
 </html>
