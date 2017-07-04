@@ -22,7 +22,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.javajo.controller" />
-	
+	<context:component-scan base-package="com.javajo.dao"/>
 	
 	
 </beans:beans>

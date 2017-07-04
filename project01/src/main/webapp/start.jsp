@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-안녕 자바조~~ 이녀석들 빨리 찾지못해?, 왜 안돼?
-
+	<%
+		response.sendRedirect("main.com");
+	%>
 </body>
 </html>
