@@ -6,4 +6,7 @@
   <select id="mtAll" resultType="movietheaterVo">
     select * from movietheater
   </select>
+  <select id="custinsert" resultType="java.lang.String">
+  	select customer_id from customer where customer_id=#{customer_id} and customer_pw=#{customer_pw}
+  </select>
 </mapper>

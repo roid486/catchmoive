@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="resources/ui/jquery-ui.min.css">
+<link rel="stylesheet" href="resources/ui/jquery-ui.structure.min.css">
+<link rel="stylesheet" href="resources/ui/jquery-ui.theme.min.css">
 <style type="text/css">
 	*{
 		list-style: none; margin: 0px; padding: 0px;
@@ -20,16 +23,20 @@
 		display: inline; padding: 0 5%; 
 	}
 	#drop{
-		position: absolute; left: 20%; background-color: white;
+		position: absolute; left: 20%; background-color: skyblue;
 	}
 	#mtdrop{
-		position: absolute; left: 47%; background-color: white;
+		position: absolute; left: 47%; background-color: skyblue;
 	}
 	.a{
 		 display: block;
 	}
+	#topmenu{
+		text-align: right;
+	}
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	$(function () {
 		$("#drop").hide();
@@ -45,15 +52,45 @@
 			$("#mtdrop").hide().removeClass("a");
 		});
 		$(".moviemenu").click(function () {
-			alert($(this).html());o
+			alert($(this).html());
 		});
 		$(".mtmenu").click(function () {
 			alert($(this).html());
+		});
+		$("#logindial").dialog({
+			autoOpen:false,
+			modal:true
+		});
+		$("#login").click(function () {
+			$("#logindial").dialog("open");
 		});
 	});
 </script>
 </head>
 <body>
+	<div id="topmenu">
+		<span id="login">로그인</span>/<span id="signup">회원가입</span>
+	</div>
+	<div id="logindial">
+		<center>
+			<form action="login.com">
+				<table align="center">
+					<tr>
+						<td colspan="2"><center><font size="5">로그인</font></center></td>
+					</tr>
+					<tr>
+						<td>
+							<input type="text" name="customer_id" value="ID"><br>
+							<input type="password" name="customer_pw" value="PASSWORD">
+						</td>
+						<td>
+							<input type="submit" value="로그인">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</center>
+	</div>
 	<div id="logo">
 		<center>
 			<a href="main.com"><img src="resources/logo/Mainlogo02.png" width="300" height="120"></a>

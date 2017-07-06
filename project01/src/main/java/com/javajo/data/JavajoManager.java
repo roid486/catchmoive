@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
 
 public class JavajoManager {
@@ -30,6 +31,14 @@ public class JavajoManager {
 		List<MovieTheaterVo> list = session.selectList("javajo.mtAll");
 		session.close();
 		return list;
+	}
+
+	public static String loginok(CustomerVo cv) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		String id = session.selectOne("javajo.custinsert", cv);
+		session.close();
+		return id;
 	}
 
 }
