@@ -21,5 +21,10 @@ public class JavajoDao {
 		return JavajoManager.loginok(cv);
 	}
 
+	public int signup(CustomerVo cv) {
+		// TODO Auto-generated method stub
+		return JavajoManager.signup(cv);
+	}
+
 	
 }

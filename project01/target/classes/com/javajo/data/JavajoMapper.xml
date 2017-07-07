@@ -6,7 +6,10 @@
   <select id="mtAll" resultType="movietheaterVo">
     select * from movietheater
   </select>
-  <select id="custinsert" resultType="java.lang.String">
+  <select id="login" resultType="java.lang.String">
   	select customer_id from customer where customer_id=#{customer_id} and customer_pw=#{customer_pw}
   </select>
+  <insert id="signup">
+  	insert into customer values(#{customer_id},#{customer_pw},#{customer_name},#{customer_addr},#{customer_tel},#{customer_email},#{customer_gender})
+  </insert>
 </mapper>

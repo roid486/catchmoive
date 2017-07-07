@@ -13,7 +13,8 @@ public class MainContoller {
 
 	@Autowired
 	private JavajoDao dao;
-
+	private String id;
+	private int re;
 	public void setDao(JavajoDao dao) {
 		this.dao = dao;
 	}
@@ -23,16 +24,33 @@ public class MainContoller {
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mtlist", dao.mtlist());
-		//System.out.println(dao.mtlist().get(1).getMovietheater_name());
+		mav.addObject("loginid", id);
+		mav.addObject("signupnum", re);
 		return mav;
 	}
 
 	@RequestMapping("/login.com")
 	public ModelAndView login(CustomerVo cv)
 	{
-		ModelAndView mav = new ModelAndView("redirect:/main.com");
-		mav.addObject("loginid", dao.loginok(cv));
-		//System.out.println(dao.mtlist().get(1).getMovietheater_name());
+		ModelAndView mav = new ModelAndView();
+		id = dao.loginok(cv);
+		mav.setViewName("redirect:/main.com");
+		return mav;
+	}
+	
+	@RequestMapping("/signup.com")
+	public ModelAndView signup(CustomerVo cv)
+	{
+		ModelAndView mav = new ModelAndView();
+		if(cv.getCustomer_pw().length() >= 8)
+		{
+			re = dao.signup(cv);
+		}
+		else
+		{
+			re = 2;
+		}
+		mav.setViewName("redirect:/main.com");
 		return mav;
 	}
 	

@@ -36,9 +36,17 @@ public class JavajoManager {
 	public static String loginok(CustomerVo cv) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
-		String id = session.selectOne("javajo.custinsert", cv);
+		String id = session.selectOne("javajo.login", cv);
 		session.close();
 		return id;
+	}
+
+	public static int signup(CustomerVo cv) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.insert("javajo.signup", cv);
+		session.close();
+		return re;
 	}
 
 }
