@@ -12,4 +12,10 @@
   <insert id="signup">
   	insert into customer values(#{customer_id},#{customer_pw},#{customer_name},#{customer_addr},#{customer_tel},#{customer_email},#{customer_gender})
   </insert>
+  <select id="serchcust" resultType="java.lang.Integer">
+  	select count(*) from customer where customer_name=#{name} and customer_tel=#{tel}
+  </select>
+  <select id="serchid" resultType="java.lang.Integer">
+  	select count(*) from customer where customer_id=#{id}
+  </select>
 </mapper>
