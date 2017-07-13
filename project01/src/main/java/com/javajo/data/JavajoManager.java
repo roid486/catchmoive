@@ -1,6 +1,7 @@
 package com.javajo.data;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -45,6 +46,25 @@ public class JavajoManager {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession(true);
 		int re = session.insert("javajo.signup", cv);
+		session.close();
+		return re;
+	}
+
+	public static int serchcust(String name, String tel) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("name", name);
+		map.put("tel", tel);
+		int re = session.selectOne("javajo.serchcust", map);
+		session.close();
+		return re;
+	}
+
+	public static int serchid(String id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		int re = session.selectOne("javajo.serchid",id);
 		session.close();
 		return re;
 	}
