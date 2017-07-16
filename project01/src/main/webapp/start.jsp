@@ -10,6 +10,7 @@
 <body>
 	<%
 		response.sendRedirect("main.com");
+	//response.sendRedirect("fancy_main.com");
 	%>
 </body>
 </html>

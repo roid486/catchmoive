@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="resources/ui/jquery-ui.min.css">
 <link rel="stylesheet" href="resources/ui/jquery-ui.structure.min.css">
 <link rel="stylesheet" href="resources/ui/jquery-ui.theme.min.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<link rel="stylesheet" href="resources/eunseok/style.css" />
+
 <style type="text/css">
 	*{
 		list-style: none; margin: 0px; padding: 0px; font-family: -윤고딕340;
@@ -67,17 +71,25 @@
 		color: hotpink;
 	}
 </style>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.4.3.min.js"></script>
+<script type="text/javascript"
+	src="resources/eunseok/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript"
+	src="resources/eunseok/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript">
 	$(function () {
+
 		$(".zeta-menu li").hover(function(){
-		    $('ul:first',this).show();
+			$('ul:first',this).show();
 		  }, function(){
 		    $('ul:first',this).hide();
 		  });
 		$(".zeta-menu>li:has(ul)>a").each( function() {
-		    $(this).html( $(this).html()+' &or;' );
+			$(this).html( $(this).html()+' &or;' );
 		  });
 		$(".zeta-menu ul li:has(ul)").find("a:first").append("<p style='float:right;margin:-3px'>&#9656;</p>");
 		$("#logindial").hide();
@@ -98,8 +110,19 @@
 		$("#signup").click(function () {
 			location.href="signup.com";
 		});
+		
+		
+		$("a[rel=fancybox]").fancybox({
+			width : 1000,
+			height : 600,
+			showCloseButton : false
+		});
+	
 	});
+	
+
 </script>
+
 </head>
 <body>
 	<input type="hidden" id="signupnum" value="${signupnum }">
@@ -123,7 +146,7 @@
 			       		<li><a href="#">무비 파인더</a></li>
 			      	</ul>
 			    </li>
-			    <li><a href="#">예매</a></li> 
+			    <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">예매</a></li> 
 			    <li><a href="#">영화관</a>
 			    	<ul>
 			    		<m:forEach var="mtl" items="${mtlist }">
