@@ -20,7 +20,7 @@
 	media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
 <script type="text/javascript">
-	$(function() {
+	$(function(){
 
 				$("#btn1").click(function() {
 
@@ -32,8 +32,30 @@
 				});
 
 				$.getJSON("theaterseat.com", function(data) {
-					alert(data)
-
+					var divlabel = $("<div></div>").attr("class","label");
+					$.each(data, function(insex, item){
+						
+					
+					 var spanrow = $("<span></span>").attr("class","row").html(item.seat_row);
+						
+					var a = $("<a></a>").attr({
+						href : "#",
+						onclick : "return false"
+					});
+					var spanno = $("<span></span>").attr("class","seat_no");
+					var divr = $("<div></div>").attr("class","r").html(item.seat_column);
+					
+					$(divr).appendTo(spanno);
+					$(spanno).appendTo(a);
+					$(spanrow).appendTo(divlabel);
+					$(a).appendTo(divlabel);
+					if((eval(item.seat_number))%5 == 0)
+						{
+							$("<br/>").appendTo(divlabel);
+						}
+					})
+					$(divlabel).appendTo(".ticket_content"); 
+					
 				})
 
 				$(".label > a").hover(function() {
@@ -61,7 +83,8 @@
 					alert($(this).text());
 
 				})
-			})
+		
+	});
 </script>
 <title>Insert title here</title>
 </head>
@@ -113,8 +136,13 @@
 						</div>
 						<div class="ticket_content">
 							<!-- <div class="label">
-								<span class=row>A</span> <a href='#' onclick='return false'><span
-									class=seat_no><div class="r">1</div></span></a> <a href='#'
+									<span class=row>A</span> 
+									<a href='#' onclick='return false'>
+										<span class=seat_no>
+											<div class="r">1</div>
+										</span>
+									</a> 
+								<a href='#'
 									onclick='return false'><span class=seat_no><div
 											class="r">2</div></span></a> <a href='#' onclick='return false'><span
 									class=seat_no><div class="r">3</div></span></a> <a href='#'
@@ -129,8 +157,8 @@
 									class=seat_no><div class="r">3</div></span></a> <a href='#'
 									onclick='return false'><span class=seat_no><div
 											class="r">4</div></span></a>
-							</div>
-						</div> -->
+							</div>-->
+						</div>
 					</center>
 				</td>
 			</tr>
