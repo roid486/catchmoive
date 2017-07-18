@@ -2,7 +2,9 @@ package com.jihye.vo;
 
 import java.util.Date;
 
-public class MovieVo {
+import org.springframework.web.multipart.MultipartFile;
+
+public class MovieVo_j {
 	private int m_number;
 	private String m_name;
 	private String m_director;
@@ -21,11 +23,40 @@ public class MovieVo {
 	private String m_image3;
 	private int m_isshowing;
 	private int m_boxoffice;
-	public MovieVo() {
+	private MultipartFile uploadFile;
+	private MultipartFile uploadFile1;
+	private MultipartFile uploadFile2;
+	private MultipartFile uploadFile3;
+	
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	public MultipartFile getUploadFile1() {
+		return uploadFile1;
+	}
+	public void setUploadFile1(MultipartFile uploadFile1) {
+		this.uploadFile1 = uploadFile1;
+	}
+	public MultipartFile getUploadFile2() {
+		return uploadFile2;
+	}
+	public void setUploadFile2(MultipartFile uploadFile2) {
+		this.uploadFile2 = uploadFile2;
+	}
+	public MultipartFile getUploadFile3() {
+		return uploadFile3;
+	}
+	public void setUploadFile3(MultipartFile uploadFile3) {
+		this.uploadFile3 = uploadFile3;
+	}
+	public MovieVo_j() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MovieVo(int m_number, String m_name, String m_director, String m_actor, String m_nation, int m_runningtime,
+	public MovieVo_j(int m_number, String m_name, String m_director, String m_actor, String m_nation, int m_runningtime,
 			String m_grade, String m_genre, Date m_opendate, String m_synop, String m_image, String m_trailer,
 			int m_score, String m_image1, String m_image2, String m_image3, int m_isshowing, int m_boxoffice) {
 		super();

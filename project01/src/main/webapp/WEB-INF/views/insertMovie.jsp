@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Ä³Ä¡¹«ºñ>>°ü¸®ÀÚ>>¿µÈ­ Á¤º¸ Ãß°¡</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ìºì¹˜ë¬´ë¹„>>ê´€ë¦¬ìž>>ì˜í™” ì •ë³´ ì¶”ê°€</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -14,49 +14,54 @@
 </head>
 <body>
 	<div class="container">
-		<h2>¿µÈ­ µî·Ï</h2>
+		<h2>ì˜í™” ë“±ë¡</h2>
 		<form class="form-horizontal" action="insertMovie.com" method="post"
 			enctype="multipart/form-data">
+			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_name">¿µÈ­ Á¦¸ñ:</label>
+				<label class="control-label col-sm-2" for="m_name">ì˜í™” ì œëª©:</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="m_name"
-						placeholder="¿µÈ­ Á¦¸ñÀ» ½áÁÖ¼¼¿ä." name="m_name" required="required">
+						placeholder="ì˜í™” ì œëª©ì„ ì¨ì£¼ì„¸ìš”." name="m_name" required="required">
 				</div>
 			</div>
+			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_director">°¨µ¶
-					ÀÌ¸§:</label>
+				<label class="control-label col-sm-2" for="m_director">ê°ë…
+					ì´ë¦„:</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="m_director"
 						name="m_director" required="required">
 				</div>
 			</div>
+			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_actor">ÁÖ¿¬ ¹è¿ì:</label>
+				<label class="control-label col-sm-2" for="m_actor">ì£¼ì—° ë°°ìš°:</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="m_actor" name="m_actor"
 						required="required">
 				</div>
 			</div>
+			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_nation">°³ºÀ ±¹°¡:</label>
+				<label class="control-label col-sm-2" for="m_nation">ê°œë´‰ êµ­ê°€:</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="m_nation"
 						name="m_nation" required="required">
 				</div>
 			</div>
+			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_runningtime">»ó¿µ
-					½Ã°£:</label>
+				<label class="control-label col-sm-2" for="m_runningtime">ìƒì˜
+					ì‹œê°„:</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="m_runningtime"
-						placeholder="·¯´×Å¸ÀÓ ÀÛ¼º¿¹)140" name="m_runningtime"
+						placeholder="ëŸ¬ë‹íƒ€ìž„ ìž‘ì„±ì˜ˆ)140" name="m_runningtime"
 						required="required">
 				</div>
 			</div>
 			<!-- <div class="form-group">
-				<label class="control-label col-sm-2" for="m_grade">°ü¶÷ °¡´É µî±Þ:</label>
+				<label class="control-label col-sm-2" for="m_grade">ê´€ëžŒ ê°€ëŠ¥ ë“±ê¸‰:</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="m_grade"
 						name="m_grade" required="required">
@@ -65,51 +70,51 @@
 		
 			<div class="form-group">
             <span class="col-sm-2 control-label">
-			<label for="m_grade">¿µÈ­ °ü¶÷ µî±Þ:</label></span>
-            <div class="col-sm-2">
+			<label for="m_grade">ì˜í™” ê´€ëžŒ ë“±ê¸‰:</label></span>
+            <div class="col-sm-4">
 			<select class="form-control" id="m_grade" name="m_grade">
-				<option>ÀüÃ¼ °ü¶÷°¡</option>
-				<option>12¼¼ °ü¶÷°¡</option>
-				<option>15¼¼ °ü¶÷°¡</option>
-				<option>18¼¼ °ü¶÷°¡</option>
+				<option>ì „ì²´ ê´€ëžŒê°€</option>
+				<option>12ì„¸ ê´€ëžŒê°€</option>
+				<option>15ì„¸ ê´€ëžŒê°€</option>
+				<option>18ì„¸ ê´€ëžŒê°€</option>
 			</select>
             </div>
 			</div>
 			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_genre">¿µÈ­ Àå¸£:</label>
+				<label class="control-label col-sm-2" for="m_genre">ì˜í™” ìž¥ë¥´:</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="m_genre" name="m_genre"
 						required="required">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_opendate">°³ºÀÀÏ:</label>
+				<label class="control-label col-sm-2" for="m_opendate">ê°œë´‰ì¼:</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="m_opendate"
-						placeholder="ÀÛ¼º¿¹) yyyy/mm/dd" name="m_opendate"
+						placeholder="ìž‘ì„±ì˜ˆ) yyyy/mm/dd" name="m_opendate"
 						required="required">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_synop">ÁÙ°Å¸®:</label>
+				<label class="control-label col-sm-2" for="m_synop">ì¤„ê±°ë¦¬:</label>
 				<div class="col-sm-8">
-					<textarea class="form-control" placeholder="ÁÙ°Å¸®¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä!" rows="9"
+					<textarea class="form-control" placeholder="ì¤„ê±°ë¦¬ë¥¼ ìž…ë ¥í•´ ì£¼ì„¸ìš”!" rows="9"
 						id="m_synop" name="m_synop" required="required"></textarea>
 
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_image">Æ÷½ºÅÍ ÀÌ¹ÌÁö:</label>
+				<label class="control-label col-sm-2" for="m_image">í¬ìŠ¤í„° ì´ë¯¸ì§€:</label>
 				<div class="col-sm-8">
-					<input type="file" class="form-control" id="m_image" name="m_image"
+					<input type="file" class="form-control" id="m_image" name="uploadFile"
 						required="required">
 				</div>
 			</div>
 			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_trailer">¿¹°íÆí url:</label>
+				<label class="control-label col-sm-2" for="m_trailer">ì˜ˆê³ íŽ¸ url:</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="m_trailer"
 						name="m_trailer" required="required">
@@ -117,65 +122,65 @@
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_score">ÆòÁ¡:</label>
+				<label class="control-label col-sm-2" for="m_score">í‰ì :</label>
 				<div class="col-sm-3">
 					<input type="text" class="form-control" id="m_score"
-						placeholder="°ü¸®ÀÚ´Â ÆòÁ¡ 0À¸·Î ³Ö¾îÁÖ¼¼¿ä." name="m_score"
+						placeholder="ê´€ë¦¬ìžëŠ” í‰ì  0ìœ¼ë¡œ ë„£ì–´ì£¼ì„¸ìš”." name="m_score"
 						required="required">
 				</div>
 			</div>
 
 
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_image1">½ºÆ¿ÀÌ¹ÌÁö1:</label>
+				<label class="control-label col-sm-2" for="m_image1">ìŠ¤í‹¸ì´ë¯¸ì§€1:</label>
 				<div class="col-sm-8">
 					<input type="file" class="form-control" id="m_image1"
-						name="m_image1" required="required">
+						name="uploadFile1" required="required">
 				</div>
 			</div>
 
 
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_image2">½ºÆ¿ÀÌ¹ÌÁö2:</label>
+				<label class="control-label col-sm-2" for="m_image2">ìŠ¤í‹¸ì´ë¯¸ì§€2:</label>
 				<div class="col-sm-8">
 					<input type="file" class="form-control" id="m_image2"
-						name="m_image2" required="required">
+						name="uploadFile2" required="required">
 				</div>
 			</div>
 
 
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_image3">½ºÆ¿ÀÌ¹ÌÁö3:</label>
+				<label class="control-label col-sm-2" for="m_image3">ìŠ¤í‹¸ì´ë¯¸ì§€3:</label>
 				<div class="col-sm-8">
 					<input type="file" class="form-control" id="m_image3"
-						name="m_image3" required="required">
+						name="uploadFile3" required="required">
 				</div>
 			</div>
 
 			<div class="form-group">
             	<div class="col-sm-2 control-label">
-				<label for="m_isshowing">¿µÈ­ »ó¿µ ¿©ºÎ:</label> </div>
-                <div class="col-sm-2">
+				<label for="m_isshowing">ì˜í™” ìƒì˜ ì—¬ë¶€:</label> </div>
+                <div class="col-sm-3">
 			<select class="form-control" id="m_isshowing" name="m_isshowing">
-				<option value="1">»ó¿µÁß</option>
-				<option value="2">»ó¿µ ¿¹Á¤</option>
-				<option value="0">»ó¿µ Á¾·á</option>
+				<option value="1">ìƒì˜ì¤‘</option>
+				<option value="2">ìƒì˜ ì˜ˆì •</option>
+				<option value="0">ìƒì˜ ì¢…ë£Œ</option>
 			</select>
             </div>
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_boxoffice">¿¹¸ÅÀ²:</label>
+				<label class="control-label col-sm-2" for="m_boxoffice">ì˜ˆë§¤ìœ¨:</label>
 				<div class="col-sm-3">
 					<input type="text" class="form-control" id="m_boxoffice"
-						placeholder="Default°ª 0À¸·Î ÀÔ·Â ¹Ù¶÷" name="m_boxoffice"
+						placeholder="Defaultê°’ 0ìœ¼ë¡œ ìž…ë ¥ ë°”ëžŒ" name="m_boxoffice"
 						required="required">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">¿µÈ­ µî·Ï</button>
+					<button type="submit" class="btn btn-default">ì˜í™” ë“±ë¡</button>
 				</div>
 			</div>
 		</form>
