@@ -1,0 +1,105 @@
+@CHARSET "EUC-KR";
+/* .ticket_container{
+width: 940px;
+height: 500px;
+margin: 0px auto;
+padding: 20px;
+border : 1px solid black;
+}
+.ticket_header{
+padding: 20px;
+margin-bottom: 20px;
+border: 1px solid #bcbcbc;
+} */
+
+.table {
+	position:relative;
+	table-layout: fixed;
+	
+}
+
+.ticket_content {
+	width: 450px;
+	padding: 20px;
+	margin-bottom: 20px;
+	border: 1px solid #bcbcbc;
+}
+
+/* .ticket_footer {
+	clear: both;
+	padding: 20px;
+	border: 1px solid #bcbcbc;
+} */
+/* 
+.ticket_header>* {
+	display: inline-block;
+} */
+/* .adult, .youth, .special {
+	display: inline-block;
+	width: 50px;
+	left: 10%;
+} */
+
+
+a {
+	text-decoration: none;
+}
+
+#adult{
+	display: inline-block;
+}
+
+#youth{
+	display: inline-block;
+}
+
+#special{
+	display: inline-block;
+}
+
+span {
+	text-align: center;
+}
+
+.r {
+	display: inline-block;
+	padding-bottom: 10px;
+	padding-right: 4px;
+	padding-left: 4px;
+	margin: 1px;
+	position: relative;
+ 	border: 3px solid black;
+	width: 8px;
+	height: 8px;
+}
+.person_num {
+	display: inline-block;
+	padding-bottom: 10px;
+	padding-right: 4px;
+	padding-left: 4px;
+	margin: 1px;
+	position: relative;
+ 	border: 3px solid black;
+	width: 8px;
+	height: 8px;
+}
+
+.screen {
+	width: 500px;
+	height: 21px;
+	background: gray;
+	top: 10px;
+}
+
+.screen>span {
+	padding: 2px;
+	margin: 2px;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.row {
+	font-size: medium;
+	text-decoration: underline;
+}
+

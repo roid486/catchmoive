@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book">
+ <select id="firstList" resultType="com.silver.vo.MovieVo">
+	select * from movie
+ </select>
+ <select id="secondList" resultType="com.silver.vo.MovietheatersubVo">
+	select distinct mt.movietheater_name, mt.movietheater_number from movietheater mt, movie m,running r, theater t where mt.movietheater_number = t.movietheater_number and m.movie_number = r.movie_number and r.theater_number = t.theater_number and m.movie_number =#{movie_number}
+ </select>
+ 
+ <select id="thirdList" resultType="com.silver.vo.RunningVo">
+select distinct running_date from running r,movietheater mt, movie m,theater t where mt.movietheater_number = t.movietheater_number and m.movie_number = r.movie_number and r.theater_number = t.theater_number and m.movie_number = #{movie_number} and mt.movietheater_number = #{movietheater_number}
+</select>
+ 
+  <select id="fourthList" resultType="com.silver.vo.RunningstartVo">
+ select running_start ,t.theater_number, running_number,m.movie_number,mt.movietheater_number, r.running_date from running r,movietheater mt, movie m,theater t where mt.movietheater_number = t.movietheater_number and m.movie_number = r.movie_number and r.theater_number = t.theater_number and mt.movietheater_number=#{movietheater_number} and running_date = to_date(#{running_date},'YYYY-MM-DD hh24:mi:ss') and m.movie_number=#{movie_number}
+ </select> 
+</mapper>

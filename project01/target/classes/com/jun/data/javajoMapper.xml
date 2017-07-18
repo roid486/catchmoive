@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="javajo">
+  <select id="selectAll" resultType="boardVo">
+    select * from board
+  </select>
+  
+  <select id="getNextNo" resultType="java.lang.Integer">
+  	select nvl(max(b_number),0)+1 from board
+  </select>
+  
+  <insert id="insertBoard">
+  	insert into board values(#{b_number}, #{b_title}, #{b_pwd}, #{b_content}, 0, sysdate, #{b_ip}, 0, 0, 0, #{b_fname}, #{b_fsize}, 0, 1 )
+  </insert>
+  
+  <select id="getBoard" resultType="boardVo">
+  	select * from board where b_number = #{b_number}
+  </select>
+  
+
+
+</mapper>
