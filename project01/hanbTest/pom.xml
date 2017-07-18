@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.javajo</groupId>
-	<artifactId>controller</artifactId>
-	<name>project01</name>
+	<groupId>com.hanb</groupId>
+	<artifactId>exam01</artifactId>
+	<name>hanbTest</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -115,12 +115,14 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>        
+		</dependency>      
+		
 		<dependency>
 		  <groupId>org.mybatis</groupId>
 		  <artifactId>mybatis</artifactId>
 		  <version>3.1.1</version>
-		</dependency>
+		</dependency> 
+		
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
@@ -130,7 +132,7 @@
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>1.4</version>
-		</dependency>
+		</dependency> 
 	</dependencies>
     <build>
         <plugins>

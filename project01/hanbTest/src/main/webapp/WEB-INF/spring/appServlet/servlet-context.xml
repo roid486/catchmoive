@@ -24,10 +24,9 @@
 	<beans:bean id="multipartResolver" 
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	
-	<context:component-scan base-package="com.javajo.controller" />
-	<context:component-scan base-package="com.javajo.dao"/>
-	<context:component-scan base-package="com.jun.dao"/>
-	<context:component-scan base-package="com.jun.controller"/>
 	
+	<context:component-scan base-package="com.hanb.exam01" />
+	<context:component-scan base-package="com.hanb.controller" />
+	<context:component-scan base-package="com.hanb.dao" />
 	
 </beans:beans>
