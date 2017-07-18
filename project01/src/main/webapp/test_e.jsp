@@ -9,9 +9,6 @@
 <link rel="stylesheet" href="resources/ui/jquery-ui.min.css">
 <link rel="stylesheet" href="resources/ui/jquery-ui.structure.min.css">
 <link rel="stylesheet" href="resources/ui/jquery-ui.theme.min.css">
-<link rel="stylesheet" type="text/css"
-	href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
-<link rel="stylesheet" href="resources/eunseok/style.css" />
 <style type="text/css">
    *{
       list-style: none; margin: 0px; padding: 0px; font-family: -윤고딕340;
@@ -71,27 +68,9 @@
    }
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript">
-var jq3= jQuery.noConflict();
-</script>
-<script type="text/javascript" src="resources/eunseok/jquery-migrate-1.4.1.min.js"></script>
-<script type="text/javascript">
-var jq1= jQuery.noConflict();
-</script>
-<script type="text/javascript"
-	src="resources/eunseok/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-<script type="text/javascript"
-	src="resources/eunseok/fancybox/jquery.fancybox-1.3.4_patch.js"></script>
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
-jq1(function($) {
-	$("a[rel=fancybox]").fancybox({
-		width : 1000,
-		height : 600,
-		showCloseButton : false
-	});
-}) 
- jq3(function ($) {
+   $(function () {
       $(".zeta-menu li").hover(function(){
           $('ul:first',this).show();
         }, function(){
@@ -123,7 +102,7 @@ jq1(function($) {
          location.href="signup.com";
       });
       
-   })
+   });
 </script>
 </head>
 <body>
@@ -148,7 +127,7 @@ jq1(function($) {
                       <li><a href="#">무비 파인더</a></li>
                   </ul>
              </li>
-             <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">애매</a></li> 
+             <li><a href="#">예매</a></li> 
              <li><a href="#">영화관</a>
                 <ul>
                    <m:forEach var="mtl" items="${mtlist }">

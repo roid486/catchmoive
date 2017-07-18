@@ -14,6 +14,7 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -21,13 +22,22 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+<<<<<<< HEAD
 	<beans:bean id="multipartResolver" 
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	
+=======
+	<context:component-scan base-package="com.silver.controller"/>	
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 	<context:component-scan base-package="com.javajo.controller" />
 	<context:component-scan base-package="com.javajo.dao"/>
+<<<<<<< HEAD
 	<context:component-scan base-package="com.jun.dao"/>
 	<context:component-scan base-package="com.jun.controller"/>
+=======
+	<context:component-scan base-package="com.silver.dao"/>
+	
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 	
 	
 </beans:beans>

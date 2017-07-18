@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+
+</script>
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+	 <jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 </body>
 </html>

@@ -9,8 +9,12 @@
 
 <body>
 	<%
+
 		//response.sendRedirect("main.com");
 		response.sendRedirect("listBoard.com");
+
+
+
 	%>
 </body>
 </html>
