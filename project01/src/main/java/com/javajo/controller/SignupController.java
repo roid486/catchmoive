@@ -30,12 +30,12 @@ public class SignupController {
 	}
 
 	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView signup(CustomerVo cv, String backmail)
+	public ModelAndView signup(CustomerVo cv, String customer_pw2,String backmail)
 	{
 		ModelAndView mav = new ModelAndView();
 		cv.setCustomer_email(cv.getCustomer_email()+backmail);
 		int re = 0;
-		if(cv.getCustomer_pw().length() >= 8)
+		if(cv.getCustomer_pw().length() >= 8 && cv.getCustomer_pw().equals(customer_pw2))
 		{
 			re = dao.signup(cv);			
 		}

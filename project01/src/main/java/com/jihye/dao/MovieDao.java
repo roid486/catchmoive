@@ -11,5 +11,6 @@ public class MovieDao {
  
 	public int insertMovie(MovieVo_j m){
 		return MovieManager.insertMovie(m);
+		//commit¿Ã æ»µ≈?
 	}
 }
