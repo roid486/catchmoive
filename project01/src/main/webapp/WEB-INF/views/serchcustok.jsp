@@ -27,7 +27,7 @@
 			<form action="serchid.com">
 					<tr>
 						<td>ID : </td>
-						<td><input type="text" name="id" value="${serchid }"></td>
+						<td><input type="text" name="id" value="${serchid }" onblur="입력하십시오."></td>
 						<td><input type="submit" value="중복확인"></td>
 					</tr>
 				</form>
@@ -35,23 +35,27 @@
 				<input type="hidden" name="customer_id" value="${serchid }">
 					<tr>
 						<td>PASSWORD : </td>
-						<td><input type="password" name="customer_pw" placeholder="8자 이상 입력하십시오."></td>
+						<td><input type="password" name="customer_pw" placeholder="8자 이상 입력하십시오." onblur="입력하십시오."></td>
+					</tr>
+					<tr>
+						<td>PASSWORD 재확인 : </td>
+						<td><input type="password" name="customer_pw2" placeholder="8자 이상 입력하십시오." onblur="입력하십시오."></td>
 					</tr>
 					<tr>
 						<td>name : </td>
-						<td><input type="text" name="customer_name" value="${name }" readonly="readonly"></td>
+						<td><input type="text" name="customer_name" value="${name }" readonly="readonly" onblur="입력하십시오."></td>
 					</tr>
 					<tr>
 						<td>addr : </td>
-						<td><input type="text" name="customer_addr"></td>
+						<td><input type="text" name="customer_addr" onblur="입력하십시오."></td>
 					</tr>
 					<tr>
 						<td>tel : </td>
-						<td><input type="text" name="customer_tel" value="${tel }" readonly="readonly"></td>
+						<td><input type="text" name="customer_tel" value="${tel }" readonly="readonly" onblur="입력하십시오."></td>
 					</tr>
 					<tr>
 						<td>email : </td>
-						<td><input type="text" name="customer_email"></td>
+						<td><input type="text" name="customer_email" onblur="입력하십시오."></td>
 						<td><select name="backmail">
 							<option value="@naver.com">@naver.com</option>
 							<option value="@hanmail.net">@hanmail.net</option>

@@ -38,6 +38,10 @@ public class MainContoller {
 	{
 		ModelAndView mav = new ModelAndView();
 		id = dao.loginok(cv);
+		if(id == null)
+		{
+			re = 2;
+		}
 		mav.setViewName("redirect:/main.com");
 		return mav;
 	}
@@ -47,8 +51,6 @@ public class MainContoller {
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mtlist", dao.mtlist());
-		mav.addObject("loginid", id);
-		mav.addObject("signupnum", re);
 		return mav;
 	}
 
@@ -57,8 +59,6 @@ public class MainContoller {
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mtlist", dao.mtlist());
-		mav.addObject("loginid", id);
-		mav.addObject("signupnum", re);
 		mav.addObject("serchid", id2);
 		mav.addObject("msg", msg);
 		mav.addObject("name", SerchcustController.name);
