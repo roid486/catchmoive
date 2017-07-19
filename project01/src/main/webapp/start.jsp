@@ -10,8 +10,9 @@
 <body>
 	<%
 
-		//response.sendRedirect("main.com");
-		response.sendRedirect("listBoard.com");
+		response.sendRedirect("main.com"); 
+		//response.sendRedirect("insertMovie.com");
+		//response.sendRedirect("listBoard.com");
 //범준이가 한 거
 //아 제발 올라가
 
