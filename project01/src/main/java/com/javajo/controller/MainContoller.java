@@ -2,6 +2,9 @@ package com.javajo.controller;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +19,7 @@ public class MainContoller {
 	@Autowired
 	private JavajoDao dao;
 	private String id;
-	private String id2;
+	public static String id2;
 	private String msg;
 	private int re;
 	public void setDao(JavajoDao dao) {
@@ -24,12 +27,29 @@ public class MainContoller {
 	}
 	
 	@RequestMapping("/main.com")
-	public ModelAndView movietheaterlist()
+	public ModelAndView main(HttpServletRequest request)
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mtlist", dao.mtlist());
+		HttpSession session = request.getSession();
+		session.setAttribute("se_id", id);
+		mav.addObject("signupnum", re);
+		return mav;
+	}
+	
+	@RequestMapping("/emailok.com")
+	public ModelAndView emailok(String email)
+	{
+		String yes = "yes";
+		ModelAndView mav = new ModelAndView();
+		int echeck = dao.echeckupdate(email,yes);
+		mav.addObject("mtlist", dao.mtlist());
 		mav.addObject("loginid", id);
 		mav.addObject("signupnum", re);
+		if(echeck!=0)
+		{		
+			mav.addObject("msg", "인증에 성공하였습니다.");
+		}
 		return mav;
 	}
 
@@ -42,6 +62,15 @@ public class MainContoller {
 		{
 			re = 2;
 		}
+		mav.setViewName("redirect:/main.com");
+		return mav;
+	}
+	
+	@RequestMapping("/logout.com")
+	public ModelAndView logout()
+	{
+		ModelAndView mav = new ModelAndView();
+		id = null;
 		mav.setViewName("redirect:/main.com");
 		return mav;
 	}
@@ -62,7 +91,7 @@ public class MainContoller {
 		mav.addObject("serchid", id2);
 		mav.addObject("msg", msg);
 		mav.addObject("name", SerchcustController.name);
-		mav.addObject("tel", SerchcustController.tel);
+		mav.addObject("email", SerchcustController.email);
 		if(SignupController.msg!=null && !SignupController.msg.equals(""))
 		{			
 			mav.addObject("msg", SignupController.msg);
@@ -88,4 +117,11 @@ public class MainContoller {
 		return mav;
 	}
 	
+	@RequestMapping("/masterpage.com")
+	public ModelAndView masterpage()
+	{
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("mtlist", dao.mtlist());
+		return mav;
+	}
 }

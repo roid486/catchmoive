@@ -36,5 +36,10 @@ public class JavajoDao {
 		return JavajoManager.serchid(id);
 	}
 
+	public int echeckupdate(String email, String yes) {
+		// TODO Auto-generated method stub
+		return JavajoManager.echeckupdate(email,yes);
+	}
+
 	
 }
