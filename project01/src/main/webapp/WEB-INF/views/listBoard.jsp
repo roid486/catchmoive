@@ -1,33 +1,70 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		/* var customer_id */
+	var id = <%= (String)session.getAttribute("customerid")%> 
+
+alert("id    ::   "+id)
+	
+		$("#btn_insert").click(function() {
+			if(id == null)
+			{
+				alert("로그인해라 개새꺄");
+				return false;
+			}
+		});
+		
+	}); 
+
+</script>
 </head>
 <body>
 	<h1>${title }</h1>
 	<hr>
-
+여기다	${customerid }
 	<table border="1" cellpadding="0" cellspacing="0">
 		<tr>
-			<td>�Խ��ǹ�ȣ</td>
-			<td>����</td>
+			<td>게시판번호</td>
+			<td>TYPE</td>
+			<td>제목</td>
 			<td>ID</td>
-			<td>�����</td>
+			<td>등록일</td>
+			<td>조회수</td>
 		</tr>
+		
 		
 		<c:forEach var="b" items="${list }">
 		<tr>
 			<td>${b.b_number }</td>
-			<td>${b.b_title }</td>
+			<td>${b.b_type }</td>
+			<td>
+			<a href="detailBoard.com?b_number=${b.b_number }">${b.b_title }</a>
+			</td>
 			<td>${b.customer_id }</td>
 			<td>${b.b_regdate }</td>
+			<td>${b.b_hit }</td>
 		</tr>
 		</c:forEach>
-	</table>
-	<a href="insertBoard.com">�Խù� ���</a>	
+		
+	</table>	
+	<a href="insertBoard.com" id="btn_insert">게시물 등록</a>
+	<hr>
+	<form action="listBoard.com" method="post">
+	<select name="searchField">
+		<option value= customer_id>id</option>
+		<option value="b_title">제목</option>
+		<option value="b_content">내용</option>
+	</select>
+	<input type="text" name="keyword">
+	<input type="submit" value="검색">	
+	</form>	
 </body>
 </html>
