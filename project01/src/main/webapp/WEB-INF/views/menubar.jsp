@@ -12,10 +12,8 @@
 <link rel="stylesheet" type="text/css"
    href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
-   *{
-      list-style: none; margin: 0px; padding: 0px; font-family: -윤고딕340;
-   }
    #logo{
       padding: 20px;
    }
@@ -70,7 +68,8 @@
       color: hotpink;
    }
 </style>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 var jq3= jQuery.noConflict();
 </script>
