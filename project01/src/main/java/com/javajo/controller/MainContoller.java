@@ -62,6 +62,15 @@ public class MainContoller {
 		return mav;
 	}
 	
+	@RequestMapping("/logout.com")
+	public ModelAndView logout()
+	{
+		ModelAndView mav = new ModelAndView();
+		id = null;
+		mav.setViewName("redirect:/main.com");
+		return mav;
+	}
+	
 	@RequestMapping("/terms.com")
 	public ModelAndView terms()
 	{

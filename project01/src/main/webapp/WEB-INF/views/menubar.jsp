@@ -56,15 +56,25 @@
    .zeta-menu ul a { color: black; }
    .zeta-menu ul ul { left: 100%; top: 0; }
    .zeta-menu ul ul li {float:left; margin-right:10px;}
-   #topmenu{
+   
+   .topmenu{
       text-align: right;
       cursor: pointer;
-      font-family: 새굴림;
+      font-family: -윤고딕340;
    }
    #login:HOVER{
       color: hotpink;
    }
    #signup:HOVER{
+      color: hotpink;
+   }
+   .logout:HOVER{
+      color: hotpink;
+   }
+   #masterpage:HOVER{
+      color: hotpink;
+   }
+   #mypage:HOVER{
       color: hotpink;
    }
 </style>
@@ -118,20 +128,53 @@ jq1(function($) {
       {
          $("#errordial").dialog("open");
       }
+      
       $("#signup").click(function () {
          location.href="signup.com";
       });
       
+      $(".logout").click(function () {
+    	  location.href="logout.com";
+      });
+      
+      var loginid = $("#loginid").val();
+      $("#logindiv").hide();
+      $("#masterdiv").hide();
+      
+      if(loginid=="master")
+      {
+    	    $("#masterdiv").show();
+    	    $("#unlogindiv").hide();
+    	    $("#logindiv").hide();
+      }
+      else if(loginid!=null && loginid!="")
+      {
+    	  $("#logindiv").show();
+  	      $("#unlogindiv").hide();
+  	      $("#masterdiv").hide();
+      }
+      else if(loginid==null && loginid=="")
+      {
+    	  $("#unlogindiv").show();
+  	      $("#masterdiv").hide();
+  	      $("#logindiv").hide();
+      }
    })
 </script>
 </head>
 <body>
    <input type="hidden" id="signupnum" value="${signupnum }">
-   <m:if test="${!empty loginid }">
-      ${loginid }
-   </m:if>
-   <div id="topmenu">
-      <span id="login">로그인</span>/<span id="signup">회원가입</span>
+   <input type="hidden" id="loginid" value="${loginid }">
+   <div class="topmenu">
+   	  <div id="unlogindiv">
+	      <span id="login">로그인</span>/<span id="signup">회원가입</span>
+   	  </div>
+   	  <div id="logindiv">
+	      <span id="mypage">MyPage</span>/<span class="logout">로그아웃</span>
+   	  </div>
+   	  <div id="masterdiv">
+	      <span id="masterpage">MasterPage</span>/<span class="logout">로그아웃</span>
+   	  </div>
    </div>
    <div id="logo">
       <center>
@@ -166,8 +209,8 @@ jq1(function($) {
             <table align="center">
                <tr>
                   <td>
-                     <input type="text" name="customer_id" placeholder="ID"><br>
-                     <input type="password" name="customer_pw" placeholder="PASSWORD">
+                     <input type="text" name="c_id" placeholder="ID"><br>
+                     <input type="password" name="c_pw" placeholder="PASSWORD">
                   </td>
                   <td>
                      <input type="submit" value="로그인">
