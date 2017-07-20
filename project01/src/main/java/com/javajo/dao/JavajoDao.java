@@ -41,5 +41,20 @@ public class JavajoDao {
 		return JavajoManager.echeckupdate(email,yes);
 	}
 
+	public List<CustomerVo> clist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.clist(num1,num2,key);
+	}
+
+	public int totalRecode(String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.totalrecode(key);
+	}
+
+	public int cdelete(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.cdelete(c_id);
+	}
+
 	
 }

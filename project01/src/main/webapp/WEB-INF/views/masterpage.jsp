@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib prefix="m" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,16 +11,26 @@
 	*{
 		margin: 0px; padding: 0px;
 	}
-	.container{
-		position: absolute; left: 0px;
+	#mside{
+		position: absolute; left: 0px; cursor: pointer;
+	}
+	#clist{
+		position: relative;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$(".cupdate").click(function () {
+			alert($(".c_id").text());
+		});
+	});
+</script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
-	<div class="container" style="width:200px;">
+	<div id="mside" class="container" style="width:200px;">
 	  <table class="table">
 	    <thead>
 	      <tr>
@@ -54,5 +65,40 @@
 	    </tbody>
 	  </table>
 	</div>
+	<div class="container" id="clist" style="width: 900px;">
+	  <h2>회원목록</h2>
+	  <form action="masterpage.com" method="post">
+			<input type="text" name="key" placeholder="ID를 입력하시오.">
+			<button type="submit" class="btn btn-primary">검색</button>
+	  </form>
+	  <table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th>ID</th>
+	        <th>Name</th>
+	        <th>Address</th>
+	        <th>Email</th>
+	        <th>비고</th>
+	        <th>비고</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    <m:forEach var="cl" items="${clist }">
+	      <tr>
+	        <td>${cl.c_id }</td>
+	        <td>${cl.c_name }</td>
+	        <td>${cl.c_addr }</td>
+	        <td>${cl.c_email }</td>
+	        <td><a><button class="btn btn-primary">수정</button></a></td>
+	        <td><a href="cdelete.com?c_id=${cl.c_id }"><button class="btn btn-primary">삭제</button></a></td>
+	      </tr>
+	    </m:forEach>
+	    </tbody>
+	  </table>
+	  <center>
+	  	${pagenum }
+	  </center>
+	</div>
+	
 </body>
 </html>

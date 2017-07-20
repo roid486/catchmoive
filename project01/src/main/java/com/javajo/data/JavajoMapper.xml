@@ -6,6 +6,18 @@
   <select id="mtAll" resultType="movietheaterVo">
     select * from movietheater
   </select>
+  <select id="clist" resultType="customerVo">
+    select * from (select rownum rowm, a.* from (select * from customer
+    <choose>
+    	<when test="key==null">
+    		where c_id!='master'
+    	</when>
+    	<when test="key!=null">
+    		where c_id!='master' and c_id like '%'||#{key}||'%'
+    	</when>
+    </choose>) a) 
+    where rowm between #{num1} and #{num2}
+  </select>
   <select id="login" resultType="java.lang.String">
   	select c_id from customer where c_id=#{c_id} and c_pw=#{c_pw}
   </select>
@@ -21,4 +33,13 @@
   <update id="echeckupdate">
   	update customer set c_echeck=#{yes} where c_email=#{email}
   </update>
+  <select id="crecode" resultType="java.lang.Integer">
+  	select count(*) from customer
+  	<if test="key != null">
+    	where c_id like '%'||#{key}||'%'
+    </if>
+  </select>
+  <delete id="cdelete">
+  	delete customer where c_id=#{c_id}
+  </delete>
 </mapper>

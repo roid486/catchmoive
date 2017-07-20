@@ -76,7 +76,38 @@ public class JavajoManager {
 		map.put("email", email);
 		map.put("yes", yes);
 		int echeck = session.update("javajo.echeckupdate", map);
+		session.close();
 		return echeck;
+	}
+
+	public static List<CustomerVo> clist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("key", key);
+		map.put("num1", num1);
+		map.put("num2", num2);
+		List<CustomerVo> list = session.selectList("javajo.clist",map);
+		session.close();
+		return list;
+	}
+
+	public static int totalrecode(String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("key", key);
+		int totalrecode = session.selectOne("javajo.crecode",map);
+		session.close();
+		return totalrecode;
+	}
+
+	public static int cdelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int del = session.delete("javajo.cdelete", c_id);
+		session.close();
+		return del;
 	}
 
 }
