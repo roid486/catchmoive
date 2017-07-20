@@ -30,18 +30,19 @@ public class SignupController {
 	}
 
 	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView signup(CustomerVo cv, String customer_pw2,String backmail)
+	public ModelAndView signup(CustomerVo cv, String c_pw2)
 	{
 		ModelAndView mav = new ModelAndView();
-		cv.setCustomer_email(cv.getCustomer_email()+backmail);
 		int re = 0;
-		if(cv.getCustomer_pw().length() >= 8 && cv.getCustomer_pw().equals(customer_pw2))
+		if(cv.getC_pw().length() >= 8 && cv.getC_pw().equals(c_pw2))
 		{
+			cv.setC_echeck("no");
 			re = dao.signup(cv);			
 		}
 		if(re==1)
 		{
-			mav.setViewName("redirect:/main.com");
+			MainContoller.id2=null;
+			mav.setViewName("redirect:/mail.com?email="+cv.getC_email());
 		}
 		else
 		{	msg = "다시 확인 하십시오";

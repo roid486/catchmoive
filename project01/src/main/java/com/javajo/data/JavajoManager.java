@@ -69,4 +69,14 @@ public class JavajoManager {
 		return re;
 	}
 
+	public static int echeckupdate(String email, String yes) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("email", email);
+		map.put("yes", yes);
+		int echeck = session.update("javajo.echeckupdate", map);
+		return echeck;
+	}
+
 }

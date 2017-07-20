@@ -16,7 +16,7 @@ public class SerchcustController {
 	private JavajoDao dao;
 	
 	public static String name;
-	public static String tel;
+	public static String email;
 
 	public void setDao(JavajoDao dao) {
 		this.dao = dao;
@@ -31,15 +31,16 @@ public class SerchcustController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView serchcustok(String name, String email)
+	public ModelAndView serchcustok(String name, String front_email, String back_email)
 	{
 		ModelAndView mav = new ModelAndView();
+		String email = front_email+back_email;
 		int re = dao.serchcust(name,email);
 		mav.addObject("mtlist", dao.mtlist());
 		if(re==0)
 		{
 			this.name=name;
-			this.tel=tel;
+			this.email=email;
 			mav.setViewName("redirect:/serchcustok.com");
 		}
 		else
