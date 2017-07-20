@@ -1,6 +1,7 @@
 package com.jihye.data;
 
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -49,5 +50,12 @@ public class MovieManager {
 		MovieVo_j m = session.selectOne("movie.selectOne",m_number);
 		session.close();
 		return m;
+	}
+	
+	public static List<MovieVo_j> listMovie(){
+		SqlSession session = factory.openSession();
+		List<MovieVo_j> list = session.selectList("movie.selectAll");
+		session.close();
+		return list;
 	}
 }

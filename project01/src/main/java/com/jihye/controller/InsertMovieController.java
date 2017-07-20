@@ -65,7 +65,7 @@ public class InsertMovieController {
 		{
 			try{
 			byte[]data = mfile1.getBytes();
-			FileOutputStream fos= new FileOutputStream(path +"/" +fname);
+			FileOutputStream fos= new FileOutputStream(path +"/" +fname1);
 					fos.write(data);
 			}catch(Exception e)
 			{
@@ -79,11 +79,11 @@ public class InsertMovieController {
 			fname2=mfile2.getOriginalFilename();
 		}
 		m.setM_image2(fname2);
-		if(!fname.equals(""))
+		if(!fname2.equals(""))
 		{
 			try{
-			byte[]data = mfile.getBytes();
-			FileOutputStream fos= new FileOutputStream(path +"/" +fname);
+			byte[]data = mfile2.getBytes();
+			FileOutputStream fos= new FileOutputStream(path +"/" +fname2);
 					fos.write(data);
 			}catch(Exception e)
 			{
@@ -100,8 +100,8 @@ public class InsertMovieController {
 		if(!fname3.equals(""))
 		{
 			try{
-			byte[]data = mfile.getBytes();
-			FileOutputStream fos= new FileOutputStream(path +"/" +fname);
+			byte[]data = mfile3.getBytes();
+			FileOutputStream fos= new FileOutputStream(path +"/" +fname3);
 					fos.write(data);
 			}catch(Exception e)
 			{

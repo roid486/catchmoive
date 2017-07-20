@@ -1,5 +1,7 @@
 package com.jihye.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.jihye.data.MovieManager;
@@ -20,5 +22,9 @@ public class MovieDao {
 	
 	public MovieVo_j getMovie(int m_number){
 		return MovieManager.getMovie(m_number);
+	}
+	
+	public List<MovieVo_j> listMovie(){
+		return MovieManager.listMovie();
 	}
 }
