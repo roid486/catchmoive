@@ -194,7 +194,7 @@ jq1(function($) {
          <ul class="zeta-menu">
              <li><a href="#">영화</a>
                 <ul>
-                    <li><a href="#">영화 정보</a></li>
+                    <li><a href="listMovie.com">영화 정보</a></li>
                       <li><a href="#">무비 파인더</a></li>
                   </ul>
              </li>

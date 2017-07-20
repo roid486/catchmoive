@@ -1,5 +1,7 @@
 package com.jihye.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.jihye.data.MovieManager;
@@ -12,5 +14,17 @@ public class MovieDao {
 	public int insertMovie(MovieVo_j m){
 		return MovieManager.insertMovie(m);
 		//commit¿Ã æ»µ≈?
+	}
+	
+	public int updateMovie(MovieVo_j m){
+		return MovieManager.updateMovie(m);
+	}
+	
+	public MovieVo_j getMovie(int m_number){
+		return MovieManager.getMovie(m_number);
+	}
+	
+	public List<MovieVo_j> listMovie(){
+		return MovieManager.listMovie();
 	}
 }
