@@ -136,6 +136,10 @@ jq1(function($) {
       $("#listboard").click(function () {
          location.href="listBoard.com";
       });
+ 
+      $("#masterpage").click(function () {
+         location.href="masterpage.com";
+      });
       
       $(".logout").click(function () {
     	  location.href="logout.com";
@@ -168,7 +172,7 @@ jq1(function($) {
 </head>
 <body>
    <input type="hidden" id="signupnum" value="${signupnum }">
-   <input type="hidden" id="loginid" value="${loginid }">
+   <input type="hidden" id="loginid" value="${se_id }">
    <div class="topmenu">
    	  <div id="unlogindiv">
 	      <span id="login">로그인</span>/<span id="signup">회원가입</span>
@@ -195,7 +199,7 @@ jq1(function($) {
                   </ul>
              </li>
              <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">애매</a></li> 
-             <li><a href="#">영화관</a>
+             <li><a id="movietheater">영화관</a>
                 <ul>
                    <m:forEach var="mtl" items="${mtlist }">
                     <li><a href="#">${mtl.movietheater_name }</a></li>
