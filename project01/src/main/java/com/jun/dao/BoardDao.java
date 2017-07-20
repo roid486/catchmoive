@@ -10,9 +10,9 @@ import com.jun.vo.BoardVo;
 @Repository
 public class BoardDao {
 
-	public List<BoardVo> list()
+	public List<BoardVo> list(String searchField, String keyword)
 	{
-		return JavajoManager.list();
+		return JavajoManager.list(searchField,keyword);
 	}
 
 	public int insert(BoardVo b) {
@@ -29,4 +29,25 @@ public class BoardDao {
 		// TODO Auto-generated method stub
 		return JavajoManager.getBoard(b_number);
 	}
+
+	public int update(BoardVo b) {
+		// TODO Auto-generated method stub
+		return JavajoManager.update(b);
+	}
+
+	public int delete(int b_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.delete(b_number);
+	}
+	
+	public int updateHit(int b_number)
+	{
+		return JavajoManager.updateHit(b_number);
+	}
+
+	public int updateStep(int b_b_ref, int b_b_step) {
+		// TODO Auto-generated method stub
+		return JavajoManager.updateStep(b_b_ref,b_b_step);
+	}
+	
 }
