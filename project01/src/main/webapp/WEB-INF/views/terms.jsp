@@ -5,10 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<style type="text/css">
-	
-</style>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	$(function () {
 		$("#term1").click(function () {
@@ -20,6 +20,10 @@
 		$("#term3").click(function () {
 			$("input[name=term]:checkbox").prop("checked", true);
 		});
+		$("#msgdialog").dialog({
+	         autoOpen:false,
+	         modal:true
+	      });
 		$("#termsok").click(function () {
 			if($("input[name=term]:checkbox:checked").length==2)
 			{		
@@ -27,7 +31,7 @@
 			}
 			else
 			{
-				alert("약관을 모두 동의해 주십시오.");
+				$("#msgdialog").dialog("open");
 			}
 		});
 	});
@@ -88,5 +92,8 @@
 			<button id="termsok">다음</button>
 		</div>
 	</center>
+	<div id="msgdialog">
+		<center><font color="red">약관을 모두 동의해주세요.</font></center>
+	</div>
 </body>
 </html>

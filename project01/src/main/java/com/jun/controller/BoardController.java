@@ -41,10 +41,15 @@ public class BoardController {
 	{
 		
 		HttpSession session = request.getSession();
-//		String customer_id=(String)session.getAttribute("customer_id");
+//		session.setAttribute("customerid2","비누주스라우");
+		
+		String se_id=(String)session.getAttribute("se_id");
+		System.out.println("se_id     ::   "+se_id);
 		String rSearchField=(String) session.getAttribute("searchField");
 		String rKeyword=(String) session.getAttribute("keyword");
-		session.setAttribute("customerid","비누주스라우");
+
+//		session.setAttribute("customerid","비누주스라우");
+		
 		System.out.println("컨트롤러 검색필드:"+rSearchField);
 		System.out.println("컨트롤러 검색어:"+rKeyword);
 		
@@ -55,11 +60,14 @@ public class BoardController {
 			session.setAttribute("searchField", rSearchField);
 			session.setAttribute("keyword", rKeyword);
 		}
+		
+		
 	
-//		System.out.println("customer id : "+customer_id);//여기선 널이떠요
+		//System.out.println("customer id : "+customer_id);//여기선 널이떠요
 		ModelAndView mav = new ModelAndView();
 		
-//		mav.addObject("customerid", "리승당");
+//		mav.addObject("customerid1", "리승당");
+		mav.addObject("se_id", se_id);
 		mav.addObject("title", "게시판");
 		mav.addObject("list", dao.list(rSearchField,rKeyword));
 		

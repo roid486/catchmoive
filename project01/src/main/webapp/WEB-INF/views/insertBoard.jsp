@@ -15,16 +15,16 @@
 	<%-- <input type="hidden" name="board_b_ref" value="${board_b_ref }">
 	<input type="hidden" name="board_b_step" value="${board_b_step }">
 	<input type="hidden" name="board_b_level" value="${board_b_level }"> --%>
-	제목:<input type="text" name="b_title"><br>
+	제목:<input type="text" name="b_title"placeholder="제목을 입력해주세요!!"><br>
 	TYPE:	<select name="b_type">
 				<option value="예매문의">예매문의</option>		
 				<option value="영화문의">영화문의</option>		
 				<option value="회원문의">회원문의</option>		
 				<option value="기타">기타</option>		
 			</select><br>
-	암호:<input type="password" name="b_pwd"><br>
+	암호:<input type="password" name="b_pwd"placeholder="암호를 입력해주세요!!"><br>
 	내용:<br>
-	<textarea rows="10" cols="60" name="b_content"></textarea><br>
+	<textarea rows="10" cols="60" name="b_content" placeholder="내용을입력해주세요!"></textarea><br>
 	첨부파일:<input type="file" name="uploadFile"><br>
 	<input type="submit" value="등록">
 	</form>

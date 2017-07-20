@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="javajo">
   <select id="selectAll" resultType="boardVo">
-    select b_number,b_title,b_pwd,b_content,b_hit,to_char(b_regdate,'YYYY-MM-DD hh24:mm:ss') b_regdate,b_ip,b_b_ref,b_b_level,b_b_step,b_fname,b_fsize,b_type,customer_id from board
+    select b_number,b_title,b_pwd,b_content,b_hit,to_char(b_regdate,'YYYY-MM-DD hh24:mm:ss') b_regdate,b_ip,b_b_ref,b_b_level,b_b_step,b_fname,b_fsize,b_type,c_id from board
     <if test="keyword !=null and keyword !=''">
  		where ${searchField} like '%' || #{keyword} || '%'
  	</if>

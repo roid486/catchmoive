@@ -50,12 +50,12 @@ public class JavajoManager {
 		return re;
 	}
 
-	public static int serchcust(String name, String tel) {
+	public static int serchcust(String name, String email) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("name", name);
-		map.put("tel", tel);
+		map.put("email", email);
 		int re = session.selectOne("javajo.serchcust", map);
 		session.close();
 		return re;
@@ -67,6 +67,16 @@ public class JavajoManager {
 		int re = session.selectOne("javajo.serchid",id);
 		session.close();
 		return re;
+	}
+
+	public static int echeckupdate(String email, String yes) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("email", email);
+		map.put("yes", yes);
+		int echeck = session.update("javajo.echeckupdate", map);
+		return echeck;
 	}
 
 }

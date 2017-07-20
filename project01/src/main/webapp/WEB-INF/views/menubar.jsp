@@ -10,12 +10,10 @@
 <link rel="stylesheet" href="resources/ui/jquery-ui.structure.min.css">
 <link rel="stylesheet" href="resources/ui/jquery-ui.theme.min.css">
 <link rel="stylesheet" type="text/css"
-	href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+   href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
-   *{
-      list-style: none; margin: 0px; padding: 0px; font-family: -윤고딕340;
-   }
    #logo{
       padding: 20px;
    }
@@ -58,10 +56,11 @@
    .zeta-menu ul a { color: black; }
    .zeta-menu ul ul { left: 100%; top: 0; }
    .zeta-menu ul ul li {float:left; margin-right:10px;}
-   #topmenu{
+   
+   .topmenu{
       text-align: right;
       cursor: pointer;
-      font-family: 새굴림;
+      font-family: -윤고딕340;
    }
    #login:HOVER{
       color: hotpink;
@@ -69,8 +68,18 @@
    #signup:HOVER{
       color: hotpink;
    }
+   .logout:HOVER{
+      color: hotpink;
+   }
+   #masterpage:HOVER{
+      color: hotpink;
+   }
+   #mypage:HOVER{
+      color: hotpink;
+   }
 </style>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 var jq3= jQuery.noConflict();
 </script>
@@ -79,17 +88,17 @@ var jq3= jQuery.noConflict();
 var jq1= jQuery.noConflict();
 </script>
 <script type="text/javascript"
-	src="resources/eunseok/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+   src="resources/eunseok/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 <script type="text/javascript"
-	src="resources/eunseok/fancybox/jquery.fancybox-1.3.4_patch.js"></script>
+   src="resources/eunseok/fancybox/jquery.fancybox-1.3.4_patch.js"></script>
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 jq1(function($) {
-	$("a[rel=fancybox]").fancybox({
-		width : 1000,
-		height : 600,
-		showCloseButton : false
-	});
+   $("a[rel=fancybox]").fancybox({
+      width : 1000,
+      height : 600,
+      showCloseButton : false
+   });
 }) 
  jq3(function ($) {
       $(".zeta-menu li").hover(function(){
@@ -119,20 +128,57 @@ jq1(function($) {
       {
          $("#errordial").dialog("open");
       }
+      
       $("#signup").click(function () {
          location.href="signup.com";
       });
+
+      $("#listboard").click(function () {
+         location.href="listBoard.com";
+      });
       
+      $(".logout").click(function () {
+    	  location.href="logout.com";
+      });
+      
+      var loginid = $("#loginid").val();
+      $("#logindiv").hide();
+      $("#masterdiv").hide();
+      
+      if(loginid=="master")
+      {
+    	    $("#masterdiv").show();
+    	    $("#unlogindiv").hide();
+    	    $("#logindiv").hide();
+      }
+      else if(loginid!=null && loginid!="")
+      {
+    	  $("#logindiv").show();
+  	      $("#unlogindiv").hide();
+  	      $("#masterdiv").hide();
+      }
+      else if(loginid==null && loginid=="")
+      {
+    	  $("#unlogindiv").show();
+  	      $("#masterdiv").hide();
+  	      $("#logindiv").hide();
+      }
    })
 </script>
 </head>
 <body>
    <input type="hidden" id="signupnum" value="${signupnum }">
-   <m:if test="${!empty loginid }">
-      ${loginid }
-   </m:if>
-   <div id="topmenu">
-      <span id="login">로그인</span>/<span id="signup">회원가입</span>
+   <input type="hidden" id="loginid" value="${loginid }">
+   <div class="topmenu">
+   	  <div id="unlogindiv">
+	      <span id="login">로그인</span>/<span id="signup">회원가입</span>
+   	  </div>
+   	  <div id="logindiv">
+	      <span id="mypage">MyPage</span>/<span class="logout">로그아웃</span>
+   	  </div>
+   	  <div id="masterdiv">
+	      <span id="masterpage">MasterPage</span>/<span class="logout">로그아웃</span>
+   	  </div>
    </div>
    <div id="logo">
       <center>
@@ -157,7 +203,7 @@ jq1(function($) {
                </ul>
              </li> 
              <li><a href="#">이벤트</a></li> 
-             <li><a href="#">공지사항</a></li> 
+             <li><a id="listboard">공지사항</a></li> 
          </ul>
       </div>
    </div>
@@ -167,8 +213,8 @@ jq1(function($) {
             <table align="center">
                <tr>
                   <td>
-                     <input type="text" name="customer_id" placeholder="ID"><br>
-                     <input type="password" name="customer_pw" placeholder="PASSWORD">
+                     <input type="text" name="c_id" placeholder="ID"><br>
+                     <input type="password" name="c_pw" placeholder="PASSWORD">
                   </td>
                   <td>
                      <input type="submit" value="로그인">

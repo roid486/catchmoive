@@ -16,7 +16,7 @@ public class MainContoller {
 	@Autowired
 	private JavajoDao dao;
 	private String id;
-	private String id2;
+	public static String id2;
 	private String msg;
 	private int re;
 	public void setDao(JavajoDao dao) {
@@ -24,12 +24,28 @@ public class MainContoller {
 	}
 	
 	@RequestMapping("/main.com")
-	public ModelAndView movietheaterlist()
+	public ModelAndView main()
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mtlist", dao.mtlist());
 		mav.addObject("loginid", id);
 		mav.addObject("signupnum", re);
+		return mav;
+	}
+	
+	@RequestMapping("/emailok.com")
+	public ModelAndView emailok(String email)
+	{
+		String yes = "yes";
+		ModelAndView mav = new ModelAndView();
+		int echeck = dao.echeckupdate(email,yes);
+		mav.addObject("mtlist", dao.mtlist());
+		mav.addObject("loginid", id);
+		mav.addObject("signupnum", re);
+		if(echeck!=0)
+		{		
+			mav.addObject("msg", "인증에 성공하였습니다.");
+		}
 		return mav;
 	}
 
@@ -38,6 +54,19 @@ public class MainContoller {
 	{
 		ModelAndView mav = new ModelAndView();
 		id = dao.loginok(cv);
+		if(id == null)
+		{
+			re = 2;
+		}
+		mav.setViewName("redirect:/main.com");
+		return mav;
+	}
+	
+	@RequestMapping("/logout.com")
+	public ModelAndView logout()
+	{
+		ModelAndView mav = new ModelAndView();
+		id = null;
 		mav.setViewName("redirect:/main.com");
 		return mav;
 	}
@@ -47,8 +76,6 @@ public class MainContoller {
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mtlist", dao.mtlist());
-		mav.addObject("loginid", id);
-		mav.addObject("signupnum", re);
 		return mav;
 	}
 
@@ -57,12 +84,10 @@ public class MainContoller {
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mtlist", dao.mtlist());
-		mav.addObject("loginid", id);
-		mav.addObject("signupnum", re);
 		mav.addObject("serchid", id2);
 		mav.addObject("msg", msg);
 		mav.addObject("name", SerchcustController.name);
-		mav.addObject("tel", SerchcustController.tel);
+		mav.addObject("email", SerchcustController.email);
 		if(SignupController.msg!=null && !SignupController.msg.equals(""))
 		{			
 			mav.addObject("msg", SignupController.msg);

@@ -10,16 +10,20 @@
 <script type="text/javascript">
 	$(function() {
 		/* var customer_id */
-	var id = <%= (String)session.getAttribute("customerid")%> 
-
-alert("id    ::   "+id)
+		var id1 = "<%= request.getAttribute("se_id")%>"
+		var id2 = "<%= (String)session.getAttribute("customerid2")%>"
+		
+		alert(id1+"///"+id2)
+		
 	
 		$("#btn_insert").click(function() {
-			if(id == null)
+			if(id1 == null)
 			{
+				
 				alert("로그인해라 개새꺄");
-				return false;
+				
 			}
+		
 		});
 		
 	}); 
@@ -28,8 +32,8 @@ alert("id    ::   "+id)
 </head>
 <body>
 	<h1>${title }</h1>
+	${se_id }
 	<hr>
-여기다	${customerid }
 	<table border="1" cellpadding="0" cellspacing="0">
 		<tr>
 			<td>게시판번호</td>
@@ -48,7 +52,7 @@ alert("id    ::   "+id)
 			<td>
 			<a href="detailBoard.com?b_number=${b.b_number }">${b.b_title }</a>
 			</td>
-			<td>${b.customer_id }</td>
+			<td>${b.c_id }</td>
 			<td>${b.b_regdate }</td>
 			<td>${b.b_hit }</td>
 		</tr>
@@ -59,7 +63,7 @@ alert("id    ::   "+id)
 	<hr>
 	<form action="listBoard.com" method="post">
 	<select name="searchField">
-		<option value= customer_id>id</option>
+		<option value= c_id>id</option>
 		<option value="b_title">제목</option>
 		<option value="b_content">내용</option>
 	</select>

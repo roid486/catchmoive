@@ -26,14 +26,19 @@ public class JavajoDao {
 		return JavajoManager.signup(cv);
 	}
 
-	public int serchcust(String name, String tel) {
+	public int serchcust(String name, String email) {
 		// TODO Auto-generated method stub
-		return JavajoManager.serchcust(name,tel);
+		return JavajoManager.serchcust(name,email);
 	}
 
 	public int serchid(String id) {
 		// TODO Auto-generated method stub
 		return JavajoManager.serchid(id);
+	}
+
+	public int echeckupdate(String email, String yes) {
+		// TODO Auto-generated method stub
+		return JavajoManager.echeckupdate(email,yes);
 	}
 
 	

@@ -7,15 +7,18 @@
     select * from movietheater
   </select>
   <select id="login" resultType="java.lang.String">
-  	select customer_id from customer where customer_id=#{customer_id} and customer_pw=#{customer_pw}
+  	select c_id from customer where c_id=#{c_id} and c_pw=#{c_pw}
   </select>
   <insert id="signup">
-  	insert into customer values(#{customer_id},#{customer_pw},#{customer_name},#{customer_addr},#{customer_tel},#{customer_email},#{customer_gender})
+  	insert into customer values(#{c_id},#{c_pw},#{c_name},#{c_age},#{c_addr},#{c_tel},#{c_email},#{c_gender},#{c_check},#{c_echeck})
   </insert>
   <select id="serchcust" resultType="java.lang.Integer">
-  	select count(*) from customer where customer_name=#{name} and customer_tel=#{tel}
+  	select count(*) from customer where c_name=#{name} and c_email=#{email}
   </select>
   <select id="serchid" resultType="java.lang.Integer">
-  	select count(*) from customer where customer_id=#{id}
+  	select count(*) from customer where c_id=#{id}
   </select>
+  <update id="echeckupdate">
+  	update customer set c_echeck=#{yes} where c_email=#{email}
+  </update>
 </mapper>

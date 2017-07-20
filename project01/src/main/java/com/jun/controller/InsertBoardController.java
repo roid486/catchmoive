@@ -70,18 +70,18 @@ public class InsertBoardController {
 	
 	
 	@RequestMapping(value="/insertBoard.com",method=RequestMethod.POST)
-	public ModelAndView submit(BoardVo b,HttpServletRequest request,CustomerVo cv,HttpSession session, String customer_id)
+	public ModelAndView submit(BoardVo b,HttpServletRequest request,CustomerVo cv,HttpSession session, String c_id)
 	{
 		
 		ModelAndView mav = new ModelAndView();
-		String id=(String)session.getAttribute("customer_id");
+		String id=(String)session.getAttribute("c_id");
 		String re = dao1.loginok(cv);
 
 		mav.setViewName("redirect:login.com");
 		if (re == null)
 			mav.setViewName("redirect:/login.com");
 		else {
-			session.setAttribute("customer_id", customer_id);
+			session.setAttribute("c_id", c_id);
 		}
 		System.out.println("인서트 id:"+id);
 		System.out.println("인서트 re:"+re);

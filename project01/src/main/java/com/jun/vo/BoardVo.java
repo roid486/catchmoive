@@ -19,7 +19,7 @@ public class BoardVo {
 	private String b_fname;
 	private int b_fsize;
 	private String b_type;
-	private String customer_id;
+	private String c_id;
 	
 	public MultipartFile uploadFile;
 
@@ -127,12 +127,12 @@ public class BoardVo {
 		this.b_type = b_type;
 	}
 
-	public String getCustomer_id() {
-		return customer_id;
+	public String getC_id() {
+		return c_id;
 	}
 
-	public void setCustomer_id(String customer_id) {
-		this.customer_id = customer_id;
+	public void setC_id(String c_id) {
+		this.c_id = c_id;
 	}
 
 	public MultipartFile getUploadFile() {
@@ -145,7 +145,7 @@ public class BoardVo {
 
 	public BoardVo(int b_number, String b_title, String b_pwd, String b_content, int b_hit, String b_regdate,
 			String b_ip, int b_b_ref, int b_b_level, int b_b_step, String b_fname, int b_fsize, String b_type,
-			String customer_id, MultipartFile uploadFile) {
+			String c_id, MultipartFile uploadFile) {
 		super();
 		this.b_number = b_number;
 		this.b_title = b_title;
@@ -160,13 +160,21 @@ public class BoardVo {
 		this.b_fname = b_fname;
 		this.b_fsize = b_fsize;
 		this.b_type = b_type;
-		this.customer_id = customer_id;
+		this.c_id = c_id;
 		this.uploadFile = uploadFile;
 	}
 
 	public BoardVo() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "BoardVo [b_number=" + b_number + ", b_title=" + b_title + ", b_pwd=" + b_pwd + ", b_content="
+				+ b_content + ", b_hit=" + b_hit + ", b_regdate=" + b_regdate + ", b_ip=" + b_ip + ", b_b_ref="
+				+ b_b_ref + ", b_b_level=" + b_b_level + ", b_b_step=" + b_b_step + ", b_fname=" + b_fname
+				+ ", b_fsize=" + b_fsize + ", b_type=" + b_type + ", c_id=" + c_id + ", uploadFile=" + uploadFile + "]";
 	}
 
 	
