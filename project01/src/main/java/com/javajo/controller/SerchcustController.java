@@ -31,10 +31,10 @@ public class SerchcustController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView serchcustok(String name, String tel)
+	public ModelAndView serchcustok(String name, String email)
 	{
 		ModelAndView mav = new ModelAndView();
-		int re = dao.serchcust(name,tel);
+		int re = dao.serchcust(name,email);
 		mav.addObject("mtlist", dao.mtlist());
 		if(re==0)
 		{

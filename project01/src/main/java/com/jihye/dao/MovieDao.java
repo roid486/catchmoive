@@ -13,4 +13,12 @@ public class MovieDao {
 		return MovieManager.insertMovie(m);
 		//commit¿Ã æ»µ≈?
 	}
+	
+	public int updateMovie(MovieVo_j m){
+		return MovieManager.updateMovie(m);
+	}
+	
+	public MovieVo_j getMovie(int m_number){
+		return MovieManager.getMovie(m_number);
+	}
 }

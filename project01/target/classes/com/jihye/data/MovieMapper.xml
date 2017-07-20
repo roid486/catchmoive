@@ -6,4 +6,10 @@
  	<insert id="insertMovie">
  	insert into movie values(seq_movie.nextval,#{m_name},#{m_director},#{m_actor},#{m_nation},#{m_runningtime},#{m_grade},#{m_genre},#{m_opendate},#{m_synop},#{m_image},#{m_trailer},#{m_score},#{m_image1},#{m_image2},#{m_image3},#{m_isshowing},#{m_boxoffice})
  	</insert>
+ 	<update id="updateMovie">
+ 	update movie set m_name=#{m_name},m_director=#{m_director},m_actor=#{m_actor},m_nation=#{m_nation},m_runningtime=#{m_runningtime},m_grade=#{m_grade},m_genre=#{m_genre},m_opendate=#{m_opendate},m_synop=#{m_synop},m_image=#{m_image},m_trailer=#{m_trailer},m_score=#{m_score},m_image1=#{m_image1},m_image2=#{m_image2},m_image3=#{m_image3},m_isshowing=#{m_isshowing},m_boxoffice=#{m_boxoffice} where m_number=#{m_number} 
+ 	</update>
+ 	<select id="selectOne" resultType="movieVo">
+ 	select * from movie where m_number=#{m_number}
+ 	</select>
 </mapper>

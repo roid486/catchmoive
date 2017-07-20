@@ -35,4 +35,19 @@ public class MovieManager {
 		return re;
 		
 	}
+	
+	public static int updateMovie(MovieVo_j m){
+		SqlSession session = factory.openSession(true);
+		int re = session.update("movie.updateMovie", m);
+		session.close();
+		return re;
+	}
+
+	public static MovieVo_j getMovie(int m_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		MovieVo_j m = session.selectOne("movie.selectOne",m_number);
+		session.close();
+		return m;
+	}
 }

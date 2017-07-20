@@ -50,12 +50,12 @@ public class JavajoManager {
 		return re;
 	}
 
-	public static int serchcust(String name, String tel) {
+	public static int serchcust(String name, String email) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("name", name);
-		map.put("tel", tel);
+		map.put("email", email);
 		int re = session.selectOne("javajo.serchcust", map);
 		session.close();
 		return re;

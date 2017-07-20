@@ -26,9 +26,9 @@ public class JavajoDao {
 		return JavajoManager.signup(cv);
 	}
 
-	public int serchcust(String name, String tel) {
+	public int serchcust(String name, String email) {
 		// TODO Auto-generated method stub
-		return JavajoManager.serchcust(name,tel);
+		return JavajoManager.serchcust(name,email);
 	}
 
 	public int serchid(String id) {
