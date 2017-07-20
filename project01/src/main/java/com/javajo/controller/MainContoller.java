@@ -2,6 +2,9 @@ package com.javajo.controller;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,11 +27,12 @@ public class MainContoller {
 	}
 	
 	@RequestMapping("/main.com")
-	public ModelAndView main()
+	public ModelAndView main(HttpServletRequest request)
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mtlist", dao.mtlist());
-		mav.addObject("loginid", id);
+		HttpSession session = request.getSession();
+		session.setAttribute("se_id", id);
 		mav.addObject("signupnum", re);
 		return mav;
 	}
@@ -113,4 +117,11 @@ public class MainContoller {
 		return mav;
 	}
 	
+	@RequestMapping("/masterpage.com")
+	public ModelAndView masterpage()
+	{
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("mtlist", dao.mtlist());
+		return mav;
+	}
 }
