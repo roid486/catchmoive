@@ -20,17 +20,10 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	$(function () {
-		$(".cupdate").click(function () {
-			alert($(".c_id").text());
-		});
-	});
-</script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
-	<div id="mside" class="container" style="width:200px;">
+	<div id="mside" class="container" style="width:20%;">
 	  <table class="table">
 	    <thead>
 	      <tr>
@@ -65,7 +58,7 @@
 	    </tbody>
 	  </table>
 	</div>
-	<div class="container" id="clist" style="width: 900px;">
+	<div class="container" id="clist" style="width: 60%;">
 	  <h2>회원목록</h2>
 	  <form action="masterpage.com" method="post">
 			<input type="text" name="key" placeholder="ID를 입력하시오.">
@@ -89,7 +82,7 @@
 	        <td>${cl.c_name }</td>
 	        <td>${cl.c_addr }</td>
 	        <td>${cl.c_email }</td>
-	        <td><a><button class="btn btn-primary">수정</button></a></td>
+	        <td><a href="cupdate.com?c_id=${cl.c_id }"><button class="btn btn-primary">수정</button></a></td>
 	        <td><a href="cdelete.com?c_id=${cl.c_id }"><button class="btn btn-primary">삭제</button></a></td>
 	      </tr>
 	    </m:forEach>

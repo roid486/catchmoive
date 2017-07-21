@@ -117,6 +117,7 @@ public class JavajoManager {
 		map.put("name", name);
 		map.put("email", email);
 		String scid = session.selectOne("javajo.scid", map);
+		session.close();
 		return scid;
 	}
 
@@ -128,7 +129,24 @@ public class JavajoManager {
 		map.put("name", name);
 		map.put("email", email);
 		String scpw = session.selectOne("javajo.scpw", map);
+		session.close();
 		return scpw;
+	}
+
+	public static CustomerVo cdetail(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		CustomerVo cv = session.selectOne("javajo.cdetail", c_id);
+		session.close();
+		return cv;
+	}
+
+	public static int cupdate(CustomerVo cv) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.update("javajo.cupdate", cv);
+		session.close();
+		return re;
 	}
 
 }

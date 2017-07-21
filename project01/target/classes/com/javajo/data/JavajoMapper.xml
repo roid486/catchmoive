@@ -48,4 +48,10 @@
   <select id="scpw" resultType="java.lang.String">
   	select c_pw from customer where c_id=#{id} and c_name=#{name} and c_email=#{email}
   </select>
+  <select id="cdetail" resultType="customerVo">
+  	select * from customer where c_id=#{c_id}
+  </select>
+  <update id="cupdate">
+  	update customer set c_pw=#{c_pw}, c_name=#{c_name}, c_age=#{c_age}, c_addr=#{c_addr}, c_tel=#{c_tel}, c_email=#{c_email}, c_gender=#{c_gender}, c_check=#{c_check}, c_echeck=#{c_echeck} where c_id=#{c_id}
+  </update>
 </mapper>

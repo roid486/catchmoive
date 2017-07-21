@@ -66,5 +66,15 @@ public class JavajoDao {
 		return JavajoManager.scpw(id,name,email);
 	}
 
+	public CustomerVo cdetail(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.cdetail(c_id);
+	}
+
+	public int cupdate(CustomerVo cv) {
+		// TODO Auto-generated method stub
+		return JavajoManager.cupdate(cv);
+	}
+
 	
 }

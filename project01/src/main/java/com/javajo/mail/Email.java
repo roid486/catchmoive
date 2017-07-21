@@ -54,6 +54,8 @@ public class Email {
 		}
 		else
 		{
+			MainContoller.emsg = "Email을 확인해주세요.";
+			MainContoller.ere = 1;
 			mailSender.send(new MimeMessagePreparator() {
 				
 				@Override
@@ -83,6 +85,8 @@ public class Email {
 		}
 		else
 		{
+			MainContoller.emsg = "Email을 확인해주세요.";
+			MainContoller.ere = 1;
 			mailSender.send(new MimeMessagePreparator() {
 				
 				@Override

@@ -260,7 +260,7 @@ jq1(function($) {
                   </td>
                </tr>
                <tr>
-                  <td><span id="scid">아이디</span>/<span id="scpw">비밀번호</span>찾기</td>
+                  <td><span id="scid">아이디</span>/<span id="scpw">비밀번호</span> 찾기</td>
                </tr>
             </table>
          </form>
