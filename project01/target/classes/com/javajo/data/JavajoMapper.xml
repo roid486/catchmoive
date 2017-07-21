@@ -42,4 +42,10 @@
   <delete id="cdelete">
   	delete customer where c_id=#{c_id}
   </delete>
+  <select id="scid" resultType="java.lang.String">
+  	select c_id from customer where c_name=#{name} and c_email=#{email}
+  </select>
+  <select id="scpw" resultType="java.lang.String">
+  	select c_pw from customer where c_id=#{id} and c_name=#{name} and c_email=#{email}
+  </select>
 </mapper>

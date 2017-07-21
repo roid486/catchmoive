@@ -77,6 +77,12 @@
    #mypage:HOVER{
       color: hotpink;
    }
+   #scid{
+   		cursor: pointer;
+   }
+   #scpw{
+   		cursor: pointer;
+   }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -118,8 +124,29 @@ jq1(function($) {
          autoOpen:false,
          modal:true
       });
+      $("#emsgdial").dialog({
+         autoOpen:false,
+         modal:true
+      });
+      $("#sciddial").dialog({
+         autoOpen:false,
+         modal:true
+      });
+      $("#scpwdial").dialog({
+         autoOpen:false,
+         modal:true
+      });
+      
       $("#login").click(function () {
          $("#logindial").dialog("open");
+      });
+      $("#scid").click(function () {
+         $("#logindial").dialog("close");
+         $("#sciddial").dialog("open");
+      });
+      $("#scpw").click(function () {
+         $("#logindial").dialog("close");
+         $("#scpwdial").dialog("open");
       });
       
       
@@ -167,11 +194,19 @@ jq1(function($) {
   	      $("#masterdiv").hide();
   	      $("#logindiv").hide();
       }
+      
+      var ere = $("#ere").val();
+      if(ere==1)
+      {
+    	  $("#emsgdial").dialog("open");
+      }
+      
    })
 </script>
 </head>
 <body>
    <input type="hidden" id="signupnum" value="${signupnum }">
+   <input type="hidden" id="ere" value="${ere }">
    <input type="hidden" id="loginid" value="${se_id }">
    <div class="topmenu">
    	  <div id="unlogindiv">
@@ -225,7 +260,42 @@ jq1(function($) {
                   </td>
                </tr>
                <tr>
-                  <td><span id="serchid">아이디</span>/<span id="serchpw">비밀번호</span>찾기</td>
+                  <td><span id="scid">아이디</span>/<span id="scpw">비밀번호</span>찾기</td>
+               </tr>
+            </table>
+         </form>
+      </center>
+   </div>
+   <div id="sciddial" title="아이디찾기">
+      <center>
+         <form action="scid.com" method="post">
+            <table align="center">
+               <tr>
+                  <td>
+                     <input type="text" name="name" placeholder="이름"><br>
+                     <input type="text" name="email" placeholder="Email">
+                  </td>
+                  <td>
+                     <input type="submit" value="찾기">
+                  </td>
+               </tr>
+            </table>
+         </form>
+      </center>
+   </div>
+   <div id="scpwdial" title="비밀번호찾기">
+      <center>
+         <form action="scpw.com" method="post">
+            <table align="center">
+               <tr>
+                  <td>
+                     <input type="text" name="id" placeholder="ID"><br>
+                     <input type="text" name="name" placeholder="이름"><br>
+                     <input type="text" name="email" placeholder="Email">
+                  </td>
+                  <td>
+                     <input type="submit" value="찾기">
+                  </td>
                </tr>
             </table>
          </form>
@@ -233,6 +303,9 @@ jq1(function($) {
    </div>
    <div id="errordial" title="오류">
       <center><span>존재하지 않는 아이디/비밀번호 입니다.</span></center>
+   </div>
+   <div id="emsgdial" title="오류">
+      <center><span>${emsg }</span></center>
    </div>
 </body>
 </html>

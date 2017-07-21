@@ -56,5 +56,15 @@ public class JavajoDao {
 		return JavajoManager.cdelete(c_id);
 	}
 
+	public String scid(String name, String email) {
+		// TODO Auto-generated method stub
+		return JavajoManager.scid(name,email);
+	}
+
+	public String scpw(String id, String name, String email) {
+		// TODO Auto-generated method stub
+		return JavajoManager.scpw(id,name,email);
+	}
+
 	
 }

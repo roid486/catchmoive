@@ -110,4 +110,25 @@ public class JavajoManager {
 		return del;
 	}
 
+	public static String scid(String name, String email) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("name", name);
+		map.put("email", email);
+		String scid = session.selectOne("javajo.scid", map);
+		return scid;
+	}
+
+	public static String scpw(String id, String name, String email) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("name", name);
+		map.put("email", email);
+		String scpw = session.selectOne("javajo.scpw", map);
+		return scpw;
+	}
+
 }
