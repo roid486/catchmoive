@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.javajo.data.JavajoManager;
 import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
+import com.javajo.vo.MovieTheaterVo2;
 
 @Repository
 public class JavajoDao {
@@ -46,7 +47,7 @@ public class JavajoDao {
 		return JavajoManager.clist(num1,num2,key);
 	}
 
-	public int totalRecode(String key) {
+	public int ctotalRecode(String key) {
 		// TODO Auto-generated method stub
 		return JavajoManager.totalrecode(key);
 	}
@@ -76,5 +77,18 @@ public class JavajoDao {
 		return JavajoManager.cupdate(cv);
 	}
 
-	
+	public int mttotalRecode(String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mttotalrecode(key);
+	}
+
+	public List<MovieTheaterVo2> movietlist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mtl(num1,num2,key);
+	}
+
+	public int insertmt(MovieTheaterVo2 mtv2) {
+		// TODO Auto-generated method stub
+		return JavajoManager.isertmt(mtv2);
+	}	
 }

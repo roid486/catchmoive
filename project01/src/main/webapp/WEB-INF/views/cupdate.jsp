@@ -10,12 +10,6 @@
 <link rel="stylesheet" href="resources/ui/jquery-ui.theme.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
-	*{
-		margin: 0px; padding: 0px;
-	}
-	#mside{
-		position: absolute; left: 0px; cursor: pointer;
-	}
 	#clist{
 		position: relative;
 	}
@@ -33,48 +27,14 @@
 		if(re==1)
 		{
 			$("#erdial").dialog("open");
-		}
+		}		
 	});
 </script>
 </head>
 <body>
 	<input type="hidden" id="re" value="${re }">
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
-	<div id="mside" class="container" style="width:15%;">
-	  <table class="table">
-	    <thead>
-	      <tr>
-	        <th>MasterMenu</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr id="customer">
-	        <td>회원정보</td>
-	      </tr>      
-	      <tr class="success" id="movie">
-	        <td>영화정보</td>
-	      </tr>
-	      <tr class="danger" id="movietheater">
-	        <td>영화관정보</td>
-	      </tr>
-	      <tr class="info" id="theater">
-	        <td>상영관정보</td>
-	      </tr>
-	      <tr class="warning" id="running">
-	        <td>상영시간표정보</td>
-	      </tr>
-	      <tr class="warning" id="board">
-	        <td>게시판정보</td>
-	      </tr>
-	      <tr class="active" id="noticeboard">
-	        <td>공지사항정보</td>
-	      </tr>
-	      <tr id="event">
-	        <td>이벤트정보</td>
-	      </tr>
-	    </tbody>
-	  </table>
-	</div>
+	<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
 	<div class="container" style="width:70%;">
 	  <form class="form-horizontal" action="cupdate.com" method="post">
 	  	<input type="hidden" name="c_echeck" value="${cdetail.c_echeck }">

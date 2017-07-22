@@ -25,31 +25,28 @@
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
 	<div class="container" id="clist" style="width: 60%;">
-	  <h2>회원목록</h2>
-	  <form action="masterpage.com" method="post">
+	  <h2>영화관 목록</h2>
+	  <p><a href="insertmt.com"><button class="btn btn-primary">영화관 추가</button></a></p>
+	  <form action="mtlist.com" method="post">
 			<input type="text" name="key" placeholder="ID를 입력하시오.">
 			<button type="submit" class="btn btn-primary">검색</button>
 	  </form>
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
-	        <th>ID</th>
 	        <th>Name</th>
-	        <th>Address</th>
-	        <th>Email</th>
+	        <th>LOC</th>
 	        <th>비고</th>
 	        <th>비고</th>
 	      </tr>
 	    </thead>
 	    <tbody>
-	    <m:forEach var="cl" items="${clist }">
+	    <m:forEach var="mtl" items="${mtl }">
 	      <tr>
-	        <td>${cl.c_id }</td>
-	        <td>${cl.c_name }</td>
-	        <td>${cl.c_addr }</td>
-	        <td>${cl.c_email }</td>
-	        <td><a href="cupdate.com?c_id=${cl.c_id }"><button class="btn btn-primary">수정</button></a></td>
-	        <td><a href="cdelete.com?c_id=${cl.c_id }"><button class="btn btn-primary">삭제</button></a></td>
+	        <td>${mtl.mt_name }</td>
+	        <td>${mtl.mt_loc }</td>
+	        <td><a href="mtupdate.com?c_id=${mtl.mt_number }"><button class="btn btn-primary">수정</button></a></td>
+	        <td><a href="mtdelete.com?c_id=${mtl.mt_number }"><button class="btn btn-primary">삭제</button></a></td>
 	      </tr>
 	    </m:forEach>
 	    </tbody>

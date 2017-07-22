@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
+import com.javajo.vo.MovieTheaterVo2;
 
 public class JavajoManager {
 	private static SqlSessionFactory factory;
@@ -145,6 +146,43 @@ public class JavajoManager {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession(true);
 		int re = session.update("javajo.cupdate", cv);
+		session.close();
+		return re;
+	}
+
+	public static int mttotalrecode(String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		int re = session.selectOne("javajo.mttotalrecode", key);
+		session.close();
+		return re;
+	}
+
+	public static List<MovieTheaterVo2> mtl(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("num1", num1);
+		map.put("num2", num2);
+		map.put("key", key);
+		List<MovieTheaterVo2> list = session.selectList("javajo.mtl", map);
+		return list;
+	}
+
+	public static int mtautonum()
+	{
+		int re = 0;
+		SqlSession session = factory.openSession();
+		re = session.selectOne("javajo.mtautonum");
+		session.close();
+		return re;
+	}
+	
+	public static int isertmt(MovieTheaterVo2 mtv2) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		mtv2.setMt_number(mtautonum());
+		int re = session.insert("javajo.insertmt",mtv2);
 		session.close();
 		return re;
 	}
