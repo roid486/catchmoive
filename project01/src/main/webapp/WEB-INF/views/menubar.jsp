@@ -237,7 +237,7 @@ jq1(function($) {
              <li><a id="movietheater">영화관</a>
                 <ul>
                    <m:forEach var="mtl" items="${mtlist }">
-                    <li><a href="#">${mtl.movietheater_name }</a></li>
+                    <li><a href="#">${mtl.mt_name }</a></li>
                    </m:forEach>
                </ul>
              </li> 

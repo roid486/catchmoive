@@ -5,47 +5,51 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css"
+	href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<link rel="stylesheet" href="resources/eunseok/style.css" />
+<link rel="stylesheet" href="resources/eunseok/ticket_main_css/ticket_sub.css" />
 <style type="text/css">
 #sub1_form {
 	height: 500px;
 	overflow: auto;
 }
 </style>
-
-<script>
-	!window.jQuery
-			&& document
-					.write('<script src="resources/eunseok/jquery-1.4.3.min.js"><\/script>');
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+var jq3= jQuery.noConflict();
+</script>
+<script type="text/javascript" src="resources/eunseok/jquery-migrate-1.4.1.min.js"></script>
+<script type="text/javascript">
+var jq1= jQuery.noConflict();
 </script>
 <script type="text/javascript"
 	src="resources/eunseok/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 <script type="text/javascript"
 	src="resources/eunseok/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
-<link rel="stylesheet" href="resources/eunseok/style.css" />
-<link rel="stylesheet" href="resources/eunseok/ticket_main_css/ticket_sub.css" />
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-	$(function() {
+	jq1(function($){
+		$("#btn1").click(function() {
+			alert("o")
+			parent.$.fancybox.close();
+		});
+
+	})
+	
+	jq3(function($) {
 		var movie_number;
 		var movietheater_number;
 		var running_date;
 		var running_start;
 		var theater_number;
-		$("#btn1").click(function() {
-
-			parent.$.fancybox.close();
-		});
-
+		
 		$.getJSON("firstList.com", function(data) {
 			$.each(data, function(index, item) {
 				var a1 = $("<a></a>").attr({
 					href : "#",
-					id : item.movie_number,
+					id : item.m_number,
 					name : "sub1"
-				}).html(item.movie_name)
+				}).html(item.m_name)
 
 				$("#sub1_form").append(a1, "<br>");
 			})
@@ -67,9 +71,9 @@
 						$.each(data1, function(index, item) {
 							var a2 = $("<a></a>").attr({
 								href : "#",
-								id : item.movietheater_number,
+								id : item.mt_number,
 								name : "sub2"
-							}).html(item.movietheater_name)
+							}).html(item.mt_name)
 							$("#sub2_form").append(a2, "<br>");
 						})
 					}
@@ -94,9 +98,9 @@
 						$.each(data2, function(index, item) {
 							var a3 = $("<a></a>").attr({
 								href : "#",
-								id : item.running_date,
+								id : item.r_date,
 								name : "sub3"
-							}).html(item.running_date)
+							}).html(item.r_date)
 							$("#sub3_form").append(a3, "<br>");
 						})
 					}
@@ -122,11 +126,11 @@
 						$.each(data3, function(index, item) {
 							var a4 = $("<a></a>").attr({
 								href : "#",
-								id : item.running_start,
+								id : item.r_start,
 								name : "sub4"
-							}).html(item.running_start)
+							}).html(item.r_start)
 							$("#sub4_form").append(a4, "<br>");
-							theater_number = item.theater_number;
+							theater_number = item.t_number;
 						})
 					}
 				})
@@ -151,7 +155,7 @@
 <body>
 	${title }
 	<button id="btn1">Close fancyBox</button>
-	0
+	
 	<a id="move_sub2" href="#">Move fanct_sub2</a>
 	<center>
 		<div id="main_form">

@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket.css" />
+	href="resources/eunseok/ticket_main_css/ticket.css?a=2" />
 <script>
 	!window.jQuery
 			&& document
@@ -33,7 +33,7 @@
 
 				$.getJSON("theaterseat.com", function(data) {
 					var divlabel = $("<div></div>").attr("class","label");
-					$.each(data, function(insex, item){
+					$.each(data, function(index, item){
 						
 					
 					 var spanrow = $("<span></span>").attr("class","row").html(item.seat_row);
@@ -45,11 +45,12 @@
 					var spanno = $("<span></span>").attr("class","seat_no");
 					var divr = $("<div></div>").attr("class","r").html(item.seat_column);
 					
+					
 					$(divr).appendTo(spanno);
 					$(spanno).appendTo(a);
 					$(spanrow).appendTo(divlabel);
 					$(a).appendTo(divlabel);
-					if((eval(item.seat_number))%5 == 0)
+					if((index+1)%5 == 0)
 						{
 							$("<br/>").appendTo(divlabel);
 						}

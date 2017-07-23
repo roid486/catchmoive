@@ -2,25 +2,26 @@ package com.silver.vo;
 
 public class RunningVo {
 	
-	private String running_date;
+	private String r_date;
 
-	public String getRunning_date() {
-		return running_date;
+	public String getR_date() {
+		return r_date;
 	}
 
-	public void setRunning_date(String running_date) {
-		this.running_date = running_date;
+	public void setR_date(String r_date) {
+		this.r_date = r_date;
 	}
 
-	public RunningVo(String running_date) {
+	public RunningVo(String r_date) {
 		super();
-		this.running_date = running_date;
+		this.r_date = r_date;
 	}
 
 	public RunningVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	
 	
 }

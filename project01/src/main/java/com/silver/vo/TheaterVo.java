@@ -2,62 +2,62 @@ package com.silver.vo;
 
 public class TheaterVo {
 
-	private int theater_number;     
-	private int  theater_starttime;             
-	private int  theater_endtime;               
-	private int  theater_seat;                  
-	private int  movietheater_number;           
-	private int  movie_number;
-	public int getTheater_number() {
-		return theater_number;
+	private int  t_number;     
+	private int  t_starttime;             
+	private int  t_endtime;               
+	private int  t_seat;                  
+	private int  mt_number;           
+	private int  m_number;
+	public int getT_number() {
+		return t_number;
 	}
-	public void setTheater_number(int theater_number) {
-		this.theater_number = theater_number;
+	public void setT_number(int t_number) {
+		this.t_number = t_number;
 	}
-	public int getTheater_starttime() {
-		return theater_starttime;
+	public int getT_starttime() {
+		return t_starttime;
 	}
-	public void setTheater_starttime(int theater_starttime) {
-		this.theater_starttime = theater_starttime;
+	public void setT_starttime(int t_starttime) {
+		this.t_starttime = t_starttime;
 	}
-	public int getTheater_endtime() {
-		return theater_endtime;
+	public int getT_endtime() {
+		return t_endtime;
 	}
-	public void setTheater_endtime(int theater_endtime) {
-		this.theater_endtime = theater_endtime;
+	public void setT_endtime(int t_endtime) {
+		this.t_endtime = t_endtime;
 	}
-	public int getTheater_seat() {
-		return theater_seat;
+	public int getT_seat() {
+		return t_seat;
 	}
-	public void setTheater_seat(int theater_seat) {
-		this.theater_seat = theater_seat;
+	public void setT_seat(int t_seat) {
+		this.t_seat = t_seat;
 	}
-	public int getMovietheater_number() {
-		return movietheater_number;
+	public int getMt_number() {
+		return mt_number;
 	}
-	public void setMovietheater_number(int movietheater_number) {
-		this.movietheater_number = movietheater_number;
+	public void setMt_number(int mt_number) {
+		this.mt_number = mt_number;
 	}
-	public int getMovie_number() {
-		return movie_number;
+	public int getM_number() {
+		return m_number;
 	}
-	public void setMovie_number(int movie_number) {
-		this.movie_number = movie_number;
+	public void setM_number(int m_number) {
+		this.m_number = m_number;
 	}
-	public TheaterVo(int theater_number, int theater_starttime, int theater_endtime, int theater_seat,
-			int movietheater_number, int movie_number) {
+	public TheaterVo(int t_number, int t_starttime, int t_endtime, int t_seat, int mt_number, int m_number) {
 		super();
-		this.theater_number = theater_number;
-		this.theater_starttime = theater_starttime;
-		this.theater_endtime = theater_endtime;
-		this.theater_seat = theater_seat;
-		this.movietheater_number = movietheater_number;
-		this.movie_number = movie_number;
+		this.t_number = t_number;
+		this.t_starttime = t_starttime;
+		this.t_endtime = t_endtime;
+		this.t_seat = t_seat;
+		this.mt_number = mt_number;
+		this.m_number = m_number;
 	}
 	public TheaterVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 	
 }
