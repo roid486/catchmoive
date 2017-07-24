@@ -61,6 +61,7 @@ public class ClistController {
 		ModelAndView mav = new ModelAndView();
 		int num2 = pageNUM*pageSize;
 		int num1 = num2-pageSize+1;
+		mav.addObject("mtlist", dao.mtlist());
 		mav.addObject("clist", dao.clist(num1,num2,this.key));
 		mav.addObject("pagenum", pageNUM2);
 		return mav;
@@ -103,6 +104,7 @@ public class ClistController {
 		mav.addObject("title", "게시물 목록");
 		int num2 = pageNUM*pageSize;
 		int num1 = num2-pageSize+1;
+		mav.addObject("mtlist", dao.mtlist());
 		mav.addObject("clist", dao.clist(num1,num2,key));
 		mav.addObject("pagenum", pageNUM2);
 		return mav;

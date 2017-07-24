@@ -45,4 +45,10 @@ public class TicketManager {
 		List<SeatVo> list = session.selectList("ticket.theaterseat",map);
 		return list;
 	}
+
+	public static String getmovietheatername(String movietheater_number) {
+		SqlSession session = factory.openSession();
+		String movietheatername = session.selectOne("ticket.getname", movietheater_number);
+		return movietheatername;
+	}
 }

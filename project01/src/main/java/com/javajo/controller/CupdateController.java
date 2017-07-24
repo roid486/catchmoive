@@ -27,6 +27,7 @@ public class CupdateController {
 	public ModelAndView cupdate(String c_id)
 	{
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("mtlist", dao.mtlist());
 		if(c_id!=null && !c_id.equals(""))
 		{			
 			this.c_id=c_id;
@@ -58,6 +59,7 @@ public class CupdateController {
 			cv.setC_email(c_email1);
 		}
 		ModelAndView mav = new ModelAndView("redirect:/masterpage.com");
+		mav.addObject("mtlist", dao.mtlist());
 		int re = 0;
 		if(cv.getC_pw().equals(c_pw2) && cv.getC_pw().length()>=8)
 		{			

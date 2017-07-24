@@ -9,6 +9,12 @@
 <link rel="stylesheet" href="resources/ui/jquery-ui.min.css">
 <link rel="stylesheet" href="resources/ui/jquery-ui.structure.min.css">
 <link rel="stylesheet" href="resources/ui/jquery-ui.theme.min.css">
+<style type="text/css">
+	#menu{
+		position: relative;
+		z-index: 999;
+	}
+</style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -29,7 +35,9 @@
 </head>
 <body>
 	<input type="hidden" value="${msg }" id="msg">
-	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+	<div id="menu">
+		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+	</div>
 	<div class="container" style="width:800px;">
 	  <form class="form-horizontal" action="serchid.com" method="post">
 	    <div class="form-group">

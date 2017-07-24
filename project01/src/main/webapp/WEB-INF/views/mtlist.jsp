@@ -8,6 +8,10 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
+	#menu{
+		position: relative;
+		z-index: 999;
+	}
 	#clist{
 		position: relative;
 	}
@@ -22,7 +26,9 @@
 </script>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+	<div id="menu">
+		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+	</div>
 	<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
 	<div class="container" id="clist" style="width: 60%;">
 	  <h2>영화관 목록</h2>
