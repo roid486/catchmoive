@@ -46,7 +46,8 @@
 			var divrow;
 			$.each(data, function(index, item) {
 				if ((index + 1) % 5 == 1) {
-					divrow = $("<div></div>").attr("id", "row").append("<span id='label'>"+item.seat_row+"</span>")
+					divrow = $("<div></div>").attr("id", "row").append(
+							"<span id='label'>" + item.seat_row + "</span>")
 				}
 				var divcol = $("<div></div>").attr("id", "col");
 				var input = $("<input></input>").attr({
@@ -59,6 +60,36 @@
 						item.seat_row + item.seat_column)
 						.html(item.seat_column);
 
+				$(label).hover(function() {
+					$(this).css({
+						cursor : "pointer",
+						"background-color" : "#F8FC0B",
+					})
+					$(this).parent().next().find("label").css({
+						cursor : "pointer",
+						"background-color" : "#F8FC0B"
+					})
+				}, function() {
+					$(this).css({
+						cursor : "pointer",
+						"background-color" : "#ffffff"
+					})
+					$(this).parent().next().find("label").css({
+						cursor : "pointer",
+						"background-color" : "#ffffff"
+					})
+
+				});
+
+				$(label).click(
+						function() {
+							var one = $(this).parent().find(
+									"input[type=checkbox]").attr("id")
+							var two = $(this).parent().next().find(
+									"input[type=checkbox]").attr("id")
+							alert(one + "//" + two)
+
+						})
 				$(input).appendTo(divcol)
 				$(label).appendTo(divcol)
 				$(divcol).appendTo(divrow);
@@ -70,20 +101,18 @@
 
 		})
 
-	
-		$("a").click(function(){
+		$("a").click(function() {
 			var a = $(this).parent().attr("id");
-			if(a == "adult"){
-				anum = eval($(this).text())*10000;
-				}
-			else if(a == "youth"){
-				ynum = eval($(this).text())*7000;
+			if (a == "adult") {
+				anum = eval($(this).text())
+			} else if (a == "youth") {
+				ynum = eval($(this).text())
+			} else {
+				snum = eval($(this).text())
 			}
-			else{
-				snum = eval($(this).text())*5000;
-			}
-			totalSum = anum+ynum+snum;
-			alert(totalSum)
+			totalSum = anum * 10000 + ynum * 7000 + snum * 5000;//총 가격
+			totalNum = anum + ynum + snum;//총 인원
+			//alert(totalSum) 총가격
 		})
 
 	});
@@ -98,43 +127,44 @@
 	<center>
 		<table class="table" border="1" width="80%" height="100%">
 			<tr height="30%">
-				<td colspan="2" width="45%"><div id="check"><span class="title"><b>일반&nbsp&nbsp&nbsp</b></span>
-					<div id="adult">
-						<a href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">0</div></a>
-						<a href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">1</div></a> <a href="#" onclick="return false"><span
-							class="person_no"><div class="person_num">2</div></a> <a
-							href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">3</div></a> <a href="#" onclick="return false"><span
-							class="person_no"><div class="person_num">4</div></a> <a
-							href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">5</div></a>
-					</div> <br> <span class="title"><b>청소년</b></span>
-					<div id="youth">
-					<a href="#" onclick="return false"><span class="person_no">
-								<div class="person_num">0</div></a>
-						<a href="#" onclick="return false"><span class="person_no">
-								<div class="person_num">1</div></a> <a href="#"
-							onclick="return false"><span class="person_no"><div
-									class="person_num">2</div></a> <a href="#" onclick="return false"><span
-							class="person_no"><div class="person_num">3</div></a> <a
-							href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">4</div></a> <a href="#" onclick="return false"><span
-							class="person_no"><div class="person_num">5</div></a>
-					</div> <br> <span class="title"><b>우대&nbsp&nbsp&nbsp</b></span>
-					<div id="special">
-					<a href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">0</div></a>
-						<a href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">1</div></a> <a href="#" onclick="return false"><span
-							class="person_no"><div class="person_num">2</div></a> <a
-							href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">3</div></a> <a href="#" onclick="return false"><span
-							class="person_no"><div class="person_num">4</div></a> <a
-							href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">5</div></a>
-					</div>
+				<td colspan="2" width="45%"><div id="check">
+						<span class="title"><b>일반&nbsp&nbsp&nbsp</b></span>
+						<div id="adult">
+							<a href="#" onclick="return false"><span class="person_no"><div
+										class="person_num">0</div></a> <a href="#" onclick="return false"><span
+								class="person_no"><div class="person_num">1</div></a> <a
+								href="#" onclick="return false"><span class="person_no"><div
+										class="person_num">2</div></a> <a href="#" onclick="return false"><span
+								class="person_no"><div class="person_num">3</div></a> <a
+								href="#" onclick="return false"><span class="person_no"><div
+										class="person_num">4</div></a> <a href="#" onclick="return false"><span
+								class="person_no"><div class="person_num">5</div></a>
+						</div>
+						<br> <span class="title"><b>청소년</b></span>
+						<div id="youth">
+							<a href="#" onclick="return false"><span class="person_no">
+									<div class="person_num">0</div></a> <a href="#"
+								onclick="return false"><span class="person_no">
+									<div class="person_num">1</div></a> <a href="#"
+								onclick="return false"><span class="person_no"><div
+										class="person_num">2</div></a> <a href="#" onclick="return false"><span
+								class="person_no"><div class="person_num">3</div></a> <a
+								href="#" onclick="return false"><span class="person_no"><div
+										class="person_num">4</div></a> <a href="#" onclick="return false"><span
+								class="person_no"><div class="person_num">5</div></a>
+						</div>
+						<br> <span class="title"><b>우대&nbsp&nbsp&nbsp</b></span>
+						<div id="special">
+							<a href="#" onclick="return false"><span class="person_no"><div
+										class="person_num">0</div></a> <a href="#" onclick="return false"><span
+								class="person_no"><div class="person_num">1</div></a> <a
+								href="#" onclick="return false"><span class="person_no"><div
+										class="person_num">2</div></a> <a href="#" onclick="return false"><span
+								class="person_no"><div class="person_num">3</div></a> <a
+								href="#" onclick="return false"><span class="person_no"><div
+										class="person_num">4</div></a> <a href="#" onclick="return false"><span
+								class="person_no"><div class="person_num">5</div></a>
+						</div>
 					</div></td>
 				<td colspan="3" width="*"></td>
 			</tr>

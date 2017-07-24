@@ -109,7 +109,9 @@ a {
    display: none;
 }
 
-input[type=checkbox] + label{
+
+
+ input[type=checkbox] + label{
     cursor: pointer;  
     position: relative;  
     top :4px;
@@ -117,11 +119,12 @@ input[type=checkbox] + label{
     margin-right: 15px;  
     font-size: 13px;
 }
- input[type=checkbox] + label:HOVER{
+
+/*  input[type=checkbox] + label:HOVER{
     cursor: pointer;    
     background-color: #935D5E
 } 
-
+ */
 input[type=checkbox] + label:BEFORE {     
 
     content: "";  
