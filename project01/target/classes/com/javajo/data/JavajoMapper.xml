@@ -6,6 +6,18 @@
   <select id="mtAll" resultType="movietheaterVo">
     select * from movietheater
   </select>
+  <select id="clist" resultType="customerVo">
+    select * from (select rownum rowm, a.* from (select * from customer
+    <choose>
+    	<when test="key==null">
+    		where c_id!='master'
+    	</when>
+    	<when test="key!=null">
+    		where c_id!='master' and c_id like '%'||#{key}||'%'
+    	</when>
+    </choose>) a) 
+    where rowm between #{num1} and #{num2}
+  </select>
   <select id="login" resultType="java.lang.String">
   	select c_id from customer where c_id=#{c_id} and c_pw=#{c_pw}
   </select>
@@ -21,4 +33,44 @@
   <update id="echeckupdate">
   	update customer set c_echeck=#{yes} where c_email=#{email}
   </update>
+  <select id="crecode" resultType="java.lang.Integer">
+  	select count(*) from customer
+  	<if test="key != null">
+    	where c_id like '%'||#{key}||'%'
+    </if>
+  </select>
+  <delete id="cdelete">
+  	delete customer where c_id=#{c_id}
+  </delete>
+  <select id="scid" resultType="java.lang.String">
+  	select c_id from customer where c_name=#{name} and c_email=#{email}
+  </select>
+  <select id="scpw" resultType="java.lang.String">
+  	select c_pw from customer where c_id=#{id} and c_name=#{name} and c_email=#{email}
+  </select>
+  <select id="cdetail" resultType="customerVo">
+  	select * from customer where c_id=#{c_id}
+  </select>
+  <update id="cupdate">
+  	update customer set c_pw=#{c_pw}, c_name=#{c_name}, c_age=#{c_age}, c_addr=#{c_addr}, c_tel=#{c_tel}, c_email=#{c_email}, c_gender=#{c_gender}, c_check=#{c_check}, c_echeck=#{c_echeck} where c_id=#{c_id}
+  </update>
+  <select id="mttotalrecode" resultType="java.lang.Integer">
+  	select count(*) from movietheater
+  	<if test="key != null">
+    	where mt_name like '%'||#{key}||'%'
+    </if>
+  </select>
+  <select id="mtl" resultType="movietheaterVo2">
+  	select * from (select rownum rowm, a.* from (select * from movietheater
+  	<if test="key != null">
+  		where mt_name like '%'||#{key}||'%'
+  	</if>) a) 
+    where rowm between #{num1} and #{num2}
+  </select>
+  <select id="mtautonum" resultType="java.lang.Integer">
+  	select nvl(max(mt_number),0)+1 from movietheater
+  </select>
+  <insert id="insertmt">
+  	insert into movietheater values(#{mt_number},#{mt_name},#{mt_loc},#{mt_x},#{mt_y})
+  </insert>
 </mapper>

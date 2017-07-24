@@ -24,7 +24,7 @@ public class MovieDao {
 		return MovieManager.getMovie(m_number);
 	}
 	
-	public List<MovieVo_j> listMovie(){
-		return MovieManager.listMovie();
+	public List<MovieVo_j> listMovie(String select){
+		return MovieManager.listMovie(select);
 	}
 }

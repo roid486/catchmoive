@@ -22,6 +22,8 @@ public class MainContoller {
 	public static String id2;
 	private String msg;
 	private int re;
+	public static String emsg;
+	public static int ere;
 	public void setDao(JavajoDao dao) {
 		this.dao = dao;
 	}
@@ -34,6 +36,13 @@ public class MainContoller {
 		HttpSession session = request.getSession();
 		session.setAttribute("se_id", id);
 		mav.addObject("signupnum", re);
+		if(emsg!=null)
+		{
+			mav.addObject("ere", ere);
+			mav.addObject("emsg", emsg);
+		}
+		emsg = null;
+		re = 0;
 		return mav;
 	}
 	
@@ -117,11 +126,12 @@ public class MainContoller {
 		return mav;
 	}
 	
-	@RequestMapping("/masterpage.com")
-	public ModelAndView masterpage()
+	@RequestMapping("/cdelete.com")
+	public ModelAndView cdelete(String c_id)
 	{
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("mtlist", dao.mtlist());
+		ModelAndView mav = new ModelAndView("redirect:/masterpage.com");
+		int del = dao.cdelete(c_id);
 		return mav;
 	}
+	
 }

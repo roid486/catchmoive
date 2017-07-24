@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: 4008
-Build-Jdk: 1.8.0_121
-=======
-Built-By: korky
-Build-Jdk: 1.8.0_131
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
+Built-By: user
+Build-Jdk: 1.8.0_111
 Created-By: Maven Integration for Eclipse
 

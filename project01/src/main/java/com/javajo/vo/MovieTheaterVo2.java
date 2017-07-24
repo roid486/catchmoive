@@ -1,17 +1,17 @@
 package com.javajo.vo;
 
-public class MovieTheaterVo {
+public class MovieTheaterVo2 {
 
 	private int mt_number;
 	private String mt_name;
 	private String mt_loc;
 	private double mt_x;
 	private double mt_y;
-	public MovieTheaterVo() {
+	public MovieTheaterVo2() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MovieTheaterVo(int mt_number, String mt_name, String mt_loc, double mt_x, double mt_y) {
+	public MovieTheaterVo2(int mt_number, String mt_name, String mt_loc, double mt_x, double mt_y) {
 		super();
 		this.mt_number = mt_number;
 		this.mt_name = mt_name;

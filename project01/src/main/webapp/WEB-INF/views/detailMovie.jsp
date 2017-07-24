@@ -4,12 +4,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
+<style type="text/css">
+.end{
+ 	border-radius: 5px;
+	border: 2px solid gray;
+	color: gray;
+}
+.ing{
+	border-radius: 5px;
+	border: 2px solid blue;
+	color: blue;
+}
+.pre{
+	border-radius: 5px;
+	border: 2px solid red;
+	color: red;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script type="text/javascript">
+  	$(function(){
+  		var showing = $("#lab_showing").text();
+  		
+  		if(showing==0){
+  			$("#lab_showing").text("상영 종료").addClass("end");
+  		}
+  		else if(showing==1){
+  			$("#lab_showing").text("상영중").addClass("ing");
+  		}
+  		else if(showing==2){
+  			$("#lab_showing").text("상영 예정").addClass("pre");
+  		}
+  	});
+  </script>
+   
     <title id="movie_title">${m.m_name }&lt;영화상세 &lt; 영화 | 캐치무비</title>
     
 
@@ -39,7 +72,10 @@
 	</a>
 	</div>
 	<div style="float: left;">
+		<div>
 		<h3><strong>${m.m_name }</strong></h3>
+		<label id="lab_showing">${m.m_isshowing }</label>
+		</div>
 		<br>
 		<label><b>감독 : ${m.m_director } / </b></label>
 		<label><b>주연 배우 :${m.m_actor }</b></label><br>

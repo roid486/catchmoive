@@ -6,6 +6,7 @@
 	<properties resource="com/javajo/data/javajo.properties"/>
 	<typeAliases>
 		<typeAlias type="com.javajo.vo.MovieTheaterVo" alias="movietheaterVo"/>
+		<typeAlias type="com.javajo.vo.MovieTheaterVo2" alias="movietheaterVo2"/>
 		<typeAlias type="com.javajo.vo.CustomerVo" alias="customerVo"/>
 	</typeAliases>
   <environments default="development">

@@ -18,9 +18,10 @@ public class ListMovieController {
 	}
 	
 	@RequestMapping("/listMovie.com")
-	public ModelAndView listMovie(){
+	public ModelAndView listMovie(String select){
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("l",dao.listMovie());
+		//System.out.println("in controller "+select);
+		mav.addObject("l",dao.listMovie(select));
 		return mav;
 	}
 	

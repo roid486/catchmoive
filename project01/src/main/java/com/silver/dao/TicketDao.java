@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.silver.data.TicketManager;
-import com.silver.vo.MovieVo;
 import com.silver.vo.SeatVo;
 
 @Repository
