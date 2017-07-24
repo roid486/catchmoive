@@ -1,15 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket.css" />
-<script>
-	!window.jQuery
-			&& document
-					.write('<script src="resources/eunseok/jquery-1.4.3.min.js"><\/script>');
+	href="resources/eunseok/ticket_main_css/ticket.css?a=3" />
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	var jq3 = jQuery.noConflict();
+</script>
+<script type="text/javascript"
+	src="resources/eunseok/jquery-migrate-1.4.1.min.js"></script>
+<script type="text/javascript">
+	var jq1 = jQuery.noConflict();
 </script>
 <script type="text/javascript"
 	src="resources/eunseok/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
@@ -20,113 +26,137 @@
 	media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
 <script type="text/javascript">
-	$(function(){
+	jq1(function($) {
+		$("#btn1").click(function() {
 
-				$("#btn1").click(function() {
+			$.fancybox.close();
+		});
+		$("#btn2").click(function() {
 
-					parent.$.fancybox.close();
-				});
-				$("#btn2").click(function() {
+			history.back();
+		});
 
-					history.back();
-				});
+	})
+	jq3(function($) {
+		var totalSum;
+		var anum = 0;
+		var ynum = 0;
+		var snum = 0;
 
-				$.getJSON("theaterseat.com", function(data) {
-					var divlabel = $("<div></div>").attr("class","label");
-					$.each(data, function(insex, item){
-						
-					
-					 var spanrow = $("<span></span>").attr("class","row").html(item.seat_row);
-						
-					var a = $("<a></a>").attr({
-						href : "#",
-						onclick : "return false"
-					});
-					var spanno = $("<span></span>").attr("class","seat_no");
-					var divr = $("<div></div>").attr("class","r").html(item.seat_column);
-					
-					$(divr).appendTo(spanno);
-					$(spanno).appendTo(a);
-					$(spanrow).appendTo(divlabel);
-					$(a).appendTo(divlabel);
-					if((eval(item.seat_number))%5 == 0)
-						{
-							$("<br/>").appendTo(divlabel);
-						}
+		$.getJSON("theaterseat.com", function(data) {
+			var divrow;
+			
+			$.each(data, function(index, item) {
+				if ((index + 1) % 5 == 1) {
+					divrow = $("<div></div>").attr("id", "row").append(
+							"<span id='label'>" + item.seat_row + "</span>")
+				}
+				var divcol = $("<div></div>").attr("id", "col");
+				var input = $("<input></input>").attr({
+					type : 'checkbox',
+					id : item.seat_row + item.seat_column,
+					name : "chk",
+					value : item.seat_row + item.seat_column
+				})
+				var label = $("<label/>").attr("for",
+						item.seat_row + item.seat_column)
+						.html(item.seat_column);
+
+				
+				$(label).hover(function() {
+					$(this).css({
+						cursor : "pointer",
+						"background-color" : "#F8FC0B",
 					})
-					$(divlabel).appendTo(".ticket_content"); 
-					
-				})
-
-				$(".label > a").hover(function() {
-
-					$(this).css("color", "red");
-					$(this).next().css("color", "red");
+					$(this).parent().next().find("label").css({
+						cursor : "pointer",
+						"background-color" : "#F8FC0B"
+					})
 				}, function() {
-					$(this).css("color", "blue");
-					$(this).next().css("color", "blue");
-				}).click(
+					$(this).css({
+						cursor : "pointer",
+						"background-color" : "#ffffff"
+					})
+					$(this).parent().next().find("label").css({
+						cursor : "pointer",
+						"background-color" : "#ffffff"
+					})
+
+				});
+
+				
+				
+				$(label).click(
 						function() {
-							alert("row :"
-									+ $(this).parent().find("span[class=row]")
-											.text()
-									+ ",col : "
-									+ $(this).text()
-									+ "\n\r"
-									+ "row :"
-									+ $(this).next().parent().find(
-											"span[class=row]").text()
-									+ ",col : " + $(this).next().text());
-						});
-				$("#adult > a").click(function() {
+							var one = $(this).parent().find(
+									"input[type=checkbox]").attr("id")
+							var two = $(this).parent().next().find(
+									"input[type=checkbox]").attr("id")
+								
+									$(this).parent().next().find(
+									"input[type=checkbox]").attr("checked","checked")
+									
+							alert(one + "//" + two)
 
-					alert($(this).text());
+						})
+				$(input).appendTo(divcol)
+				$(label).appendTo(divcol)
+				$(divcol).appendTo(divrow);
+				$(divrow).appendTo(".ticket_content")
+				if ((index + 1) % 5 == 0) {
+					$("<br/>").appendTo(".ticket_content")
+				}
+			})
 
-				})
-		
+		})
+
+		$("label").click(function() {
+			var a = $(this).parent().attr("id");
+			if (a == "adult") {
+				anum = eval($(this).text())
+			} else if (a == "youth") {
+				ynum = eval($(this).text())
+			} else {
+				snum = eval($(this).text())
+			}
+			totalSum = anum * 10000 + ynum * 7000 + snum * 5000;//총 가격
+			totalNum = anum + ynum + snum;//총 인원
+			alert(totalSum+"//"+totalNum)
+			//alert(totalSum) 총가격
+			
+		})
+
 	});
 </script>
 <title>Insert title here</title>
 </head>
 <body>
-	<%-- 	${title }
-	<button id="btn1">Close fancyBox</button>
-	<button id="btn2">Move fancy_Sub</button> --%>
+	
+	
 	<center>
 		<table class="table" border="1" width="80%" height="100%">
 			<tr height="30%">
-				<td colspan="2" width="45%"><span class="title"><b>일반&nbsp&nbsp&nbsp</b></span>
-					<div id="adult">
-						<a href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">1</div></a> <a href="#" onclick="return false"><span
-							class="person_no"><div class="person_num">2</div></a> <a
-							href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">3</div></a> <a href="#" onclick="return false"><span
-							class="person_no"><div class="person_num">4</div></a> <a
-							href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">5</div></a>
-					</div> <br> <span class="title"><b>청소년</b></span>
-					<div id="youth">
-						<a href="#" onclick="return false"><span class="person_no">
-								<div class="person_num">1</div></a> <a href="#"
-							onclick="return false"><span class="person_no"><div
-									class="person_num">2</div></a> <a href="#" onclick="return false"><span
-							class="person_no"><div class="person_num">3</div></a> <a
-							href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">4</div></a> <a href="#" onclick="return false"><span
-							class="person_no"><div class="person_num">5</div></a>
-					</div> <br> <span class="title"><b>우대&nbsp&nbsp&nbsp</b></span>
-					<div id="special">
-						<a href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">1</div></a> <a href="#" onclick="return false"><span
-							class="person_no"><div class="person_num">2</div></a> <a
-							href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">3</div></a> <a href="#" onclick="return false"><span
-							class="person_no"><div class="person_num">4</div></a> <a
-							href="#" onclick="return false"><span class="person_no"><div
-									class="person_num">5</div></a>
+				<td colspan="2" width="45%"><div id="radio">
+						<span class="title"><b>일반&nbsp&nbsp&nbsp</b></span>
+						<div id="adult">
+						<c:forEach begin="0" end="5" step="1" varStatus="status">
+						<input type='radio' name ='ardo' value='${status.index }' id='a${status.index }'><label for='a${status.index }'>${status.index }</label>
+						</c:forEach>
+						</div>
+						<br> <span class="title"><b>청소년</b></span>
+						<div id="youth">
+						<c:forEach begin="0" end="5" step="1" varStatus="status">
+						<input type='radio' name ='yrdo' value='${status.index }' id='y${status.index }'><label for='y${status.index }'>${status.index }</label>
+						</c:forEach>
+						</div>
+						<br> <span class="title"><b>우대&nbsp&nbsp&nbsp</b></span>
+						<div id="special">
+							<c:forEach begin="0" end="5" step="1" varStatus="status">
+						<input type='radio' name ='srdo' value='${status.index }' id='s${status.index }'><label for='s${status.index }'>${status.index }</label>
+						</c:forEach>
+						</div>
 					</div></td>
-				<td colspan="3" width="*"></td>
+				<td colspan="3" width="*">${movietheater_name } ${theater_number }관 ${running_start } ${running_date } </td>
 			</tr>
 			<tr height="40%">
 				<td rowspan="2" colspan="5">
@@ -165,11 +195,11 @@
 			<tr>
 			</tr>
 			<tr height="30%">
+				<td><button id="btn2">뒤로가기</button></td>
 				<td></td>
+				<td>${movietheater_name } ${theater_number }관 ${running_start } ${running_date }</td>
 				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td><button id="btn1">예매하기</button></td>
 			</tr>
 		</table>
 	</center>

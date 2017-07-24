@@ -4,11 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ticket">
  <select id="seatNum" resultType="java.lang.Integer">
- select theater_seat from theater where theater_number=#{theater_num}
+ select t_seat from theater where t_number=#{theater_num}
  </select>
 
 <select id="theaterseat" resultType="com.silver.vo.SeatVo">
- select * from seat where theater_number =#{theater_number} and MOVIETHEATER_NUMBER = #{movietheater_number} order by seat_number
+ select * from seat where t_number =#{theater_number} and mt_NUMBER = #{movietheater_number} order by seat_number
  </select> 
+<select id="getname" resultType="java.lang.String">
+	select mt_name from movietheater where mt_number = #{param1}
+ </select> 
+  
+ 
  
 </mapper>
