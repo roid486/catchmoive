@@ -25,6 +25,7 @@ public class MtupdateController {
 	public ModelAndView mtupdate(int mt_number)
 	{
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("mtlist", dao.mtlist());
 		mav.addObject("mtdetail", dao.mtdetail(mt_number));
 		return mav;
 	}
@@ -33,6 +34,7 @@ public class MtupdateController {
 	public ModelAndView mtupdateok(MovieTheaterVo2 mtv2)
 	{
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("mtlist", dao.mtlist());
 		return mav;
 	}
 }
