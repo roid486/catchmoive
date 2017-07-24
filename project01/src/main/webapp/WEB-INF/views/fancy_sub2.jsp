@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket.css?a=1" />
+	href="resources/eunseok/ticket_main_css/ticket.css?a=3" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
@@ -53,13 +54,14 @@
 				var input = $("<input></input>").attr({
 					type : 'checkbox',
 					id : item.seat_row + item.seat_column,
-					name : item.seat_row + item.seat_column,
+					name : "chk",
 					value : item.seat_row + item.seat_column
 				})
 				var label = $("<label/>").attr("for",
 						item.seat_row + item.seat_column)
 						.html(item.seat_column);
 
+				
 				$(label).hover(function() {
 					$(this).css({
 						cursor : "pointer",
@@ -81,12 +83,18 @@
 
 				});
 
+				
+				
 				$(label).click(
 						function() {
 							var one = $(this).parent().find(
 									"input[type=checkbox]").attr("id")
 							var two = $(this).parent().next().find(
 									"input[type=checkbox]").attr("id")
+								
+									$(this).parent().next().find(
+									"input[type=checkbox]").attr("checked","checked")
+									
 							alert(one + "//" + two)
 
 						})
@@ -101,7 +109,7 @@
 
 		})
 
-		$("a").click(function() {
+		$("label").click(function() {
 			var a = $(this).parent().attr("id");
 			if (a == "adult") {
 				anum = eval($(this).text())
@@ -112,7 +120,9 @@
 			}
 			totalSum = anum * 10000 + ynum * 7000 + snum * 5000;//총 가격
 			totalNum = anum + ynum + snum;//총 인원
+			alert(totalSum+"//"+totalNum)
 			//alert(totalSum) 총가격
+			
 		})
 
 	});
@@ -127,43 +137,24 @@
 	<center>
 		<table class="table" border="1" width="80%" height="100%">
 			<tr height="30%">
-				<td colspan="2" width="45%"><div id="check">
+				<td colspan="2" width="45%"><div id="radio">
 						<span class="title"><b>일반&nbsp&nbsp&nbsp</b></span>
 						<div id="adult">
-							<a href="#" onclick="return false"><span class="person_no"><div
-										class="person_num">0</div></a> <a href="#" onclick="return false"><span
-								class="person_no"><div class="person_num">1</div></a> <a
-								href="#" onclick="return false"><span class="person_no"><div
-										class="person_num">2</div></a> <a href="#" onclick="return false"><span
-								class="person_no"><div class="person_num">3</div></a> <a
-								href="#" onclick="return false"><span class="person_no"><div
-										class="person_num">4</div></a> <a href="#" onclick="return false"><span
-								class="person_no"><div class="person_num">5</div></a>
+						<c:forEach begin="0" end="5" step="1" varStatus="status">
+						<input type='radio' name ='ardo' value='${status.index }' id='a${status.index }'><label for='a${status.index }'>${status.index }</label>
+						</c:forEach>
 						</div>
 						<br> <span class="title"><b>청소년</b></span>
 						<div id="youth">
-							<a href="#" onclick="return false"><span class="person_no">
-									<div class="person_num">0</div></a> <a href="#"
-								onclick="return false"><span class="person_no">
-									<div class="person_num">1</div></a> <a href="#"
-								onclick="return false"><span class="person_no"><div
-										class="person_num">2</div></a> <a href="#" onclick="return false"><span
-								class="person_no"><div class="person_num">3</div></a> <a
-								href="#" onclick="return false"><span class="person_no"><div
-										class="person_num">4</div></a> <a href="#" onclick="return false"><span
-								class="person_no"><div class="person_num">5</div></a>
+						<c:forEach begin="0" end="5" step="1" varStatus="status">
+						<input type='radio' name ='yrdo' value='${status.index }' id='y${status.index }'><label for='y${status.index }'>${status.index }</label>
+						</c:forEach>
 						</div>
 						<br> <span class="title"><b>우대&nbsp&nbsp&nbsp</b></span>
 						<div id="special">
-							<a href="#" onclick="return false"><span class="person_no"><div
-										class="person_num">0</div></a> <a href="#" onclick="return false"><span
-								class="person_no"><div class="person_num">1</div></a> <a
-								href="#" onclick="return false"><span class="person_no"><div
-										class="person_num">2</div></a> <a href="#" onclick="return false"><span
-								class="person_no"><div class="person_num">3</div></a> <a
-								href="#" onclick="return false"><span class="person_no"><div
-										class="person_num">4</div></a> <a href="#" onclick="return false"><span
-								class="person_no"><div class="person_num">5</div></a>
+							<c:forEach begin="0" end="5" step="1" varStatus="status">
+						<input type='radio' name ='srdo' value='${status.index }' id='s${status.index }'><label for='s${status.index }'>${status.index }</label>
+						</c:forEach>
 						</div>
 					</div></td>
 				<td colspan="3" width="*"></td>
