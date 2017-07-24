@@ -187,4 +187,12 @@ public class JavajoManager {
 		return re;
 	}
 
+	public static MovieTheaterVo2 mtdetail(int mt_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		MovieTheaterVo2 mtv2 = session.selectOne("javajo.mtdetail", mt_number);
+		session.close();
+		return mtv2;
+	}
+
 }

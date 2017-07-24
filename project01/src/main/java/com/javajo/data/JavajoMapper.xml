@@ -73,4 +73,7 @@
   <insert id="insertmt">
   	insert into movietheater values(#{mt_number},#{mt_name},#{mt_loc},#{mt_x},#{mt_y})
   </insert>
+  <select id="mtdetail" resultType="movietheaterVo2">
+  	select * from movietheater where mt_number=#{mt_number}
+  </select>
 </mapper>
