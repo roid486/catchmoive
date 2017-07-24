@@ -63,9 +63,17 @@ public class HomeController {
 	}
 
 	@RequestMapping("/fancy_sub2.com")
-	public void test3(String movietheater_number,String running_date,String running_start,String theater_number) {
+	public ModelAndView test3(String movietheater_number,String running_date,String running_start,String theater_number) {
 		list1 = tdao.theaterSeat(theater_number,movietheater_number);
-
+		ModelAndView mav = new ModelAndView();
+		String movietheater_name = tdao.getmovietheatername(movietheater_number);
+		//running_start, movietheater_name, theater_number, runnning_date
+		System.out.println(running_start+"//"+ movietheater_name+"//"+  theater_number+"//"+  running_date);
+		mav.addObject("theater_number", theater_number);
+		mav.addObject("running_start", running_start);
+		mav.addObject("running_date", running_date);
+		mav.addObject("movietheater_name", movietheater_name);
+		return mav;
 	}
 	
 	@RequestMapping(value="/theaterseat.com", produces = "text/plain;charset=utf-8")

@@ -29,7 +29,7 @@
 	jq1(function($) {
 		$("#btn1").click(function() {
 
-			parent.$.fancybox.close();
+			$.fancybox.close();
 		});
 		$("#btn2").click(function() {
 
@@ -45,6 +45,7 @@
 
 		$.getJSON("theaterseat.com", function(data) {
 			var divrow;
+			
 			$.each(data, function(index, item) {
 				if ((index + 1) % 5 == 1) {
 					divrow = $("<div></div>").attr("id", "row").append(
@@ -130,10 +131,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%-- 	${title }
-	<button id="btn1">Close fancyBox</button>
-	<button id="btn2">Move fancy_Sub</button> --%>
-	<input type='checkbox' name='a1' id='a1'>
+	
+	
 	<center>
 		<table class="table" border="1" width="80%" height="100%">
 			<tr height="30%">
@@ -157,7 +156,7 @@
 						</c:forEach>
 						</div>
 					</div></td>
-				<td colspan="3" width="*"></td>
+				<td colspan="3" width="*">${movietheater_name } ${theater_number }관 ${running_start } ${running_date } </td>
 			</tr>
 			<tr height="40%">
 				<td rowspan="2" colspan="5">
@@ -196,11 +195,11 @@
 			<tr>
 			</tr>
 			<tr height="30%">
+				<td><button id="btn2">뒤로가기</button></td>
 				<td></td>
+				<td>${movietheater_name } ${theater_number }관 ${running_start } ${running_date }</td>
 				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td><button id="btn1">예매하기</button></td>
 			</tr>
 		</table>
 	</center>

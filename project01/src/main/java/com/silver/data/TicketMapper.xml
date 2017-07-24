@@ -10,5 +10,10 @@
 <select id="theaterseat" resultType="com.silver.vo.SeatVo">
  select * from seat where t_number =#{theater_number} and mt_NUMBER = #{movietheater_number} order by seat_number
  </select> 
+<select id="getname" resultType="java.lang.String">
+	select mt_name from movietheater where mt_number = #{param1}
+ </select> 
+  
+ 
  
 </mapper>

@@ -19,6 +19,11 @@ public class TicketDao {
 		// TODO Auto-generated method stub
 		return TicketManager.theaterSeat(theater_number,movietheater_number);
 	}
+
+	public String getmovietheatername(String movietheater_number) {
+		// TODO Auto-generated method stub
+		return TicketManager.getmovietheatername(movietheater_number);
+	}
 	
 
 }
