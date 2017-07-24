@@ -42,7 +42,7 @@
 	</div>
 	<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
 	<div class="container" style="width:70%;">
-	  <form class="form-horizontal" action="mtupdate.com" method="post">
+	  <form class="form-horizontal" action="mtupdate.com" method="post" enctype="multipart/form-data">
 	  	<input type="hidden" name="mt_number" value="${mtdetail.mt_number }">
 	    <div class="form-group">
 	      <label class="control-label col-sm-2" for="name">Name:</label>
@@ -53,7 +53,19 @@
 	    <div class="form-group">
 	      <label class="control-label col-sm-2" for="loc">Loc:</label>
 	      <div class="col-sm-10">          
-	        <input type="text" class="form-control" id="loc" value=" name="mt_loc" ${mtdetail.mt_loc }" required="required">
+	        <input type="text" class="form-control" id="loc" value="${mtdetail.mt_loc }" name="mt_loc"  required="required">
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="img">iamge:</label>
+	      <div class="col-sm-10">          
+	        <label class="checkbox-inline" id="img" name="img">${mtdetail.mt_img }</label>
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="img2"></label>
+	      <div class="col-sm-10">          
+	        <input type="file" class="form-control" id="img2" name="file">
 	      </div>
 	    </div>
 	    <div class="form-group">

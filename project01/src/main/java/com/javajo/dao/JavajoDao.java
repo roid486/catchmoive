@@ -95,5 +95,10 @@ public class JavajoDao {
 	public MovieTheaterVo2 mtdetail(int mt_number) {
 		// TODO Auto-generated method stub
 		return JavajoManager.mtdetail(mt_number);
+	}
+
+	public int mtupdate(MovieTheaterVo2 mtv2) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mtupdate(mtv2);
 	}	
 }
