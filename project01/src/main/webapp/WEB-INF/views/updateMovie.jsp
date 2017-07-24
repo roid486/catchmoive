@@ -16,11 +16,20 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script type="text/javascript">
 $(function(){
-	var grade = $('select.m_grade').attr("data-type");
-	$("select.m_grade option[value='+grade+']").attr("selected","selected");
+	var grade = $('#select_m_grade').attr("data-type");
+	/* 
+	alert(grade); */
+	/* $("#m_grade option[value=grade]").attr("selected","selected"); */
+	  $("#select_m_grade").val(grade).text();
+	  $("#select_m_grade").find("option:"+grade).attr("selected","selected");  
 	
-	var showing = $("select.m_isshowing").attr("val");
-	$("select.m_isshowing option[value="+showing+"]").attr("selected","selected");
+	
+	
+	var showing = $("#m_isshowing").attr("val");
+	alert(showing);
+	 $("#m_isshowing").val(showing).text();
+	/* $("select.m_isshowing option[value='"+showing+"']").attr("selected","selected"); */
+	$("#m_isshowing").find("option:"+showing).attr("selected","selected");
 	
 	
 	
@@ -84,7 +93,7 @@ $(function(){
             <span class="col-sm-2 control-label">
 			<label for="m_grade">영화 관람 등급:</label></span>
             <div class="col-sm-4">
-			<select class="form-control" id="m_grade" name="m_grade" data-type="${m.m_grade} ">
+			<select class="form-control" id="select_m_grade" name="m_grade" data-type="${m.m_grade}">
 				<option value="전체 관람가">전체 관람가</option>
 				<option value="12세 관람가">12세 관람가</option>
 				<option value="15세 관람가">15세 관람가</option>
@@ -124,7 +133,7 @@ $(function(){
 				<label class="control-label col-sm-2" for="m_image">포스터 이미지:</label>
 				<div class="col-sm-8">
 					<input type="file" class="form-control" id="m_image" name="uploadFile"
-						required="required">
+						>
 				</div>
 			</div>
 			
@@ -150,7 +159,7 @@ $(function(){
 				<label class="control-label col-sm-2" for="m_image1">스틸이미지1:</label>
 				<div class="col-sm-8">
 					<input type="file" class="form-control" id="m_image1"
-						name="uploadFile1" required="required">
+						name="uploadFile1" >
 				</div>
 			</div>
 
@@ -159,7 +168,7 @@ $(function(){
 				<label class="control-label col-sm-2" for="m_image2">스틸이미지2:</label>
 				<div class="col-sm-8">
 					<input type="file" class="form-control" id="m_image2"
-						name="uploadFile2" required="required">
+						name="uploadFile2" >
 				</div>
 			</div>
 
@@ -168,7 +177,7 @@ $(function(){
 				<label class="control-label col-sm-2" for="m_image3">스틸이미지3:</label>
 				<div class="col-sm-8">
 					<input type="file" class="form-control" id="m_image3"
-						name="uploadFile3" required="required">
+						name="uploadFile3" >
 				</div>
 			</div>
 

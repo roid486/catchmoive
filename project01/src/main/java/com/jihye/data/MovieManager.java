@@ -1,6 +1,7 @@
 package com.jihye.data;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -52,9 +53,12 @@ public class MovieManager {
 		return m;
 	}
 	
-	public static List<MovieVo_j> listMovie(){
+	public static List<MovieVo_j> listMovie(String s){
 		SqlSession session = factory.openSession();
-		List<MovieVo_j> list = session.selectList("movie.selectAll");
+		//System.out.println("매니저의 select"+ s);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("s", s);
+		List<MovieVo_j> list = session.selectList("movie.selectAll",map);
 		session.close();
 		return list;
 	}
