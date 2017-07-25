@@ -140,8 +140,16 @@
 							
 							var one = $(this).parent().find(
 									"input[type=checkbox]");
-							var two = $(this).parent().next().find(
+							var two;
+							
+							if($(this).text()<5){
+							two = $(this).parent().next().find(
 									"input[type=checkbox]");
+							}
+							else{
+								two = $(this).parent().prev().find(
+								"input[type=checkbox]");		
+							}
 							if(totalNum >=2){
 							if(two.is(":checked")){
 							two.prop("checked",false)
