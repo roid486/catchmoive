@@ -160,7 +160,7 @@ input[type=checkbox]+label {
     background-color: #935D5E
 } 
  */
-input[type=checkbox]+label:BEFORE {
+input[type=checkbox]+label:BEFORE {/*가짜 체크박스를 만듬  */
 	content: "";
 	display: inline-block;
 	width: 20px;
@@ -186,7 +186,7 @@ input[type=checkbox]+label:BEFORE {
 	
 } */
 
-  input[type=checkbox]:checked+label:BEFORE {
+  input[type=checkbox]:checked+label:BEFORE {/*체크 박스에 체크  */
 	content: "\2705"; 체크모양
 	
 	font-size: 18px;

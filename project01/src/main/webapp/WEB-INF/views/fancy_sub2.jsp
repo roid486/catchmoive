@@ -97,7 +97,6 @@
 							cursor : "pointer",
 							"background-color" : "#F8FC0B",
 						})
-					
 						if ($(this).text() <= 4 && totalNum >= 2) {
 							$(this).parent().next().find("label").css({
 								cursor : "pointer",
@@ -123,6 +122,7 @@
 							cursor : "pointer",
 							"background-color" : "#ffffff"
 						})
+						
 					} else if($(this).text() >= 5 && totalNum >= 2){
 						$(this).parent().prev().find("label").css({
 							cursor : "pointer",
@@ -130,27 +130,28 @@
 						})
 					}
 					}
-				});
-
-				/* $(label).click(
+				}).click(
 						function() {
+							
 							var one = $(this).parent().find(
 									"input[type=checkbox]");
 							var two = $(this).parent().next().find(
 									"input[type=checkbox]");
-
-							if (two.is(":checked")) {
-								two.attr("checked", false);
-							} else {
-								two.attr("checked", true);
+							if(two.is(":checked")){
+							two.prop("checked",false)
+							arr.pop(one.attr("id"))
+							arr.pop(two.attr("id"))
+							alert("arr :" + arr+"length"+arr.length)
+							
 							}
-							 $(this).addClass("effect");
-							$(this).parent().next().find(
-							"label").addClass("effect"); 
-
-							alert(one.attr("id") + "//" + two.attr("id"))
-
-						}) */
+							else{
+							two.attr("checked",true)
+							arr.push(one.attr("id"))
+							arr.push(two.attr("id"))
+							alert("arr :" +arr+"length"+arr.length)
+							totalNum-=2;
+							}
+						}) 
 				$(input).appendTo(divcol)
 				$(label).appendTo(divcol)
 				$(divcol).appendTo(divrow);
@@ -173,8 +174,7 @@
 			}
 			totalSum = anum * 10000 + ynum * 7000 + snum * 5000;//총 가격
 			totalNum = anum + ynum + snum;//총 인원
-			alert(totalSum + "//" + totalNum)
-			//alert(totalSum) 총가격
+			
 
 		})
 
@@ -192,52 +192,52 @@
 						<span class="title"><b>일반&nbsp&nbsp&nbsp</b></span>
 						<div id="adult">
 							<c:forEach begin="0" end="5" step="1" varStatus="status">
-							<c:choose>
-							<c:when test="${status.index ==0}">
-							<input type='radio' name='ardo' value='${status.index }'
-									id='a${status.index }' checked="checked">
-								<label for='a${status.index }'>${status.index }</label>
-							</c:when>
-							<c:otherwise>
-								<input type='radio' name='ardo' value='${status.index }'
-									id='a${status.index }'>
-								<label for='a${status.index }'>${status.index }</label>
-							</c:otherwise>
-							</c:choose>
+								<c:choose>
+									<c:when test="${status.index ==0}">
+										<input type='radio' name='ardo' value='${status.index }'
+											id='a${status.index }' checked="checked">
+										<label for='a${status.index }'>${status.index }</label>
+									</c:when>
+									<c:otherwise>
+										<input type='radio' name='ardo' value='${status.index }'
+											id='a${status.index }'>
+										<label for='a${status.index }'>${status.index }</label>
+									</c:otherwise>
+								</c:choose>
 							</c:forEach>
 						</div>
 						<br> <span class="title"><b>청소년</b></span>
 						<div id="youth">
 							<c:forEach begin="0" end="5" step="1" varStatus="status">
 								<c:choose>
-							<c:when test="${status.index ==0}">
-							<input type='radio' name='yrdo' value='${status.index }'
-									id='y${status.index }' checked="checked">
-								<label for='y${status.index }'>${status.index }</label>
-							</c:when>
-							<c:otherwise>
-								<input type='radio' name='yrdo' value='${status.index }'
-									id='y${status.index }'>
-								<label for='y${status.index }'>${status.index }</label>
-							</c:otherwise>
-							</c:choose>
+									<c:when test="${status.index ==0}">
+										<input type='radio' name='yrdo' value='${status.index }'
+											id='y${status.index }' checked="checked">
+										<label for='y${status.index }'>${status.index }</label>
+									</c:when>
+									<c:otherwise>
+										<input type='radio' name='yrdo' value='${status.index }'
+											id='y${status.index }'>
+										<label for='y${status.index }'>${status.index }</label>
+									</c:otherwise>
+								</c:choose>
 							</c:forEach>
 						</div>
 						<br> <span class="title"><b>우대&nbsp&nbsp&nbsp</b></span>
 						<div id="special">
 							<c:forEach begin="0" end="5" step="1" varStatus="status">
 								<c:choose>
-							<c:when test="${status.index ==0}">
-							<input type='radio' name='srdo' value='${status.index }'
-									id='s${status.index }' checked="checked">
-								<label for='s${status.index }'>${status.index }</label>
-							</c:when>
-							<c:otherwise>
-								<input type='radio' name='srdo' value='${status.index }'
-									id='s${status.index }'>
-								<label for='s${status.index }'>${status.index }</label>
-							</c:otherwise>
-							</c:choose>
+									<c:when test="${status.index ==0}">
+										<input type='radio' name='srdo' value='${status.index }'
+											id='s${status.index }' checked="checked">
+										<label for='s${status.index }'>${status.index }</label>
+									</c:when>
+									<c:otherwise>
+										<input type='radio' name='srdo' value='${status.index }'
+											id='s${status.index }'>
+										<label for='s${status.index }'>${status.index }</label>
+									</c:otherwise>
+								</c:choose>
 							</c:forEach>
 						</div>
 					</div></td>
