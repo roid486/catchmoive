@@ -74,7 +74,7 @@
 
 		$.getJSON("theaterseat.com", function(data) {
 			var divrow;
-//아 올라가 좀
+//아 올라가 좀 제발 
 			$.each(data, function(index, item) {
 				if ((index + 1) % 5 == 1) {
 					divrow = $("<div></div>").attr("id", "row").append(
