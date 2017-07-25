@@ -195,4 +195,12 @@ public class JavajoManager {
 		return mtv2;
 	}
 
+	public static int mtupdate(MovieTheaterVo2 mtv2) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.update("javajo.mtupdate", mtv2);
+		session.close();
+		return re;
+	}
+
 }

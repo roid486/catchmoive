@@ -51,8 +51,8 @@
 	      <tr>
 	        <td>${mtl.mt_name }</td>
 	        <td>${mtl.mt_loc }</td>
-	        <td><a href="mtupdate.com?c_id=${mtl.mt_number }"><button class="btn btn-primary">수정</button></a></td>
-	        <td><a href="mtdelete.com?c_id=${mtl.mt_number }"><button class="btn btn-primary">삭제</button></a></td>
+	        <td><a href="mtupdate.com?mt_number=${mtl.mt_number }"><button class="btn btn-primary">수정</button></a></td>
+	        <td><a href="mtdelete.com?mt_number=${mtl.mt_number }"><button class="btn btn-primary">삭제</button></a></td>
 	      </tr>
 	    </m:forEach>
 	    </tbody>

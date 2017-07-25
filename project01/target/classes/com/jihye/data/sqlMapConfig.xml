@@ -6,7 +6,9 @@
 	<properties resource="com/jihye/data/javajo.properties"/>
 	<typeAliases>
 		<typeAlias type="com.jihye.vo.MovieVo_j" alias="movieVo"/>
+		<typeAlias type="com.jihye.vo.MovieScoreVo" alias="MovieScoreVo"/>
 	</typeAliases>
+
 	
   <environments default="development">
     <environment id="development">
@@ -21,5 +23,6 @@
   </environments>
   <mappers>
     <mapper resource="com/jihye/data/MovieMapper.xml"/>
+    <mapper resource="com/jihye/data/MovieScoreMapper.xml"/>
   </mappers>
 </configuration>

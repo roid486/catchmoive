@@ -47,7 +47,6 @@ public class InsertmtController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mtlist", dao.mtlist());
 		String path = request.getRealPath("resources/mt_img");
-		System.out.println(path);
 		MultipartFile file = mtv2.getFile();
 		String fname = "";
 		if(file!=null)
