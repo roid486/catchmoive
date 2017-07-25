@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,11 +98,18 @@ public class HomeController {
 	
 	@RequestMapping(value="/ticketingok.com", produces = "text/plain;charset=utf-8")
 	@ResponseBody
-	public String ticketok(){
-		String str ="";
+	public String ticketok(String m_number,String mt_number,String r_number,String t_number,String ticket_peoplenum,String ticket_price,String str){
+		String chk ="";
+		String arr[] = str.split(",");
+		for(int i=0; i < arr.length; i++)
+		{
+			System.out.println("/"+arr[i]);
+		}
+		System.out.println("m_number"+m_number+"//mt_number"+mt_number+"//r_number"+r_number+"//t_number"+t_number+"//ticket_peoplenum"+arr.length+"//ticket_price"+ticket_price+"//str"+str);
 		
 		
-		return str;
+		
+		return chk;
 		
 	}
 
