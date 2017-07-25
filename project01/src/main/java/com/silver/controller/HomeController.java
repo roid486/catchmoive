@@ -63,15 +63,18 @@ public class HomeController {
 	}
 
 	@RequestMapping("/fancy_sub2.com")
-	public ModelAndView test3(String movietheater_number,String running_date,String running_start,String theater_number) {
+	public ModelAndView test3(String movie_number,String movietheater_number,String running_date,String running_start,String theater_number,String running_number) {
 		list1 = tdao.theaterSeat(theater_number,movietheater_number);
 		ModelAndView mav = new ModelAndView();
 		String movietheater_name = tdao.getmovietheatername(movietheater_number);
 		//running_start, movietheater_name, theater_number, runnning_date
 		System.out.println(running_start+"//"+ movietheater_name+"//"+  theater_number+"//"+  running_date);
+		mav.addObject("movietheater_number", movietheater_number);
 		mav.addObject("theater_number", theater_number);
 		mav.addObject("running_start", running_start);
 		mav.addObject("running_date", running_date);
+		mav.addObject("running_number", running_number);
+		mav.addObject("movie_number", movie_number);
 		mav.addObject("movietheater_name", movietheater_name);
 		return mav;
 	}
@@ -89,6 +92,16 @@ public class HomeController {
 		}
 		System.out.println("///////////test3 list" + str);
 		return str;
+	}
+	
+	@RequestMapping(value="/ticketingok.com", produces = "text/plain;charset=utf-8")
+	@ResponseBody
+	public String ticketok(){
+		String str ="";
+		
+		
+		return str;
+		
 	}
 
 	@RequestMapping(value = "firstList.com", produces = "text/plain;charset=utf-8")
