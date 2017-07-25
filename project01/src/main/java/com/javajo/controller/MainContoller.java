@@ -113,6 +113,7 @@ public class MainContoller {
 	public ModelAndView serchid(String id)
 	{
 		ModelAndView mav = new ModelAndView("redirect:/serchcustok.com");
+		mav.addObject("mtlist", dao.mtlist());
 		int re = dao.serchid(id);
 		if(re == 0)
 		{

@@ -12,7 +12,11 @@
  	<select id="selectOne" resultType="movieVo">
  	select * from movie where m_number=#{m_number}
  	</select>
+ 	
  	<select id="selectAll" resultType="movieVo">
  	select * from movie
+ 	<if test="s!=null">
+ 	 order by ${s} desc
+ 	</if>
  	</select>
 </mapper>

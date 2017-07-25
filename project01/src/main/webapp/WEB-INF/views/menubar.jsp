@@ -20,42 +20,43 @@
    .menu-bar{
       text-align: center;
       background-color: skyblue;
+      cursor: pointer;
    }
    .zeta-menu-bar {
-     background: skyblue;
-     display: inline-block;
-     width: 40%;
-   }
-   .zeta-menu { margin: 0; padding: 0; }
-   .zeta-menu li {
-     float: left;
-     list-style:none;
-     position: relative;
-   }
-   .zeta-menu li:hover { background: white; }
-   .zeta-menu li:hover>a { color: skyblue; }
-   .zeta-menu a {
-     color: white;
-     display: block;
-     padding: 10px 20px;
-     text-decoration: none;
-   }
-   .zeta-menu ul {
-     background: #eee;
-     border: 1px solid silver;
-     display: none;
-     padding: 0;
-     position: absolute;
-     left: 0;
-     top: 100%;
-     width: 180px;
-   }
-   .zeta-menu ul li { float: none; }
-   .zeta-menu ul li:hover { background: #ddd; }
-   .zeta-menu ul li:hover a { color: black; }
-   .zeta-menu ul a { color: black; }
-   .zeta-menu ul ul { left: 100%; top: 0; }
-   .zeta-menu ul ul li {float:left; margin-right:10px;}
+	  background: skyblue;
+	  display: inline-block;
+	  width: 40%;
+	}
+	.zeta-menu { margin: 0; padding: 0; }
+	.zeta-menu li {
+	  float: left;
+	  list-style:none;
+	  position: relative;
+	}
+	.zeta-menu li:hover { background: pink; }
+	.zeta-menu li.expand { background: white; }
+	.zeta-menu li.expand>a { color: hotpink; }
+	.zeta-menu a {
+	  color: white;
+	  display: block;
+	  padding: 10px 20px;
+	  text-decoration: none;
+	}
+	.zeta-menu ul {
+	  background: #eee;
+	  border: 1px solid silver;
+	  display: none;
+	  padding: 0;
+	  position: absolute;
+	  left: 0;
+	  top: 100%;
+	  width: 180px;
+	}
+	.zeta-menu ul li { float: none; }
+	.zeta-menu ul li.expand { background: #ddd; }
+	.zeta-menu ul li.expand a { color: black; }
+	.zeta-menu ul a { color: black; }
+	.zeta-menu ul ul { left: 100%; top: 0; }
    
    .topmenu{
       text-align: right;
@@ -107,15 +108,30 @@ jq1(function($) {
    });
 }) 
  jq3(function ($) {
-      $(".zeta-menu li").hover(function(){
-          $('ul:first',this).show();
-        }, function(){
-          $('ul:first',this).hide();
-        });
-      $(".zeta-menu>li:has(ul)>a").each( function() {
-          $(this).html( $(this).html()+' &or;' );
-        });
-      $(".zeta-menu ul li:has(ul)").find("a:first").append("<p style='float:right;margin:-3px'>&#9656;</p>");
+	 $(document).mouseup(function(e) {
+			if ($(e.target).parents('.zeta-menu').length == 0) {
+				$('.zeta-menu li').removeClass('expand');
+				$('.zeta-menu ul').hide();
+			}
+		});
+		$(".zeta-menu>li:has(ul)>a").each( function() {
+			$(this).html( $(this).html()+' &or;' );
+		});
+		$(".zeta-menu ul li:has(ul)")
+			.find("a:first")
+			.append("<p style='float:right;margin:-3px'>&#9656;</p>");
+
+		$(".zeta-menu li>a").click(function(){
+			var li = $(this).parent();
+			var ul = li.parent()
+			ul.find('li').removeClass('expand');
+			ul.find('ul').not(li.find('ul')).hide();
+			li.children('ul').toggle();
+			if( li.children('ul').is(':visible') || li.has('ul')) {
+				li.addClass('expand');
+			}
+		});
+		
       $("#logindial").dialog({
          autoOpen:false,
          modal:true

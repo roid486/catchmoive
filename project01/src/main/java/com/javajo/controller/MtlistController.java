@@ -28,6 +28,7 @@ public class MtlistController {
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView blist(@RequestParam(value="pageNUM", defaultValue="1") int pageNUM)
 	{
+		
 		int totalRecode = dao.mttotalRecode(this.key);
 		int totalpage=1;
 		if(totalRecode % pageSize != 0)
@@ -60,6 +61,7 @@ public class MtlistController {
 		ModelAndView mav = new ModelAndView();
 		int num2 = pageNUM*pageSize;
 		int num1 = num2-pageSize+1;
+		mav.addObject("mtlist", dao.mtlist());
 		mav.addObject("mtl", dao.movietlist(num1,num2,this.key));
 		mav.addObject("pagenum", pageNUM2);
 		return mav;
@@ -102,6 +104,7 @@ public class MtlistController {
 		mav.addObject("title", "게시물 목록");
 		int num2 = pageNUM*pageSize;
 		int num1 = num2-pageSize+1;
+		mav.addObject("mtlist", dao.mtlist());
 		mav.addObject("mtl", dao.movietlist(num1,num2,key));
 		mav.addObject("pagenum", pageNUM2);
 		return mav;

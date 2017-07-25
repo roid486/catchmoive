@@ -35,9 +35,9 @@
 	<input type="hidden" id="re" value="${re }">
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
-	<div class="container" id="mtl">
+	<div class="container" id="mtl" style="width: 60%;">
 	  <h2>영화관 등록</h2>
-	  <form class="form-horizontal" action="insertmt.com" method="post">
+	  <form class="form-horizontal" action="insertmt.com" method="post" enctype="multipart/form-data">
 	    <div class="form-group">
 	      <label class="control-label col-sm-2" for="name">Name:</label>
 	      <div class="col-sm-10">
@@ -48,6 +48,12 @@
 	      <label class="control-label col-sm-2" for="loc">Loc:</label>
 	      <div class="col-sm-10">          
 	        <input type="text" class="form-control" id="loc" placeholder="영화관 주소를 입력하십시오." name="mt_loc" required="required">
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="img">iamge:</label>
+	      <div class="col-sm-10">          
+	        <input type="file" class="form-control" id="img" name="file" required="required">
 	      </div>
 	    </div>
 	    <div class="form-group">

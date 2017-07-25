@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.jihye.data.MovieManager;
+import com.jihye.vo.MovieScoreVo;
 import com.jihye.vo.MovieVo_j;
 
 
@@ -24,7 +25,11 @@ public class MovieDao {
 		return MovieManager.getMovie(m_number);
 	}
 	
-	public List<MovieVo_j> listMovie(){
-		return MovieManager.listMovie();
+	public List<MovieVo_j> listMovie(String select){
+		return MovieManager.listMovie(select);
+	}
+	
+	public int insertMovieScore(MovieScoreVo ms){
+		return MovieManager.insertMovieScore(ms);
 	}
 }

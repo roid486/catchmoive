@@ -71,6 +71,12 @@
   	select nvl(max(mt_number),0)+1 from movietheater
   </select>
   <insert id="insertmt">
-  	insert into movietheater values(#{mt_number},#{mt_name},#{mt_loc},#{mt_x},#{mt_y})
+  	insert into movietheater values(#{mt_number},#{mt_name},#{mt_loc},#{mt_img},#{mt_x},#{mt_y})
   </insert>
+  <select id="mtdetail" resultType="movietheaterVo2">
+  	select * from movietheater where mt_number=#{mt_number}
+  </select>
+  <update id="mtupdate">
+  	update movietheater set mt_name=#{mt_name}, mt_loc=#{mt_loc}, mt_x=#{mt_x}, mt_y=#{mt_y} where mt_number=#{mt_number}
+  </update>
 </mapper>

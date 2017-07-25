@@ -4,12 +4,140 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
+<style type="text/css">
+.end{
+ 	border-radius: 5px;
+	border: 2px solid gray;
+	color: gray;
+}
+.ing{
+	border-radius: 5px;
+	border: 2px solid blue;
+	color: blue;
+}
+.pre{
+	border-radius: 5px;
+	border: 2px solid red;
+	color: red;
+}
+#well{
+ background: #DFF6FF;
+ vertical-align: middle;
+}
+
+#comment{
+
+}
+
+
+#counter {
+  /* background:rgba(255,0,0,0.5); */
+  border-radius: 0.5em;
+  padding: 0 .5em 0 .5em;
+  font-size: 10pt;
+  position: absolute;
+
+  
+}
+
+#cnt{
+position:relative;
+top:-20px;
+left:-340px;
+float: right;
+}
+
+
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<link rel="stylesheet" href="rating/jquery.raty.css">
+<script type="text/javascript" src="rating/jquery.raty.js"></script>
+  <script type="text/javascript">
+  	$(function(){
+  		var showing = $("#lab_showing").text();
+  		
+  		if(showing==0){
+  			$("#lab_showing").text("상영 종료").addClass("end");
+  		}
+  		else if(showing==1){
+  			$("#lab_showing").text("상영중").addClass("ing");
+  		}
+  		else if(showing==2){
+  			$("#lab_showing").text("상영 예정").addClass("pre");
+  		}
+  		
+  		$("#div_rating").raty({
+  			targetKeep : true,
+  			 target:"#score_lab",
+  			 starOn: "resources/images/star-on.png",
+  			 starOff: "resources/images/star-off.png"
+  		}); 
+  		
+  		
+  		$("#comment").keyup(function(){
+  			var inputLength = $(this).val().length;
+  			var remain = 100-inputLength;
+  			
+  			$("#counter").text(remain);
+  			
+  			if(remain>=0){
+  				$("#counter").css("color","black");
+  				if(remain==0){
+  					
+  				}
+  			}else{
+  				$("#counter").css("color","red");
+  			}
+  			
+  		});
+  		
+  		
+  		/* 등록 버튼 누르면 댓글 등록되게하기 ! 비로그인시 -> 로그인 유도 팝업창 
+  									로그인되있을시 -> moviescore insert하기!  */
+  		$("#btn_register").click(function(){
+  			var currentScore = $('#div_rating').raty('score'); //별점
+  			var cheklog = $("#loginid").val(); //로그인 아이디
+  			
+  			
+  			$("#star").val(currentScore);
+  			$("#logId").val(cheklog);
+  			
+  			
+  			
+  			if(cheklog == null || cheklog==""){
+  				alert("로그인안됐어!");
+  			}
+  			else{
+  				//alert("로그인했네?");
+  				var params =$("#formId").serialize();
+  				$.ajax({
+  					url:"insertMovieScore.com",
+  					data:params,
+  					success:function(data){
+  						if(data){
+  							alert("moviescore 데이터 삽입 성공");
+  						}
+  					}
+  				});
+  				//$("#formId").attr("action","insertMovieScore.com");
+  				
+  			}
+  			
+  		});
+  		
+  		
+  		
+  		
+  	});
+  	
+  	
+  </script>
+   
     <title id="movie_title">${m.m_name }&lt;영화상세 &lt; 영화 | 캐치무비</title>
     
 
@@ -39,7 +167,10 @@
 	</a>
 	</div>
 	<div style="float: left;">
+		<div>
 		<h3><strong>${m.m_name }</strong></h3>
+		<label id="lab_showing">${m.m_isshowing }</label>
+		</div>
 		<br>
 		<label><b>감독 : ${m.m_director } / </b></label>
 		<label><b>주연 배우 :${m.m_actor }</b></label><br>
@@ -66,7 +197,8 @@
 
   
  <div class="container">
-    <h3><strong>스틸 이미지</strong></h3>  <br>
+ <div class="well well-sm" id="well"><h4><strong>스틸 이미지</strong></h4>  <br></div>
+    
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -103,11 +235,49 @@
 </div>
 <br><br><br>
 <div>
-	<h3><strong>메인 예고편</strong></h3>  <br>
+<div class="well well-sm" id="well"><h4><strong>메인 예고편</strong></h4>  <br></div>
+	
 	<iframe src="${m.m_trailer }" height="550" width="100%" style="border:none;"></iframe>
 
 </div>
 <br><br><br>
+<div class="well well-sm" id="well"><h4><strong>평점 주기</strong> </h4></div>
+ 
+ 
+<div>
+<span id="cnt">
+<div id="counter"> </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>/100</label>
+</span>
+</div>
+
+<div id="div_rating" style=" float:left; width: 20%;">
+ 	<div class="media-left media-top" style="float: left;">
+      <img src="resources/images/user.png" class="media-object" style="width:50px">
+    </div>
+	<div id="score_lab" ></div>
+</div>
+<span>
+<form id="formId">
+    <div class="form-group" >
+		<span class="" style="float: left; ">
+		<input type="hidden" name="ms_mid" value="${m.m_number }">
+		<input id="star" type="hidden" name="ms_score">
+		<input id="logId" type="hidden" name="ms_custid">
+      <textarea maxlength="100" class="form-control col-sm-4" rows="3" id="comment" name="ms_comment" placeholder="로그인한 회원만 이용 가능합니다." style="width:580px;"></textarea>
+     
+      <button type="submit" id="btn_register" class="btn btn-default btn-lg" style="height: 60px"><strong>등록</strong></button></span>
+    </div>
+  </form>
+
+</span>
+
+
+<div></div> <!-- moviescore select 해올 부분 (댓글달린거 보여주려고) -->
+
+<br><br><br>
+
+
+
 
 </body>
 </html>

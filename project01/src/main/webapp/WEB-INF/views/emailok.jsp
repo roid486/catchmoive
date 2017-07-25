@@ -4,10 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+	#menu{
+		position: relative;
+		z-index: 999;
+	}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+	<div id="menu">
+		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+	</div>
 	<h1>${msg }</h1>
 </body>
 </html>
