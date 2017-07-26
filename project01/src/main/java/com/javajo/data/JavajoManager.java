@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
+import com.javajo.vo.MovienameVo;
 import com.jihye.vo.MovieVo_j;
 
 public class JavajoManager {
@@ -240,6 +241,14 @@ public class JavajoManager {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
 		List<MovieVo_j> list = session.selectList("javajo.scoremlist");
+		session.close();
+		return list;
+	}
+
+	public static List<MovienameVo> mscorelist() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		List<MovienameVo> list = session.selectList("javajo.mscorelist");
 		session.close();
 		return list;
 	}

@@ -8,6 +8,7 @@ import com.javajo.data.JavajoManager;
 import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
+import com.javajo.vo.MovienameVo;
 import com.jihye.vo.MovieVo_j;
 
 @Repository
@@ -118,8 +119,8 @@ public class JavajoDao {
 		return JavajoManager.mlist(num1,num2,key);
 	}
 
-	public List<MovieVo_j> scoremlist() {
+	public List<MovienameVo> moviename() {
 		// TODO Auto-generated method stub
-		return JavajoManager.scoremlist();
+		return JavajoManager.mscorelist();
 	}	
 }
