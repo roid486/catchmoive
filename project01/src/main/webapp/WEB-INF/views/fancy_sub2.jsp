@@ -38,8 +38,7 @@
 
 	jq1(function($) {
 		$("#btn1").click(function() {
-			//seat table seat_row, seat_column, ticket_number, t_number,mt_number, running_number
-			//ticket ticket_peoplenum, m_number,_mt_number,t_number, c_id, r_number, ticket_price
+			
 			var str ="";
 			for(i=0;i<arr.length;i++)
 				{
