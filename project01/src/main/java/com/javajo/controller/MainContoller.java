@@ -135,4 +135,12 @@ public class MainContoller {
 		return mav;
 	}
 	
+	@RequestMapping("/mtdelete.com")
+	public ModelAndView mtdelete(int mt_number)
+	{
+		ModelAndView mav = new ModelAndView("redirect:/mtlist.com");
+		int re = dao.mtdelete(mt_number);
+		
+		return mav;
+	}
 }

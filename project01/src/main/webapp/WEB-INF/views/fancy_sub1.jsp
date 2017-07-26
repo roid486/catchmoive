@@ -42,7 +42,7 @@ var jq1= jQuery.noConflict();
 		var running_date;
 		var running_start;
 		var theater_number;
-		
+		var running_number;
 		$.getJSON("firstList.com", function(data) {
 			$.each(data, function(index, item) {
 				var a1 = $("<a></a>").attr({
@@ -131,6 +131,7 @@ var jq1= jQuery.noConflict();
 							}).html(item.r_start)
 							$("#sub4_form").append(a4, "<br>");
 							theater_number = item.t_number;
+							running_number = item.r_number;
 						})
 					}
 				})
@@ -146,7 +147,7 @@ var jq1= jQuery.noConflict();
 		
 		$("#move_sub2").click(function(){
 
-			window.location.href="fancy_sub2.com?movie_number="+movie_number+"&movietheater_number="+movietheater_number+"&running_date="+running_date+"&running_start="+running_start+"&theater_number="+theater_number;
+			window.location.href="fancy_sub2.com?movie_number="+movie_number+"&movietheater_number="+movietheater_number+"&running_date="+running_date+"&running_start="+running_start+"&theater_number="+theater_number+"&running_number="+running_number;
 			
 		})
 	})

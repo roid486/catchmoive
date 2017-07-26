@@ -44,11 +44,11 @@ public class MtlistController {
 		int end = start+pageGroup-1;
 		if(start > pageGroup)
 		{
-			pageNUM2 += "<a href='masterpage.com?pageNUM="+(start-1)+"'>이전</a> ";
+			pageNUM2 += "<a href='mtlist.com?pageNUM="+(start-1)+"'>이전</a> ";
 		}
 		for(int i = start; i <= end; i++)
 		{
-			pageNUM2 += "<a href='masterpage.com?pageNUM="+i+"'>"+i+"</a> ";
+			pageNUM2 += "<a href='mtlist.com?pageNUM="+i+"'>"+i+"</a> ";
 			if(i >= totalpage)
 			{
 				break;
@@ -56,7 +56,7 @@ public class MtlistController {
 		}
 		if(end < totalpage)
 		{
-			pageNUM2 += "<a href='masterpage.com?pageNUM="+(end+1)+"'>다음</a> ";
+			pageNUM2 += "<a href='mtlist.com?pageNUM="+(end+1)+"'>다음</a> ";
 		}
 		ModelAndView mav = new ModelAndView();
 		int num2 = pageNUM*pageSize;
@@ -86,11 +86,11 @@ public class MtlistController {
 		int end = start+pageGroup-1;
 		if(start > pageGroup)
 		{
-			pageNUM2 += "<a href='masterpage.com?pageNUM="+(start-1)+"'>이전</a> ";
+			pageNUM2 += "<a href='mtlist.com?pageNUM="+(start-1)+"'>이전</a> ";
 		}
 		for(int i = start; i <= end; i++)
 		{
-			pageNUM2 += "<a href='masterpage.com?pageNUM="+i+"'>"+i+"</a> ";
+			pageNUM2 += "<a href='mtlist.com?pageNUM="+i+"'>"+i+"</a> ";
 			if(i >= totalpage)
 			{
 				break;
@@ -98,7 +98,7 @@ public class MtlistController {
 		}
 		if(end < totalpage)
 		{
-			pageNUM2 += "<a href='masterpage.com?pageNUM="+(end+1)+"'>다음</a> ";
+			pageNUM2 += "<a href='mtlist.com?pageNUM="+(end+1)+"'>다음</a> ";
 		}
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("title", "게시물 목록");

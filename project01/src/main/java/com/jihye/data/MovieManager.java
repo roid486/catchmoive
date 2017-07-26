@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.jihye.vo.MovieScoreVo;
 import com.jihye.vo.MovieVo_j;
 
 
@@ -39,7 +40,7 @@ public class MovieManager {
 	}
 	
 	public static int updateMovie(MovieVo_j m){
-		SqlSession session = factory.openSession(true);
+		SqlSession session = factory.openSession(true); //true는 insert,update,delete할때 commit자동으로 바로 해주는거! 
 		int re = session.update("movie.updateMovie", m);
 		session.close();
 		return re;
@@ -62,4 +63,16 @@ public class MovieManager {
 		session.close();
 		return list;
 	}
+	
+	public static int insertMovieScore(MovieScoreVo ms){
+		
+		SqlSession session = factory.openSession(true);
+		System.out.println("여기는 매니져 : "+ms.getMs_custid());
+		int re = session.insert("moviescore.insertMovieScore",ms);
+		session.close();
+		return re;
+		
+	}
+	
+	
 }
