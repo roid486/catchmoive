@@ -23,17 +23,6 @@
 	<div id="menu">
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
-	<div style="width: 30%;">
-		<table>
-			<tr>
-				<td>평점순위</td>
-				<td>예매율순위</td>
-			</tr>
-			<tr>
-				<td colspan="2">평점 순위</td>
-			</tr>
-			
-		</table>
-	</div>
+	
 </body>
 </html>
