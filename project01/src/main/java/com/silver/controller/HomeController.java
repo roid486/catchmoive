@@ -104,7 +104,6 @@ public class HomeController {
 		int num = 0;
 		String arr[] = str.split(",");
 		//seat table seat_row, seat_column, ticket_number, t_number,mt_number, running_number
-		
 		int ticket_number = tdao.getTicketnum();
 		HashMap<String, Object> map1 = new HashMap<String, Object>();
 		map1.put("ticket_number",ticket_number);

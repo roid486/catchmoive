@@ -108,7 +108,6 @@ jq1(function($) {
       showCloseButton : false,
       opcity : 0.2,
       overlayShow : true
-     
    });
 }) 
  jq3(function ($) {

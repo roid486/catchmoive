@@ -26,9 +26,7 @@ var jq1= jQuery.noConflict();
 		jq1("#btn1").click(function() {
 			parent.jq1.fancybox.close();
 		});
-
 	})
-	
 	jq3(function($) {
 		var movie_number;
 		var movietheater_number;

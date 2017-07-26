@@ -33,6 +33,5 @@
 		update seat set seat_ft='y', ticket_number = #{ticket_number}, r_number=#{r_number}
 		where t_number =#{t_number} and mt_number=#{mt_number} 
 		and seat_column = #{b} and seat_row=#{a}
-		
 	</update>
 </mapper>

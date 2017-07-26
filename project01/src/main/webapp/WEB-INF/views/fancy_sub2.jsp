@@ -35,7 +35,6 @@
 	var running_number = "${running_number}"
 	var movie_number = "${movie_number}"
 	var arr = [];
-
 	jq1(function($) {
 		$("#btn1").click(function() {
 			

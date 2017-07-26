@@ -26,7 +26,6 @@ public class TicketManager {
 			System.out.println(e.getMessage());
 		}
 	}
-
 	public static int seatNum(int theater_num) {
 		
 		SqlSession session = factory.openSession();
@@ -34,7 +33,6 @@ public class TicketManager {
 		System.out.println("1영화관 좌석수 : "+num);
 		return num;
 	}
-
 	public static List<SeatVo> theaterSeat(String theater_number, String movietheater_number) {
 		
 		SqlSession session = factory.openSession();
