@@ -102,7 +102,7 @@ float: right;
   		$("#btn_register").click(function(){
   			var currentScore = $('#div_rating').raty('score'); //별점
   			var cheklog = $("#loginid").val(); //로그인 아이디
-  			
+  			var ms_mid = $("#ms_mid").val();
   			
   			$("#star").val(currentScore);
   			$("#logId").val(cheklog);
@@ -116,12 +116,12 @@ float: right;
   				//alert("로그인했네?");
   				var params =$("#formId").serialize();
   				$.ajax({
-  					url:"insertMovieScore.com",
+  					//url:"detailMovie.com?m_number='"+ms_mid+"'",/* "insertMovieScore.com", */
+  					url:"detailMovie.com",
+  					type: "post",
   					data:params,
-  					success:function(data){
-  						if(data){
-  							alert("moviescore 데이터 삽입 성공");
-  						}
+  					success:function(data){ 
+  						alert(data);
   					}
   				});
   				//$("#formId").attr("action","insertMovieScore.com");

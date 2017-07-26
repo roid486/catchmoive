@@ -74,5 +74,13 @@ public class MovieManager {
 		
 	}
 	
+	public static List<MovieScoreVo> listMovieScore(){
+		SqlSession session = factory.openSession();
+		List<MovieScoreVo> list = session.selectList("moviescore.selectAll");
+		session.close();
+		
+		return list;
+	}
+	
 	
 }
