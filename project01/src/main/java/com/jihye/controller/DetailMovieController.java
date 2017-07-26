@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jihye.dao.MovieDao;
 import com.jihye.vo.MovieScoreVo;
+import com.jihye.vo.MovieVo_j;
 
 @Controller
 @RequestMapping("/detailMovie.com")
@@ -87,7 +88,15 @@ public class DetailMovieController {
 		}catch(Exception e){System.out.println(e.getMessage());}
 		
 		System.out.println("post방식의 m_number = "+m_number);
-		mav.addObject("m",dao.getMovie(m_number));
+		MovieVo_j m=dao.getMovie(m_number);
+		System.out.println("디테일의 movievo_j : "+m.getM_actor());
+		System.out.println("디테일의 movievo_j : "+m.getM_boxoffice());
+		System.out.println("디테일의 movievo_j : "+m.getM_image2());
+		System.out.println("디테일의 movievo_j : "+m.getM_name());
+		System.out.println("디테일의 넘버 : "+m.getM_number());
+		
+		
+		mav.addObject("m",m);
 
 		
 		if(re==1){

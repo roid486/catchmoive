@@ -9,7 +9,8 @@
 
 <body>
 	<%
-		response.sendRedirect("main.com");
+		//response.sendRedirect("main.com");
+		response.sendRedirect("listMovie.com");
 	%>
 </body>
 </html>
