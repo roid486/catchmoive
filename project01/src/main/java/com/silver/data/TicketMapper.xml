@@ -14,6 +14,14 @@
 	select mt_name from movietheater where mt_number = #{param1}
  </select> 
   
+<select id="getticket" resultType="java.lang.Integer">
+	select nvl(max(ticket_number),0)+1 from ticket
+ </select> 
+  
+<select id="insert" resultType="java.lang.Integer">
+insert into ticket values(#{ticket_number},sysdate,#{ticket_peoplenum},#{m_number},#{mt_number},#{t_number},#{c_id},#{r_number},#{ticket_price})
+ </select> 
+  
  
  
 </mapper>

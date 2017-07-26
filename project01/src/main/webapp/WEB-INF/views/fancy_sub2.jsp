@@ -38,9 +38,13 @@
 
 	jq1(function($) {
 		$("#btn1").click(function() {
-			//seat table seat_row, seat_column, ticket_number, t_number,mt_number, running_number
-			//ticket ticket_peoplenum, m_number,_mt_number,t_number, c_id, r_number
-
+			
+			var str ="";
+			for(i=0;i<arr.length;i++)
+				{
+				str += arr[i]+",";
+				}
+			alert(str)
 			$.ajax({
 				url : "ticketingok.com",
 				dataType : "json",
@@ -50,7 +54,8 @@
 					mt_number : movietheater_number,
 					r_number : running_number,
 					t_number : theater_number,
-
+					ticket_price : totalSum,
+					str : str
 				},
 				success : function(data) {
 
@@ -74,7 +79,6 @@
 
 		$.getJSON("theaterseat.com", function(data) {
 			var divrow;
-//아 올라가 좀 제발 올라가
 			$.each(data, function(index, item) {
 				if ((index + 1) % 5 == 1) {
 					divrow = $("<div></div>").attr("id", "row").append(
@@ -135,22 +139,43 @@
 							
 							var one = $(this).parent().find(
 									"input[type=checkbox]");
-							var two = $(this).parent().next().find(
+							var two;
+							
+							if($(this).text()<5){
+							two = $(this).parent().next().find(
 									"input[type=checkbox]");
+							}
+							else{
+								two = $(this).parent().prev().find(
+								"input[type=checkbox]");		
+							}
+							if(totalNum >=2){
 							if(two.is(":checked")){
 							two.prop("checked",false)
 							arr.pop(one.attr("id"))
 							arr.pop(two.attr("id"))
-							alert("arr :" + arr+"length"+arr.length)
-							
+							totalNum+=2;
 							}
 							else{
 							two.attr("checked",true)
 							arr.push(one.attr("id"))
 							arr.push(two.attr("id"))
-							alert("arr :" +arr+"length"+arr.length)
 							totalNum-=2;
 							}
+							}
+							else{
+								if(one.is(":checked")){
+									arr.pop(one.attr("id"))
+									totalNum+=1;
+									alert("one check")
+								}else{
+									arr.push(one.attr("id"))
+									totalNum-=1;
+									alert("one uncheck")
+								}
+							}
+							
+							alert("arr :" +arr+"length"+arr.length+"totalNum :"+totalNum)
 						}) 
 				$(input).appendTo(divcol)
 				$(label).appendTo(divcol)
@@ -172,10 +197,21 @@
 			} else {
 				snum = eval($(this).text())
 			}
+			
 			totalSum = anum * 10000 + ynum * 7000 + snum * 5000;//총 가격
 			totalNum = anum + ynum + snum;//총 인원
-			
 
+		})
+		$("#btn3").click(function(){
+			$("input[type=checkbox]").prop("checked",false)
+			$("input[type=radio]:input[value=0]").prop("checked",true)
+			anum = 0;
+			ynum = 0;  
+			snum = 0;
+			totalNum = 0; 
+			totalSum = 0;
+			arr = [];
+			
 		})
 
 	});
@@ -251,30 +287,8 @@
 							<span>SCREEN</span>
 						</div>
 						<div class="ticket_content">
-							<!-- <div class="label">
-									<span class=row>A</span> 
-									<a href='#' onclick='return false'>
-										<span class=seat_no>
-											<div class="r">1</div>
-										</span>
-									</a> 
-								<a href='#'
-									onclick='return false'><span class=seat_no><div
-											class="r">2</div></span></a> <a href='#' onclick='return false'><span
-									class=seat_no><div class="r">3</div></span></a> <a href='#'
-									onclick='return false'><span class=seat_no><div
-											class="r">4</div></span></a>
-							</div>
-							<div class="label">
-								<span class=row>B</span> <a href='#' onclick='return false'><span
-									class=seat_no><div class="r">1</div></span></a> <a href='#'
-									onclick='return false'><span class=seat_no><div
-											class="r">2</div></span></a> <a href='#' onclick='return false'><span
-									class=seat_no><div class="r">3</div></span></a> <a href='#'
-									onclick='return false'><span class=seat_no><div
-											class="r">4</div></span></a>
-							</div>-->
 						</div>
+						<button id="btn3">reset</button>
 					</center>
 				</td>
 			</tr>

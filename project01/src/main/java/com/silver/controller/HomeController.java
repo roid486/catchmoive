@@ -3,8 +3,11 @@ package com.silver.controller;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -96,13 +99,35 @@ public class HomeController {
 	
 	@RequestMapping(value="/ticketingok.com", produces = "text/plain;charset=utf-8")
 	@ResponseBody
-	public String ticketok(){
-		String str ="";
+	public String ticketok(String m_number,String mt_number,String r_number,String t_number,String ticket_peoplenum,String ticket_price,String str){
+		String chk ="";
+		String arr[] = str.split(",");
+		//seat table seat_row, seat_column, ticket_number, t_number,mt_number, running_number
+		//ticket ticket_number, ticket_peoplenum, m_number,_mt_number,t_number, c_id, r_number, ticket_price
+		for(int i=0; i < arr.length; i++)
+		{
+			System.out.println("/"+arr[i]);
+		}
 		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ticket_number",tdao.getTicketnum());
+		map.put("ticket_peoplenum", arr.length);
+		map.put("m_number",m_number);
+		map.put("mt_number",mt_number);
+		map.put("t_number", t_number);
+		map.put("c_id", "javajo");
+		map.put("r_number", r_number);
+		map.put("ticket_price", ticket_price);
+
+		if(tdao.insertticket(map)==1)
+		{
+			System.out.println("good");
+		}
 		
-		return str;
+		return chk;
 		
 	}
+
 
 	@RequestMapping(value = "firstList.com", produces = "text/plain;charset=utf-8")
 	@ResponseBody
@@ -138,7 +163,6 @@ public class HomeController {
 	@ResponseBody
 	public String thirdList(String movie_number, String movietheater_number) {
 		String str = "";
-		System.out.println("movie_number "+movie_number+"movietheater_number"+movietheater_number);
 		List<RunningVo> list = bdao.thirdList(movie_number,movietheater_number);
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -153,7 +177,6 @@ public class HomeController {
 	@ResponseBody
 	public String fourthList(String movie_number, String movietheater_number, String running_date) {
 		String str = "";
-		System.out.println("movie_number "+movie_number+"movietheater_number"+movietheater_number+"running_date"+running_date);
 		List<RunningstartVo> list = bdao.fourthList(movie_number,movietheater_number,running_date);
 		ObjectMapper mapper = new ObjectMapper();
 		try {

@@ -51,4 +51,21 @@ public class TicketManager {
 		String movietheatername = session.selectOne("ticket.getname", movietheater_number);
 		return movietheatername;
 	}
+
+	public static int getTicketnum() {
+		int num = 0;
+		SqlSession session = factory.openSession();
+		num = session.selectOne("ticket.getticket");
+		
+		return num;
+	}
+
+	public static int insertticket(HashMap<String, Object> map) {
+		SqlSession session = factory.openSession(true);
+		System.out.println(map.get("c_id"));
+		System.out.println(map.get("ticket_number"));
+		
+		int num = session.insert("ticket.insert", map);
+		return num;
+	}
 }
