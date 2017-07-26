@@ -31,10 +31,17 @@ public class TicketDao {
 		return TicketManager.getTicketnum();
 	}
 
-	public int insertticket(HashMap<String, Object> map) {
+	public int insertticket(HashMap<String, Object> map1) {
 		
-		return TicketManager.insertticket(map);
+		return TicketManager.insertticket(map1);
 	}
+
+	public int insertseat(HashMap<String, Object> map2, String arr[]) {
+
+		return TicketManager.insertseat(map2,arr);
+	}
+
+	
 
 
 }

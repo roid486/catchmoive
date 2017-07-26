@@ -1,10 +1,17 @@
 @CHARSET "EUC-KR";
+a{
+	text-decoration: none;
+	/* box-shadow: 1px 1px 1px #000; */
+	color: black;
+}
+a:HOVER{
+	color: yellow;
+}
 
 #main_form {
 	width: 100%;
 	height: 500px;
 }
-
 #main_form #sub1_form {
 	border: 1px solid black;
 	float: left;
@@ -13,6 +20,8 @@
 	left: 20px;
 	margin-left: 80px;
 	overflow: scroll;
+	box-shadow: 1px 1px 5px #000;
+	border-radius: 2px;
 }
 
 #main_form #sub2_form {
@@ -21,6 +30,8 @@
 	width: 20%;
 	height: 500px;
 	margin-left: 10px;
+	box-shadow: 1px 1px 5px #000;
+	border-radius: 2px;
 }
 
 #main_form #sub3_form {
@@ -29,6 +40,8 @@
 	width: 20%;
 	height: 500px;
 	margin-left: 10px;
+	box-shadow: 1px 1px 5px #000;
+	border-radius: 2px;
 }
 
 #main_form #sub4_form {
@@ -37,5 +50,8 @@
 	width: 20%;
 	height: 500px;
 	margin-left: 10px;
+	box-shadow: 1px 1px 5px #000;
+	border-radius: 2px;
 }
+
 

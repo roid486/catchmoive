@@ -8,13 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
-<link rel="stylesheet" href="resources/eunseok/ticket_main_css/ticket_sub.css" />
-<style type="text/css">
-#sub1_form {
-	height: 500px;
-	overflow: auto;
-}
-</style>
+<link rel="stylesheet" href="resources/eunseok/ticket_main_css/ticket_sub.css?a=1" />
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 var jq3= jQuery.noConflict();
@@ -29,9 +23,8 @@ var jq1= jQuery.noConflict();
 	src="resources/eunseok/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript">
 	jq1(function($){
-		$("#btn1").click(function() {
-			alert("o")
-			parent.$.fancybox.close();
+		jq1("#btn1").click(function() {
+			parent.jq1.fancybox.close();
 		});
 
 	})
@@ -43,6 +36,7 @@ var jq1= jQuery.noConflict();
 		var running_start;
 		var theater_number;
 		var running_number;
+		var org;
 		$.getJSON("firstList.com", function(data) {
 			$.each(data, function(index, item) {
 				var a1 = $("<a></a>").attr({
@@ -54,9 +48,14 @@ var jq1= jQuery.noConflict();
 				$("#sub1_form").append(a1, "<br>");
 			})
 		})
-
-		$(document).on("click", " a", function() {
+		
+		$(document).on("click", "a", function() {
 			var chk = $(this).attr("name");
+			
+			$(this).css({
+				color:"red",
+				"font-weight": "bold"
+			});
 			if (chk == "sub1") {
 				movie_number = $(this).attr("id");
 				$("#sub2_form").empty();
@@ -145,10 +144,16 @@ var jq1= jQuery.noConflict();
 			}
 		})
 		
+	
+		
 		$("#move_sub2").click(function(){
-
-			window.location.href="fancy_sub2.com?movie_number="+movie_number+"&movietheater_number="+movietheater_number+"&running_date="+running_date+"&running_start="+running_start+"&theater_number="+theater_number+"&running_number="+running_number;
-			
+			if(movie_number!=null&&movietheater_number!=null&&running_date!=null&&running_start!=null&&theater_number!=null&&running_number!=null)
+			{
+				window.location.href="fancy_sub2.com?movie_number="+movie_number+"&movietheater_number="+movietheater_number+"&running_date="+running_date+"&running_start="+running_start+"&theater_number="+theater_number+"&running_number="+running_number;
+			}else
+				{
+				alert("선택하지 않은 항목이 있습니다.")
+				}
 		})
 	})
 </script>

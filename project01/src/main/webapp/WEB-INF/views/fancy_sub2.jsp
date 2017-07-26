@@ -44,10 +44,9 @@
 				{
 				str += arr[i]+",";
 				}
-			alert(str)
 			$.ajax({
 				url : "ticketingok.com",
-				dataType : "json",
+				dataType : "text",
 				type : "GET",
 				data : {
 					m_number : movie_number,
@@ -58,11 +57,17 @@
 					str : str
 				},
 				success : function(data) {
-
+					if(data=="ok")
+						{
+						alert("성공적으로 예매 되었습니다.")
+						}else{
+							alert("예매 실패 다시 예매해주세요")
+						}
+					parent.jq1.fancybox.close();
 				}
 
 			})
-			$.fancybox.close();
+			
 
 		});
 		$("#btn2").click(function() {
@@ -286,8 +291,7 @@
 						<div class="screen">
 							<span>SCREEN</span>
 						</div>
-						<div class="ticket_content">
-						</div>
+						<div class="ticket_content"></div>
 						<button id="btn3">reset</button>
 					</center>
 				</td>

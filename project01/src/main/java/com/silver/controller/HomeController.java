@@ -101,28 +101,42 @@ public class HomeController {
 	@ResponseBody
 	public String ticketok(String m_number,String mt_number,String r_number,String t_number,String ticket_peoplenum,String ticket_price,String str){
 		String chk ="";
+		int num = 0;
 		String arr[] = str.split(",");
 		//seat table seat_row, seat_column, ticket_number, t_number,mt_number, running_number
-		//ticket ticket_number, ticket_peoplenum, m_number,_mt_number,t_number, c_id, r_number, ticket_price
-		for(int i=0; i < arr.length; i++)
+		
+		int ticket_number = tdao.getTicketnum();
+		HashMap<String, Object> map1 = new HashMap<String, Object>();
+		map1.put("ticket_number",ticket_number);
+		map1.put("ticket_peoplenum", arr.length);
+		map1.put("m_number",m_number);
+		map1.put("mt_number",mt_number);
+		map1.put("t_number", t_number);
+		map1.put("c_id", "javajo");
+		map1.put("r_number", r_number);
+		map1.put("ticket_price", ticket_price);
+
+		if(tdao.insertticket(map1)==1)
 		{
-			System.out.println("/"+arr[i]);
+			HashMap<String, Object> map2 = new HashMap<String, Object>();
+			map2.put("ticket_number", ticket_number);
+			map2.put("t_number", t_number);
+			map2.put("mt_number", mt_number);
+			map2.put("r_number", r_number);
+			
+			num = tdao.insertseat(map2,arr);
+			
 		}
 		
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("ticket_number",tdao.getTicketnum());
-		map.put("ticket_peoplenum", arr.length);
-		map.put("m_number",m_number);
-		map.put("mt_number",mt_number);
-		map.put("t_number", t_number);
-		map.put("c_id", "javajo");
-		map.put("r_number", r_number);
-		map.put("ticket_price", ticket_price);
-
-		if(tdao.insertticket(map)==1)
+		if(arr.length==num)
 		{
-			System.out.println("good");
+			System.out.println("success");
+			chk = "ok";
+		}else
+		{
+			chk = "no";
 		}
+		
 		
 		return chk;
 		
