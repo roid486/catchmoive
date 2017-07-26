@@ -33,6 +33,7 @@ public class MainContoller {
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mtlist", dao.mtlist());
+		mav.addObject("scoremlist", dao.scoremlist());
 		HttpSession session = request.getSession();
 		session.setAttribute("se_id", id);
 		mav.addObject("signupnum", re);

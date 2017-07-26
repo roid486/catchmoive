@@ -116,5 +116,10 @@ public class JavajoDao {
 	public List<MovieVo_j> mlist(int num1, int num2, String key) {
 		// TODO Auto-generated method stub
 		return JavajoManager.mlist(num1,num2,key);
+	}
+
+	public List<MovieVo_j> scoremlist() {
+		// TODO Auto-generated method stub
+		return JavajoManager.scoremlist();
 	}	
 }
