@@ -22,7 +22,7 @@
 			location.href="masterpage.com";
 		});
 		$("#movie").click(function () {
-			alert("hi");
+			location.href="mlist.com";
 		});
 		$("#mt").click(function () {
 			location.href="mtlist.com";

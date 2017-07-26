@@ -1,5 +1,6 @@
 package com.silver.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -24,6 +25,16 @@ public class TicketDao {
 		// TODO Auto-generated method stub
 		return TicketManager.getmovietheatername(movietheater_number);
 	}
-	
+
+	public int getTicketnum() {
+
+		return TicketManager.getTicketnum();
+	}
+
+	public int insertticket(HashMap<String, Object> map) {
+		
+		return TicketManager.insertticket(map);
+	}
+
 
 }

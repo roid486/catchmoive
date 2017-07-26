@@ -77,6 +77,22 @@
   	select * from movietheater where mt_number=#{mt_number}
   </select>
   <update id="mtupdate">
-  	update movietheater set mt_name=#{mt_name}, mt_loc=#{mt_loc}, mt_x=#{mt_x}, mt_y=#{mt_y} where mt_number=#{mt_number}
+  	update movietheater set mt_name=#{mt_name}, mt_loc=#{mt_loc}, mt_img=#{mt_img}, mt_x=#{mt_x}, mt_y=#{mt_y} where mt_number=#{mt_number}
   </update>
+  <delete id="mtdelete">
+  	delete movietheater where mt_number=#{mt_number}
+  </delete>
+  <select id="mtotalrecode" resultType="java.lang.Integer">
+  	select count(*) from movie
+  	<if test="key != null">
+    	where m_name like '%'||#{key}||'%'
+    </if>
+  </select>
+  <select id="mlist" resultType="movieVo_j">
+  	select * from (select rownum rowm, a.* from (select * from movie
+  	<if test="key != null">
+  		where m_name like '%'||#{key}||'%'
+  	</if>) a) 
+    where rowm between #{num1} and #{num2}
+  </select>
 </mapper>

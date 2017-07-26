@@ -111,7 +111,7 @@ public class InsertMovieController {
 		
 		int re =dao.insertMovie(m);
 		if(re==1){
-			mav.addObject("success", "영화 \""+m.getM_name()+"\""+" 데이터 추가에 성공 했습니다!");
+			mav.setViewName("redirect:/mlist.com");
 		}
 		else{
 			mav.addObject("fail", "영화 \""+m.getM_name()+"\""+" 데이터 추가에 실패 했습니다.");

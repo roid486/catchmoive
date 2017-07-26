@@ -59,7 +59,7 @@
 	    <div class="form-group">
 	      <label class="control-label col-sm-2" for="img">iamge:</label>
 	      <div class="col-sm-10">          
-	        <label class="checkbox-inline" id="img" name="img">${mtdetail.mt_img }</label>
+	      	<input type="text" class="form-control" id="img" value="${mtdetail.mt_img }" name="img" readonly="readonly" required="required">
 	      </div>
 	    </div>
 	    <div class="form-group">

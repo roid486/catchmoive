@@ -33,6 +33,7 @@ public class MainContoller {
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mtlist", dao.mtlist());
+		mav.addObject("scoremlist", dao.scoremlist());
 		HttpSession session = request.getSession();
 		session.setAttribute("se_id", id);
 		mav.addObject("signupnum", re);
@@ -135,4 +136,12 @@ public class MainContoller {
 		return mav;
 	}
 	
+	@RequestMapping("/mtdelete.com")
+	public ModelAndView mtdelete(int mt_number)
+	{
+		ModelAndView mav = new ModelAndView("redirect:/mtlist.com");
+		int re = dao.mtdelete(mt_number);
+		
+		return mav;
+	}
 }
