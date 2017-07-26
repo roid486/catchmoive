@@ -2,6 +2,8 @@ package com.javajo.controller;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.javajo.dao.JavajoDao;
 import com.javajo.vo.CustomerVo;
+import com.javajo.vo.MovienameVo;
+
+import net.sf.json.JSONArray;
 
 @Controller
 public class MainContoller {
@@ -33,7 +38,6 @@ public class MainContoller {
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mtlist", dao.mtlist());
-		mav.addObject("scoremlist", dao.scoremlist());
 		HttpSession session = request.getSession();
 		session.setAttribute("se_id", id);
 		mav.addObject("signupnum", re);
@@ -143,5 +147,17 @@ public class MainContoller {
 		int re = dao.mtdelete(mt_number);
 		
 		return mav;
+	}
+	
+	@RequestMapping()
+	public JSONArray mscorelist()
+	{
+		JSONArray ja = new JSONArray();
+		List<MovienameVo> list = dao.moviename();
+		for(int i = 0; i < list.size(); i++)
+		{
+			System.out.println(list.get(i).getM_name());
+		}
+		return ja;
 	}
 }
