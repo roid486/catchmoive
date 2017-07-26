@@ -51,14 +51,11 @@ public class MtupdateController {
 		String path = request.getRealPath("resources/mt_img");
 		MultipartFile file = mtv2.getFile();
 		String fname = "";
-		if(file!=null)
+		mtv2.setMt_img(img);
+		if(file.getOriginalFilename()!=null && !file.getOriginalFilename().equals(""))
 		{
 			fname=file.getOriginalFilename();
 			mtv2.setMt_img(fname);
-		}
-		else
-		{
-			mtv2.setMt_img(img);
 		}
 		if(!fname.equals(""))
 		{

@@ -32,4 +32,8 @@ public class MovieDao {
 	public int insertMovieScore(MovieScoreVo ms){
 		return MovieManager.insertMovieScore(ms);
 	}
+	
+	public List<MovieScoreVo> listMovieScore(){
+		return MovieManager.listMovieScore();
+	}
 }

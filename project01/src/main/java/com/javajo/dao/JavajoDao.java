@@ -8,6 +8,8 @@ import com.javajo.data.JavajoManager;
 import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
+import com.javajo.vo.MovienameVo;
+import com.jihye.vo.MovieVo_j;
 
 @Repository
 public class JavajoDao {
@@ -100,5 +102,25 @@ public class JavajoDao {
 	public int mtupdate(MovieTheaterVo2 mtv2) {
 		// TODO Auto-generated method stub
 		return JavajoManager.mtupdate(mtv2);
+	}
+
+	public int mtdelete(int mt_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mtdelete(mt_number);
+	}
+
+	public int mtotalRecode(String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mtotalrecode(key);
+	}
+
+	public List<MovieVo_j> mlist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mlist(num1,num2,key);
+	}
+
+	public List<MovienameVo> moviename() {
+		// TODO Auto-generated method stub
+		return JavajoManager.mscorelist();
 	}	
 }

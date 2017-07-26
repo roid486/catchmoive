@@ -12,6 +12,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
+import com.javajo.vo.MovienameVo;
+import com.jihye.vo.MovieVo_j;
 
 public class JavajoManager {
 	private static SqlSessionFactory factory;
@@ -153,7 +155,9 @@ public class JavajoManager {
 	public static int mttotalrecode(String key) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
-		int re = session.selectOne("javajo.mttotalrecode", key);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("key", key);
+		int re = session.selectOne("javajo.mttotalrecode", map);
 		session.close();
 		return re;
 	}
@@ -201,6 +205,52 @@ public class JavajoManager {
 		int re = session.update("javajo.mtupdate", mtv2);
 		session.close();
 		return re;
+	}
+
+	public static int mtdelete(int mt_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.delete("javajo.mtdelete", mt_number);
+		session.close();
+		return re;
+	}
+
+	public static int mtotalrecode(String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("key", key);
+		int re = session.selectOne("javajo.mtotalrecode", map);
+		session.close();
+		return re;
+	}
+
+	public static List<MovieVo_j> mlist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("num1", num1);
+		map.put("num2", num2);
+		map.put("key", key);
+		List<MovieVo_j> list = session.selectList("javajo.mlist", map);
+		session.close();
+		return list;
+	}
+
+	public static List<MovieVo_j> scoremlist() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		List<MovieVo_j> list = session.selectList("javajo.scoremlist");
+		session.close();
+		return list;
+	}
+
+	public static List<MovienameVo> mscorelist() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		List<MovienameVo> list = session.selectList("javajo.mscorelist");
+		session.close();
+		return list;
 	}
 
 }

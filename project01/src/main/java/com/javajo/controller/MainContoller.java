@@ -2,6 +2,8 @@ package com.javajo.controller;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.javajo.dao.JavajoDao;
 import com.javajo.vo.CustomerVo;
+import com.javajo.vo.MovienameVo;
+
+import net.sf.json.JSONArray;
 
 @Controller
 public class MainContoller {
@@ -135,4 +140,24 @@ public class MainContoller {
 		return mav;
 	}
 	
+	@RequestMapping("/mtdelete.com")
+	public ModelAndView mtdelete(int mt_number)
+	{
+		ModelAndView mav = new ModelAndView("redirect:/mtlist.com");
+		int re = dao.mtdelete(mt_number);
+		
+		return mav;
+	}
+	
+	@RequestMapping()
+	public JSONArray mscorelist()
+	{
+		JSONArray ja = new JSONArray();
+		List<MovienameVo> list = dao.moviename();
+		for(int i = 0; i < list.size(); i++)
+		{
+			System.out.println(list.get(i).getM_name());
+		}
+		return ja;
+	}
 }

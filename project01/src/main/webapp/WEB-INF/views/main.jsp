@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="m" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,14 +23,6 @@
 	<div id="menu">
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
-	<table>
-		<tr>
-			<td>
-				<div>
-					<table id="boxoffice" border="1"></table>
-				</div>
-			</td>
-		</tr>
-	</table>
+	
 </body>
 </html>
