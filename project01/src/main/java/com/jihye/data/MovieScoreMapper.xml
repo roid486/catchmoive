@@ -6,4 +6,7 @@
   <insert id="insertMovieScore">
    insert into moviescore values(nvl(seq_moviescore.nextval,1),#{ms_custid},#{ms_mid},#{ms_score},#{ms_comment})
   </insert>
+  <select id="selectAll" resultType="MovieScoreVo">
+  	select * from moviescore
+  </select>
 </mapper>

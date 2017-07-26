@@ -10,34 +10,52 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
 import com.jihye.dao.MovieDao;
 import com.jihye.vo.MovieScoreVo;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
 @Controller
-public class InsertMovieScoreController {
+@RequestMapping("/detailMovie.com")
+public class DetailMovieController {
 
 	@Autowired
 	private MovieDao dao;
-	
-	public static int m_number;
 
 	public void setDao(MovieDao dao) {
 		this.dao = dao;
 	}
 	
-	@RequestMapping("/insertMovieScore.com")
-	public ModelAndView submit(MovieScoreVo ms,HttpServletRequest request,HttpSession session,HttpServletResponse response){
-		ModelAndView mav = new ModelAndView("redirect:/detailMovie.com");
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView getMovie(int m_number){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("m",dao.getMovie(m_number));
+		return mav;
+	}
+	
+	
+	/*public ModelAndView getMovie(@RequestParam(value="m_number", defaultValue="1") int m_number,HttpServletRequest request,HttpServletResponse response, HttpSession session){
+		ModelAndView mav = new ModelAndView();
+		System.out.println("디테일1 : "+request.getAttribute("m_number"));
+		if(request.getAttribute("m_number")!=null && !request.getAttribute("m_number").equals(""))
+		{
+			//System.out.println("에러직전");
+			m_number = Integer.parseInt(request.getAttribute("m_number").toString());
+			System.out.println("디테일2 : "+m_number);
+		}
+		
+	
+		mav.addObject("m",dao.getMovie(m_number));
+		return mav;
+	}*/
+	
+	@RequestMapping(method= RequestMethod.POST)
+	public ModelAndView getMovieScore(MovieScoreVo ms,HttpServletRequest request,HttpServletResponse response, HttpSession session){
+		ModelAndView mav = new ModelAndView();
 		int re = dao.insertMovieScore(ms);
-		System.out.println("인서트 무비스코어 : "+ms.getMs_mid());
-		request.setAttribute("m_number", ms.getMs_mid()); //request는 페이지 한번 넘어갈때만 유효! session은 서버가 켜잇는 동안 유효 
+		int m_number = ms.getMs_mid();
 		
 		
 		List<MovieScoreVo> list = dao.listMovieScore();
@@ -68,21 +86,20 @@ public class InsertMovieScoreController {
 			out.close();
 		}catch(Exception e){System.out.println(e.getMessage());}
 		
-		
-		/*JSONArray arr = new JSONArray();
-		JSONObject obj = new JSONObject();*/
-		
-		
-		//mav.addObject("m_number",ms.getMs_mid());
-		//mav.setViewName("detailMovie.com");
-		
+		System.out.println("post방식의 m_number = "+m_number);
+		mav.addObject("m",dao.getMovie(m_number));
+
 		
 		if(re==1){
-			System.out.println("데이터 삽입 성공!!!");
+			System.out.println("무비 스코어 데이터 삽입 성공!!!");
 		}
 		else{
-			System.out.println("삽입 실패 ㅠㅠ");
+			System.out.println("무비 스코어 데이터 삽입 실패 ㅠㅠ");
 		}
+		
+		
+		
+		
 		return mav;
 	}
 	
