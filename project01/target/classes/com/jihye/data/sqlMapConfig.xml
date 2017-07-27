@@ -24,5 +24,6 @@
   <mappers>
     <mapper resource="com/jihye/data/MovieMapper.xml"/>
     <mapper resource="com/jihye/data/MovieScoreMapper.xml"/>
+    <mapper resource="com/jihye/data/MovieFinderMapper.xml"/>
   </mappers>
 </configuration>

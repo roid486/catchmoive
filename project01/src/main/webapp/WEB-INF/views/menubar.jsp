@@ -84,6 +84,7 @@
    #scpw{
    		cursor: pointer;
    }
+  
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -104,7 +105,9 @@ jq1(function($) {
    $("a[rel=fancybox]").fancybox({
       width : 1000,
       height : 600,
-      showCloseButton : false
+      showCloseButton : false,
+      opcity : 0.2,
+      overlayShow : true
    });
 }) 
  jq3(function ($) {
@@ -246,10 +249,10 @@ jq1(function($) {
              <li><a href="#">영화</a>
                 <ul>
                     <li><a href="listMovie.com">영화 정보</a></li>
-                      <li><a href="#">무비 파인더</a></li>
+                      <li><a href="movieFinder.com">무비 파인더</a></li>
                   </ul>
              </li>
-             <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">애매</a></li> 
+             <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">예매</a></li> 
              <li><a id="movietheater">영화관</a>
                 <ul>
                    <m:forEach var="mtl" items="${mtlist }">

@@ -3,25 +3,35 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ticket">
- <select id="seatNum" resultType="java.lang.Integer">
- select t_seat from theater where t_number=#{theater_num}
- </select>
+	<select id="seatNum" resultType="java.lang.Integer">
+		select t_seat from theater where
+		t_number=#{theater_num}
+	</select>
 
-<select id="theaterseat" resultType="com.silver.vo.SeatVo">
- select * from seat where t_number =#{theater_number} and mt_NUMBER = #{movietheater_number} order by seat_number
- </select> 
-<select id="getname" resultType="java.lang.String">
-	select mt_name from movietheater where mt_number = #{param1}
- </select> 
-  
-<select id="getticket" resultType="java.lang.Integer">
-	select nvl(max(ticket_number),0)+1 from ticket
- </select> 
-  
-<select id="insert" resultType="java.lang.Integer">
-insert into ticket values(#{ticket_number},sysdate,#{ticket_peoplenum},#{m_number},#{mt_number},#{t_number},#{c_id},#{r_number},#{ticket_price})
- </select> 
-  
- 
- 
+	<select id="theaterseat" resultType="com.silver.vo.SeatVo">
+		select * from seat where
+		t_number =#{theater_number} and mt_NUMBER =
+		#{movietheater_number}
+		order by seat_number
+	</select>
+	<select id="getname" resultType="java.lang.String">
+		select mt_name from movietheater
+		where mt_number = #{param1}
+	</select>
+
+	<select id="getticket" resultType="java.lang.Integer">
+		select
+		nvl(max(ticket_number),0)+1 from ticket
+	</select>
+
+	<insert id="insert">
+		insert into ticket
+		values(#{ticket_number},sysdate,#{ticket_peoplenum},#{m_number},#{mt_number},#{t_number},#{c_id},#{r_number},#{ticket_price})
+	</insert>
+
+	<update id="update">
+		update seat set seat_ft='y', ticket_number = #{ticket_number}, r_number=#{r_number}
+		where t_number =#{t_number} and mt_number=#{mt_number} 
+		and seat_column = #{b} and seat_row=#{a}
+	</update>
 </mapper>

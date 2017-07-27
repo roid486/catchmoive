@@ -1,7 +1,7 @@
 package com.silver.data;
 
 import java.io.Reader;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,7 +26,6 @@ public class TicketManager {
 			System.out.println(e.getMessage());
 		}
 	}
-
 	public static int seatNum(int theater_num) {
 		
 		SqlSession session = factory.openSession();
@@ -34,7 +33,6 @@ public class TicketManager {
 		System.out.println("1영화관 좌석수 : "+num);
 		return num;
 	}
-
 	public static List<SeatVo> theaterSeat(String theater_number, String movietheater_number) {
 		
 		SqlSession session = factory.openSession();
@@ -60,12 +58,27 @@ public class TicketManager {
 		return num;
 	}
 
-	public static int insertticket(HashMap<String, Object> map) {
+	public static int insertticket(HashMap<String, Object> map1) {
 		SqlSession session = factory.openSession(true);
-		System.out.println(map.get("c_id"));
-		System.out.println(map.get("ticket_number"));
 		
-		int num = session.insert("ticket.insert", map);
+		int num = session.insert("ticket.insert", map1);
+		return num;
+	}
+
+	public static int insertseat(HashMap<String, Object> map2, String arr[]) {
+		SqlSession session = factory.openSession(true);
+		int num = 0;
+		System.out.println(arr.length);
+		for(int i = 0; i < arr.length;i++)
+		{
+			
+			map2.put("a",arr[i].substring(0, 1) );
+			map2.put("b",arr[i].substring(1, 2) );
+			num+=session.update("ticket.update",map2);
+			
+		}
+		
+		System.out.println("num"+num);
 		return num;
 	}
 }
