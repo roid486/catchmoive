@@ -34,7 +34,7 @@ public class InsertMovieScoreController {
 	
 	@RequestMapping("/insertMovieScore.com")
 	public ModelAndView submit(MovieScoreVo ms,HttpServletRequest request,HttpSession session,HttpServletResponse response){
-		ModelAndView mav = new ModelAndView("redirect:/detailMovie.com");
+		ModelAndView mav = new ModelAndView();
 		int re = dao.insertMovieScore(ms);
 		System.out.println("인서트 무비스코어 : "+ms.getMs_mid());
 		request.setAttribute("m_number", ms.getMs_mid()); //request는 페이지 한번 넘어갈때만 유효! session은 서버가 켜잇는 동안 유효 
@@ -66,6 +66,7 @@ public class InsertMovieScoreController {
 			out.write(json);
 			out.flush();
 			out.close();
+			response.sendRedirect("detailMovie.com?m_number="+ms.getMs_mid());
 		}catch(Exception e){System.out.println(e.getMessage());}
 		
 		
@@ -75,6 +76,7 @@ public class InsertMovieScoreController {
 		
 		//mav.addObject("m_number",ms.getMs_mid());
 		//mav.setViewName("detailMovie.com");
+		//mav.setViewName("redirect:/detailMovie.com?m_number="+ms.getMs_mid());
 		
 		
 		if(re==1){

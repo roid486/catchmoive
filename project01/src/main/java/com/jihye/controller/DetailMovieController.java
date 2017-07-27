@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jihye.dao.MovieDao;
 import com.jihye.vo.MovieScoreVo;
-import com.jihye.vo.MovieVo_j;
 
 @Controller
 @RequestMapping("/detailMovie.com")
@@ -30,9 +29,11 @@ public class DetailMovieController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView getMovie(int m_number){
+	public ModelAndView getMovie(@RequestParam(value="m_number", defaultValue="1") int m_number,HttpSession session){
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("m",dao.getMovie(m_number));
+		System.out.println("get방식의: " + m_number);
+		session.setAttribute("m", dao.getMovie(m_number));
+		//mav.addObject("m",dao.getMovie(m_number));
 		return mav;
 	}
 	
@@ -52,12 +53,12 @@ public class DetailMovieController {
 		return mav;
 	}*/
 	
-	@RequestMapping(method= RequestMethod.POST)
-	public ModelAndView getMovieScore(MovieScoreVo ms,HttpServletRequest request,HttpServletResponse response, HttpSession session){
+	/*@RequestMapping(method= RequestMethod.POST)
+	public ModelAndView getMovieScore(@RequestParam(value="m_number", defaultValue="1") int m_number,MovieScoreVo ms,HttpServletRequest request,HttpServletResponse response, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		int re = dao.insertMovieScore(ms);
-		int m_number = ms.getMs_mid();
-		
+		m_number = ms.getMs_mid();
+		System.out.println("post 시작부분" + m_number);
 		
 		List<MovieScoreVo> list = dao.listMovieScore();
 		String json = "[";
@@ -88,16 +89,11 @@ public class DetailMovieController {
 		}catch(Exception e){System.out.println(e.getMessage());}
 		
 		System.out.println("post방식의 m_number = "+m_number);
-		MovieVo_j m=dao.getMovie(m_number);
-		System.out.println("디테일의 movievo_j : "+m.getM_actor());
-		System.out.println("디테일의 movievo_j : "+m.getM_boxoffice());
-		System.out.println("디테일의 movievo_j : "+m.getM_image2());
-		System.out.println("디테일의 movievo_j : "+m.getM_name());
-		System.out.println("디테일의 넘버 : "+m.getM_number());
-		
-		
-		mav.addObject("m",m);
-
+		//mav.addObject("m",dao.getMovie(m_number));
+		try{
+		response.sendRedirect("detailMovie.com?m_number="+m_number);
+		}catch(Exception e){System.out.println(e.getMessage());}
+		//mav.setViewName("redirect:/detailMovie.com?m_number="+m_number);
 		
 		if(re==1){
 			System.out.println("무비 스코어 데이터 삽입 성공!!!");
@@ -110,6 +106,6 @@ public class DetailMovieController {
 		
 		
 		return mav;
-	}
+	}*/
 	
 }
