@@ -117,8 +117,8 @@ float: right;
   				var params =$("#formId").serialize();
   				$.ajax({
   					//url:"detailMovie.com?m_number='"+ms_mid+"'",/* "insertMovieScore.com", */
-  					url:"detailMovie.com",
-  					type: "post",
+  					url:"insertMovieScore.com",/* "insertMovieScore.com", */
+  					/* type: "post", */
   					data:params,
   					success:function(data){ 
   						alert(data);

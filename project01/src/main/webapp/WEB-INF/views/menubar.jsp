@@ -249,7 +249,7 @@ jq1(function($) {
              <li><a href="#">영화</a>
                 <ul>
                     <li><a href="listMovie.com">영화 정보</a></li>
-                      <li><a href="#">무비 파인더</a></li>
+                      <li><a href="movieFinder.com">무비 파인더</a></li>
                   </ul>
              </li>
              <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">예매</a></li> 

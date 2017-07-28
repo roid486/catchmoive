@@ -201,7 +201,6 @@
 			})
 
 		})
-
 		$("#radio label").click(function() {
 			var a = $(this).parent().attr("id");
 			if (a == "adult") {

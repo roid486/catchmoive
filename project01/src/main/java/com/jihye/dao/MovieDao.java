@@ -36,4 +36,8 @@ public class MovieDao {
 	public List<MovieScoreVo> listMovieScore(){
 		return MovieManager.listMovieScore();
 	}
+	
+	public List<MovieVo_j> getMovieFinder(String searchField,String searchWord,String[] m_genre,String[] m_nation,String[] m_grade,String startyear,String endyear){
+		return MovieManager.getMovieFinder(searchField,searchWord,m_genre,m_nation,m_grade,startyear,endyear);
+	}
 }
