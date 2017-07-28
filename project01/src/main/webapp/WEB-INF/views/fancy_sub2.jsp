@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket.css?a=2" />
+	href="resources/eunseok/ticket_main_css/ticket.css?a=222266223" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
@@ -88,7 +88,9 @@
 					divrow = $("<div></div>").attr("id", "row").append(
 							"<span id='label'>" + item.seat_row + "</span>")
 				}
-				var divcol = $("<div></div>").attr("id", "col");
+				var divcol = $("<div></div>").attr({
+					id: "col"
+				}).css("text-align","center");  
 				var input = $("<input></input>").attr({
 					type : 'checkbox',
 					id : item.seat_row + item.seat_column,
@@ -96,13 +98,13 @@
 					value : item.seat_row + item.seat_column
 				})
 				var label = $("<label/>").attr("for",
-						item.seat_row + item.seat_column)
-						.html(item.seat_column);
+						item.seat_row + item.seat_column).css("text-align","center")
+						.html(item.seat_column); 
 
-				$(label).hover(function() {
+				 $(label).hover(function() {
 					if(totalNum > 0){	
 					$(this).css({
-							cursor : "pointer",
+						cursor : "pointer",
 							"background-color" : "#F8FC0B",
 						})
 						if ($(this).text() <= 4 && totalNum >= 2) {
@@ -117,7 +119,7 @@
 							})
 						}
 				}else{
-					alert("관람할 인원을 선택해주세요")
+					  alert("관람할 인원을 선택해주세요")  
 				}
 				}, function() {
 					if (totalNum > 0) {
@@ -138,12 +140,21 @@
 						})
 					}
 					}
-				}).click(
+				}) 
+				$(label).click(
 						function() {
-							
 							var one = $(this).parent().find(
 									"input[type=checkbox]");
 							var two;
+							$(this).css({
+								"background-color" : "#ffffff"
+							})
+							$(this).parent().next().find("label").css({
+								"background-color" : "#ffffff"
+							})
+							$(this).parent().prev().find("label").css({
+								"background-color" : "#ffffff"
+							})
 							
 							if($(this).text()<5){
 							two = $(this).parent().next().find(
@@ -153,7 +164,7 @@
 								two = $(this).parent().prev().find(
 								"input[type=checkbox]");		
 							}
-							if(totalNum >=2){
+							if(totalNum >=2 || totalNum==0){
 							if(two.is(":checked")){
 							two.prop("checked",false)
 							arr.pop(one.attr("id"))
@@ -178,8 +189,7 @@
 									alert("one uncheck")
 								}
 							}
-							
-							alert("arr :" +arr+"length"+arr.length+"totalNum :"+totalNum)
+							 alert("arr :" +arr+"length"+arr.length+"totalNum :"+totalNum) 
 						}) 
 				$(input).appendTo(divcol)
 				$(label).appendTo(divcol)
@@ -192,7 +202,7 @@
 
 		})
 
-		$("label").click(function() {
+		$("#radio label").click(function() {
 			var a = $(this).parent().attr("id");
 			if (a == "adult") {
 				anum = eval($(this).text())
@@ -223,8 +233,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
 	<center>
 		<table class="table" border="1" width="80%" height="100%">
 			<tr height="30%">
@@ -291,11 +299,10 @@
 							<span>SCREEN</span>
 						</div>
 						<div class="ticket_content"></div>
+						<table id="tb">
 						<button id="btn3">reset</button>
 					</center>
 				</td>
-			</tr>
-			<tr>
 			</tr>
 			<tr height="30%">
 				<td><button id="btn2">뒤로가기</button></td>

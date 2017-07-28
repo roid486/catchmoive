@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
-<link rel="stylesheet" href="resources/eunseok/ticket_main_css/ticket_sub.css?a=1" />
+<link rel="stylesheet" href="resources/eunseok/ticket_main_css/ticket_sub.css?a=3" />
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 var jq3= jQuery.noConflict();

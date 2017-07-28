@@ -4,8 +4,25 @@ a{
 	/* box-shadow: 1px 1px 1px #000; */
 	color: black;
 }
-a:HOVER{
+/* a:HOVER{
 	color: yellow;
+} */
+a{
+    display: inline-block;
+    color: #03c;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+}
+
+a:hover {
+    -webkit-transform: scale(1.5,1.5);
+    -moz-transform: scale(1.5,1.5);
+    -o-transform: scale(1.5,1.5);
+    -ms-transform: scale(1.5,1.5);	
+    transform: scale(1.5,1.5);
 }
 
 #main_form {
@@ -19,9 +36,10 @@ a:HOVER{
 	height: 500px;
 	left: 20px;
 	margin-left: 80px;
-	overflow: scroll;
 	box-shadow: 1px 1px 5px #000;
 	border-radius: 2px;
+	overflow: visible;
+	/* overflow: scroll; */
 }
 
 #main_form #sub2_form {
