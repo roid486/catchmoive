@@ -79,6 +79,7 @@ public class HomeController {
 		mav.addObject("running_number", running_number);
 		mav.addObject("movie_number", movie_number);
 		mav.addObject("movietheater_name", movietheater_name);
+		mav.addObject("seat_num", tdao.seatNum(Integer.parseInt(theater_number)));
 		return mav;
 	}
 	
@@ -135,13 +136,9 @@ public class HomeController {
 		{
 			chk = "no";
 		}
-		
-		
 		return chk;
 		
 	}
-
-
 	@RequestMapping(value = "firstList.com", produces = "text/plain;charset=utf-8")
 	@ResponseBody
 	public String firstList() {
