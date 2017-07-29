@@ -46,12 +46,12 @@
   
 
   <select id="selectRe" resultType="replyVo">
- 	select * from reply
+ 	select * from reply r,customer c where r.c_id=c.c_id and b_number=#{b_number}
   </select>
   
-  <insert id="insertReply">
-	insert into reply values(#{re_number},#{re_content},sysdate,sysdate,#{b_number},#{c_id})
-	
+  <insert id="insertRe">
+	insert into reply(re_number,re_content,b_number,c_id) values(seq_reply.nextval,#{re_content},#{b_number},#{c_id})
+
     </insert>
   
 	

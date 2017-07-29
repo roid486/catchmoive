@@ -9,12 +9,12 @@
 </head>
 <body>
 	<table>
-		<c:forEach var="row" items="{listRe}">
+		<c:forEach var="row" items="${listRe }">
 		<tr>
 			<td>
-				 ${row.c_id}(<fmt:formatDate value="${row.re_regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>)
+				 아이디: ${row.c_id}
                 <br>
-                ${row.re_content}
+                       내용:${row.re_content}
 			</td>
 		</tr>
 		</c:forEach>

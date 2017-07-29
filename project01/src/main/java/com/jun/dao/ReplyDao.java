@@ -24,10 +24,6 @@ public class ReplyDao {
 		return JavajoManager.getNextRe();
 	}
 	
-	public int getNextNo()
-	{
-		return JavajoManager.getNextNo();
-	}
 
 
 

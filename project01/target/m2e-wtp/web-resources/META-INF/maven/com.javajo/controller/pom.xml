@@ -146,14 +146,14 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
-<<<<<<< HEAD
+
 		<dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-databind</artifactId>
     <version>2.8.6</version>
 </dependency>
 		
-=======
+
 		<!-- json download -->
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>
@@ -162,7 +162,7 @@
 			<classifier>jdk15</classifier>
 		</dependency>
 
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
+
 	</dependencies>
 	<build>
 		<plugins>

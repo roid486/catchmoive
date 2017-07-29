@@ -2,18 +2,18 @@ package com.jun.vo;
 
 public class ReplyVo {
 
-	private int re_no;
+	private int re_number;
 	private String re_content;
 	private String re_writer;
 	private String re_regdate;
 	private String re_updatedate;
 	private int b_number;
 	private String c_id;
-	public int getRe_no() {
-		return re_no;
+	public int getRe_number() {
+		return re_number;
 	}
-	public void setRe_no(int re_no) {
-		this.re_no = re_no;
+	public void setRe_number(int re_number) {
+		this.re_number = re_number;
 	}
 	public String getRe_content() {
 		return re_content;
@@ -51,10 +51,10 @@ public class ReplyVo {
 	public void setC_id(String c_id) {
 		this.c_id = c_id;
 	}
-	public ReplyVo(int re_no, String re_content, String re_writer, String re_regdate, String re_updatedate,
+	public ReplyVo(int re_number, String re_content, String re_writer, String re_regdate, String re_updatedate,
 			int b_number, String c_id) {
 		super();
-		this.re_no = re_no;
+		this.re_number = re_number;
 		this.re_content = re_content;
 		this.re_writer = re_writer;
 		this.re_regdate = re_regdate;
@@ -68,9 +68,11 @@ public class ReplyVo {
 	}
 	@Override
 	public String toString() {
-		return "ReplyVo [re_no=" + re_no + ", re_content=" + re_content + ", re_writer=" + re_writer + ", re_regdate="
-				+ re_regdate + ", re_updatedate=" + re_updatedate + ", b_number=" + b_number + ", c_id=" + c_id + "]";
+		return "ReplyVo [re_number=" + re_number + ", re_content=" + re_content + ", re_writer=" + re_writer
+				+ ", re_regdate=" + re_regdate + ", re_updatedate=" + re_updatedate + ", b_number=" + b_number
+				+ ", c_id=" + c_id + "]";
 	}
+	
 	
 	
 }

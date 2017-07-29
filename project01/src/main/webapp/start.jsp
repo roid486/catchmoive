@@ -9,7 +9,7 @@ text/html; charset=UTF-8"
 </head>
 
 <body>
-<<<<<<< HEAD
+
 	<%
 
 		//response.sendRedirect("main.com");
@@ -21,11 +21,10 @@ text/html; charset=UTF-8"
 
 
 
-=======
-	<%
-		response.sendRedirect("main.com");
+
+		
 		//response.sendRedirect("listMovie.com");
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
+
 	%>
 </body>
 </html>

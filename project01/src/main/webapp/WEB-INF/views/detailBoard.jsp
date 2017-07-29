@@ -12,42 +12,52 @@
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 $(function() {
+	var id1 = <%= session.getAttribute("se_id")%>
+	
  	$("#msgdialog").dialog({
 	    autoOpen:false,
 	    modal:true
 	 }); 
 
- 	listReply();
+	listReply();
+ 	//댓글쓰는거
 	$("#btnReply").click(function() {
+		
 		var re_content = $("#re_content").val();
 		var b_number = "${b.b_number}";
-		var param="re_content="+re_content+"&b_number"+b_number;
-		alert(re_content);
-		alert(param);
+		var param="re_content= "+re_content+"&b_number= "+b_number;
 		$.ajax({
-			type:"post",
-			url:"${path}/insertReply.com",
+			type:"POST",
+			url:"insertReply.com",
 			data:param,
 			success: function() {
 				alert("댓글이 등록되었습니다.");
 				listReply();
 			}
-			
+					
 		});
+		if(id1==null || id1=="")
+		{
+			$("#msgdialog").dialog("open");
+		}
+		else
+		{
+			alert("id1    ::  "+id1);
+			alert("re_content  ::"   +re_content);
+			alert("param    ::"    +param);
+		}
 	});
 	
 	function listReply(){
 		$.ajax({
 			type:"get",
-			url:"${path}/listReply.com?b_number=${b.b_number}",
+			url:"listReply.com?b_number=${b.b_number}",
 			success: function(result) {
 				alert("성공?!");
 				$("#listReply").html(result);
 			}		
-		});
-		
+		});	
 	};
-	
 	
 	
 	
@@ -59,6 +69,7 @@ $(function() {
 <jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	<h2>상세보기</h2>
 	<hr>
+	
 	Type: ${b.b_type }<br>
 	글번호: ${b.b_number }<br>
 	ID: ${b.c_id }<br>
@@ -71,8 +82,9 @@ $(function() {
 	등록일:${b.b_regdate }<br>
 	ip:${b.b_ip }<br>
 	조회수:${b.b_hit }<br>
-
+	<hr>
 	
+    <div id="listReply"></div>
 	<hr>
 	<div style="width:650px; text-align: center;">
         <br>
@@ -83,6 +95,11 @@ $(function() {
         <button type="button" id="btnReply">댓글 작성</button>
         <%-- </c:if> --%>
     </div>
+    
+ 
+   
+    <!-- **댓글 목록 출력할 위치 -->
+    	
 	<hr>
 	<a href="updateBoard.com?b_number=${b.b_number }">게시물 수정</a>
 
@@ -93,8 +110,6 @@ $(function() {
 	
 	
 	
-    <!-- **댓글 목록 출력할 위치 -->
-    <div id="listReply"></div>
 	
 	<div id="msgdialog">
 		<center><font color="red">로그인을 하십시오.</font></center>

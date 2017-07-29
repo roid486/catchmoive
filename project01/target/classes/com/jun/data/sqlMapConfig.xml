@@ -5,8 +5,8 @@
 <configuration>
 	<properties resource="com/jun/data/javajo.properties"/>
 	<typeAliases>
-	<!-- 	<typeAlias type="com.javajo.vo.MovieTheaterVo" alias="movietheaterVo"/>
-		<typeAlias type="com.javajo.vo.CustomerVo" alias="customerVo"/> -->
+		<typeAlias type="com.javajo.vo.MovieTheaterVo" alias="movietheaterVo"/>
+		<typeAlias type="com.javajo.vo.CustomerVo" alias="customerVo"/> 
 		<typeAlias type="com.jun.vo.BoardVo" alias="boardVo"/>
 		<typeAlias type="com.jun.vo.ReplyVo" alias="replyVo"/> 
 	</typeAliases>

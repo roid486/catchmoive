@@ -2,6 +2,7 @@ package com.jun.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +40,18 @@ public class ReplyController {
 		vo.setC_id(se_id);
 		dao.insertRe(vo);
 	
+	
 	}
 	
 	@RequestMapping("listReply.com")
-	public ModelAndView list(@RequestParam int b_number, ModelAndView mav){
-        List<ReplyVo> listRe = dao.listRe(b_number);
+	public ModelAndView list(@RequestParam int b_number, HttpServletRequest request, ModelAndView mav){
+		HttpSession session = request.getSession();
+//		session.setAttribute("customerid2","비누주스라우");
+		
+		String se_id=(String)session.getAttribute("se_id");
+		List<ReplyVo> listRe = dao.listRe(b_number);
+        System.out.println("listRe의  b_number ::     "+listRe);
+        System.out.println("  b_number ::     "+b_number);
         // 뷰이름 지정
         mav.setViewName("listReply");
         // 뷰에 전달할 데이터 지정

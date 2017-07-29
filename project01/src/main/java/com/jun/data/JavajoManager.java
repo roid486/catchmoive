@@ -125,6 +125,7 @@ public class JavajoManager {
 	public static int getNextRe() {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession(true);
+		
 		int re =  session.selectOne("javajo.getNextRe");
 		session.close();
 		return re;
