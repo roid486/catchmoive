@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 import com.javajo.data.JavajoManager;
 import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
+import com.javajo.vo.MovieTheaterVo2;
+import com.javajo.vo.MovienameVo;
+import com.jihye.vo.MovieVo_j;
 
 @Repository
 public class JavajoDao {
@@ -41,5 +44,83 @@ public class JavajoDao {
 		return JavajoManager.echeckupdate(email,yes);
 	}
 
-	
+	public List<CustomerVo> clist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.clist(num1,num2,key);
+	}
+
+	public int ctotalRecode(String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.totalrecode(key);
+	}
+
+	public int cdelete(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.cdelete(c_id);
+	}
+
+	public String scid(String name, String email) {
+		// TODO Auto-generated method stub
+		return JavajoManager.scid(name,email);
+	}
+
+	public String scpw(String id, String name, String email) {
+		// TODO Auto-generated method stub
+		return JavajoManager.scpw(id,name,email);
+	}
+
+	public CustomerVo cdetail(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.cdetail(c_id);
+	}
+
+	public int cupdate(CustomerVo cv) {
+		// TODO Auto-generated method stub
+		return JavajoManager.cupdate(cv);
+	}
+
+	public int mttotalRecode(String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mttotalrecode(key);
+	}
+
+	public List<MovieTheaterVo2> movietlist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mtl(num1,num2,key);
+	}
+
+	public int insertmt(MovieTheaterVo2 mtv2) {
+		// TODO Auto-generated method stub
+		return JavajoManager.isertmt(mtv2);
+	}
+
+	public MovieTheaterVo2 mtdetail(int mt_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mtdetail(mt_number);
+	}
+
+	public int mtupdate(MovieTheaterVo2 mtv2) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mtupdate(mtv2);
+	}
+
+	public int mtdelete(int mt_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mtdelete(mt_number);
+	}
+
+	public int mtotalRecode(String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mtotalrecode(key);
+	}
+
+	public List<MovieVo_j> mlist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mlist(num1,num2,key);
+	}
+
+	public List<MovienameVo> moviename() {
+		// TODO Auto-generated method stub
+		return JavajoManager.mscorelist();
+	}	
 }

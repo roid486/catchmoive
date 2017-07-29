@@ -5,6 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>캐치무비>>관리자>>영화 정보 추가</title>
+<style type="text/css">
+	#lab{
+		font: normal;color: blue;
+		font-size: 15pt;
+	}
+	#fail{
+		font: normal;color: red;
+		font-size: 15pt;
+	}
+
+</style>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -181,6 +192,8 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-default">영화 등록</button>
+					<label id="lab">&nbsp;&nbsp;${success }</label>
+					<label id="fail">&nbsp;&nbsp;${fail }</label>
 				</div>
 			</div>
 		</form>

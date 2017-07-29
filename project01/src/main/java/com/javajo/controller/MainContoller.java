@@ -2,6 +2,8 @@ package com.javajo.controller;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.javajo.dao.JavajoDao;
 import com.javajo.vo.CustomerVo;
+import com.javajo.vo.MovienameVo;
+
+import net.sf.json.JSONArray;
 
 @Controller
 public class MainContoller {
@@ -22,6 +27,8 @@ public class MainContoller {
 	public static String id2;
 	private String msg;
 	private int re;
+	public static String emsg;
+	public static int ere;
 	public void setDao(JavajoDao dao) {
 		this.dao = dao;
 	}
@@ -34,6 +41,13 @@ public class MainContoller {
 		HttpSession session = request.getSession();
 		session.setAttribute("se_id", id);
 		mav.addObject("signupnum", re);
+		if(emsg!=null)
+		{
+			mav.addObject("ere", ere);
+			mav.addObject("emsg", emsg);
+		}
+		emsg = null;
+		re = 0;
 		return mav;
 	}
 	
@@ -104,6 +118,7 @@ public class MainContoller {
 	public ModelAndView serchid(String id)
 	{
 		ModelAndView mav = new ModelAndView("redirect:/serchcustok.com");
+		mav.addObject("mtlist", dao.mtlist());
 		int re = dao.serchid(id);
 		if(re == 0)
 		{
@@ -117,11 +132,32 @@ public class MainContoller {
 		return mav;
 	}
 	
-	@RequestMapping("/masterpage.com")
-	public ModelAndView masterpage()
+	@RequestMapping("/cdelete.com")
+	public ModelAndView cdelete(String c_id)
 	{
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("mtlist", dao.mtlist());
+		ModelAndView mav = new ModelAndView("redirect:/masterpage.com");
+		int del = dao.cdelete(c_id);
 		return mav;
+	}
+	
+	@RequestMapping("/mtdelete.com")
+	public ModelAndView mtdelete(int mt_number)
+	{
+		ModelAndView mav = new ModelAndView("redirect:/mtlist.com");
+		int re = dao.mtdelete(mt_number);
+		
+		return mav;
+	}
+	
+	@RequestMapping()
+	public JSONArray mscorelist()
+	{
+		JSONArray ja = new JSONArray();
+		List<MovienameVo> list = dao.moviename();
+		for(int i = 0; i < list.size(); i++)
+		{
+			System.out.println(list.get(i).getM_name());
+		}
+		return ja;
 	}
 }

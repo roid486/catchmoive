@@ -3,8 +3,11 @@ package com.silver.controller;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,9 +66,20 @@ public class HomeController {
 	}
 
 	@RequestMapping("/fancy_sub2.com")
-	public void test3(String movietheater_number,String running_date,String running_start,String theater_number) {
+	public ModelAndView test3(String movie_number,String movietheater_number,String running_date,String running_start,String theater_number,String running_number) {
 		list1 = tdao.theaterSeat(theater_number,movietheater_number);
-
+		ModelAndView mav = new ModelAndView();
+		String movietheater_name = tdao.getmovietheatername(movietheater_number);
+		//running_start, movietheater_name, theater_number, runnning_date
+		System.out.println(running_start+"//"+ movietheater_name+"//"+  theater_number+"//"+  running_date);
+		mav.addObject("movietheater_number", movietheater_number);
+		mav.addObject("theater_number", theater_number);
+		mav.addObject("running_start", running_start);
+		mav.addObject("running_date", running_date);
+		mav.addObject("running_number", running_number);
+		mav.addObject("movie_number", movie_number);
+		mav.addObject("movietheater_name", movietheater_name);
+		return mav;
 	}
 	
 	@RequestMapping(value="/theaterseat.com", produces = "text/plain;charset=utf-8")
@@ -82,6 +96,51 @@ public class HomeController {
 		System.out.println("///////////test3 list" + str);
 		return str;
 	}
+	
+	@RequestMapping(value="/ticketingok.com", produces = "text/plain;charset=utf-8")
+	@ResponseBody
+	public String ticketok(String m_number,String mt_number,String r_number,String t_number,String ticket_peoplenum,String ticket_price,String str){
+		String chk ="";
+		int num = 0;
+		String arr[] = str.split(",");
+		//seat table seat_row, seat_column, ticket_number, t_number,mt_number, running_number
+		int ticket_number = tdao.getTicketnum();
+		HashMap<String, Object> map1 = new HashMap<String, Object>();
+		map1.put("ticket_number",ticket_number);
+		map1.put("ticket_peoplenum", arr.length);
+		map1.put("m_number",m_number);
+		map1.put("mt_number",mt_number);
+		map1.put("t_number", t_number);
+		map1.put("c_id", "javajo");
+		map1.put("r_number", r_number);
+		map1.put("ticket_price", ticket_price);
+
+		if(tdao.insertticket(map1)==1)
+		{
+			HashMap<String, Object> map2 = new HashMap<String, Object>();
+			map2.put("ticket_number", ticket_number);
+			map2.put("t_number", t_number);
+			map2.put("mt_number", mt_number);
+			map2.put("r_number", r_number);
+			
+			num = tdao.insertseat(map2,arr);
+			
+		}
+		
+		if(arr.length==num)
+		{
+			System.out.println("success");
+			chk = "ok";
+		}else
+		{
+			chk = "no";
+		}
+		
+		
+		return chk;
+		
+	}
+
 
 	@RequestMapping(value = "firstList.com", produces = "text/plain;charset=utf-8")
 	@ResponseBody
@@ -117,7 +176,6 @@ public class HomeController {
 	@ResponseBody
 	public String thirdList(String movie_number, String movietheater_number) {
 		String str = "";
-		System.out.println("movie_number "+movie_number+"movietheater_number"+movietheater_number);
 		List<RunningVo> list = bdao.thirdList(movie_number,movietheater_number);
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -132,7 +190,6 @@ public class HomeController {
 	@ResponseBody
 	public String fourthList(String movie_number, String movietheater_number, String running_date) {
 		String str = "";
-		System.out.println("movie_number "+movie_number+"movietheater_number"+movietheater_number+"running_date"+running_date);
 		List<RunningstartVo> list = bdao.fourthList(movie_number,movietheater_number,running_date);
 		ObjectMapper mapper = new ObjectMapper();
 		try {

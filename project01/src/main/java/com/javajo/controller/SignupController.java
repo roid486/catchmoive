@@ -25,6 +25,7 @@ public class SignupController {
 	public ModelAndView signup()
 	{
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("mtlist", dao.mtlist());
 		mav.setViewName("redirect:/terms.com");
 		return mav;
 	}
@@ -33,6 +34,7 @@ public class SignupController {
 	public ModelAndView signup(CustomerVo cv, String c_pw2)
 	{
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("mtlist", dao.mtlist());
 		int re = 0;
 		if(cv.getC_pw().length() >= 8 && cv.getC_pw().equals(c_pw2))
 		{

@@ -2,36 +2,52 @@ package com.javajo.vo;
 
 public class MovieTheaterVo {
 
-	private int movietheater_number;
-	private String movietheater_name;
-	private String movietheater_loc;
-	public int getMovietheater_number() {
-		return movietheater_number;
-	}
-	public void setMovietheater_number(int movietheater_number) {
-		this.movietheater_number = movietheater_number;
-	}
-	public String getMovietheater_name() {
-		return movietheater_name;
-	}
-	public void setMovietheater_name(String movietheater_name) {
-		this.movietheater_name = movietheater_name;
-	}
-	public String getMovietheater_loc() {
-		return movietheater_loc;
-	}
-	public void setMovietheater_loc(String movietheater_loc) {
-		this.movietheater_loc = movietheater_loc;
-	}
-	public MovieTheaterVo(int movietheater_number, String movietheater_name, String movietheater_loc) {
-		super();
-		this.movietheater_number = movietheater_number;
-		this.movietheater_name = movietheater_name;
-		this.movietheater_loc = movietheater_loc;
-	}
+	private int mt_number;
+	private String mt_name;
+	private String mt_loc;
+	private double mt_x;
+	private double mt_y;
 	public MovieTheaterVo() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public MovieTheaterVo(int mt_number, String mt_name, String mt_loc, double mt_x, double mt_y) {
+		super();
+		this.mt_number = mt_number;
+		this.mt_name = mt_name;
+		this.mt_loc = mt_loc;
+		this.mt_x = mt_x;
+		this.mt_y = mt_y;
+	}
+	public int getMt_number() {
+		return mt_number;
+	}
+	public void setMt_number(int mt_number) {
+		this.mt_number = mt_number;
+	}
+	public String getMt_name() {
+		return mt_name;
+	}
+	public void setMt_name(String mt_name) {
+		this.mt_name = mt_name;
+	}
+	public String getMt_loc() {
+		return mt_loc;
+	}
+	public void setMt_loc(String mt_loc) {
+		this.mt_loc = mt_loc;
+	}
+	public double getMt_x() {
+		return mt_x;
+	}
+	public void setMt_x(double mt_x) {
+		this.mt_x = mt_x;
+	}
+	public double getMt_y() {
+		return mt_y;
+	}
+	public void setMt_y(double mt_y) {
+		this.mt_y = mt_y;
 	}
 	
 }
