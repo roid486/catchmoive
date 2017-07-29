@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.jun.vo.BoardVo;
+import com.jun.vo.ReplyVo;
 
 public class JavajoManager {
 	
@@ -103,5 +104,46 @@ public class JavajoManager {
 		int re = session.update("javajo.updateStep", map);
 		return re;
 	}
+
+	public static List<ReplyVo> listRe(int b_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		List<ReplyVo> listRe = session.selectList("javajo.selectRe",b_number);
+		session.close();
+		return listRe;
+	}
+
+	public static int insertRe(ReplyVo vo) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.insert("javajo.insertRe",vo);
+		session.close();
+		
+		return re;
+	}
+
+	public static int getNextRe() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re =  session.selectOne("javajo.getNextRe");
+		session.close();
+		return re;
+	}
+	
+	/*public static List<BoardVo> list(String searchField, String keyword) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("searchField", searchField);
+		map.put("keyword", keyword);
+		
+		SqlSession session = factory.openSession();
+		List<BoardVo> list=session.selectList("javajo.selectAll",map);
+		
+		//List<BoardVo> list=session.selectList("javajo.selectAll");
+		System.out.println("manager    ::    "+list.get(0).getB_regdate());
+		session.close();
+		return list;
+		
+	}*/
 		
 }

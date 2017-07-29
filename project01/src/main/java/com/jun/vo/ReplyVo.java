@@ -1,0 +1,76 @@
+package com.jun.vo;
+
+public class ReplyVo {
+
+	private int re_no;
+	private String re_content;
+	private String re_writer;
+	private String re_regdate;
+	private String re_updatedate;
+	private int b_number;
+	private String c_id;
+	public int getRe_no() {
+		return re_no;
+	}
+	public void setRe_no(int re_no) {
+		this.re_no = re_no;
+	}
+	public String getRe_content() {
+		return re_content;
+	}
+	public void setRe_content(String re_content) {
+		this.re_content = re_content;
+	}
+	public String getRe_writer() {
+		return re_writer;
+	}
+	public void setRe_writer(String re_writer) {
+		this.re_writer = re_writer;
+	}
+	public String getRe_regdate() {
+		return re_regdate;
+	}
+	public void setRe_regdate(String re_regdate) {
+		this.re_regdate = re_regdate;
+	}
+	public String getRe_updatedate() {
+		return re_updatedate;
+	}
+	public void setRe_updatedate(String re_updatedate) {
+		this.re_updatedate = re_updatedate;
+	}
+	public int getB_number() {
+		return b_number;
+	}
+	public void setB_number(int b_number) {
+		this.b_number = b_number;
+	}
+	public String getC_id() {
+		return c_id;
+	}
+	public void setC_id(String c_id) {
+		this.c_id = c_id;
+	}
+	public ReplyVo(int re_no, String re_content, String re_writer, String re_regdate, String re_updatedate,
+			int b_number, String c_id) {
+		super();
+		this.re_no = re_no;
+		this.re_content = re_content;
+		this.re_writer = re_writer;
+		this.re_regdate = re_regdate;
+		this.re_updatedate = re_updatedate;
+		this.b_number = b_number;
+		this.c_id = c_id;
+	}
+	public ReplyVo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "ReplyVo [re_no=" + re_no + ", re_content=" + re_content + ", re_writer=" + re_writer + ", re_regdate="
+				+ re_regdate + ", re_updatedate=" + re_updatedate + ", b_number=" + b_number + ", c_id=" + c_id + "]";
+	}
+	
+	
+}

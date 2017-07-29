@@ -14,6 +14,11 @@
   	select nvl(max(b_number),0)+1 from board
   </select>
   
+  <select id="getNextRe" resultType="java.lang.Integer">
+  	select nvl(max(re_number),0)+1 from reply
+  </select>
+  
+  
   <insert id="insertBoard">
   	insert into board values(#{b_number}, #{b_title}, #{b_pwd}, #{b_content}, 0, sysdate, #{b_ip}, 0, 0, 0, #{b_fname}, #{b_fsize}, #{b_type}, 1 )
   </insert>
@@ -38,5 +43,16 @@
   <update id="updateStep">
   	update board set b_b_step = b_b_step + 1 where b_b_ref= #{b_b_ref} and b_b_step > #{b_b_step}
   </update>
+  
+
+  <select id="selectRe" resultType="replyVo">
+ 	select * from reply
+  </select>
+  
+  <insert id="insertReply">
+	insert into reply values(#{re_number},#{re_content},sysdate,sysdate,#{b_number},#{c_id})
+	
+    </insert>
+  
 	
 </mapper>

@@ -6,33 +6,54 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		/* var customer_id */
-		var id1 = "<%= request.getAttribute("se_id")%>"
-		var id2 = "<%= (String)session.getAttribute("customerid2")%>"
-		
-		alert(id1+"///"+id2)
-		
+		 var id1 = <%= session.getAttribute("se_id")%>
+		<%-- var id2 = "<%= (String)session.getAttribute("customerid2")%>" --%>
+		/* var id1 = $("#se_id").val(); */
+
+		$("#msgdialog").dialog({
+	         autoOpen:false,
+	         modal:true
+	      });
 	
 		$("#btn_insert").click(function() {
-			if(id1 == null)
+			if(id1==null || id1=="")
 			{
-				
-				alert("로그인해라 개새꺄");
-				
+				$("#msgdialog").dialog("open");
 			}
-		
+			else
+			{
+				location.href="insertBoard.com";
+			} 			
 		});
+		
+		$("#btn_detail").click(function() {
+			if(id1==null || id1="")
+			{
+				$("#msgdialog").dialog("open");
+			}
+			else
+			{
+				location.href="detailBoard.com";
+			}
+		})
 		
 	}); 
 
 </script>
 </head>
 <body>
+<input type="hidden" id="se_id" value="${se_id }" >
+	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+
 	<h1>${title }</h1>
-	${se_id }
+	
 	<hr>
 	<table border="1" cellpadding="0" cellspacing="0">
 		<tr>
@@ -50,7 +71,7 @@
 			<td>${b.b_number }</td>
 			<td>${b.b_type }</td>
 			<td>
-			<a href="detailBoard.com?b_number=${b.b_number }">${b.b_title }</a>
+			<a id="btn_detail" href="detailBoard.com?b_number=${b.b_number }">${b.b_title }</a>
 			</td>
 			<td>${b.c_id }</td>
 			<td>${b.b_regdate }</td>
@@ -58,8 +79,10 @@
 		</tr>
 		</c:forEach>
 		
-	</table>	
-	<a href="insertBoard.com" id="btn_insert">게시물 등록</a>
+	</table>
+
+	<button id="btn_insert">게시물 등록</button>
+
 	<hr>
 	<form action="listBoard.com" method="post">
 	<select name="searchField">
@@ -70,5 +93,8 @@
 	<input type="text" name="keyword">
 	<input type="submit" value="검색">	
 	</form>	
+	<div id="msgdialog">
+		<center><font color="red">로그인을 하십시오.</font></center>
+	</div>
 </body>
 </html>

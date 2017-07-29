@@ -2,6 +2,9 @@ package com.jun.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Repository;
 
 import com.jun.data.JavajoManager;

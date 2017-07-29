@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.javajo.dao.JavajoDao;
@@ -37,7 +38,7 @@ public class BoardController {
 	
 
 	@RequestMapping("/listBoard.com")
-	public ModelAndView list(String searchField, String keyword, HttpServletRequest request)
+	public ModelAndView list(String searchField, String keyword, HttpServletRequest request,@RequestParam(value="pageNUM",defaultValue="1") int pageNUM)
 	{
 		
 		HttpSession session = request.getSession();
