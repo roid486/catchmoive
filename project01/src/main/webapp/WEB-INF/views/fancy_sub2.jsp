@@ -78,12 +78,10 @@
 
 	})
 	jq3(function($) {
-
 		var anum = 0;
 		var ynum = 0;
 		var snum = 0;
 		var flag = 0;
-
 		$.getJSON("theaterseat.com", function(data) {
 			var divrow;
 			$.each(data, function(index, item) {
