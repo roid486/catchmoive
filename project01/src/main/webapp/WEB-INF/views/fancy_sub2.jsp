@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket.css?a=32232" />
+	href="resources/eunseok/ticket_main_css/ticket.css?a=33111223" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
@@ -117,17 +117,17 @@
 					if(totalNum > 0){	
 					$(this).css({
 						cursor : "pointer",
-							"background-color" : "#F8FC0B",
+							"background-color" : "#C9C9C9",
 						})
 						if ($(this).text() <= 4 && totalNum >= 2) {
 							$(this).parent().next().find("label").css({
 								cursor : "pointer",
-								"background-color" : "#F8FC0B"
+								"background-color" : "#C9C9C9"
 							})
 						} else if($(this).text() >= 5 && totalNum >= 2){
 							$(this).parent().prev().find("label").css({
 								cursor : "pointer",
-								"background-color" : "#F8FC0B"
+								"background-color" : "#C9C9C9"
 							})
 						}
 				}else{
@@ -137,18 +137,18 @@
 					if (totalNum > 0) {
 					$(this).css({
 						cursor : "pointer",
-						"background-color" : "#ffffff"
+						"background-color" : "#fdfdee"
 					})
 					if ($(this).text() <= 4 && totalNum >= 2) {
 						$(this).parent().next().find("label").css({
 							cursor : "pointer",
-							"background-color" : "#ffffff"
+							"background-color" : "#fdfdee"
 						})
 						
 					} else if($(this).text() >= 5 && totalNum >= 2){
 						$(this).parent().prev().find("label").css({
 							cursor : "pointer",
-							"background-color" : "#ffffff"
+							"background-color" : "#fdfdee"
 						})
 					}
 					}
@@ -311,11 +311,13 @@
 								</c:choose>
 							</c:forEach>
 						</div>
-					</div> <b>※요금표※</b><br> 일반 : 10000원 청소년 : 7000원 우대 : 5000원</td>
-				<td colspan="3" width="*">${movietheater_name }
-					${theater_number }관 ${running_start } ${running_date } 남은 좌석: <span id="present"></span>/${seat_num }</td>
+					</div><div style="margin-top: 5px; margin-left: 15px;"><center><b>※요금표※</b></center>일반 : 10000원 청소년 : 7000원 우대 : 5000원</td></div> 
+				<td colspan="3" width="*">
+				<div style="margin-left: 10px;">
+					${movietheater_name } ${theater_number }관 | 남은 좌석: <span id="present" style="color: red;"></span>/${seat_num }<br><h3>${running_date } ${running_start }</h3> </td>
+			</div>
 			</tr>
-			<tr rowspan="2" height="40%">
+			<tr rowspan="2" height="35%">
 				<td colspan="5">
 					<center>
 						<div class="screen">
@@ -326,17 +328,16 @@
 					</center>
 				</td>
 			</tr>
-			<tr height="*">
-			<td colspan="5">
+			<tr height="18%">
+			<td colspan="5" style="background-color: black;">
 				<div id="big">
 					<div id="small1">
-					   <a href="#" class="button" id="btn2">뒤로가기</a>
-						<!-- <button id="btn2">뒤로가기</button> -->
+					   <a href="#" class="button" id="btn2">영화선택</a>
 					</div>
 					<div id="small2">영화 포스터</div>
 					<div id="small3">
 						극장: ${movietheater_name }<br> 상영관:${theater_number }관 <br>
-						일시:${running_date }${running_start }<br> 인원:<span
+						일시:${running_date } ${running_start }<br> 인원:<span
 							id='pnum'></span>
 					</div>
 					<div id="small4">
