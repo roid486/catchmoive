@@ -13,7 +13,7 @@
 		<c:forEach var="row" items="${listRe }">
 		<tr>
 			<td>
-				 ${row.c_name}&nbsp&nbsp&nbsp${row.re_regdate }
+				 ${row.re_number }&nbsp&nbsp&nbsp${row.c_name}&nbsp&nbsp&nbsp${row.re_regdate }
                 <br>
                                     내용:${row.re_content}
 			</td>

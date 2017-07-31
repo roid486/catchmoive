@@ -27,7 +27,6 @@ $(function() {
 			type:"get",
 			url:"listReply.com?b_number=${b.b_number}",
 			success: function(result) {
-				alert("성공?!");
 				$("#listReply").html(result);
 			}		
 		});	
@@ -39,16 +38,7 @@ $(function() {
 		var re_content = $("#re_content").val();
 		var b_number = "${b.b_number}";
 		var param="re_content= "+re_content+"&b_number= "+b_number;
-		/* if(id1==null || id1=="")
-		{
-			$("#msgdialog").dialog("open");
-		}
-		else
-		{
-			alert("id1    ::  "+id1);
-			alert("re_content  ::"   +re_content);
-			alert("param    ::"    +param);
-		} */
+	
 		$.ajax({
 			type:"POST",
 			dataType:"text",
@@ -66,19 +56,27 @@ $(function() {
 		});
 	});
 	
-
+	// 게시글 삭제 버튼 클릭이벤트
+    $("#btn_del").click(function(){
+        if(confirm("삭제하시겠습니까?"))
+        {
+        	return true;
+        }
+        return false;
+        
+    });
+   
+ // 게시글 수정 버튼 클릭이벤트
+    $("#btn_update").click(function(){
+        if(confirm("수정하시겠습니까??"))
+        {
+        	return true;
+        }
+        return false;
+        
+    });
 	
-	function changeDate(date){
-        date = new Date(parseInt(date));
-        year = date.getFullYear();
-        month = date.getMonth();
-        day = date.getDate();
-        hour = date.getHours();
-        minute = date.getMinutes();
-        second = date.getSeconds();
-        strDate = year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
-        return strDate;
-    }
+	
 	
 	
 });
@@ -109,21 +107,25 @@ $(function() {
 	
 	<div style="width:650px; text-align: center;">
         <br>
-        <!-- **로그인 한 회원에게만 댓글 작성폼이 보이게 처리 -->
+        <!-- 로그인 한 회원에게만 댓글 작성폼이 보이게 처리 -->
         <c:if test="${sessionScope.se_id != null}">
         <textarea rows="5" cols="80" id="re_content" placeholder="댓글을 작성해주세요"></textarea>
         <br>
         <button type="button" id="btnReply">댓글 작성</button>
         </c:if>
     </div>
-    
+    <hr>
+     <!-- 본인이 쓴 게시물만 수정, 삭제가 가능하도록 처리 -->
+    <c:if test="${sessionScope.se_id == b.c_id}">
+	<a href="deleteBoard.com?b_number=${b.b_number }"><button type="button" id="btn_del">삭제</button></a>
+    <a href="updateBoard.com?b_number=${b.b_number }"><button type="button" id="btn_update">수정</button></a>
+    </c:if>
  
     	
 	<hr>
-	<a href="updateBoard.com?b_number=${b.b_number }">게시물 수정</a>
+	
 
-	<a href="insertReply.com?b_number=${b.b_number }">댓글쓰기</a><br>
-	<a href="deleteBoard.com?b_number=${b.b_number }">게시물삭제</a>
+<%-- 	<a href="insertReply.com?b_number=${b.b_number }">댓글쓰기</a><br> --%>
 	
 	
 	

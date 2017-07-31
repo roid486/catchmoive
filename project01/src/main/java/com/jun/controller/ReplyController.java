@@ -40,6 +40,7 @@ public class ReplyController {
 		ModelAndView mav = new ModelAndView();
 		String se_id= (String)session.getAttribute("se_id");
 		int re_number= dao.getNextRe();
+		vo.setRe_number(re_number);
 		vo.setC_id(se_id);
 		dao.insertRe(vo);
 		mav.setViewName("detailBoard");
@@ -63,6 +64,8 @@ public class ReplyController {
         // replyList.jsp로 포워딩
         return mav;
     }
+	
+	
 	
 
 	

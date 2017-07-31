@@ -52,5 +52,7 @@ public class BoardDao {
 		// TODO Auto-generated method stub
 		return JavajoManager.updateStep(b_b_ref,b_b_step);
 	}
+
+
 	
 }

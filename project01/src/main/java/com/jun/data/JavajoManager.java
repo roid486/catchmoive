@@ -130,6 +130,8 @@ public class JavajoManager {
 		session.close();
 		return re;
 	}
+
+
 	
 	/*public static List<BoardVo> list(String searchField, String keyword) {
 		// TODO Auto-generated method stub
