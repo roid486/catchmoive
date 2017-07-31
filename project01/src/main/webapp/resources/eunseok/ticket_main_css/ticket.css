@@ -1,20 +1,11 @@
 @CHARSET "EUC-KR";
-/* .ticket_container{
-width: 940px;
-height: 500px;
-margin: 0px auto;
-padding: 20px;
-border : 1px solid black;
-}
-.ticket_header{
-padding: 20px;
-margin-bottom: 20px;
-border: 1px solid #bcbcbc;
-} */
+
 .table {
 	position: relative;
 	border-collapse: separate;
 	table-layout: fixed;
+	background-color: #fdfdee;
+	margin-top: 20px;
 
 }
 
@@ -22,23 +13,9 @@ border: 1px solid #bcbcbc;
 	width: 450px;
 	padding: 20px;
 	margin-bottom: 20px;
-	border: 1px solid #bcbcbc;
+	/* border: 1px solid #bcbcbc; */
 }
 
-/* .ticket_footer {
-	clear: both;
-	padding: 20px;
-	border: 1px solid #bcbcbc;
-} */
-/* 
-.ticket_header>* {
-	display: inline-block;
-} */
-/* .adult, .youth, .special {
-	display: inline-block;
-	width: 50px;
-	left: 10%;
-} */
 a {
 	text-decoration: none;
 	color: black;
@@ -87,6 +64,7 @@ a {
 	width: 490px;
 	height: 21px;
 	background: gray;
+	margin-top:10px;
 	top: 10px;
 }
 
@@ -110,6 +88,7 @@ a {
 	display: inline-block;
 	text-decoration: underline;
 }
+
 a{
     -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
     -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
@@ -125,13 +104,16 @@ a{
 }
 
 a.button {
-    color: rgba(30, 22, 54, 0.6);
-    box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+    color: rgba(255, 255, 255, 1);
+    box-shadow: rgba(255, 255, 255, 1) 0 0px 0px 2px inset;
+    display:
+    border: 2px solid white;
+    height: 40px;
 }
 
 a.button:hover {
-    color: rgba(255, 255, 255, 0.85);
-    box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+    color: rgba(0, 0, 0, 0.54);
+    box-shadow: rgba(255, 255, 255, 1) 0 0px 0px 40px inset;
 }
 #big{
 	
@@ -139,12 +121,16 @@ a.button:hover {
 	width: 100%;
 	height: 100%;
 }
+
+#big > *{
+	color: gray;
+}
 #small1{
-	display: inline-block;
+	/* display: inline-block; */
 	float: left;
 	width: 11%;
 	text-align: left;
-	height: 100%;
+	/* height: 90%; */
 }
 #small2{
 	display: inline-block;
@@ -168,10 +154,12 @@ a.button:hover {
 	display: inline-block;
 	float: right;
 	width: 11%;
-	height: 100%;
+	/* height: 90%; */
 	text-align:right; 
 }
-
+#radio{
+	margin-left: 10px;
+}
 
 input[type=radio] {
 	display: none;
@@ -264,7 +252,7 @@ input[type=checkbox]:checked+label:BEFORE { /*체크 박스에 체크  */
 	position: relative;
 	left: 4px;
 	bottom: -1px;
-	background-color: #0000;
+	background-color: #fdfdee;
 	border-radius: 1px;
 	box-sizing: border-box;
 	border: 1px solid black;

@@ -28,25 +28,31 @@ $(function(){
 			success:function(data){
 				/* var ajaxName = decodeURIComponent(data);
 				alert(ajaxName); */
-				alert(data);
 				var tr = $("<tr></tr>");
 				$.each(data,function(index,item){
-					var td = $("<td></td>")/* .css({
-						padding-right:"40px",
-						padding-bottom:"30px",
-						padding-left:"40px",
-						padding-top:"30px"
-					}) */;
-					var img = $("#tb.img").attr("src",item.m_image);
-					var lab = $("#tb_lab").text(item.m_name);
+				$("#di").text(item.m_name+" : "+item.m_actor);
+					//alert(item.m_name)
+					var td = $("<td></td>").css({
+						"padding-right":"40px",
+						"padding-bottom":"30px",
+						"padding-left":"40px",
+						"padding-top":"30px"
+					});
+					var a = $("#a_detail").clone(true);
 					
-					$(img).appendTo($(tr));
-					$(lab).appendTo($(tr));
+					var lab = $("#tb_lab").html("<strong>"+item.m_name+"</strong>");
 					
-					$(tr).appendTo($("#result_table"));
+					
+					$(img).appendTo($(td));
+					$(lab).appendTo($(td));
+					$(td).appendTo($(tr));
+					
+					
 					if((index+1)%4 ==0){
-												
+						$("<tr></tr>").appendTo($("#result_table"));
+						
 					}
+				$("#result_table").append($(tr));
 				});
 				
 				
@@ -220,7 +226,7 @@ $(function(){
 			
 			<br>
 			<div align="center">
-			<button type="submit" class="btn btn-danger" id="btn_search"><b>검색</b></button>
+			<button type="button" class="btn btn-danger" id="btn_search"><b>검색</b></button>
 			</div>
 		</div>
 	</form>
@@ -228,8 +234,10 @@ $(function(){
 	<hr>
 	<h3 align="center" id="result"><strong>${str }</strong></h3>
 	<br>
+	<div id="di"></div>
+	<a id="a_detail" href="detailMovie.com?m_number=${m.m_number }"></a>
 	<table cellspacing="10" id="result_table">
-		<tr id="tr1">
+	<%-- 	<tr id="tr1">
 		<c:forEach var="m" items="${list }" varStatus="status">			
 			<td style="padding-right: 40px; padding-bottom: 30px; padding-left: 40px; padding-top: 30px">
 				
@@ -247,7 +255,7 @@ $(function(){
 				</c:if> 
 			
 		</c:forEach>
-		</tr>
+		</tr> --%>
 	
 	
 	</table>
