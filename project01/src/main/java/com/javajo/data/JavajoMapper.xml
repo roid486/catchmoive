@@ -95,4 +95,23 @@
   	</if>) a) 
     where rowm between #{num1} and #{num2}
   </select>
+  <select id="ttotal" resultType="java.lang.Integer">
+  	select count(*) from theater
+  	<if test="key != null">
+    	where m_name like '%'||#{key}||'%'
+    </if>
+  </select>
+  <select id="tlist" resultType="theaterVo">
+  	select * from (select rownum rowm, a.* from (select * from theater
+  	<if test="key != null">
+  		where t_name like '%'||#{key}||'%'
+  	</if>) a) 
+    where rowm between #{num1} and #{num2}
+  </select>
+  <insert id="tinsert">
+  	insert into theater values(#{t_number},#{t_name},#{t_seat},#{mt_number})
+  </insert>
+  <select id="mlist2" resultType="movietheaterVo2">
+  	select * from movietheater
+  </select>
 </mapper>

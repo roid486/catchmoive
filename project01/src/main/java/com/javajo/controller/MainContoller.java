@@ -149,15 +149,5 @@ public class MainContoller {
 		return mav;
 	}
 	
-	@RequestMapping()
-	public JSONArray mscorelist()
-	{
-		JSONArray ja = new JSONArray();
-		List<MovienameVo> list = dao.moviename();
-		for(int i = 0; i < list.size(); i++)
-		{
-			System.out.println(list.get(i).getM_name());
-		}
-		return ja;
-	}
+	
 }

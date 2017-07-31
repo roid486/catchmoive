@@ -13,6 +13,7 @@ import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
+import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 
 public class JavajoManager {
@@ -249,6 +250,42 @@ public class JavajoManager {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
 		List<MovienameVo> list = session.selectList("javajo.mscorelist");
+		session.close();
+		return list;
+	}
+
+	public static int ttotalrecode(String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		int re = session.selectOne("javajo.ttotal", key);
+		session.close();
+		return re;
+	}
+
+	public static List<TheaterVo> tlist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("num1", num1);
+		map.put("num2", num2);
+		map.put("key", key);
+		List<TheaterVo> list = session.selectList("javajo.tlist", key);
+		session.close();
+		return list;
+	}
+
+	public static int tinsert(TheaterVo tv) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.insert("javajo.tinsert", tv);
+		session.close();
+		return re;
+	}
+
+	public static List<MovieTheaterVo2> mlist2() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		List<MovieTheaterVo2> list = session.selectList("javajo.mlist2");
 		session.close();
 		return list;
 	}

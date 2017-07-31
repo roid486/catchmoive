@@ -24,5 +24,6 @@
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
 	
+		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
 </body>
 </html>

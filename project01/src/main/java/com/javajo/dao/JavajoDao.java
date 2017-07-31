@@ -9,6 +9,7 @@ import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
+import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 
 @Repository
@@ -122,5 +123,25 @@ public class JavajoDao {
 	public List<MovienameVo> moviename() {
 		// TODO Auto-generated method stub
 		return JavajoManager.mscorelist();
+	}
+
+	public int ttotalRecode(String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.ttotalrecode(key);
+	}
+
+	public List<TheaterVo> tlist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.tlist(num1,num2,key);
+	}
+
+	public int insertt(TheaterVo tv) {
+		// TODO Auto-generated method stub
+		return JavajoManager.tinsert(tv);
+	}
+
+	public List<MovieTheaterVo2> mtlist2() {
+		// TODO Auto-generated method stub
+		return JavajoManager.mlist2();
 	}	
 }
