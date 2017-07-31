@@ -5,10 +5,10 @@
 	border-collapse: separate;
 	table-layout: fixed;
 	background-color: #fdfdee;
-	margin-top: 20px;
+	margin-top: 15px;
 
 }
-
+   
 .ticket_content {
 	width: 450px;
 	padding: 20px;
@@ -189,7 +189,7 @@ input[type=radio]+label:BEFORE {
 }
 
 input[type=radio]:checked+label:BEFORE {
-	content: "\2710"; /* 체크모양 */
+	content: "\2714"; 체크모양 
 	text-shadow: 0px 0px 0px rgba(0, 0, 0,0);
 	font-size: 18px;
 	font-weight: 800;
@@ -246,6 +246,20 @@ input[type=checkbox]:checked+label:BEFORE { /*체크 박스에 체크  */
 	background: #0000;
 	text-align: center;
 	line-height: 18px; */
+	display: inline-block;
+	width: 21px;
+	height: 21px;
+	position: relative;
+	left: 4px;
+	bottom: -1px;
+	background-color: #fdfdee;
+	border-radius: 1px;
+	box-sizing: border-box;
+	border: 1px solid black;
+}
+
+input[type=checkbox]:disabled+label:BEFORE { /*체크 박스에 체크  */
+	content: "\274c"; /* 체크모양 */
 	display: inline-block;
 	width: 21px;
 	height: 21px;
