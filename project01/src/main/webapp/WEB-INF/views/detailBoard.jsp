@@ -20,34 +20,7 @@ $(function() {
 	 }); 
 
 	listReply();
- 	//댓글쓰는거
-	$("#btnReply").click(function() {
-		
-		var re_content = $("#re_content").val();
-		var b_number = "${b.b_number}";
-		var param="re_content= "+re_content+"&b_number= "+b_number;
-		$.ajax({
-			type:"POST",
-			url:"insertReply.com",
-			data:param,
-			success: function() {
-				alert("댓글이 등록되었습니다.");
-				listReply();
-			}
-					
-		});
-		if(id1==null || id1=="")
-		{
-			$("#msgdialog").dialog("open");
-		}
-		else
-		{
-			alert("id1    ::  "+id1);
-			alert("re_content  ::"   +re_content);
-			alert("param    ::"    +param);
-		}
-	});
-	
+ 	
 	function listReply(){
 		$.ajax({
 			type:"get",
@@ -59,6 +32,47 @@ $(function() {
 		});	
 	};
 	
+	//댓글쓰는거 	
+	$("#btnReply").click(function() {
+		
+		var re_content = $("#re_content").val();
+		var b_number = "${b.b_number}";
+		var param="re_content= "+re_content+"&b_number= "+b_number;
+		/* if(id1==null || id1=="")
+		{
+			$("#msgdialog").dialog("open");
+		}
+		else
+		{
+			alert("id1    ::  "+id1);
+			alert("re_content  ::"   +re_content);
+			alert("param    ::"    +param);
+		} */
+		$.ajax({
+			type:"POST",
+			url:"insertReply.com",
+			data:param,
+			success: function() {
+				alert("댓글이 등록되었습니다.");
+				listReply();
+			}
+					
+		});
+	});
+	
+
+	
+	function changeDate(date){
+        date = new Date(parseInt(date));
+        year = date.getFullYear();
+        month = date.getMonth();
+        day = date.getDate();
+        hour = date.getHours();
+        minute = date.getMinutes();
+        second = date.getSeconds();
+        strDate = year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
+        return strDate;
+    }
 	
 	
 });
@@ -86,19 +100,18 @@ $(function() {
 	
     <div id="listReply"></div>
 	<hr>
+	
 	<div style="width:650px; text-align: center;">
         <br>
         <!-- **로그인 한 회원에게만 댓글 작성폼이 보이게 처리 -->
-        <%-- <c:if test="${sessionScope.se_id != null}"> --%>    
+        <c:if test="${sessionScope.se_id != null}">
         <textarea rows="5" cols="80" id="re_content" placeholder="댓글을 작성해주세요"></textarea>
         <br>
         <button type="button" id="btnReply">댓글 작성</button>
-        <%-- </c:if> --%>
+        </c:if>
     </div>
     
  
-   
-    <!-- **댓글 목록 출력할 위치 -->
     	
 	<hr>
 	<a href="updateBoard.com?b_number=${b.b_number }">게시물 수정</a>

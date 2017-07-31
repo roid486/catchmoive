@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
 <mapper namespace="javajo">
   <select id="selectAll" resultType="boardVo">
-    select b_number,b_title,b_pwd,b_content,b_hit,to_char(b_regdate,'YYYY-MM-DD hh24:mm:ss') b_regdate,b_ip,b_b_ref,b_b_level,b_b_step,b_fname,b_fsize,b_type,c_id from board
+    select b_number,b_title,b_pwd,b_content,b_hit,to_char(b_regdate,'YYYY-MM-DD hh24:mm:ss') b_regdate,b_ip,b_b_ref,b_b_level,b_b_step,b_fname,b_fsize,b_type,c_id,(select count(*) from reply WHERE b_number=b.b_number) AS b_recnt  from board b order by b_number desc
+    
     <if test="keyword !=null and keyword !=''">
  		where ${searchField} like '%' || #{keyword} || '%'
  	</if>
@@ -46,11 +48,11 @@
   
 
   <select id="selectRe" resultType="replyVo">
- 	select * from reply r,customer c where r.c_id=c.c_id and b_number=#{b_number}
+ 	select * from reply r,customer c where r.c_id=c.c_id and b_number=#{b_number} order by re_number
   </select>
   
   <insert id="insertRe">
-	insert into reply(re_number,re_content,b_number,c_id) values(seq_reply.nextval,#{re_content},#{b_number},#{c_id})
+	insert into reply(re_number,re_content,re_regdate,b_number,c_id) values(seq_reply.nextval,#{re_content},sysdate,#{b_number},#{c_id})
 
     </insert>
   

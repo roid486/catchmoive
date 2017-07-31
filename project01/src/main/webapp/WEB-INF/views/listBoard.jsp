@@ -71,7 +71,12 @@
 			<td>${b.b_number }</td>
 			<td>${b.b_type }</td>
 			<td>
-			<a id="btn_detail" href="detailBoard.com?b_number=${b.b_number }">${b.b_title }</a>
+			<a id="btn_detail" href="detailBoard.com?b_number=${b.b_number }">${b.b_title }
+                    <c:if test="${b.b_recnt > 0}">
+                    <span style="color: red;">(${b.b_recnt})
+                    </span>
+                    </c:if>
+			</a>
 			</td>
 			<td>${b.c_id }</td>
 			<td>${b.b_regdate }</td>
