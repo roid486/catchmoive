@@ -9,4 +9,7 @@
   <select id="selectAll" resultType="MovieScoreVo">
   	select * from moviescore
   </select>
+   <select id="selectOne" resultType="MovieScoreVo">
+  	select * from moviescore where ms_mid=#{ms_mid} order by ms_no desc
+  </select>
 </mapper>

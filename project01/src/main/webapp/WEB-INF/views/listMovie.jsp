@@ -16,7 +16,7 @@
 
 #menu{
  background-color: #80d4ff;
-
+ color: #80d4ff;
 
 }
 
