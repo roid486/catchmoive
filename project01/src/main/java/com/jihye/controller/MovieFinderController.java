@@ -54,6 +54,7 @@ public class MovieFinderController {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			str = mapper.writeValueAsString(list);
+			  // response.getWriter().print(mapper.writeValueAsString(person));
 		} catch (Exception e) {
 			System.out.println("first() mapper   ::    " + e.getMessage());
 		}
