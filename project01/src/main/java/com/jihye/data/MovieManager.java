@@ -84,6 +84,17 @@ public class MovieManager {
 		return list;
 	}
 	
+	public static List<MovieScoreVo> getMovieScore(int ms_mid){
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("ms_mid", ms_mid);
+		List<MovieScoreVo> list = session.selectList("moviescore.selectOne",map);
+		session.close();
+		return list;
+		
+	}
+	
 	public static List<MovieVo_j> getMovieFinder(String searchField,String keyword,String[] m_genre,String[] m_nation,String[] m_grade,String startyear,String endyear){
 		
 		SqlSession session = factory.openSession();
