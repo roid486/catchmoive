@@ -43,10 +43,7 @@ public class MovieFinderController {
 	@RequestMapping(method=RequestMethod.POST,produces = "text/plain;charset=utf-8")
 	@ResponseBody
 	public String submit(String searchField,String keyword,String[] m_genre,String[] m_nation,String[] m_grade,String startyear,String endyear,HttpServletResponse response){
-		//ModelAndView mav = new ModelAndView(); 
-		//System.out.println("컨트롤러에서 넘기는 값 : "+keyword);
-		//System.out.println("컨트롤러에서 넘기는 startyear : "+startyear);
-		//System.out.println("컨트롤러에서 넘기는 endyear : "+endyear);
+	
 		List<MovieVo_j> list = dao.getMovieFinder(searchField, keyword, m_genre, m_nation, m_grade, startyear, endyear);
 		
 		String str = "";
@@ -54,6 +51,7 @@ public class MovieFinderController {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			str = mapper.writeValueAsString(list);
+			  // response.getWriter().print(mapper.writeValueAsString(person));
 		} catch (Exception e) {
 			System.out.println("first() mapper   ::    " + e.getMessage());
 		}

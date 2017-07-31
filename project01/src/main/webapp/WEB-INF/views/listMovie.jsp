@@ -17,6 +17,7 @@
 #menu{
  background-color: #80d4ff;
 
+
 }
 
 #w3-bar-item{
@@ -93,8 +94,8 @@ $(function(){
 	<!-- Sidebar -->
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%" id="menu">
   <h3 class="w3-bar-item" id="w3-bar-item">영화</h3>
-  <a href="#" class="w3-bar-item w3-button">무비차트</a>
-  <a href="#" class="w3-bar-item w3-button">무비파인더</a>
+  <a href="listMovie.com" class="w3-bar-item w3-button">무비차트</a>
+  <a href="movieFinder.com" class="w3-bar-item w3-button">무비파인더</a>
   
 </div>
 

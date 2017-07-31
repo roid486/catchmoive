@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket.css?a=33111223" />
+	href="resources/eunseok/ticket_main_css/ticket.css?a=311223" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
@@ -158,13 +158,13 @@
 									"input[type=checkbox]");
 							var two;
 							$(this).css({
-								"background-color" : "#ffffff"
+								"background-color" : "#fdfdee"
 							})
 							$(this).parent().next().find("label").css({
-								"background-color" : "#ffffff"
+								"background-color" : "#fdfdee"
 							})
 							$(this).parent().prev().find("label").css({
-								"background-color" : "#ffffff"
+								"background-color" : "#fdfdee"
 							})
 							
 							if($(this).text()<5){
@@ -200,7 +200,6 @@
 									alert("one uncheck")
 								}
 							}
-							 alert("arr :" +arr+"length"+arr.length+"totalNum :"+totalNum) 
 							 
 							 $("#nseat").html("")
 							 $("#nseat").html(arr)
@@ -238,7 +237,13 @@
 			$("#pnum").html(t1+" "+t2+" "+t3);
 		})
 		$("#btn3").click(function(){
-			$("input[type=checkbox]").prop("checked",false)
+			
+			if(("input[type='checkbox']").is(":disabled"))
+				{
+				alert("ok");
+				}
+			/* $("input[type=checkbox]").prop("checked",false)
+			 */
 			$("input[type=radio]:input[value=0]").prop("checked",true)
 			anum = 0;
 			ynum = 0;  
