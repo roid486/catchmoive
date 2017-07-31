@@ -9,6 +9,7 @@ public class ReplyVo {
 	private String re_updatedate;
 	private int b_number;
 	private String c_id;
+	private String c_name;
 	public int getRe_number() {
 		return re_number;
 	}
@@ -51,8 +52,14 @@ public class ReplyVo {
 	public void setC_id(String c_id) {
 		this.c_id = c_id;
 	}
+	public String getC_name() {
+		return c_name;
+	}
+	public void setC_name(String c_name) {
+		this.c_name = c_name;
+	}
 	public ReplyVo(int re_number, String re_content, String re_writer, String re_regdate, String re_updatedate,
-			int b_number, String c_id) {
+			int b_number, String c_id, String c_name) {
 		super();
 		this.re_number = re_number;
 		this.re_content = re_content;
@@ -61,6 +68,7 @@ public class ReplyVo {
 		this.re_updatedate = re_updatedate;
 		this.b_number = b_number;
 		this.c_id = c_id;
+		this.c_name = c_name;
 	}
 	public ReplyVo() {
 		super();
@@ -70,9 +78,8 @@ public class ReplyVo {
 	public String toString() {
 		return "ReplyVo [re_number=" + re_number + ", re_content=" + re_content + ", re_writer=" + re_writer
 				+ ", re_regdate=" + re_regdate + ", re_updatedate=" + re_updatedate + ", b_number=" + b_number
-				+ ", c_id=" + c_id + "]";
+				+ ", c_id=" + c_id + ", c_name=" + c_name + "]";
 	}
-	
-	
+		
 	
 }

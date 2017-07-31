@@ -12,8 +12,8 @@
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	var id1 = <%= session.getAttribute("se_id")%>
-	
+	<%-- var id1 = <%= session.getAttribute("se_id")%> --%>
+	var id1 = $("#se_id").val();
  	$("#msgdialog").dialog({
 	    autoOpen:false,
 	    modal:true
@@ -21,6 +21,7 @@ $(function() {
 
 	listReply();
  	
+
 	function listReply(){
 		$.ajax({
 			type:"get",
@@ -50,9 +51,14 @@ $(function() {
 		} */
 		$.ajax({
 			type:"POST",
+			dataType:"text",
 			url:"insertReply.com",
 			data:param,
-			success: function() {
+			success: function(data) {
+				alert("댓글이 등록되었습니다.");
+				listReply();
+			},
+			error: function(data){
 				alert("댓글이 등록되었습니다.");
 				listReply();
 			}

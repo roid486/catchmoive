@@ -5,8 +5,12 @@
   
 <mapper namespace="javajo">
   <select id="selectAll" resultType="boardVo">
-    select b_number,b_title,b_pwd,b_content,b_hit,to_char(b_regdate,'YYYY-MM-DD hh24:mm:ss') b_regdate,b_ip,b_b_ref,b_b_level,b_b_step,b_fname,b_fsize,b_type,c_id,(select count(*) from reply WHERE b_number=b.b_number) AS b_recnt  from board b order by b_number desc
-    
+select b_number,b_title,b_pwd,b_content,b_hit,to_char(b_regdate,'YYYY-MM-DD hh24:mm:ss') b_regdate,b_ip,b_b_ref,b_b_level,b_b_step,b_fname,
+b_fsize,b_type,b.c_id,
+(select count(*) from reply WHERE b_number=b.b_number) AS b_recnt,
+c_name
+from board b, customer c where b.c_id=c.c_id order by b_number desc
+
     <if test="keyword !=null and keyword !=''">
  		where ${searchField} like '%' || #{keyword} || '%'
  	</if>
@@ -22,7 +26,7 @@
   
   
   <insert id="insertBoard">
-  	insert into board values(#{b_number}, #{b_title}, #{b_pwd}, #{b_content}, 0, sysdate, #{b_ip}, 0, 0, 0, #{b_fname}, #{b_fsize}, #{b_type}, 1 )
+  	insert into board values(#{b_number}, #{b_title}, #{b_pwd}, #{b_content}, 0, sysdate, #{b_ip}, 0, 0, 0, #{b_fname}, #{b_fsize}, #{b_type},#{c_id},0 )
   </insert>
  
   <select id="getBoard" resultType="boardVo">
@@ -48,7 +52,7 @@
   
 
   <select id="selectRe" resultType="replyVo">
- 	select * from reply r,customer c where r.c_id=c.c_id and b_number=#{b_number} order by re_number
+ 	select re_number,re_content,re_regdate,re_updatedate,b_number,r.c_id,c_name from reply r,customer c where r.c_id=c.c_id and b_number=#{b_number} order by re_number
   </select>
   
   <insert id="insertRe">
