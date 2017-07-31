@@ -4,6 +4,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style type="text/css">
+.show{
+	visibility: visible;
+	
+}
+.hidetable{
+	display: none;
+}
+#menu{
+ background-color: #80d4ff;
+ color: #80d4ff;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -12,8 +25,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script type="text/javascript">
 $(function(){
+	
+
+
 	
 	$("#btn_search").click(function(){
 		//alert("검색 버튼 클릭!");
@@ -26,28 +45,80 @@ $(function(){
 			dataType: "json",
 			data:params,
 			success:function(data){
-				/* var ajaxName = decodeURIComponent(data);
-				alert(ajaxName); */
-				alert(data);
+				
+				
+				$("#re").empty();
+				$('#result_table').empty();
+				
+				
 				var tr = $("<tr></tr>");
-				$.each(data,function(index,item){
-					var td = $("<td></td>")/* .css({
-						padding-right:"40px",
-						padding-bottom:"30px",
-						padding-left:"40px",
-						padding-top:"30px"
-					}) */;
-					var img = $("#tb.img").attr("src",item.m_image);
-					var lab = $("#tb_lab").text(item.m_name);
+				
+				var html;
+				var idx=0;
+				var title;
+				$("#re").show();
+				$("#title").empty();
+			
+				
+				if(data.length==0){
+				
+					$("#result_table").addClass("hidetable");
+					var str="<center>";
+					str+="<img src='resources/images/sad.png' width='80' height='80'>"
+					str+="<h2>조건에 맞는 데이터가 존재하지 않습니다!</h2>";
+					str+="</center>";
+					$("#re").append(str);
+				
+				}
+				
+				else{
 					
-					$(img).appendTo($(tr));
-					$(lab).appendTo($(tr));
+					$("#result_table").removeClass("hidetable");
 					
-					$(tr).appendTo($("#result_table"));
-					if((index+1)%4 ==0){
-												
-					}
-				});
+					
+					html+="<tr>";
+					$.each(data,function(index,item){
+				
+						
+						$("#no").hide();
+						$("#title").show();
+				
+						
+						html+='<td style="padding-right: 40px; padding-bottom: 50px; padding-left: 40px; padding-top: 50px>';
+						html+='<a href="detailMovie.com?m_number="'+item.m_number+'">';
+						html+='<img src="resources/upload/'+item.m_image+'" id="tb_img" width="220" height="320" style="cursor: pointer;"><br></a>';
+						html+='<div style="text-align: center;font-size: 12pt">'
+						html+='<a href="detailMovie.com?m_number='+item.m_number+'">';
+						html+='<label id="tb_lab" style="cursor: pointer;"><strong>'+item.m_name+'</strong></label></a></div>';
+						
+						html+="</td>";
+						if((index+1) % 4 ==0){
+						html+="</tr><tr>";
+						
+						}
+						
+						idx=(index+1);
+						
+
+						
+						
+					});//each문
+					
+					
+					
+					title="<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+					title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+					title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+					title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+					title+="<img src='resources/images/search.png' width='30' height='30'>&nbsp;&nbsp;&nbsp;총 ["+idx+"]개의 검색 결과입니다.<br>"
+					html+="</tr>";
+					$("#title").append(title);
+					$("#result_table").append(html); 
+					
+					
+				}
+				
+				
 				
 				
 			},
@@ -75,7 +146,19 @@ $(function(){
 		<strong>무비 파인더</strong>
 	</h2>
 	<hr>
-
+	<br>
+	
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%" id="menu">
+  			<h3 class="w3-bar-item" id="w3-bar-item">영화</h3>
+  			<a href="listMovie.com" class="w3-bar-item w3-button">무비차트</a>
+ 			<a href="movieFinder.com" class="w3-bar-item w3-button">무비파인더</a>
+  
+</div>
+		
+<div style="margin-left:18%">
+	
+	
 	<form id="formId" action="movieFinder.com" method="post">
 		
 		<div class="well">
@@ -144,7 +227,7 @@ $(function(){
 			&nbsp;&nbsp;&nbsp;
 			<span><strong>제작국가</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<label class="checkbox-inline"> 
-					<input type="checkbox" value="대한민국" name="m_nation">대한민국
+					<input type="checkbox" value="한국" name="m_nation">한국
 					</label> 
 					
 						<label class="checkbox-inline"> 
@@ -220,40 +303,39 @@ $(function(){
 			
 			<br>
 			<div align="center">
-			<button type="submit" class="btn btn-danger" id="btn_search"><b>검색</b></button>
+			<button type="button" class="btn btn-danger" id="btn_search"><b>검색</b></button>
 			</div>
 		</div>
 	</form>
 	
 	<hr>
-	<h3 align="center" id="result"><strong>${str }</strong></h3>
+	
 	<br>
-	<table cellspacing="10" id="result_table">
-		<tr id="tr1">
-		<c:forEach var="m" items="${list }" varStatus="status">			
-			<td style="padding-right: 40px; padding-bottom: 30px; padding-left: 40px; padding-top: 30px">
-				
-				<a href="detailMovie.com?m_number=${m.m_number }">
-				<img src="resources/upload/${m.m_image }" id="tb_img" width="220" height="320"><br></a>
-				
-				<div style="text-align: center;font-size: 12pt">
-				<a href="detailMovie.com?m_number=${m.m_number }">
-				<label id="tb_lab"><strong>${m.m_name }</strong></label></a></div>
-				
-			</td>
-			
-				<c:if test="${(status.index+1) % 4 ==0 }" >
-					</tr><tr>
-				</c:if> 
-			
-		</c:forEach>
-		</tr>
+	<div id="re" style="display: none;">
+		<center><h3><strong>검색 결과</strong></h3></center>
+	</div>
+	<div id="title" style="display: none; position:absolute; left:400px">
+		<br>
+	</div>
+	<br><br>
+	
+	<center><table cellspacing="10" id="result_table">
+	
+	</table></center>
 	
 	
-	</table>
 	
+	
+	
+	
+	
+		
+		
+		
+	</div>
 	
 
+	
 
 </body>
 </html>

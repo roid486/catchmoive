@@ -107,7 +107,8 @@ jq1(function($) {
       height : 600,
       showCloseButton : false,
       opcity : 0.2,
-      overlayShow : true
+      overlayShow : true,
+      scrolling : "no"
    });
 }) 
  jq3(function ($) {
