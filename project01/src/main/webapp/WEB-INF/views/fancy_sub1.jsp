@@ -197,14 +197,15 @@
 					<a href="#" class="button" id="btn1">뒤로가기</a>
 				</div>
 				<div id="small2">
-					영화 포스터/영화이름<br><span id="name"style="color: white;"></span>
+					영화 포스터/영화이름<br> <span id="name" style="color: white;"></span>
 				</div>
 				<div id="small3">
-					극장 <br><span id="the"style="color: white;"></span><br>상영관<br><span id="the1"style="color: white;"></span> <br>
-					일시<br><span id="day"style="color: white;"></span>
+					극장 <br> <span id="the" style="color: white;"></span><br>상영관<br>
+					<span id="the1" style="color: white;"></span> <br> 일시<br>
+					<span id="day" style="color: white;"></span>
 				</div>
 				<div id="small4">
-					좌석 번호 <br><span id="nseat" style="color: white;"></span>
+					좌석 번호 <br> <span id="nseat" style="color: white;"></span>
 				</div>
 				<div id="small5">
 					<a href="#" id="move_sub2" class="button">좌석선택</a>

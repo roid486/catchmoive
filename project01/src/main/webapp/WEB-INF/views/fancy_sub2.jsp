@@ -75,7 +75,6 @@
 
 			history.back();
 		});
-
 	})
 	jq3(function($) {
 		var anum = 0;
@@ -323,8 +322,9 @@
 						</center>
 						일반 : 10000원 청소년 : 7000원 우대 : 5000원</td>
 				</div>
-				<td colspan="3" width="*" style="font-family: Arial, sans-serif; font-weight: bold; font-size: 18px;">
-					<div style="margin-left:55px;">
+				<td colspan="3" width="*"
+					style="font-family: Arial, sans-serif; font-weight: bold; font-size: 18px;">
+					<div style="margin-left: 55px;">
 						${movietheater_name } ${theater_number }관 | 남은 좌석: <span
 							id="present" style="color: red;"></span>/${seat_num }<br>
 						<h3>${running_date }${running_start }</h3>
@@ -351,13 +351,22 @@
 								</a>
 							</center>
 						</div>
-						<div id="small2">영화 포스터/영화이름 <br><font style="color: white;">${movie_name }</font></div>
+						<div id="small2">
+							영화 포스터/영화이름 <br>
+							<font style="color: white;">${movie_name }</font>
+						</div>
 						<div id="small3">
-							극장<br> <font style="color: white;">${movietheater_name }</font><br> 상영관<br><font style="color: white;">${theater_number }관</font> <br>
-							일시<br><font style="color: white;">${running_date } ${running_start }</font><br> 
+							극장<br> <font style="color: white;">${movietheater_name }</font><br>
+							상영관<br>
+							<font style="color: white;">${theater_number }관</font> <br>
+							일시<br>
+							<font style="color: white;">${running_date }
+								${running_start }</font><br>
 						</div>
 						<div id="small4">
-							인원<br><span id='pnum'style="color: white;"></span><br>좌석 번호 <br><span id="nseat"style="color: white;"></span>
+							인원<br>
+							<span id='pnum' style="color: white;"></span><br>좌석 번호 <br>
+							<span id="nseat" style="color: white;"></span>
 						</div>
 						<div id="small5">
 							<center>
