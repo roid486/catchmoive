@@ -41,6 +41,11 @@ public class TicketDao {
 		return TicketManager.insertseat(map2,arr);
 	}
 
+	public String getmoviename(String movie_number) {
+		// TODO Auto-generated method stub
+		return TicketManager.getmoviename(movie_number);
+	}
+
 	
 
 

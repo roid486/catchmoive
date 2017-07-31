@@ -81,4 +81,9 @@ public class TicketManager {
 		System.out.println("num"+num);
 		return num;
 	}
+	public static String getmoviename(String movie_number) {
+		SqlSession session = factory.openSession();
+		String str = session.selectOne("ticket.getmovie", movie_number);
+		return str;
+	}
 }

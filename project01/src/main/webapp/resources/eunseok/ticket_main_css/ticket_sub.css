@@ -1,10 +1,17 @@
 @CHARSET "EUC-KR";
-a{
-	text-decoration: none;
-	/* box-shadow: 1px 1px 1px #000; */
-	color: black;
+
+body{
+   font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
 }
-a{
+#chk1 a{
+	text-decoration: none;
+/* 	box-shadow: 1px 1px 12px 0px #000; */
+	color: black;
+	padding-top: 5px;
+}
+#chk1 a{
     display: inline-block;
     color: #03c;
     -webkit-transition: 0.5s;
@@ -14,7 +21,7 @@ a{
     transition: 0.5s;
 }
 
-a:hover {
+#chk1 a:hover {
     -webkit-transform: scale(1.5,1.5);
     -moz-transform: scale(1.5,1.5);
     -o-transform: scale(1.5,1.5);
@@ -23,56 +30,94 @@ a:hover {
 }
 
 
+#sub5_form a{
+    -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    display: inline-block;
+    margin: 20px auto;
+    max-width: 180px;
+    text-decoration: none;
+    text-align:center;
+    border-radius: 4px;
+    width:40px;
+    height:40px;
+    padding: 20px 30px;
+}
+
+#sub5_form a.button {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: rgba(255, 255, 255, 1) 0 0px 0px 2px inset;
+    border: 1px solid white;
+    height: 40px;
+}
+
+#sub5_form a.button:hover {
+    color: rgba(0, 0, 0, 0.54);
+    box-shadow: rgba(255, 255, 255, 1) 0 0px 0px 40px inset;
+}
+#sub5_form > * 
+{
+	color: gray;
+	
+}
+#c1{
+	text-align: center;
+}
 #main_form {
 	width: 100%;
-	height: 500px;
+/* 	height: 500px; */
 	margin-left: 70px;
 	margin-top: 20px;
 }
-/* #blank{
-	width: 30%;
-} */
+
+
 #main_form #sub1_form {
+	background:#fdfdee;
 	border: 1px solid black;
 	float: left;
-	width: 30%;
+	width: 40%;
 	height: 400px;
-	left: 40px;
-	margin-left: 80px;
-	box-shadow: 1px 1px 5px #000;
+/* 	left: 40px; */
+	margin-left: -50px;
+	box-shadow: 0.5px 0.5px 2px 4px #000;
 	border-radius: 2px;
 	overflow-x: auto;
 	overflow-y: auto;
-	/* overflow: scroll; */
 }
 
 #main_form #sub2_form {
+	background:#fdfdee;
 	border: 1px solid black;
 	float: left;
-	width: 10%;
+	width: 20%;
 	height: 400px;
 	margin-left: 10px;
-	box-shadow: 1px 1px 5px #000;
+	box-shadow: 0.5px 0.5px 2px 4px #000;
 	border-radius: 2px;
 }
 
 #main_form #sub3_form {
+	background:#fdfdee;
 	border: 1px solid black;
 	float: left;
-	width: 15%;
+	width: 20%;
 	height: 400px;
 	margin-left: 10px;
-	box-shadow: 1px 1px 5px #000;
+	box-shadow: 0.5px 0.5px 2px 4px #000;
 	border-radius: 2px;
 }
 
 #main_form #sub4_form {
+	background:#fdfdee;
 	border: 1px solid black;
 	float: left;
 	width: 10%;
 	height: 400px;
 	margin-left: 10px;
-	box-shadow: 1px 1px 5px #000;
+	box-shadow: 0.5px 0.5px 2px 4px #000;
 	border-radius: 2px;
 }
 #main_form #sub5_form {
@@ -80,32 +125,34 @@ a:hover {
 	position:absolute;
 	border: 1px solid black;
 	top: 440px;
-	left: 295px;
-	width:68.75%;
+	left: 160px;
+	width:95%;
 	height: 120px;
 	margin-left:-144px;
-	box-shadow: 1px 1px 5px #000;
+	box-shadow: 0.5px 0.5px 2px 4px #000;
 	border-radius: 2px;
+	background: black;
 }
 
 #small1{
-	/* display: inline-block; */
 	float: left;
 	width: 11%;
 	text-align: left;
-	/* height: 90%; */
 }
 #small2{
 	display: inline-block;
 	float: left;
 	width: 22%;
 	border: 1px solid black;
+	text-align: center;
+	
 }
 #small3{
 	display: inline-block;
 	float: left;
 	width: 25%;
 	border: 1px solid black;
+	text-align: center;
 }
 #small4{
 	display: inline-block;
@@ -114,10 +161,8 @@ a:hover {
 	border: 1px solid black;
 }
 #small5{
-	display: inline-block;
 	float: right;
 	width: 11%;
-	/* height: 90%; */
 	text-align:right; 
 }
 

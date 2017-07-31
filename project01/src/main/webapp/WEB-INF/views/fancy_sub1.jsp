@@ -10,7 +10,7 @@
 	media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket_sub.css?a=24488843" />
+	href="resources/eunseok/ticket_main_css/ticket_sub.css?a=43311" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
@@ -46,14 +46,14 @@
 					id : item.m_number,
 					name : "sub1"
 				}).html(item.m_name)
-			
+
 				$("#sub1_form").append(a1, "<br>");
 			})
 		})
 
 		$(document).on("click", "a", function() {
 			var chk = $(this).attr("name");
-			
+
 			$(this).css({
 				color : "red",
 				"font-weight" : "bold"
@@ -86,7 +86,7 @@
 
 		$(document).on("click", " a", function() {
 			var chk = $(this).attr("name");
-		
+
 			if (chk == "sub2") {
 				movietheater_number = $(this).attr("id");
 				var the = $(this).text();
@@ -142,7 +142,7 @@
 						})
 					}
 				})
-				
+
 			}
 		})
 
@@ -150,8 +150,8 @@
 			var chk = $(this).attr("name");
 			if (chk == "sub4") {
 				running_start = $(this).attr("id");
-				$("#the1").html(theater_number+"관")
-				$("#day").html($("#day").text()+" "+$(this).text())
+				$("#the1").html(theater_number + "관")
+				$("#day").html($("#day").text() + " " + $(this).text())
 			}
 		})
 
@@ -186,25 +186,28 @@
 
 	<center>
 		<div id="main_form">
-			<div id="blank"></div>
-			<div id="sub1_form"></div>
-			<div id="sub2_form"></div>
-			<div id="sub3_form"></div>
-			<div id="sub4_form"></div>
+			<div id="chk1">
+				<div id="sub1_form"></div>
+				<div id="sub2_form"></div>
+				<div id="sub3_form"></div>
+				<div id="sub4_form"></div>
+			</div>
 			<div id="sub5_form">
 				<div id="small1">
-					<button class="button" id="btn1">창 닫기</button>
+					<a href="#" class="button" id="btn1">뒤로가기</a>
 				</div>
-				<div id="small2">영화 포스터/영화이름:<span id="name"></span></div>
-					<div id="small3">
-						극장: <span id="the"></span><br>상영관<span id="the1"></span> <br>
-						일시:<span id="day"></span>${running_date } ${running_start }<br> 
-					</div>
-					<div id="small4">
-						좌석 번호 : <span id="nseat"></span>
-					</div>
+				<div id="small2">
+					영화 포스터/영화이름<br><span id="name"style="color: white;"></span>
+				</div>
+				<div id="small3">
+					극장 <br><span id="the"style="color: white;"></span><br>상영관<br><span id="the1"style="color: white;"></span> <br>
+					일시<br><span id="day"style="color: white;"></span>
+				</div>
+				<div id="small4">
+					좌석 번호 <br><span id="nseat" style="color: white;"></span>
+				</div>
 				<div id="small5">
-				<a id="move_sub2" href="#">좌석선택</a>
+					<a href="#" id="move_sub2" class="button">좌석선택</a>
 				</div>
 			</div>
 		</div>

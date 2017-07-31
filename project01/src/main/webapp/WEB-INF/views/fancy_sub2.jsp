@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket.css?a=311223" />
+	href="resources/eunseok/ticket_main_css/ticket.css?a=11223" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
@@ -316,11 +316,20 @@
 								</c:choose>
 							</c:forEach>
 						</div>
-					</div><div style="margin-top: 5px; margin-left: 15px;"><center><b>※요금표※</b></center>일반 : 10000원 청소년 : 7000원 우대 : 5000원</td></div> 
-				<td colspan="3" width="*">
-				<div style="margin-left: 10px;">
-					${movietheater_name } ${theater_number }관 | 남은 좌석: <span id="present" style="color: red;"></span>/${seat_num }<br><h3>${running_date } ${running_start }</h3> </td>
-			</div>
+					</div>
+					<div style="margin-top: 5px; margin-left: 15px;">
+						<center>
+							<b>※요금표※</b>
+						</center>
+						일반 : 10000원 청소년 : 7000원 우대 : 5000원</td>
+				</div>
+				<td colspan="3" width="*" style="font-family: Arial, sans-serif; font-weight: bold; font-size: 18px;">
+					<div style="margin-left:55px;">
+						${movietheater_name } ${theater_number }관 | 남은 좌석: <span
+							id="present" style="color: red;"></span>/${seat_num }<br>
+						<h3>${running_date }${running_start }</h3>
+				</td>
+				</div>
 			</tr>
 			<tr rowspan="2" height="35%">
 				<td colspan="5">
@@ -334,26 +343,31 @@
 				</td>
 			</tr>
 			<tr height="18%">
-			<td colspan="5" style="background-color: black;">
-				<div id="big">
-					<div id="small1">
-					   <a href="#" class="button" id="btn2">영화선택</a>
+				<td colspan="5" style="background-color: black;">
+					<div id="big">
+						<div id="small1">
+							<center>
+								<a href="#" class="button" id="btn2">영화<br>선택
+								</a>
+							</center>
+						</div>
+						<div id="small2">영화 포스터/영화이름 <br><font style="color: white;">${movie_name }</font></div>
+						<div id="small3">
+							극장<br> <font style="color: white;">${movietheater_name }</font><br> 상영관<br><font style="color: white;">${theater_number }관</font> <br>
+							일시<br><font style="color: white;">${running_date } ${running_start }</font><br> 
+						</div>
+						<div id="small4">
+							인원<br><span id='pnum'style="color: white;"></span><br>좌석 번호 <br><span id="nseat"style="color: white;"></span>
+						</div>
+						<div id="small5">
+							<center>
+								<a href="#" class="button" id="btn1">예매<br>하기
+								</a>
+							</center>
+						</div>
 					</div>
-					<div id="small2">영화 포스터</div>
-					<div id="small3">
-						극장: ${movietheater_name }<br> 상영관:${theater_number }관 <br>
-						일시:${running_date } ${running_start }<br> 인원:<span
-							id='pnum'></span>
-					</div>
-					<div id="small4">
-						좌석 번호 : <span id="nseat"></span>
-					</div>
-					<div id="small5">
-						 <a href="#" class="button" id="btn1">예매하기</a>
-					</div>
-				</div>
-				
-			</td>
+
+				</td>
 			</tr>
 		</table>
 	</center>
