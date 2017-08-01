@@ -34,7 +34,7 @@
 	  <h2>영화관 목록</h2>
 	  <p><a href="insertmt.com"><button class="btn btn-primary">영화관 추가</button></a></p>
 	  <form action="mtlist.com" method="post">
-			<input type="text" name="key" placeholder="ID를 입력하시오.">
+			<input type="text" name="key" placeholder="영화관 지점을 입력하시오.">
 			<button type="submit" class="btn btn-primary">검색</button>
 	  </form>
 	  <table class="table table-striped">

@@ -57,7 +57,7 @@
 	        <td>${cl.m_name }</td>
 	        <td>${cl.m_director }</td>
 	        <td>${cl.m_actor }</td>
-	        <td><a href="cupdate.com?c_id=${cl.m_number }"><button class="btn btn-primary">수정</button></a></td>
+	        <td><a href="updateMovie.com?m_number=${cl.m_number }"><button class="btn btn-primary">수정</button></a></td>
 	      </tr>
 	    </m:forEach>
 	    </tbody>

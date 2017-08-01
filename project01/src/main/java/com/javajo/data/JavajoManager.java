@@ -14,6 +14,7 @@ import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
 import com.javajo.vo.RunningVo;
+import com.javajo.vo.RunningVo2;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 
@@ -337,19 +338,29 @@ public class JavajoManager {
 	public static int rtotal(String key) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
-		int re = session.selectOne("javajo.rtotal", key);
+		if(key==null || key.length()<10)
+		{
+			key=null;
+		}
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("key", key);
+		int re = session.selectOne("javajo.rtotal", map);
 		session.close();
 		return re;
 	}
 
-	public static List<RunningVo> rlist(int num1, int num2, String key) {
+	public static List<RunningVo2> rlist(int num1, int num2, String key) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
+		if(key==null || key.length()<10)
+		{
+			key=null;
+		}
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("num1", num1);
 		map.put("num2", num2);
 		map.put("key", key);
-		List<RunningVo> list = session.selectList("javajo.rlist", map);
+		List<RunningVo2> list = session.selectList("javajo.rlist", map);
 		return list;
 	}
 
@@ -357,6 +368,60 @@ public class JavajoManager {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession(true);
 		int re = session.insert("javajo.insertr", rv);
+		session.close();
+		return re;
+	}
+
+	public static List<MovieVo_j> msele() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		List<MovieVo_j> list = session.selectList("javajo.msele");
+		session.close();
+		return list;
+	}
+
+	public static List<MovieTheaterVo2> mtsele() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		List<MovieTheaterVo2> list = session.selectList("javajo.mtsele");
+		session.close();
+		return list;
+	}
+
+	public static List<TheaterVo> tsele(int mt_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("mt_number", mt_number);
+		List<TheaterVo> list = session.selectList("javajo.tsele", map);
+		session.close();
+		return list;
+	}
+
+	public static int rdelete(int r_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("r_number", r_number);
+		int re = session.delete("javajo.rdelete", map);
+		session.close();
+		return re;
+	}
+
+	public static RunningVo2 rdetail(int r_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("r_number", r_number);
+		RunningVo2 rv2 = session.selectOne("javajo.rdetail", map);
+		session.close();
+		return rv2;
+	}
+
+	public static int rupdate(RunningVo rv) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.update("javajo.rupdate", rv);
 		session.close();
 		return re;
 	}

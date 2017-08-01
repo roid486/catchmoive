@@ -10,6 +10,7 @@ import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
 import com.javajo.vo.RunningVo;
+import com.javajo.vo.RunningVo2;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 
@@ -171,7 +172,7 @@ public class JavajoDao {
 		return JavajoManager.rtotal(key);
 	}
 
-	public List<RunningVo> rlist(int num1, int num2, String key) {
+	public List<RunningVo2> rlist(int num1, int num2, String key) {
 		// TODO Auto-generated method stub
 		return JavajoManager.rlist(num1,num2,key);
 	}
@@ -179,5 +180,35 @@ public class JavajoDao {
 	public int insertr(RunningVo rv) {
 		// TODO Auto-generated method stub
 		return JavajoManager.insertr(rv);
+	}
+
+	public List<MovieVo_j> msele() {
+		// TODO Auto-generated method stub
+		return JavajoManager.msele();
+	}
+
+	public List<MovieTheaterVo2> mtsele() {
+		// TODO Auto-generated method stub
+		return JavajoManager.mtsele();
+	}
+
+	public List<TheaterVo> tsele(int mt_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.tsele(mt_number);
+	}
+
+	public int rdelete(int r_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.rdelete(r_number);
+	}
+
+	public RunningVo2 rdetail(int r_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.rdetail(r_number);
+	}
+
+	public int rupdate(RunningVo rv) {
+		// TODO Auto-generated method stub
+		return JavajoManager.rupdate(rv);
 	}	
 }

@@ -132,8 +132,10 @@
     	where r_date = to_date(#{key},'yyyy/mm/dd')
     </if>
   </select>
-  <select id="rlist" resultType="runningVo">
-  	select * from (select rownum rowm, a.* from (select * from running
+  <select id="rlist" resultType="runningVo2">
+  	select * from (select rownum rowm, a.* from (
+	select r.r_number,m.m_name,mt.mt_name,t.t_name,r_date,r_start from running r, theater t, movietheater mt, movie m 
+	where r.m_number=m.m_number and r.mt_number=mt.mt_number and r.t_number=t.t_number
   	<if test="key != null">
   		where r_date = to_date(#{key},'yyyy/mm/dd')
   	</if>) a) 
@@ -142,4 +144,22 @@
   <insert id="insertr">
   	insert into running values(se_running.nextval,#{t_number},#{m_number},#{mt_number},to_date(#{r_date},'yyyy,mm,dd'),#{r_start})
   </insert>
+  <select id="msele" resultType="movieVo_j">
+  	select m_number,m_name from movie
+  </select>
+  <select id="mtsele" resultType="movietheaterVo2">
+  	select mt_number,mt_name from movietheater
+  </select>
+  <select id="tsele" resultType="theaterVo">
+  	select t_number,t_name from theater where mt_number=#{mt_number}
+  </select>
+  <delete id="rdelete">
+  	delete running where r_number=#{r_number}
+  </delete>
+  <select id="rdetail" resultType="runningVo2">
+  	select * from running where r_number=#{r_number}
+  </select>
+  <update id="rupdate">
+  	update running set t_number=#{t_number},m_number=#{m_number},mt_number=#{mt_number},r_date=to_date(#{r_date},'yyyy/mm/dd'),r_start=#{r_start} where r_number=#{r_number}
+  </update>
 </mapper>

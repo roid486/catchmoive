@@ -34,7 +34,7 @@
 	  <h2>상영관 목록</h2>
 	  <p><a href="insertt.com"><button class="btn btn-primary">상영관 추가</button></a></p>
 	  <form action="tlist.com" method="post">
-			<input type="text" name="key" placeholder="ID를 입력하시오.">
+			<input type="text" name="key" placeholder="상영관을 입력하시오.">
 			<button type="submit" class="btn btn-primary">검색</button>
 	  </form>
 	  <table class="table table-striped">
