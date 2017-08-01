@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.javajo.vo.CustomerVo;
+import com.javajo.vo.EventVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
@@ -422,6 +423,71 @@ public class JavajoManager {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession(true);
 		int re = session.update("javajo.rupdate", rv);
+		session.close();
+		return re;
+	}
+
+	public static int etotal(String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("key", key);
+		int re = session.selectOne("javajo.etotal", map);
+		return re;
+	}
+
+	public static List<EventVo> elist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("num1", num1);
+		map.put("num2", num2);
+		map.put("key", key);
+		List<EventVo> list = session.selectList("javajo.elist", map);
+		session.close();
+		return list;
+	}
+
+	public static int inserte(EventVo ev) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.insert("javajo.inserte", ev);
+		session.close();
+		return re;
+	}
+
+	public static List<CustomerVo> celist() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		List<CustomerVo> celist = session.selectList("javajo.celist");
+		session.close();
+		return celist;
+	}
+
+	public static int edelete(int e_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("e_number", e_number);
+		int re = session.delete("javajo.edelete", map);
+		session.close();
+		return re;
+	}
+
+	public static EventVo edetail(int e_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("e_number", e_number);
+		EventVo ev = session.selectOne("javajo.edetail", map);
+		session.close();
+		return ev;
+	}
+
+	public static int eupdate(EventVo ev) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.update("javajo.eupdate", ev);
 		session.close();
 		return re;
 	}

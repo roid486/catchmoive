@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.javajo.data.JavajoManager;
 import com.javajo.vo.CustomerVo;
+import com.javajo.vo.EventVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
@@ -210,5 +211,40 @@ public class JavajoDao {
 	public int rupdate(RunningVo rv) {
 		// TODO Auto-generated method stub
 		return JavajoManager.rupdate(rv);
+	}
+
+	public int etotalRecode(String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.etotal(key);
+	}
+
+	public List<EventVo> elist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.elist(num1,num2,key);
+	}
+
+	public int inserte(EventVo ev) {
+		// TODO Auto-generated method stub
+		return JavajoManager.inserte(ev);
+	}
+
+	public List<CustomerVo> celist() {
+		// TODO Auto-generated method stub
+		return JavajoManager.celist();
+	}
+
+	public int edelete(int e_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.edelete(e_number);
+	}
+
+	public EventVo edetail(int e_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.edetail(e_number);
+	}
+
+	public int eupdate(EventVo ev) {
+		// TODO Auto-generated method stub
+		return JavajoManager.eupdate(ev);
 	}	
 }

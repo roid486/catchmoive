@@ -171,6 +171,14 @@ public class MainContoller {
 		return mav;
 	}
 	
+	@RequestMapping("/edelete.com")
+	public ModelAndView edelete(int e_number)
+	{
+		ModelAndView mav = new ModelAndView("redirect:/elist.com");
+		int re2 = dao.edelete(e_number);
+		return mav;
+	}
+	
 	@RequestMapping(value="/movieselect.com",produces = "text/plain;charset=utf-8")
 	@ResponseBody
 	public String movieselect()

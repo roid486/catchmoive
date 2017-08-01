@@ -162,4 +162,32 @@
   <update id="rupdate">
   	update running set t_number=#{t_number},m_number=#{m_number},mt_number=#{mt_number},r_date=to_date(#{r_date},'yyyy/mm/dd'),r_start=#{r_start} where r_number=#{r_number}
   </update>
+  <select id="etotal" resultType="java.lang.Integer">
+  	select count(*) from event
+  	<if test="key != null">
+    	where e_title like '%'||#{key}||'%'
+    </if>
+  </select>
+  <select id="elist" resultType="eventVo">
+  	select * from (select rownum rowm, a.* from (select * from event
+  	<if test="key != null">
+  		where t_name like '%'||#{key}||'%'
+  	</if>) a) 
+    where rowm between #{num1} and #{num2}
+  </select>
+  <insert id="inserte">
+  	insert into event values(se_event.nextval,#{e_title},sysdate,0,#{e_img},#{e_content})
+  </insert>
+  <select id="celist" resultType="customerVo">
+  	select c_email from customer where c_check='yes'
+  </select>
+  <delete id="edelete">
+  	delete event where e_number=#{e_number}
+  </delete>
+  <select id="edetail" resultType="eventVo">
+  	select * from event where e_number=#{e_number}
+  </select>
+  <update id="eupdate">
+  	update event set e_title=#{e_title},e_regdate=sysdate,e_img=#{e_img},e_content=#{e_content} where e_number=#{e_number}
+  </update>
 </mapper>

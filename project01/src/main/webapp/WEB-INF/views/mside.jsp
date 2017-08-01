@@ -40,7 +40,7 @@
 			alert("hi");
 		});
 		$("#event").click(function () {
-			alert("hi");
+			location.href="elist.com";
 		});
 	});
 </script>
