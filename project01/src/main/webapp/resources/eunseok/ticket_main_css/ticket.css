@@ -219,16 +219,16 @@ input[type=radio]:checked+label:BEFORE {
 	line-height: 18px;
 }
 
+#es{
+	margin-left: -8px;
+}
 input[type=checkbox] {
 	display: none;
 }
 
-#col>label {
-	width: 20px;
-	height: 20px;
-}
 
 input[type=checkbox]+label {
+	text-align: center;
 	cursor: pointer;
 	position: relative;
 	width: 20px;
@@ -237,7 +237,6 @@ input[type=checkbox]+label {
 	padding-left: 5px;
 	padding-top: 5px;
 	margin-right: 5px;
-	text-align: center;
 	font-size: 13px;
 }
 
