@@ -6,23 +6,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
-	href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+	href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css"
+	media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
-<link rel="stylesheet" href="resources/eunseok/ticket_main_css/ticket_sub.css?a=2222223" />
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet"
+	href="resources/eunseok/ticket_main_css/ticket_sub.css?a=43311" />
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-var jq3= jQuery.noConflict();
+	var jq3 = jQuery.noConflict();
 </script>
-<script type="text/javascript" src="resources/eunseok/jquery-migrate-1.4.1.min.js"></script>
+<script type="text/javascript"
+	src="resources/eunseok/jquery-migrate-1.4.1.min.js"></script>
 <script type="text/javascript">
-var jq1= jQuery.noConflict();
+	var jq1 = jQuery.noConflict();
 </script>
 <script type="text/javascript"
 	src="resources/eunseok/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 <script type="text/javascript"
 	src="resources/eunseok/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript">
-	jq1(function($){
+	jq1(function($) {
 		jq1("#btn1").click(function() {
 			parent.jq1.fancybox.close();
 		});
@@ -46,16 +50,18 @@ var jq1= jQuery.noConflict();
 				$("#sub1_form").append(a1, "<br>");
 			})
 		})
-		
+
 		$(document).on("click", "a", function() {
 			var chk = $(this).attr("name");
-			
+
 			$(this).css({
-				color:"red",
-				"font-weight": "bold"
+				color : "red",
+				"font-weight" : "bold"
 			});
 			if (chk == "sub1") {
 				movie_number = $(this).attr("id");
+				var mname = $(this).text();
+				$("#name").html(mname);
 				$("#sub2_form").empty();
 				$.ajax({
 					url : "secondList.com",
@@ -80,8 +86,11 @@ var jq1= jQuery.noConflict();
 
 		$(document).on("click", " a", function() {
 			var chk = $(this).attr("name");
+
 			if (chk == "sub2") {
-			movietheater_number = $(this).attr("id");
+				movietheater_number = $(this).attr("id");
+				var the = $(this).text();
+				$("#the").html(the);
 				$("#sub3_form").empty();
 				$.ajax({
 					url : "thirdList.com",
@@ -108,7 +117,8 @@ var jq1= jQuery.noConflict();
 		$(document).on("click", " a", function() {
 			var chk = $(this).attr("name");
 			if (chk == "sub3") {
-			running_date = $(this).attr("id");
+				running_date = $(this).attr("id");
+				$("#day").html($(this).text())
 				$("#sub4_form").empty();
 				$.ajax({
 					url : "fourthList.com",
@@ -132,42 +142,75 @@ var jq1= jQuery.noConflict();
 						})
 					}
 				})
+
 			}
 		})
-		
+
 		$(document).on("click", " a", function() {
 			var chk = $(this).attr("name");
 			if (chk == "sub4") {
-			running_start = $(this).attr("id");
+				running_start = $(this).attr("id");
+				$("#the1").html(theater_number + "관")
+				$("#day").html($("#day").text() + " " + $(this).text())
 			}
 		})
-		
-	
-		
-		$("#move_sub2").click(function(){
-			if(movie_number!=null&&movietheater_number!=null&&running_date!=null&&running_start!=null&&theater_number!=null&&running_number!=null)
-			{
-				window.location.href="fancy_sub2.com?movie_number="+movie_number+"&movietheater_number="+movietheater_number+"&running_date="+running_date+"&running_start="+running_start+"&theater_number="+theater_number+"&running_number="+running_number;
-			}else
-				{
-				alert("선택하지 않은 항목이 있습니다.")
-				}
-		})
+
+		$("#move_sub2")
+				.click(
+						function() {
+							if (movie_number != null
+									&& movietheater_number != null
+									&& running_date != null
+									&& running_start != null
+									&& theater_number != null
+									&& running_number != null) {
+								window.location.href = "fancy_sub2.com?movie_number="
+										+ movie_number
+										+ "&movietheater_number="
+										+ movietheater_number
+										+ "&running_date="
+										+ running_date
+										+ "&running_start="
+										+ running_start
+										+ "&theater_number="
+										+ theater_number
+										+ "&running_number=" + running_number;
+							} else {
+								alert("선택하지 않은 항목이 있습니다.")
+							}
+						})
 	})
 </script>
 </head>
 <body>
-	${title }
-	<button id="btn1">Close fancyBox</button>
-	
-	<a id="move_sub2" href="#">Move fanct_sub2</a>
+
 	<center>
 		<div id="main_form">
-		<div id="blank"></div>
-			<div id="sub1_form"></div>
-			<div id="sub2_form"></div>
-			<div id="sub3_form"></div>
-			<div id="sub4_form"></div>
+			<div id="chk1">
+				<div id="sub1_form"></div>
+				<div id="sub2_form"></div>
+				<div id="sub3_form"></div>
+				<div id="sub4_form"></div>
+			</div>
+			<div id="sub5_form">
+				<div id="small1">
+					<a href="#" class="button" id="btn1">뒤로가기</a>
+				</div>
+				<div id="small2">
+					영화 포스터/영화이름<br> <span id="name" style="color: white;"></span>
+				</div>
+				<div id="small3">
+					극장 <br> <span id="the" style="color: white;"></span><br>상영관<br>
+					<span id="the1" style="color: white;"></span> <br> 일시<br>
+					<span id="day" style="color: white;"></span>
+				</div>
+				<div id="small4">
+					좌석 번호 <br> <span id="nseat" style="color: white;"></span>
+				</div>
+				<div id="small5">
+					<a href="#" id="move_sub2" class="button">좌석선택</a>
+				</div>
+			</div>
 		</div>
 	</center>
 </body>

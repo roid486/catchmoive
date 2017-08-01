@@ -30,7 +30,6 @@ public class TicketManager {
 		
 		SqlSession session = factory.openSession();
 		int num = session.selectOne("ticket.seatNum",theater_num);
-		System.out.println("1영화관 좌석수 : "+num);
 		return num;
 	}
 	public static List<SeatVo> theaterSeat(String theater_number, String movietheater_number) {
@@ -80,5 +79,10 @@ public class TicketManager {
 		
 		System.out.println("num"+num);
 		return num;
+	}
+	public static String getmoviename(String movie_number) {
+		SqlSession session = factory.openSession();
+		String str = session.selectOne("ticket.getmovie", movie_number);
+		return str;
 	}
 }

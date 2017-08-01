@@ -1,6 +1,7 @@
 package com.jihye.controller;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,14 +38,14 @@ public class InsertMovieScoreController {
 	
 	@RequestMapping(value="/insertMovieScore.com",produces = "text/plain;charset=utf-8")
 	@ResponseBody
-	public String submit(MovieScoreVo ms,HttpServletRequest request,HttpSession session,HttpServletResponse response){
+	public ModelAndView submit(MovieScoreVo ms,HttpServletRequest request,HttpSession session,HttpServletResponse response){
 		ModelAndView mav = new ModelAndView();
 		int re = dao.insertMovieScore(ms);
 		//System.out.println("인서트 무비스코어 : "+ms.getMs_mid());
 		//request.setAttribute("m_number", ms.getMs_mid()); //request는 페이지 한번 넘어갈때만 유효! session은 서버가 켜잇는 동안 유효 
 		
-		
-		List<MovieScoreVo> list = dao.getMoveiScore(ms.getMs_mid());
+		/*
+		//List<MovieScoreVo> list = dao.getMoveiScore(ms.getMs_mid());
 		
 		String str = "";
 
@@ -54,7 +56,7 @@ public class InsertMovieScoreController {
 		} catch (Exception e) {
 			System.out.println("여기는 평점 데이터() mapper   ::    " + e.getMessage());
 		}
-	
+	*/
 		
 		
 		
@@ -64,20 +66,28 @@ public class InsertMovieScoreController {
 		else{
 			System.out.println("삽입 실패 ㅠㅠ");
 		}
-		return str;
+		return mav;
 	}
 	
 	
 	@RequestMapping(value="/listMovieScore.com",produces = "text/plain;charset=utf-8")
 	@ResponseBody
-	public String getMovieScore(int ms_mid){
-		ModelAndView mav = new ModelAndView();
-		List<MovieScoreVo> list = dao.getMoveiScore(ms_mid);
-		mav.addObject("ms",list);
+	public String getMovieScore(int ms_mid,HttpSession session){
+		
+		
 		String str="";
+		
+		//String pageStr = dao.getPageStr(ms_mid);
+		List<MovieScoreVo> list = dao.getMoveiScore(ms_mid);
+		
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			str = mapper.writeValueAsString(list);
+			//System.out.println(pageStr);
+			
+			
+			//session.setAttribute("pageStr", pageStr);
+			//System.out.println(str);
 			  // response.getWriter().print(mapper.writeValueAsString(person));
 		} catch (Exception e) {
 			System.out.println("여기는 평점 리스트 데이터() mapper   ::    " + e.getMessage());
@@ -85,5 +95,31 @@ public class InsertMovieScoreController {
 		
 		return str;
 		
+	}
+	
+	
+	@RequestMapping(value="/updateMovieScore.com",produces = "text/plain;charset=utf-8")
+	@ResponseBody
+	public String updateMovieScore(MovieScoreVo ms){
+		String str="";
+		int re = dao.updateMovieScore(ms);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			str = mapper.writeValueAsString(dao.updateMovieScore(ms));
+			System.out.println(str);
+			
+		} catch (Exception e) {
+			System.out.println("여기는 평점 리스트 데이터() mapper   ::    " + e.getMessage());
+		}
+		
+		
+		if(re==1){
+			System.out.println("평점 수정 성공!");
+		}
+		else{
+			System.out.println("평점 수정 실패ㅠㅠ");
+		}
+		return str;
 	}
 }

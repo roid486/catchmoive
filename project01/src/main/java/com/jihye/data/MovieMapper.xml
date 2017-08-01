@@ -19,4 +19,8 @@
  	 order by ${s} desc
  	</if>
  	</select>
+ 	
+ 	<select id="getTotal" resultType="java.lang.Integer">
+  	select nvl(count(*),0) from movie 
+  	</select>
 </mapper>

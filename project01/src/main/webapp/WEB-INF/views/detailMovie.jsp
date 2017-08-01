@@ -61,13 +61,17 @@ float: right;
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
+<!-- <link rel="stylesheet" href="rating/modal.min.css"> -->
 <link rel="stylesheet" href="rating/jquery.raty.css">
 <script type="text/javascript" src="rating/jquery.raty.js"></script>
+<!-- <script type="text/javascript" src="rating/modal.min.js"></script> -->
   <script type="text/javascript">
   	$(function(){
   		var showing = $("#lab_showing").text();
   		var ms_mid = $("#ms_mid").val();
   		var m_grade = $("#m_grade").text();
+  		var cheklog = $("#loginid").val(); //로그인 아이디
+  		
   		
   		$("#img_grade").empty();
   		if(m_grade=="12세 관람가"){
@@ -86,6 +90,11 @@ float: right;
   				"width":"20px","height":"20px"}).addClass("icon_grade");
  				$(img).appendTo("#img_grade");
   			}
+  		else if(m_grade=="청소년 관람불가"){
+  			var img = $("<img/>").attr({"src":"resources/images/movie_play_level_18.png",
+  				"width":"25px","height":"25px"}).addClass("icon_grade");
+ 				$(img).appendTo("#img_grade");
+  		}
   		
   		
   		if(showing==0){
@@ -123,10 +132,33 @@ float: right;
   			
   		});
   		
+  		$("#paging").click(function(){
+  			alert("페이징 클릭했네~?");
+  		});
+  		
   		listMovieScore();
   		
   		/* 댓글 리스트 뽑아오는 부분! ms_mid를 파라미터로 넘겨줘야한다.  */
   		function listMovieScore(){
+  			
+  			/* var page = $("#page").val();
+  			alert(page);  
+  			 var page = 1;
+  			var page_div=$("#page").val();
+  			alert(page_div);
+  			
+  			 if(page_div!=null&&page_div!="")
+  			{ 
+  				$(".paging").click(function(){
+  					page = $(this).text();
+  					alert(page+"페이징 클릭");
+  				});
+  				 
+  			} */
+  			
+  			
+  			
+  			//alert(page); 
   			$.ajax({
   				type:"get",
   				url:"listMovieScore.com?ms_mid=${m.m_number}",
@@ -134,6 +166,7 @@ float: right;
   					var html;
   					var tr;
   					$("#re_table").empty();
+  				
   					$.each(JSON.parse(data),function(index,item){
   						
   						tr = $("<tr></tr>").attr("height","50px");
@@ -145,26 +178,49 @@ float: right;
   						var td2 = $("<td></td>").attr("width","15%");
   						var star = item.ms_score;
 						
-  						var raty = $("<div></div>").raty({ readOnly: true, score: star , starOn: "resources/images/star-on.png",
+  						var raty = $("<div></div>").attr("id","raty_div").raty({ readOnly: true, score: star , starOn: "resources/images/star-on.png",
   				  			 starOff: "resources/images/star-off.png" });
   						
-  						var td3 = $("<td></td>").text(item.ms_comment).attr("width","500px");
-  						var td4 = $("<td></td>").html("<a>수정</a>");
-  						var td5 = $("<td></td>").html("<a>삭제</a>");
+  						var td3 = $("<td></td>").attr("class","com").text(item.ms_comment).attr("width","500px");
   						
   						$(td2).append(raty);
-  						$(tr).append(td,td1,td2,td3,td4,td5); 
+  						$(tr).append(td,td1,td2,td3); 
   						
   						
-  				
+  						if(cheklog==item.ms_custid){
+  							
+  						var td4 = $("<td></td>").html("<span class='revise'>수정</span>");
+  						var td5 = $("<td></td>").html("<span class='delete'>삭제</span>");
+  						$(tr).append(td4,td5); 
+  						}
+  						
+
 							 
   						$("#re_table").append(tr);
   					});
+  						//$("#page").html(data.pageStr);
+  				  		
+  					$(".revise").click(function(){
+
+  						
+  						
+  						$("#modal_rating").raty({
+  								targetKeep : true,
+  				 				target:"#span_rating",
+  				  			 starOn: "resources/images/star-on.png",
+  				  			 starOff: "resources/images/star-off.png"
+  				  		}); 
+  						
+  						$("#reviseModal").modal();
+  						
+  					});
+  	  			
+  					
+  					
+  				}//success		
+  			});	//ajax
   			
-  					
-  					
-  				}		
-  			});	
+  		
   		};
   		
   		
@@ -172,7 +228,7 @@ float: right;
   									로그인되있을시 -> moviescore insert하기!  */
   		$("#btn_register").click(function(){
   			var currentScore = $('#div_rating').raty('score'); //별점
-  			var cheklog = $("#loginid").val(); //로그인 아이디
+  		
   			
   			
   			$("#star").val(currentScore);
@@ -206,10 +262,9 @@ float: right;
   			}
   			
   		});
-  		
-  		
-  		
-  		
+  									
+
+  									
   	});
   	
   	
@@ -350,20 +405,14 @@ float: right;
 
 </span>
 <br><br><br><br>
-<%-- 
-<form>
-	<input type="hidden" value="${ms.ms_no }" id="ms_no">
-	<input type="hidden" value="${ms.ms_custid }" id="ms_custid">
-	<input type="hidden" value="${ms.ms_mid }" id="ms_mid">
-	<input type="hidden" value="${ms.ms_score }" id="ms_score">
-	<input type="hidden" value="${ms.ms_comment }" id="ms_comment">
-</form> --%>
 
 <div id="reply"><!-- moviescore select 해올 부분 (댓글달린거 보여주려고) -->
 	<div id="rat"></div>
 	<table id="re_table" width="90%">
 	
-	</table>
+	</table><br>
+	<div id="page"><center>${pageStr }</center></div>
+	
 </div> 
 
 <br><br><br>
@@ -385,8 +434,36 @@ float: right;
       </div>
     </div>
   </div>
+  
+  
+  <!-- 평점 수정 Modal -->
+  <div class="modal fade" id="reviseModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <center><h4 class="modal-title"><strong>평점 수정</strong></h4></center>
+        </div>
+        <div class="modal-body">
+        	
+        	<form>
+        		<div class="form-group" >
+        			
+        		<div id="modal_rating"></div><span id="span_rating"></span>
+         			<div>
+         			      <textarea maxlength="100" class="form-control col-sm-3" rows="3" id="comment" name="ms_comment" ></textarea>
 
-
+         			</div>
+         		</div>
+        	</form>
+         
+        </div>
+        <div class="modal-footer">
+          <center><button type="button" class="btn btn-info" data-dismiss="modal">수정</button></center>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

@@ -89,11 +89,58 @@ public class MovieManager {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("ms_mid", ms_mid);
+		/*map.put("start", start);
+		map.put("end", end);*/
+		
 		List<MovieScoreVo> list = session.selectList("moviescore.selectOne",map);
 		session.close();
 		return list;
 		
 	}
+	
+	public static int getNextNo(int ms_mid)
+	{
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("ms_mid", ms_mid);
+		SqlSession session = factory.openSession(true);
+		int re =  session.selectOne("moviescore.getNextNo",map);
+		session.close();
+		return re;
+	}
+	
+	public static int getTotal(int ms_mid)
+	{
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+
+		map.put("ms_mid", ms_mid);
+
+		SqlSession session = factory.openSession(true);
+		int re =  session.selectOne("moviescore.getTotal", map);
+		session.close();
+		return re;
+	}
+	
+	public static int updateMovieScore(MovieScoreVo ms){
+		
+		SqlSession session = factory.openSession(true);
+		int re = session.update("moviescore.updateMovieScore",ms);
+		session.close();
+		return re;
+	}
+	
+	public static int deleteMovieScore(MovieScoreVo ms){
+		
+		SqlSession session = factory.openSession(true);
+		int re = session.delete("moviescore.deleteMovieScore",ms);
+		session.close();
+		return re;
+	}
+	
+	
+	
+	
 	
 	public static List<MovieVo_j> getMovieFinder(String searchField,String keyword,String[] m_genre,String[] m_nation,String[] m_grade,String startyear,String endyear){
 		
