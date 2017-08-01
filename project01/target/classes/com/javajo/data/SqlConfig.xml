@@ -9,6 +9,7 @@
 		<typeAlias type="com.javajo.vo.MovieTheaterVo2" alias="movietheaterVo2"/>
 		<typeAlias type="com.javajo.vo.CustomerVo" alias="customerVo"/>
 		<typeAlias type="com.javajo.vo.TheaterVo" alias="theaterVo"/>
+		<typeAlias type="com.javajo.vo.RunningVo" alias="runningVo"/>
 		<typeAlias type="com.jihye.vo.MovieVo_j" alias="movieVo_j"/>
 	</typeAliases>
   <environments default="development">

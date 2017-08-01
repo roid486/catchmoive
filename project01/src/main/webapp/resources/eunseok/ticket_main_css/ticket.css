@@ -1,42 +1,21 @@
 @CHARSET "EUC-KR";
-/* .ticket_container{
-width: 940px;
-height: 500px;
-margin: 0px auto;
-padding: 20px;
-border : 1px solid black;
-}
-.ticket_header{
-padding: 20px;
-margin-bottom: 20px;
-border: 1px solid #bcbcbc;
-} */
+
 .table {
 	position: relative;
+	border-collapse: separate;
 	table-layout: fixed;
+	background-color: #fdfdee;
+	margin-top: 20px;
+
 }
 
 .ticket_content {
 	width: 450px;
 	padding: 20px;
 	margin-bottom: 20px;
-	border: 1px solid #bcbcbc;
+	/* border: 1px solid #bcbcbc; */
 }
 
-/* .ticket_footer {
-	clear: both;
-	padding: 20px;
-	border: 1px solid #bcbcbc;
-} */
-/* 
-.ticket_header>* {
-	display: inline-block;
-} */
-/* .adult, .youth, .special {
-	display: inline-block;
-	width: 50px;
-	left: 10%;
-} */
 a {
 	text-decoration: none;
 	color: black;
@@ -44,14 +23,17 @@ a {
 
 #adult {
 	display: inline-block;
+	
 }
 
 #youth {
 	display: inline-block;
+	margin-top:4px;
 }
 
 #special {
 	display: inline-block;
+	margin-top:4px;
 }
 
 .r {
@@ -79,9 +61,10 @@ a {
 }
 
 .screen {
-	width: 500px;
+	width: 490px;
 	height: 21px;
 	background: gray;
+	margin-top:10px;
 	top: 10px;
 }
 
@@ -106,7 +89,77 @@ a {
 	text-decoration: underline;
 }
 
+a{
+    -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    display: block;
+    margin: 20px auto;
+    max-width: 180px;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 20px 30px;
+}
 
+a.button {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: rgba(255, 255, 255, 1) 0 0px 0px 2px inset;
+    display:
+    border: 2px solid white;
+    height: 40px;
+}
+
+a.button:hover {
+    color: rgba(0, 0, 0, 0.54);
+    box-shadow: rgba(255, 255, 255, 1) 0 0px 0px 40px inset;
+}
+#big{
+	
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+#big > *{
+	color: gray;
+}
+#small1{
+	/* display: inline-block; */
+	float: left;
+	width: 11%;
+	text-align: left;
+	/* height: 90%; */
+}
+#small2{
+	display: inline-block;
+	float: left;
+	width: 22%;
+	border: 1px solid black;
+}
+#small3{
+	display: inline-block;
+	float: left;
+	width: 25%;
+	border: 1px solid black;
+}
+#small4{
+	display: inline-block;
+	float: left;
+	width: 22%;
+	border: 1px solid black;
+}
+#small5{
+	display: inline-block;
+	float: right;
+	width: 11%;
+	/* height: 90%; */
+	text-align:right; 
+}
+#radio{
+	margin-left: 10px;
+}
 
 input[type=radio] {
 	display: none;
@@ -128,17 +181,16 @@ input[type=radio]+label:BEFORE {
 	height: 20px;
 	margin-right: 15px;
 	position: absolute;
-	left: 0px;
-	bottom: 1px;
+	left: -5px;
+	bottom: -4px;
 	background-color: #0000;
 	border-radius: 2px;
-	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px
-		rgba(255, 255, 255, .8);
+	border: 1px solid black;
 }
 
 input[type=radio]:checked+label:BEFORE {
-	content: "\2705"; /* 체크모양 */
-	text-shadow: 0px 0px 0px rgba(0, 0, 0, .2);
+	content: "\2710"; /* 체크모양 */
+	text-shadow: 0px 0px 0px rgba(0, 0, 0,0);
 	font-size: 18px;
 	font-weight: 800;
 	color: #0000;
@@ -200,7 +252,7 @@ input[type=checkbox]:checked+label:BEFORE { /*체크 박스에 체크  */
 	position: relative;
 	left: 4px;
 	bottom: -1px;
-	background-color: #0000;
+	background-color: #fdfdee;
 	border-radius: 1px;
 	box-sizing: border-box;
 	border: 1px solid black;

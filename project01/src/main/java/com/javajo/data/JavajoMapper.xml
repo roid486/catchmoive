@@ -109,9 +109,37 @@
     where rowm between #{num1} and #{num2}
   </select>
   <insert id="tinsert">
-  	insert into theater values(#{t_number},#{t_name},#{t_seat},#{mt_number})
+  	insert into theater values(se_theater.nextval,#{t_name},#{t_seat},#{mt_number})
   </insert>
   <select id="mlist2" resultType="movietheaterVo2">
   	select * from movietheater
   </select>
+  <insert id="sinsert">
+  	insert into seat values(se_seat.nextval,#{row},#{col},#{ft},null,#{t_number},null,#{mt_number})
+  </insert>
+  <select id="t_num" resultType="java.lang.Integer">
+  	select max(t_number) from theater
+  </select>
+  <delete id="tdelete">
+  	delete theater where t_number=#{t_number}
+  </delete>
+  <delete id="sdelete">
+  	delete seat where t_number=#{t_number}
+  </delete>
+  <select id="rtotal" resultType="java.lang.Integer">
+  	select count(*) from running
+  	<if test="key != null">
+    	where r_date = to_date(#{key},'yyyy/mm/dd')
+    </if>
+  </select>
+  <select id="rlist" resultType="runningVo">
+  	select * from (select rownum rowm, a.* from (select * from running
+  	<if test="key != null">
+  		where r_date = to_date(#{key},'yyyy/mm/dd')
+  	</if>) a) 
+    where rowm between #{num1} and #{num2}
+  </select>
+  <insert id="insertr">
+  	insert into running values(se_running.nextval,#{t_number},#{m_number},#{mt_number},to_date(#{r_date},'yyyy,mm,dd'),#{r_start})
+  </insert>
 </mapper>

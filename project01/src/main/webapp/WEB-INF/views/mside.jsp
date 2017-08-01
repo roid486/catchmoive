@@ -31,7 +31,7 @@
 			location.href="tlist.com";
 		});
 		$("#running").click(function () {
-			alert("hi");
+			location.href="rlist.com";
 		});
 		$("#board").click(function () {
 			alert("hi");

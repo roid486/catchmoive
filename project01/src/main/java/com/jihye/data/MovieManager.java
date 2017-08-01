@@ -92,19 +92,19 @@ public class MovieManager {
 		
 		
 		
-		//if(searchWord != null && !searchWord.equals("")){
+		
 			map.put("searchField", searchField);
-			System.out.println("매니저에서 "+keyword);
+			//System.out.println("매니저에서 "+keyword);
 		
 			
 			map.put("keyword", keyword);
-			System.out.println("매니저 map.put keyword: "+map.put("keyword", keyword));
-		//}
+			//System.out.println("매니저 map.put keyword: "+map.put("keyword", keyword));
+		
 		
 	
 		if(m_genre!=null && !m_genre.equals("")){
 			
-			System.out.println("선택된 장르 갯수 in MFController : "+m_genre.length);
+			//System.out.println("선택된 장르 갯수 in MFController : "+m_genre.length);
 			for(int i=0;i<m_genre.length;i++){
 				map.put("m_genre"+(i+1), m_genre[i]);
 			}

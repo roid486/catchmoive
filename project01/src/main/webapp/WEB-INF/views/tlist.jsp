@@ -45,7 +45,6 @@
 	        <th>Seat</th>
 	        <th>Mt_number</th>
 	        <th>비고</th>
-	        <th>비고</th>
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -55,8 +54,7 @@
 	        <td>${tl.t_name }</td>
 	        <td>${tl.t_seat }</td>
 	        <td>${tl.mt_number }</td>
-	        <td><a href="mtupdate.com?mt_number=${tl.t_number }"><button class="btn btn-primary">수정</button></a></td>
-	        <td><a href="mtdelete.com?mt_number=${tl.t_number }"><button class="btn btn-primary">삭제</button></a></td>
+	        <td><a href="tdelete.com?t_number=${tl.t_number }"><button class="btn btn-primary">삭제</button></a></td>
 	      </tr>
 	    </m:forEach>
 	    </tbody>

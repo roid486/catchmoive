@@ -9,6 +9,7 @@ import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
+import com.javajo.vo.RunningVo;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 
@@ -143,5 +144,40 @@ public class JavajoDao {
 	public List<MovieTheaterVo2> mtlist2() {
 		// TODO Auto-generated method stub
 		return JavajoManager.mlist2();
+	}
+
+	public int sinsert(int row, String string, int t_number, int mt_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.sinsert(row,string,t_number,mt_number);
+	}
+
+	public int t_num() {
+		// TODO Auto-generated method stub
+		return JavajoManager.t_num();
+	}
+
+	public int tdelete(int t_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.tdelete(t_number);
+	}
+
+	public int sdelete(int t_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.sdelete(t_number);
+	}
+
+	public int rtotalRecode(String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.rtotal(key);
+	}
+
+	public List<RunningVo> rlist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.rlist(num1,num2,key);
+	}
+
+	public int insertr(RunningVo rv) {
+		// TODO Auto-generated method stub
+		return JavajoManager.insertr(rv);
 	}	
 }

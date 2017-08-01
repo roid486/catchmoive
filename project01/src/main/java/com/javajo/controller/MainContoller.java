@@ -149,5 +149,14 @@ public class MainContoller {
 		return mav;
 	}
 	
+	@RequestMapping("/tdelete.com")
+	public ModelAndView tdelete(int t_number)
+	{
+		ModelAndView mav = new ModelAndView("redirect:/tlist.com");
+		int re2 = dao.sdelete(t_number);
+		int re = dao.tdelete(t_number);
+		return mav;
+	}
+	
 	
 }

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket.css?a=222266223" />
+	href="resources/eunseok/ticket_main_css/ticket.css?a=33111223" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
@@ -35,6 +35,10 @@
 	var running_number = "${running_number}"
 	var movie_number = "${movie_number}"
 	var arr = [];
+	var t1="";
+	var t2="";
+	var t3="";
+	
 	jq1(function($) {
 		$("#btn1").click(function() {
 			
@@ -66,8 +70,6 @@
 				}
 
 			})
-			
-
 		});
 		$("#btn2").click(function() {
 
@@ -76,11 +78,10 @@
 
 	})
 	jq3(function($) {
-
 		var anum = 0;
 		var ynum = 0;
 		var snum = 0;
-
+		var flag = 0;
 		$.getJSON("theaterseat.com", function(data) {
 			var divrow;
 			$.each(data, function(index, item) {
@@ -101,21 +102,32 @@
 						item.seat_row + item.seat_column).css("text-align","center")
 						.html(item.seat_column); 
 
+				if(item.seat_ft=='y')
+					{
+					input.attr({
+						checked:true,
+						disabled:"disabled"
+					});
+					}
+				
+				if(item.seat_ft=='n'){
+					flag=flag+1;
+					
 				 $(label).hover(function() {
 					if(totalNum > 0){	
 					$(this).css({
 						cursor : "pointer",
-							"background-color" : "#F8FC0B",
+							"background-color" : "#C9C9C9",
 						})
 						if ($(this).text() <= 4 && totalNum >= 2) {
 							$(this).parent().next().find("label").css({
 								cursor : "pointer",
-								"background-color" : "#F8FC0B"
+								"background-color" : "#C9C9C9"
 							})
 						} else if($(this).text() >= 5 && totalNum >= 2){
 							$(this).parent().prev().find("label").css({
 								cursor : "pointer",
-								"background-color" : "#F8FC0B"
+								"background-color" : "#C9C9C9"
 							})
 						}
 				}else{
@@ -125,23 +137,22 @@
 					if (totalNum > 0) {
 					$(this).css({
 						cursor : "pointer",
-						"background-color" : "#ffffff"
+						"background-color" : "#fdfdee"
 					})
 					if ($(this).text() <= 4 && totalNum >= 2) {
 						$(this).parent().next().find("label").css({
 							cursor : "pointer",
-							"background-color" : "#ffffff"
+							"background-color" : "#fdfdee"
 						})
 						
 					} else if($(this).text() >= 5 && totalNum >= 2){
 						$(this).parent().prev().find("label").css({
 							cursor : "pointer",
-							"background-color" : "#ffffff"
+							"background-color" : "#fdfdee"
 						})
 					}
 					}
-				}) 
-				$(label).click(
+				}).click(
 						function() {
 							var one = $(this).parent().find(
 									"input[type=checkbox]");
@@ -190,30 +201,41 @@
 								}
 							}
 							 alert("arr :" +arr+"length"+arr.length+"totalNum :"+totalNum) 
+							 
+							 $("#nseat").html("")
+							 $("#nseat").html(arr)
 						}) 
+				}
 				$(input).appendTo(divcol)
 				$(label).appendTo(divcol)
 				$(divcol).appendTo(divrow);
-				$(divrow).appendTo(".ticket_content")
+				$(divrow).appendTo(".ticket_content");
 				if ((index + 1) % 5 == 0) {
-					$("<br/>").appendTo(".ticket_content")
+					$("<br/>").appendTo(".ticket_content");
 				}
 			})
+				$("#present").html("<b>"+flag+"</b>");
 
 		})
+		
 		$("#radio label").click(function() {
 			var a = $(this).parent().attr("id");
+			
+			
 			if (a == "adult") {
 				anum = eval($(this).text())
+				t1 = "일반"+anum+"명";
 			} else if (a == "youth") {
 				ynum = eval($(this).text())
+				t2 = "청소년"+ynum+"명";
 			} else {
 				snum = eval($(this).text())
+				t3 = "우대"+snum+"명";
 			}
 			
 			totalSum = anum * 10000 + ynum * 7000 + snum * 5000;//총 가격
 			totalNum = anum + ynum + snum;//총 인원
-
+			$("#pnum").html(t1+" "+t2+" "+t3);
 		})
 		$("#btn3").click(function(){
 			$("input[type=checkbox]").prop("checked",false)
@@ -224,6 +246,8 @@
 			totalNum = 0; 
 			totalSum = 0;
 			arr = [];
+			$("#pnum").html("");
+			$("#nseat").html("");
 			
 		})
 
@@ -287,29 +311,44 @@
 								</c:choose>
 							</c:forEach>
 						</div>
-					</div></td>
-				<td colspan="3" width="*">${movietheater_name }
-					${theater_number }관 ${running_start } ${running_date }</td>
+					</div><div style="margin-top: 5px; margin-left: 15px;"><center><b>※요금표※</b></center>일반 : 10000원 청소년 : 7000원 우대 : 5000원</td></div> 
+				<td colspan="3" width="*">
+				<div style="margin-left: 10px;">
+					${movietheater_name } ${theater_number }관 | 남은 좌석: <span id="present" style="color: red;"></span>/${seat_num }<br><h3>${running_date } ${running_start }</h3> </td>
+			</div>
 			</tr>
-			<tr height="40%">
-				<td rowspan="2" colspan="5">
+			<tr rowspan="2" height="35%">
+				<td colspan="5">
 					<center>
 						<div class="screen">
 							<span>SCREEN</span>
 						</div>
 						<div class="ticket_content"></div>
-						<table id="tb">
 						<button id="btn3">reset</button>
 					</center>
 				</td>
 			</tr>
-			<tr height="30%">
-				<td><button id="btn2">뒤로가기</button></td>
-				<td></td>
-				<td>${movietheater_name }${theater_number }관${running_start }
-					${running_date }</td>
-				<td></td>
-				<td><button id="btn1">예매하기</button></td>
+			<tr height="18%">
+			<td colspan="5" style="background-color: black;">
+				<div id="big">
+					<div id="small1">
+					   <a href="#" class="button" id="btn2">영화선택</a>
+					</div>
+					<div id="small2">영화 포스터</div>
+					<div id="small3">
+						극장: ${movietheater_name }<br> 상영관:${theater_number }관 <br>
+						일시:${running_date } ${running_start }<br> 인원:<span
+							id='pnum'></span>
+					</div>
+					<div id="small4">
+						좌석 번호 : <span id="nseat"></span>
+					</div>
+					<div id="small5">
+						 <a href="#" class="button" id="btn1">예매하기</a>
+					</div>
+				</div>
+				
+			</td>
 			</tr>
 		</table>
 	</center>

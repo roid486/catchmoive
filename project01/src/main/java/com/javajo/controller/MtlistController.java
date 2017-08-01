@@ -17,7 +17,7 @@ public class MtlistController {
 	@Autowired
 	private JavajoDao dao;
 
-	private int pageSize=3;
+	private int pageSize=5;
 	private int pageGroup=5;
 	private String key;
 	

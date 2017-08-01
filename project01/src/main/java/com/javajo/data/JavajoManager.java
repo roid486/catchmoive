@@ -13,6 +13,7 @@ import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
+import com.javajo.vo.RunningVo;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 
@@ -269,7 +270,7 @@ public class JavajoManager {
 		map.put("num1", num1);
 		map.put("num2", num2);
 		map.put("key", key);
-		List<TheaterVo> list = session.selectList("javajo.tlist", key);
+		List<TheaterVo> list = session.selectList("javajo.tlist", map);
 		session.close();
 		return list;
 	}
@@ -288,6 +289,76 @@ public class JavajoManager {
 		List<MovieTheaterVo2> list = session.selectList("javajo.mlist2");
 		session.close();
 		return list;
+	}
+
+	public static int sinsert(int row, String col, int t_number, int mt_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("row", (char)row);
+		map.put("col", col);
+		map.put("ft", "n");
+		map.put("t_number", t_number);
+		map.put("mt_number", mt_number);
+		int re = session.insert("javajo.sinsert", map);
+		session.close();
+		return re;
+	}
+
+	public static int t_num() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		int re = session.selectOne("javajo.t_num");
+		session.close();
+		return re;
+	}
+
+	public static int tdelete(int t_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("t_number", t_number);
+		System.out.println(t_number);
+		int re = session.delete("javajo.tdelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int sdelete(int t_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("t_number", t_number);
+		int re = session.delete("javajo.sdelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int rtotal(String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		int re = session.selectOne("javajo.rtotal", key);
+		session.close();
+		return re;
+	}
+
+	public static List<RunningVo> rlist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("num1", num1);
+		map.put("num2", num2);
+		map.put("key", key);
+		List<RunningVo> list = session.selectList("javajo.rlist", map);
+		return list;
+	}
+
+	public static int insertr(RunningVo rv) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.insert("javajo.insertr", rv);
+		session.close();
+		return re;
 	}
 
 }
