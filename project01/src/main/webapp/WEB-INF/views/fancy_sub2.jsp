@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket.css?a=11223" />
+	href="resources/eunseok/ticket_main_css/ticket.css?a=113313" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
@@ -90,7 +90,7 @@
 				}
 				var divcol = $("<div></div>").attr({
 					id: "col"
-				}).css("text-align","center");  
+				})
 				var input = $("<input></input>").attr({
 					type : 'checkbox',
 					id : item.seat_row + item.seat_column,
@@ -99,7 +99,7 @@
 				})
 				var label = $("<label/>").attr("for",
 						item.seat_row + item.seat_column).css("text-align","center")
-						.html(item.seat_column); 
+						.html("<span id=es>"+item.seat_column+"</span>"); 
 
 				if(item.seat_ft=='y')
 					{

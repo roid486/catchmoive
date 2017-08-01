@@ -10,11 +10,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javajo.dao.JavajoDao;
 import com.javajo.vo.CustomerVo;
+import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
+import com.javajo.vo.TheaterVo;
+import com.jihye.vo.MovieVo_j;
 
 import net.sf.json.JSONArray;
 
@@ -149,15 +154,78 @@ public class MainContoller {
 		return mav;
 	}
 	
-	@RequestMapping()
-	public JSONArray mscorelist()
+	@RequestMapping("/tdelete.com")
+	public ModelAndView tdelete(int t_number)
 	{
-		JSONArray ja = new JSONArray();
-		List<MovienameVo> list = dao.moviename();
-		for(int i = 0; i < list.size(); i++)
-		{
-			System.out.println(list.get(i).getM_name());
-		}
-		return ja;
+		ModelAndView mav = new ModelAndView("redirect:/tlist.com");
+		int re2 = dao.sdelete(t_number);
+		int re = dao.tdelete(t_number);
+		return mav;
 	}
+	
+	@RequestMapping("/rdelete.com")
+	public ModelAndView rdelete(int r_number)
+	{
+		ModelAndView mav = new ModelAndView("redirect:/rlist.com");
+		int re2 = dao.rdelete(r_number);
+		return mav;
+	}
+	
+	@RequestMapping("/edelete.com")
+	public ModelAndView edelete(int e_number)
+	{
+		ModelAndView mav = new ModelAndView("redirect:/elist.com");
+		int re2 = dao.edelete(e_number);
+		return mav;
+	}
+	
+	@RequestMapping(value="/movieselect.com",produces = "text/plain;charset=utf-8")
+	@ResponseBody
+	public String movieselect()
+	{
+		String str = "";
+		ObjectMapper mapper = new ObjectMapper();
+		List<MovieVo_j> list = dao.msele();
+		try{
+			str = mapper.writeValueAsString(list);
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		return str;
+	}
+	
+	@RequestMapping(value="/mtselect.com",produces = "text/plain;charset=utf-8")
+	@ResponseBody
+	public String mtselect()
+	{
+		String str = "";
+		ObjectMapper mapper = new ObjectMapper();
+		List<MovieTheaterVo2> list = dao.mtsele();
+		try{
+			str = mapper.writeValueAsString(list);
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		return str;
+	}
+	
+	@RequestMapping(value="/tselect.com",produces = "text/plain;charset=utf-8")
+	@ResponseBody
+	public String tselect(int mt_number)
+	{
+		String str = "";
+		ObjectMapper mapper = new ObjectMapper();
+		List<TheaterVo> list = dao.tsele(mt_number);
+		try{
+			str = mapper.writeValueAsString(list);
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		return str;
+	}
+	
+	
 }

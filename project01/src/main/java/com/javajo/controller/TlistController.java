@@ -1,5 +1,6 @@
 package com.javajo.controller;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,13 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.javajo.dao.JavajoDao;
 
 @Controller
-@RequestMapping("/mtlist.com")
-public class MtlistController {
+@RequestMapping("/tlist.com")
+public class TlistController {
 
 	@Autowired
 	private JavajoDao dao;
 
-	private int pageSize=5;
+	private int pageSize=10;
 	private int pageGroup=5;
 	private String key;
 	
@@ -26,10 +27,9 @@ public class MtlistController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ModelAndView blist(@RequestParam(value="pageNUM", defaultValue="1") int pageNUM)
+	public ModelAndView blist(@RequestParam(value="pageNUM", defaultValue="1") int pageNUM, HttpServletRequest request)
 	{
-		
-		int totalRecode = dao.mttotalRecode(this.key);
+		int totalRecode = dao.ttotalRecode(this.key);
 		int totalpage=1;
 		if(totalRecode % pageSize != 0)
 		{
@@ -44,11 +44,11 @@ public class MtlistController {
 		int end = start+pageGroup-1;
 		if(start > pageGroup)
 		{
-			pageNUM2 += "<a href='mtlist.com?pageNUM="+(start-1)+"'>이전</a> ";
+			pageNUM2 += "<a href='tlist.com?pageNUM="+(start-1)+"'>이전</a> ";
 		}
 		for(int i = start; i <= end; i++)
 		{
-			pageNUM2 += "<a href='mtlist.com?pageNUM="+i+"'>"+i+"</a> ";
+			pageNUM2 += "<a href='tlist.com?pageNUM="+i+"'>"+i+"</a> ";
 			if(i >= totalpage)
 			{
 				break;
@@ -56,13 +56,13 @@ public class MtlistController {
 		}
 		if(end < totalpage)
 		{
-			pageNUM2 += "<a href='mtlist.com?pageNUM="+(end+1)+"'>다음</a> ";
+			pageNUM2 += "<a href='tlist.com?pageNUM="+(end+1)+"'>다음</a> ";
 		}
 		ModelAndView mav = new ModelAndView();
 		int num2 = pageNUM*pageSize;
 		int num1 = num2-pageSize+1;
 		mav.addObject("mtlist", dao.mtlist());
-		mav.addObject("mtl", dao.movietlist(num1,num2,this.key));
+		mav.addObject("tlist", dao.tlist(num1,num2,this.key));
 		mav.addObject("pagenum", pageNUM2);
 		return mav;
 	}
@@ -71,7 +71,7 @@ public class MtlistController {
 	public ModelAndView blistserch(@RequestParam(value="key", required=false) String key,@RequestParam(value="pageNUM", defaultValue="1") int pageNUM)
 	{
 		this.key = key;
-		int totalRecode = dao.mttotalRecode(key);
+		int totalRecode = dao.ttotalRecode(key);
 		int totalpage=1;
 		if(totalRecode % pageSize != 0)
 		{
@@ -86,11 +86,11 @@ public class MtlistController {
 		int end = start+pageGroup-1;
 		if(start > pageGroup)
 		{
-			pageNUM2 += "<a href='mtlist.com?pageNUM="+(start-1)+"'>이전</a> ";
+			pageNUM2 += "<a href='tlist.com?pageNUM="+(start-1)+"'>이전</a> ";
 		}
 		for(int i = start; i <= end; i++)
 		{
-			pageNUM2 += "<a href='mtlist.com?pageNUM="+i+"'>"+i+"</a> ";
+			pageNUM2 += "<a href='tlist.com?pageNUM="+i+"'>"+i+"</a> ";
 			if(i >= totalpage)
 			{
 				break;
@@ -98,14 +98,14 @@ public class MtlistController {
 		}
 		if(end < totalpage)
 		{
-			pageNUM2 += "<a href='mtlist.com?pageNUM="+(end+1)+"'>다음</a> ";
+			pageNUM2 += "<a href='tlist.com?pageNUM="+(end+1)+"'>다음</a> ";
 		}
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("title", "게시물 목록");
+		mav.addObject("title", "상영관목록");
 		int num2 = pageNUM*pageSize;
 		int num1 = num2-pageSize+1;
 		mav.addObject("mtlist", dao.mtlist());
-		mav.addObject("mtl", dao.movietlist(num1,num2,key));
+		mav.addObject("tlist", dao.tlist(num1,num2,key));
 		mav.addObject("pagenum", pageNUM2);
 		return mav;
 	}
