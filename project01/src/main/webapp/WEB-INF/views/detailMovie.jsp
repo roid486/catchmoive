@@ -51,6 +51,12 @@ float: right;
 	bottom: -20px;
 	left: -10px;
 }
+.revise{
+	cursor: pointer;
+}
+.delete{
+	cursor: pointer;
+}
 
 
 
@@ -71,6 +77,7 @@ float: right;
   		var ms_mid = $("#ms_mid").val();
   		var m_grade = $("#m_grade").text();
   		var cheklog = $("#loginid").val(); //로그인 아이디
+  	
   		
   		
   		$("#img_grade").empty();
@@ -182,9 +189,14 @@ float: right;
   				  			 starOff: "resources/images/star-off.png" });
   						
   						var td3 = $("<td></td>").attr("class","com").text(item.ms_comment).attr("width","500px");
+  						var td4 = $("<td></td>");
   						
+  						var ms_no = $("<div><div>").attr({"class":"ms_no","idx":item.ms_no}).css("display","none").text(item.ms_no);
+  						
+  						$(td4).append(ms_no);
+  						//$("#paste_no").append(ms_no);
   						$(td2).append(raty);
-  						$(tr).append(td,td1,td2,td3); 
+  						$(tr).append(td,td1,td2,td3,td4); 
   						
   						
   						if(cheklog==item.ms_custid){
@@ -199,22 +211,132 @@ float: right;
   						$("#re_table").append(tr);
   					});
   						//$("#page").html(data.pageStr);
-  				  		
-  					$(".revise").click(function(){
+  						
+  				
+  						
+  				
+  					var no;
+  					$(".revise").on("click",function(){
+  						 var tr=$(this).closest("tr"); //누른거의 가장 가까운 tr을 찾는 코드 ! 
+						 no= $(tr).find(".ms_no").attr("idx");	 
+						
+						
+  						$.ajax({
+  							url:"updateMovieScore.com?ms_no="+no,
+  							type:"get",
+  						  	dataType : "json",
+  							success:function(data){
+  							
+  								
+  									 var star = data.ms_score;
+  								
+  									$("#modal_rating").raty({	targetKeep : true,
+  						 				target:"#span_rating", score: star , starOn: "resources/images/star-on.png",
+  			  				  			 starOff: "resources/images/star-off.png"});
+  									$("#revise_comment").text(data.ms_comment);
+  									$("#modal_mid").text(data.ms_mid);
+  									
+  									$("#reviseModal").modal();
+  								  	
+  									
+  									
+  									$("#btn_revise").click(function(){
+  									
+  									var revise_comment = $("#revise_comment").val();
+  									
+  									if(revise_comment==""){
+  				  						alert("내용을 입력하지 않았습니다.");
+  				  						  $('#revise_comment').focus();
+  				  						  return;
 
+  				  						}
+  				  					else{
+  				  							reviseComment();
+  				  						}
+  										
+  									});
+  								
+  							}
   						
-  						
-  						$("#modal_rating").raty({
-  								targetKeep : true,
-  				 				target:"#span_rating",
-  				  			 starOn: "resources/images/star-on.png",
-  				  			 starOff: "resources/images/star-off.png"
-  				  		}); 
-  						
-  						$("#reviseModal").modal();
-  						
-  					});
-  	  			
+  						});
+					
+					
+						
+					});//revise
+					
+					
+  					
+					$(".delete").click(function(){
+						
+						
+						 var firm= confirm("삭제하시겠습니까?");
+						 
+						 var tr=$(this).closest("tr"); //누른거의 가장 가까운 tr을 찾는 코드 ! 
+						 no= $(tr).find(".ms_no").attr("idx");	 
+						 var mid = $("#mnumber").val();
+						 
+						
+						 if(firm){
+							 
+							 
+							 
+							  $.ajax({
+									 url:"deleteMovieScore.com?ms_no="+no+"&ms_mid="+mid,
+									success:function(data){
+										
+										listMovieScore();
+									}/* ,
+									error:function(data){
+										alert("삭제실패");
+										listMovieScore();
+									} */
+								 });  
+							 
+						 }else{
+							
+							 
+						 }
+						
+						 
+						 
+						 
+					});
+  					
+  					
+						
+						
+  					/*평점 수정 함수 */
+  			  		function reviseComment(){
+  			  			
+  			  			
+  			  			var score = $("#modal_rating").raty('score');
+  			  			
+  			  			var comment = $("#revise_comment").val();
+  			  			
+  			  			var mid = $("#modal_mid").text();
+  			  		
+  			  			   $.ajax({
+  			  				url:"updateMovieScore.com",
+  			  				type:"post",
+  			  				data:{ms_no:no,ms_score:score,ms_comment:comment,ms_mid:mid},
+  			  				success:function(data){
+  			  				$("#reviseModal").modal('hide');
+  			  					listMovieScore();
+  			  					
+  			  				},
+  			  				error:function(){
+  			  					alert("ajax통신 실패!ㅠ");
+  			  				}
+  			  				
+  			  			}); 
+  			  			  
+  			  			
+  			  		}
+  			  		
+	  			
+  					
+  			
+  					
   					
   					
   				}//success		
@@ -222,6 +344,10 @@ float: right;
   			
   		
   		};
+  		
+  	
+  		
+  		
   		
   		
   		/* 등록 버튼 누르면 댓글 등록되게하기 ! 비로그인시 -> 로그인 유도 팝업창 
@@ -244,19 +370,33 @@ float: right;
   			else{
   				//alert("로그인했네?");
   				var params =$("#formId").serialize();
+  				var com =  $("#comment").val();
   				
-  				$.ajax({
   				
-  					url:"insertMovieScore.com",
-  					type: "post",
-  					data:params,
-  					success:function(data){ 
+  				if(com==""){
+  					alert("내용을 입력해주세요.");
+  					$("#comment").focus();
+  					return;
+  				}
+  				else{
   					
-  						listMovieScore();
-  						
-  					}
+  					$.ajax({
+  		  				
+  	  					url:"insertMovieScore.com",
+  	  					type: "post",
+  	  					data:params,
+  	  					success:function(data){ 
+  	  						$("#comment").val("");
+  	  						listMovieScore();
+  	  						
+  	  					},
+  	  					
+  	  				
+  	  				});
+  					
+  				}
   				
-  				});
+  			
   			
   				
   			}
@@ -375,7 +515,7 @@ float: right;
 
 </div>
 <br><br><br>
-<div class="well well-sm" id="well"><h4><strong>평점 주기</strong> </h4></div>
+<div class="well well-sm" id="well" ><h4><strong>평점 주기</strong></h4><h5><strong>(현재 평점 : ${m.m_score })</strong></h5></div>
  
  
 <div>
@@ -394,20 +534,23 @@ float: right;
 <form id="formId">
     <div class="form-group" >
 		<span class="" style="float: left; ">
-		<input type="hidden" name="ms_mid" value="${m.m_number }">
+		<input type="hidden" id="mnumber" name="ms_mid" value="${m.m_number }">
 		<input id="star" type="hidden" name="ms_score">
 		<input id="logId" type="hidden" name="ms_custid">
       <textarea maxlength="100" class="form-control col-sm-4" rows="3" id="comment" name="ms_comment" placeholder="로그인한 회원만 이용 가능합니다." style="width:580px;"></textarea>
      
       <button type="button" id="btn_register" class="btn btn-default btn-lg" style="height: 60px"><strong>등록</strong></button></span>
     </div>
-  </form>
+ </form>
+ 
+ 
 
 </span>
 <br><br><br><br>
 
 <div id="reply"><!-- moviescore select 해올 부분 (댓글달린거 보여주려고) -->
-	<div id="rat"></div>
+	<div id="paste_no"></div>
+	
 	<table id="re_table" width="90%">
 	
 	</table><br>
@@ -445,13 +588,15 @@ float: right;
           <center><h4 class="modal-title"><strong>평점 수정</strong></h4></center>
         </div>
         <div class="modal-body">
-        	
-        	<form>
+        	<div id="modal_mid" style="display: none;"></div>
+        	<form id="reviseForm">
         		<div class="form-group" >
-        			
-        		<div id="modal_rating"></div><span id="span_rating"></span>
+        			<input type="hidden" id="revise_send_star" name="ms_score">
+        			<input type="hidden" id="revise_no" name="ms_no">
+        			<img src="resources/images/user.png" width="30px" height="30px" style="float: left;">
+        		<div id="modal_rating" style="float: left; left: -20px"></div><span id="span_rating" style="float: left;"></span>
          			<div>
-         			      <textarea maxlength="100" class="form-control col-sm-3" rows="3" id="comment" name="ms_comment" ></textarea>
+         			      <textarea maxlength="100" class="form-control col-sm-3" rows="3" id="revise_comment" name="ms_comment" style="resize: none;"  required></textarea>
 
          			</div>
          		</div>
@@ -459,7 +604,7 @@ float: right;
          
         </div>
         <div class="modal-footer">
-          <center><button type="button" class="btn btn-info" data-dismiss="modal">수정</button></center>
+          <center><button id="btn_revise" type="button" class="btn btn-info">수정</button></center>
         </div>
       </div>
     </div>
