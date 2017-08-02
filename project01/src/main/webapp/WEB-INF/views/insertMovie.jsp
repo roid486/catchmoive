@@ -87,7 +87,7 @@
 				<option>전체 관람가</option>
 				<option>12세 관람가</option>
 				<option>15세 관람가</option>
-				<option>18세 관람가</option>
+				<option>청소년 관람불가</option>
 			</select>
             </div>
 			</div>
