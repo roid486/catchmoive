@@ -13,7 +13,6 @@
 	position: relative;
 	z-index: 999;
 }
-
 #center {
 	position: relative;
 	display: inline-block;
