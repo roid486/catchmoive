@@ -9,6 +9,9 @@
 		position: relative;
 		z-index: 999;
 	}
+	#bottom {
+	position: relative; background-color: brown; color: white;
+	}
 </style>
 <title>Insert title here</title>
 </head>
@@ -16,6 +19,15 @@
 	<div id="menu">
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
-	<h1>${msg }</h1>
+	<center>
+		<h1>${msg }</h1>
+	</center>
+	<br>
+	<br>
+	<div id="bottom">
+		<label for="center"><jsp:include
+				page="/WEB-INF/views/mainbottom.jsp">
+		</jsp:include></label>
+	</div>
 </body>
 </html>

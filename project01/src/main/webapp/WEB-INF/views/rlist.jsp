@@ -17,6 +17,9 @@
 		position: relative;
 		z-index: 1;
 	}
+	#bottom {
+	position: relative; background-color: brown; color: white;
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -70,6 +73,13 @@
 	  <center>
 	  	${pagenum }
 	  </center>
+	</div>
+	<br>
+	<br>
+	<div id="bottom">
+		<label for="center"><jsp:include
+				page="/WEB-INF/views/mainbottom.jsp">
+		</jsp:include></label>
 	</div>
 </body>
 </html>

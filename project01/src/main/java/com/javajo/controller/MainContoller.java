@@ -227,5 +227,20 @@ public class MainContoller {
 		return str;
 	}
 	
+	@RequestMapping(value="/mslist.com",produces = "text/plain;charset=utf-8")
+	@ResponseBody
+	public String mslist()
+	{
+		String str = "";
+		ObjectMapper mapper = new ObjectMapper();
+		List<MovieVo_j> list = dao.mslist();
+		try{
+			str = mapper.writeValueAsString(list);
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		return str;
+	}	
 	
 }
