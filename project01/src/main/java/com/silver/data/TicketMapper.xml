@@ -7,10 +7,18 @@
 	select * from ticket
 	</select>
 	
+	<delete id="deleteTicket">
+	delete from ticket;
+	</delete>
+	
 	<insert id="historyinsert">
 	insert into history
 	values(seq_his.nextval,to_date(#{ticket_date},'yyyy-mm-dd  HH24:MI:SS'),#{ticket_peoplenum},#{mt_number},#{t_number},#{ticket_price},#{c_id},#{m_number})
 	</insert>
+	
+	<update id="resetSeat">
+	update seat set ticket_number=null, seat_ft='n'
+	</update>
 	
 	<select id="seatNum" resultType="java.lang.Integer">
 		select t_seat from theater where

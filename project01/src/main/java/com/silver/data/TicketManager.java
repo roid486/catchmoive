@@ -95,6 +95,11 @@ public class TicketManager {
 		re+= session.insert("ticket.historyinsert",list.get(i));
 		
 		}
+		if(re==list.size())
+		{
+			session.update("ticket.resetSeat");
+			session.delete("ticket.deleteTicket");
+		}
 		System.out.println(re);
 		return 2;
 	}

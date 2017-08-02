@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,9 +55,10 @@ public class HomeController {
 
 	@Scheduled(cron="0 44 12 * * *")
 	public void historyscedule()
-	{
+	{//historyÅ×ÀÌºí insert
 		tdao.historyinsert();
 	}
+	
 	@RequestMapping("/fancy_main.com")
 	public ModelAndView test() {
 		ModelAndView mav = new ModelAndView();
@@ -87,6 +90,7 @@ public class HomeController {
 		mav.addObject("movietheater_name", movietheater_name);
 		mav.addObject("seat_num", tdao.seatNum(Integer.parseInt(theater_number)));
 		mav.addObject("movie_name", movie_name);
+		
 		return mav;
 	}
 	
@@ -107,7 +111,7 @@ public class HomeController {
 	
 	@RequestMapping(value="/ticketingok.com", produces = "text/plain;charset=utf-8")
 	@ResponseBody
-	public String ticketok(String m_number,String mt_number,String r_number,String t_number,String ticket_peoplenum,String ticket_price,String str){
+	public String ticketok(HttpServletRequest req,String m_number,String mt_number,String r_number,String t_number,String ticket_peoplenum,String ticket_price,String str){
 		String chk ="";
 		int num = 0;
 		String arr[] = str.split(",");
@@ -119,7 +123,9 @@ public class HomeController {
 		map1.put("m_number",m_number);
 		map1.put("mt_number",mt_number);
 		map1.put("t_number", t_number);
-		map1.put("c_id", "javajo");
+		HttpSession session =req.getSession();
+		String id = (String) session.getAttribute("se_id");
+		map1.put("c_id", id);
 		map1.put("r_number", r_number);
 		map1.put("ticket_price", ticket_price);
 

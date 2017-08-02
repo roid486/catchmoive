@@ -11,6 +11,92 @@ import com.jihye.vo.MovieVo_j;
 
 @Repository
 public class MovieDao {
+	
+	
+		//한 화면에 보여줄 게시물의 수
+		public static int pageSIZE= 3;
+		
+		//전체 레코드수 
+		public static int totalRecord;
+		
+		//전체 페이지수
+		public static int totalPage;
+		
+		//한 화면에 보여줄 페이지수
+		public static int pageGRUOP=3;
+		
+		
+		public int getNextNo(int ms_mid)
+		{
+			return MovieManager.getNextNo(ms_mid);
+		}
+		
+		public int getTotal(int ms_mid)
+		{
+			return MovieManager.getTotal(ms_mid);
+		}
+	
+		
+		/*public String getPageStr(int ms_mid)
+		{
+			// 현재 페이지에 따른 시작페이지와 마지막페이지를 계산한다.
+			// 한화면에 보여줄 페이지수를 5
+			// 현재페이지가 1,2,3,4,5 라면 start = 1, end 5
+			// 현재페이지가 6,7,8,9,10 라면 start = 6, end 10
+			                             
+			//int start = (int) Math.ceil((pageNUM-1) /(double)pageGRUOP)*pageGRUOP+1;		
+			//int start = (pageNUM + pageGRUOP-1) / pageGRUOP * pageGRUOP - (pageGRUOP-1);		
+			int start = 
+			(pageNUM + pageGRUOP-1) / pageGRUOP * pageGRUOP - (pageGRUOP-1);				
+			
+			int end = start+pageGRUOP-1;
+			
+			if(end > totalPage)
+				end = totalPage;
+			
+			System.out.println("pageNUM:"+pageNUM);
+			System.out.println("start:"+start);
+			System.out.println("end:"+end);
+			
+			String str = "";
+			
+			if( start > pageGRUOP  )
+			{
+				//str = str + "<a href='listMovieScore.com?ms_mid="+ms_mid+"&pageNUM="+(start-1)+"'>[이전]</a>&nbsp;";
+				str += "<span>";
+				str = str + "<label class='paging'>[이전]</label>&nbsp;";
+			}
+			
+			
+			for(int i=start; i<= end; i++)
+			{
+				//str = str + "<a href='listMovieScore.com?ms_mid="+ms_mid+"&pageNUM="+i+"'>"+ i + "</a>&nbsp;";
+				str = str + "<label class='paging'>"+ i + "</label>&nbsp;";
+				//str = str +i;
+			}
+			
+			if( end < totalPage  )
+			{
+				//str = str + "<a href='listMovieScore.com?ms_mid="+ms_mid+"&pageNUM="+(end+1)+"'>[다음]</a>&nbsp;";
+				str = str + "<label class='paging'>[다음]</label>&nbsp;";
+				str+="</span>";
+			}
+			
+			return str;
+		}*/
+		
+		
+		public List<MovieScoreVo> getMoveiScore(int ms_mid){
+			
+			totalRecord= getTotal(ms_mid);
+			totalPage = (int)Math.ceil((double)totalRecord/pageSIZE);
+			System.out.println("totalRecord:"+ totalRecord);
+			System.out.println("totalPage:"+ totalPage);
+			
+			return MovieManager.getMovieScore(ms_mid);
+		}
+		
+	
  
 	public int insertMovie(MovieVo_j m){
 		return MovieManager.insertMovie(m);
@@ -33,15 +119,22 @@ public class MovieDao {
 		return MovieManager.insertMovieScore(ms);
 	}
 	
+	public int updateMovieScore(MovieScoreVo ms){
+		return MovieManager.updateMovieScore(ms);
+	}
+	
+	public int deleteMovieScore(MovieScoreVo ms){
+		return MovieManager.deleteMovieScore(ms);
+	}
+	
 	public List<MovieScoreVo> listMovieScore(){
 		return MovieManager.listMovieScore();
 	}
 	
-	public List<MovieScoreVo> getMoveiScore(int ms_mid){
-		return MovieManager.getMovieScore(ms_mid);
-	}
 	
 	public List<MovieVo_j> getMovieFinder(String searchField,String searchWord,String[] m_genre,String[] m_nation,String[] m_grade,String startyear,String endyear){
 		return MovieManager.getMovieFinder(searchField,searchWord,m_genre,m_nation,m_grade,startyear,endyear);
 	}
+	
+	
 }

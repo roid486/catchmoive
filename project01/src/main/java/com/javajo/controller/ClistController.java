@@ -18,7 +18,7 @@ public class ClistController {
 	@Autowired
 	private JavajoDao dao;
 	
-	private int pageSize=10;
+	private int pageSize=5;
 	private int pageGroup=5;
 	private String key;
 	

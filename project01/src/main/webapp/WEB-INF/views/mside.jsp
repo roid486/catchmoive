@@ -28,10 +28,10 @@
 			location.href="mtlist.com";
 		});
 		$("#theater").click(function () {
-			alert("hi");
+			location.href="tlist.com";
 		});
 		$("#running").click(function () {
-			alert("hi");
+			location.href="rlist.com";
 		});
 		$("#board").click(function () {
 			alert("hi");
@@ -40,7 +40,7 @@
 			alert("hi");
 		});
 		$("#event").click(function () {
-			alert("hi");
+			location.href="elist.com";
 		});
 	});
 </script>

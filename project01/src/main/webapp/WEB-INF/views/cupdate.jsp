@@ -24,14 +24,13 @@
 <script type="text/javascript">
 	$(function () {
 		var re = $("#re").val();
-		$("#erdial").dialog({
-	         autoOpen:false,
-	         modal:true
-	      });
 		if(re==1)
 		{
 			$("#erdial").dialog("open");
 		}		
+		var gender = $("#gender2").attr("data-type");
+		$("#gender2").val(gender).text();
+	    $("#gender2").find("option:"+gender).attr("selected","selected");
 	});
 </script>
 </head>
@@ -94,15 +93,9 @@
 	      </div>
 	    </div>
 	    <div class="form-group">        
-	      <label class="control-label col-sm-2" for="gender">Gender: </label>
+	      <label class="control-label col-sm-2" for="gender2">Gender: </label>
 	      <div class="col-sm-10">
-	        <label class="checkbox-inline" id="gender">${cdetail.c_gender }</label>
-	      </div>
-	    </div>
-	    <div class="form-group">
-	      <label class="control-label col-sm-2" for="gender2"></label>
-	      <div class="col-sm-10">
-	        <select class="form-control" id="gender2" name="c_gender">
+	        <select class="form-control" id="gender2" name="c_gender" data-type="${cdetail.c_gender }">
 			    <option value="남자">남자</option>
 			    <option value="여자">여자</option>
 			</select>
@@ -134,9 +127,6 @@
 	      </div>
 	    </div>
 	  </form>
-	</div>
-	<div id="erdial">
-		<font color="red">${msg }</font>
 	</div>
 </body>
 </html>
