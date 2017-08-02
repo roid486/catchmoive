@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.silver.vo.MovieVo;
 import com.silver.vo.SeatVo;
+import com.silver.vo.TicketVo;
 
 
 public class TicketManager {
@@ -84,5 +85,17 @@ public class TicketManager {
 		SqlSession session = factory.openSession();
 		String str = session.selectOne("ticket.getmovie", movie_number);
 		return str;
+	}
+	public static int inserthistory() {
+		SqlSession session = factory.openSession(true);
+		List<TicketVo> list = session.selectList("ticket.tlist");
+		int re=0;
+		for(int i=0; i < list.size(); i++)
+		{
+		re+= session.insert("ticket.historyinsert",list.get(i));
+		
+		}
+		System.out.println(re);
+		return 2;
 	}
 }
