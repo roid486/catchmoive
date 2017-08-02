@@ -42,8 +42,11 @@ public class TicketDao {
 	}
 
 	public String getmoviename(String movie_number) {
-		// TODO Auto-generated method stub
 		return TicketManager.getmoviename(movie_number);
+	}
+
+	public int historyinsert() {
+		return TicketManager.inserthistory();
 	}
 
 	

@@ -492,4 +492,12 @@ public class JavajoManager {
 		return re;
 	}
 
+	public static List<MovieVo_j> mslist() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		List<MovieVo_j> list = session.selectList("javajo.mslist");
+		session.close();
+		return list;
+	}
+
 }

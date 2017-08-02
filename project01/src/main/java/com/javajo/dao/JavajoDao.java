@@ -246,5 +246,10 @@ public class JavajoDao {
 	public int eupdate(EventVo ev) {
 		// TODO Auto-generated method stub
 		return JavajoManager.eupdate(ev);
+	}
+
+	public List<MovieVo_j> mslist() {
+		// TODO Auto-generated method stub
+		return JavajoManager.mslist();
 	}	
 }
