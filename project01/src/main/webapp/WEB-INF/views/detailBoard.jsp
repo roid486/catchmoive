@@ -23,6 +23,7 @@ $(function() {
  	
 
 	function listReply(){
+		
 		$.ajax({
 			type:"get",
 			url:"listReply.com?b_number=${b.b_number}",
@@ -37,7 +38,16 @@ $(function() {
 		
 		var re_content = $("#re_content").val();
 		var b_number = "${b.b_number}";
-		var param="re_content= "+re_content+"&b_number= "+b_number;
+		//비밀댓글체크여부
+		var re_secretreply = "n";
+		//태그.is(":속성") 체크여부 true/false
+		if( $("#re_secretreply").is(":checked") ){
+			re_secretreply = "y";
+			
+        }
+		alert(re_secretreply);
+		//비밀댓글 파라미터 추가
+		var param="re_content= "+re_content+"&b_number= "+b_number+"&re_secretreply="+re_secretreply;
 	
 		$.ajax({
 			type:"POST",
@@ -75,10 +85,43 @@ $(function() {
         return false;
         
     });
+	//댓글 삭제
+	
+    function deleteRe(re_number){
+		if(confirm("삭제할거니?")){
+    	 $.ajax({
+    	  url:"deleteReply.com?re_number=${re_number}",
+    	  type:"get",
+    	  success:function(){ 
+    	   alert("성공");
+    	   listReply();
+    	  },
+    	  error:function(){
+    	   alert("실패");
+    	   listReply();
+    	  }
+    	 })
+    	}
+	}
+	
+/*  // 5. 댓글 삭제
+    $("#btnReplyDelete").click(function(){
+        if(confirm("삭제하시겠습니까?")){
+            $.ajax({
+                type: "delete",
+                url: "${path}/reply/delete/${vo.rno}",
+                success: function(result){
+                    if(result == "success"){
+                        alert("삭제되었습니다.");
+                        $("#modifyReply").css("visibility", "hidden");
+                        listReplyRest("1");
+                    }
+                }
+            });
+        }
 	
 	
-	
-	
+}); */
 });
 </script>
 </head>
@@ -111,6 +154,8 @@ $(function() {
         <c:if test="${sessionScope.se_id != null}">
         <textarea rows="5" cols="80" id="re_content" placeholder="댓글을 작성해주세요"></textarea>
         <br>
+        <!-- **비밀댓글 체크박스 -->
+        <input type="checkbox" id="re_secretreply">비밀 댓글
         <button type="button" id="btnReply">댓글 작성</button>
         </c:if>
     </div>

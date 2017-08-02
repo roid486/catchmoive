@@ -9,16 +9,26 @@
 <title>Insert title here</title>
 </head>
 <body>
+<input type="hidden" id="se_id" value="${se_id }" >
 	<table>
 		<c:forEach var="row" items="${listRe }">
 		<tr>
-			<td>
-				 ${row.re_number }&nbsp&nbsp&nbsp${row.c_name}&nbsp&nbsp&nbsp${row.re_regdate }
-                <br>
-                                    내용:${row.re_content}
-			</td>
+			<td>${row.re_number }&nbsp&nbsp&nbsp${row.c_name}&nbsp&nbsp&nbsp${row.re_regdate }</td>
+			<td>내용:${row.re_content}(비밀여부:${row.re_secretreply})</td>
+		<!-- 본인 댓글만 수정버튼 생성되도록 처리 -->
+				<td>
+                <c:if test="${sessionScope.se_id == row.c_id}">							 
+                    <input type="button" id="btnModify" value="수정" onclick="deleteRe('${row.re_number}')">
+                </c:if>
+                </td>
 		</tr>
+		
 		</c:forEach>
 	</table>
+	
+	<%-- <c:if test="${sessionScope.se_id == b.c_id}">
+	<a href="deleteBoard.com?b_number=${b.b_number }"><button type="button" id="btn_del">삭제</button></a>
+    <a href="updateBoard.com?b_number=${b.b_number }"><button type="button" id="btn_update">수정</button></a>
+    </c:if> --%>
 </body>
 </html>
