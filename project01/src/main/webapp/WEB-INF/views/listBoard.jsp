@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -17,16 +18,17 @@
 		<%-- var id2 = "<%= (String)session.getAttribute("customerid2")%>" --%>
 		 var id1 = $("#se_id").val();
 
-		$("#msgdialog").dialog({
+	/* 	$("#msgdialog").dialog({
 	         autoOpen:false,
 	         modal:true
-	      });
+	      }); */
 	
 		$("#btn_insert").click(function() {
 			alert("id1  ::   "+id1)
 			if(id1==null || id1=="")
 			{
-				$("#msgdialog").dialog("open");
+				/* $("#msgdialog").dialog("open"); */
+				alert("이삭이 msdialog");
 			}
 			else
 			{
@@ -47,7 +49,8 @@
 	<h1>${title }</h1>
 	
 	<hr>
-	<table border="1" cellpadding="0" cellspacing="0">
+	 <div class="table-responsive"> 
+	<table class="table" border="1" cellpadding="0" cellspacing="0">
 		<tr>
 			<td>게시판번호</td>
 			<td>TYPE</td>
@@ -79,6 +82,7 @@
 		</c:forEach>
 		
 	</table>
+</div>
 
 	<button id="btn_insert">게시물 등록</button>
 
