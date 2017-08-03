@@ -12,6 +12,9 @@
  	<select id="selectOne" resultType="movieVo">
  	select * from movie where m_number=#{m_number}
  	</select>
+ 	<update id="updateMScore">
+ 	update movie set m_score=#{m_score} where m_number=#{m_number} 
+ 	</update>
  	
  	<select id="selectAll" resultType="movieVo">
  	select * from movie

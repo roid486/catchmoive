@@ -76,12 +76,13 @@ public class MovieManager {
 		
 	}
 	
-	public static List<MovieScoreVo> listMovieScore(){
+	public static MovieScoreVo listMovieScore(int ms_no){
 		SqlSession session = factory.openSession();
-		List<MovieScoreVo> list = session.selectList("moviescore.selectAll");
+		
+		MovieScoreVo ms = (MovieScoreVo)session.selectOne("moviescore.selectRow",ms_no);
 		session.close();
 		
-		return list;
+		return ms;
 	}
 	
 	public static List<MovieScoreVo> getMovieScore(int ms_mid){
@@ -95,6 +96,16 @@ public class MovieManager {
 		List<MovieScoreVo> list = session.selectList("moviescore.selectOne",map);
 		session.close();
 		return list;
+		
+	}
+	
+	public static double getScoreAvg(int ms_mid){
+		SqlSession session = factory.openSession(true);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ms_mid", ms_mid);
+		double re =session.selectOne("moviescore.getAvg",map);
+		session.close();
+		return re;
 		
 	}
 	
@@ -122,18 +133,38 @@ public class MovieManager {
 		return re;
 	}
 	
-	public static int updateMovieScore(MovieScoreVo ms){
+	public static int updateMovieTableScore(double avg,int ms_mid){
+		
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("m_score", avg);
+		System.out.println("매니저에서 : "+avg);
+		map.put("m_number", ms_mid);
 		
 		SqlSession session = factory.openSession(true);
-		int re = session.update("moviescore.updateMovieScore",ms);
+		
+		int re = session.update("movie.updateMScore",map);
 		session.close();
 		return re;
 	}
 	
-	public static int deleteMovieScore(MovieScoreVo ms){
+	
+	public static int updateMovieScore(MovieScoreVo ms){
 		
 		SqlSession session = factory.openSession(true);
-		int re = session.delete("moviescore.deleteMovieScore",ms);
+		
+		int re = session.update("moviescore.updateMovieScore",ms);
+		
+		session.close();
+		return re;
+	}
+	
+	public static int deleteMovieScore(int ms_no){
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ms_no", ms_no);
+		SqlSession session = factory.openSession(true);
+		int re = session.delete("moviescore.deleteMovieScore",map);
 		session.close();
 		return re;
 	}
@@ -144,20 +175,24 @@ public class MovieManager {
 	
 	public static List<MovieVo_j> getMovieFinder(String searchField,String keyword,String[] m_genre,String[] m_nation,String[] m_grade,String startyear,String endyear){
 		
-		SqlSession session = factory.openSession();
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
 		
 		
 		
-			map.put("searchField", searchField);
-			//System.out.println("매니저에서 "+keyword);
+		map.put("searchField", searchField);
+		//System.out.println("매니저에서 "+keyword);
+	
 		
-			
-			map.put("keyword", keyword);
-			//System.out.println("매니저 map.put keyword: "+map.put("keyword", keyword));
+		map.put("keyword", keyword);
+		//System.out.println("매니저 map.put keyword: "+map.put("keyword", keyword));
+	
 		
+		
+		SqlSession session = factory.openSession();
+		
+	
 		
 	
 		if(m_genre!=null && !m_genre.equals("")){

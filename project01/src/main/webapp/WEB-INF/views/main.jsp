@@ -48,9 +48,6 @@ display: inline-block;
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		var arr;
-		var arr2;
-		var arr3;
 		$.ajax({
 			url : "mslist.com",
 			success : function(data) {

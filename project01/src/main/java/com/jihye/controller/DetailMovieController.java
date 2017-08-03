@@ -32,7 +32,8 @@ public class DetailMovieController {
 	public ModelAndView getMovie(int m_number,HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("m",dao.getMovie(m_number));
-		mav.addObject("ms",dao.listMovieScore());
+		mav.addObject("ms",dao.getMoveiScore(m_number));
+		//mav.addObject("ms",dao.listMovieScore());
 		//session.setAttribute("m", dao.getMovie(m_number));
 		
 		return mav;
