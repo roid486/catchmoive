@@ -16,7 +16,7 @@ text/html; charset=UTF-8"
 		//response.sendRedirect("listNotice.com");
 		//response.sendRedirect("main.com"); 
 		//response.sendRedirect("insertMovie.com");
-		response.sendRedirect("listBoard.com");
+		response.sendRedirect("listBoard.com"); 
 		//response.sendRedirect("listMovie.com");
 
 	%>
