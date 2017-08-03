@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="mts" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -15,15 +16,12 @@
 		position: relative;
 		z-index: 999;
 	}
-	#center {
-	position: relative;
-	display: inline-block;
-	width: 100%;
-	}
 	#mside{
-		position: relative;
+		position: absolute;
+		left: 0px;
 		display: inline-block;
 		width: 20%;
+		height: 100%;
 	}
 	.mt_num{
 		cursor: pointer;
@@ -32,10 +30,17 @@
 		position: relative;
 		z-index: 1;
 		display: inline-block;
-		width: 75%;
+		width: 60%;
 	}
 	#theaterl{
 		width: 100%;
+	}
+	#rlist{
+		width: 100%;
+	}
+	#map {
+        height: 400px;
+        width: 100%;
 	}
 	#bottom {
 	position: relative; background-color: brown; color: white;
@@ -51,19 +56,47 @@
 			location.href="movietheater.com?mt_number="+idx;
 		});
 		$(".tlist").click(function () {
+			$("#runningsee").empty();
 			var tnum = $(this).val();
 			
 			$.ajax({
-				url : "theaterlist.com",
+				url : "runninglist.com",
+				data:{
+					t_number:tnum
+				},
 				success : function(data) {
 					$.each(JSON.parse(data), function(idx, item) {
-						
+						tr = $("<tr></tr>");
+						td1 = $("<td></td>");
+						td2 = $("<td></td>");
+						td3 = $("<td></td>");
+						$(td1).text(item.m_name).appendTo(tr);
+						$(td2).html(item.r_date).appendTo(tr);
+						$(td2).html(item.r_date).appendTo(tr);
+						$(td3).text(item.r_start).appendTo(tr);
+						$(tr).appendTo("#runningsee");
 					});
 				}
 			});	
 			
 		});
 	});
+	function initMap() {
+		var x = $("#x").val();
+		var y = $("#y").val();
+        var uluru = {lat: eval(x), lng: eval(y)};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 18,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlyKo_MxZ5m_V2bCiLzBrLzY-qQjy0g40&callback=initMap">
 </script>
 </head>
 <body>
@@ -71,8 +104,8 @@
 	<div id="menu">
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
-	<div id="center">
-			<div id="mside" class="container" >
+	
+		<div id="mside" class="container" >
 			  <table class="table">
 			    <thead>
 			      <tr>
@@ -82,14 +115,16 @@
 			    <tbody>
 			    	<mts:forEach var="mtsd" items="${mtl }">
 				      <tr id="customer">
-				        <%-- <td><a href="movietheater.com?mt_number=${mtsd.mt_number }">${mtsd.mt_name }</a></td> --%>
 				        <td><label class="mt_num" idx="${mtsd.mt_number }">${mtsd.mt_name }</label></td>
 				      </tr>	    	
 			    	</mts:forEach>
 			    </tbody>
 			  </table>
-			</div>
+		</div>
+		<center>
 		<div class="container" id="movietheaterdetail">
+			<input type="hidden" id="x" value="${mtd.mt_x }">
+			<input type="hidden" id="y" value="${mtd.mt_y }">
 		  <h2>${mtd.mt_name }</h2>
 		  <img src="resources/mt_img/${mtd.mt_img }" class="img-rounded" alt="Cinque Terre" width="100%" height="200"><br>
 		  
@@ -105,10 +140,25 @@
 			</div>
 			
 			<div id="runninglist">
-				
+				<div id="rlist" class="container">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>영화제목</th>
+								<th>상영날짜</th>
+								<th>상영시간</th>
+							</tr>
+						</thead>
+						<tbody id="runningsee">
+		
+						</tbody>
+					</table>
+				</div>
 			</div>
 			
+			<div id="map"></div>
 		</div>
-	</div>
+		</center>
+		
 </body>
 </html>

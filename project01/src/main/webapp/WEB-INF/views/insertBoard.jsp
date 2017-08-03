@@ -7,10 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<input type="hidden" id="se_id" value="${se_id }" >
 	<h1>${head }</h1>
 	<hr>
 
 	<form action="insertBoard.com" method="post" enctype="multipart/form-data">
+	
+	<input type="hidden" name="c_id" value="${se_id }">
 	<input type="hidden" name="b_number" value="${b_number }">
 	<%-- <input type="hidden" name="board_b_ref" value="${board_b_ref }">
 	<input type="hidden" name="board_b_step" value="${board_b_step }">

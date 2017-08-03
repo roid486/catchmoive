@@ -19,6 +19,9 @@ import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
+import com.javajo.vo.RunningVo;
+import com.javajo.vo.RunningVo2;
+import com.javajo.vo.RunningVo3;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 
@@ -191,6 +194,15 @@ public class MainContoller {
 		return mav;
 	}
 	
+	@RequestMapping("/eventdetail.com")
+	public ModelAndView eventdetail(int e_number)
+	{
+		ModelAndView mav = new ModelAndView();
+		dao.hitupdate(e_number);
+		mav.addObject("ede", dao.edetail(e_number));
+		return mav;
+	}
+	
 	@RequestMapping(value="/movieselect.com",produces = "text/plain;charset=utf-8")
 	@ResponseBody
 	public String movieselect()
@@ -244,7 +256,6 @@ public class MainContoller {
 	public String mslist()
 	{
 		String str = "";
-		System.out.println();
 		ObjectMapper mapper = new ObjectMapper();
 		List<MovieVo_j> list = dao.mslist();
 		try{
@@ -256,14 +267,13 @@ public class MainContoller {
 		return str;
 	}
 	
-	@RequestMapping(value="/theaterlist.com",produces = "text/plain;charset=utf-8")
+	@RequestMapping(value="/runninglist.com",produces = "text/plain;charset=utf-8")
 	@ResponseBody
-	public String theaterlist()
+	public String theaterlist(int t_number)
 	{
 		String str = "";
-		System.out.println();
 		ObjectMapper mapper = new ObjectMapper();
-		List<MovieVo_j> list = dao.mslist();
+		List<RunningVo3> list = dao.runninglist(t_number);
 		try{
 			str = mapper.writeValueAsString(list);
 		}catch (Exception e) {

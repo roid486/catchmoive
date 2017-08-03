@@ -21,6 +21,7 @@ public class BoardVo {
 	private String b_type;
 	private String c_id;
 	private int b_recnt;
+	private String c_name;
 	
 	public MultipartFile uploadFile;
 
@@ -144,6 +145,14 @@ public class BoardVo {
 		this.b_recnt = b_recnt;
 	}
 
+	public String getC_name() {
+		return c_name;
+	}
+
+	public void setC_name(String c_name) {
+		this.c_name = c_name;
+	}
+
 	public MultipartFile getUploadFile() {
 		return uploadFile;
 	}
@@ -154,7 +163,7 @@ public class BoardVo {
 
 	public BoardVo(int b_number, String b_title, String b_pwd, String b_content, int b_hit, String b_regdate,
 			String b_ip, int b_b_ref, int b_b_level, int b_b_step, String b_fname, int b_fsize, String b_type,
-			String c_id, int b_recnt, MultipartFile uploadFile) {
+			String c_id, int b_recnt, String c_name, MultipartFile uploadFile) {
 		super();
 		this.b_number = b_number;
 		this.b_title = b_title;
@@ -171,6 +180,7 @@ public class BoardVo {
 		this.b_type = b_type;
 		this.c_id = c_id;
 		this.b_recnt = b_recnt;
+		this.c_name = c_name;
 		this.uploadFile = uploadFile;
 	}
 
@@ -185,7 +195,7 @@ public class BoardVo {
 				+ b_content + ", b_hit=" + b_hit + ", b_regdate=" + b_regdate + ", b_ip=" + b_ip + ", b_b_ref="
 				+ b_b_ref + ", b_b_level=" + b_b_level + ", b_b_step=" + b_b_step + ", b_fname=" + b_fname
 				+ ", b_fsize=" + b_fsize + ", b_type=" + b_type + ", c_id=" + c_id + ", b_recnt=" + b_recnt
-				+ ", uploadFile=" + uploadFile + "]";
+				+ ", c_name=" + c_name + ", uploadFile=" + uploadFile + "]";
 	}
 
 	

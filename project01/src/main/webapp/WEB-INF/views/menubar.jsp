@@ -87,8 +87,24 @@
 .whateverYouChooseforWrapCSS .fancybox-skin {
   background: none;
 }
+  .modal-header, .close {
+      background-color: skyblue;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+      
+  }
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
+  #logbtn{
+  	 background-color: skyblue;
+  	 border-color: skyblue;
+  }
   
 </style>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -141,44 +157,28 @@ jq1(function($) {
 			}
 		});
 		
-      $("#logindial").dialog({
-         autoOpen:false,
-         modal:true
-      });
-      $("#errordial").dialog({
-         autoOpen:false,
-         modal:true
-      });
-      $("#emsgdial").dialog({
-         autoOpen:false,
-         modal:true
-      });
-      $("#sciddial").dialog({
-         autoOpen:false,
-         modal:true
-      });
-      $("#scpwdial").dialog({
-         autoOpen:false,
-         modal:true
-      });
+   
       
       $("#login").click(function () {
-         $("#logindial").dialog("open");
+         //$("#logindial").dialog("open");
+    	  $("#logindial").modal();
       });
+      
       $("#scid").click(function () {
-         $("#logindial").dialog("close");
-         $("#sciddial").dialog("open");
-      });
-      $("#scpw").click(function () {
-         $("#logindial").dialog("close");
-         $("#scpwdial").dialog("open");
-      });
+          //$("#logindial").dialog("close");
+           $("#logindial").modal('hide');
+          $("#sciddial").modal();
+       });
+       $("#scpw").click(function () {
+          $("#logindial").modal('hide');
+          $("#scpwdial").modal();
+       });
       
       
       var signupnum = $("#signupnum").val();
       if(signupnum == 2)
       {
-         $("#errordial").dialog("open");
+         $("#errordial").modal();
       }
       
       $("#signup").click(function () {
@@ -223,7 +223,7 @@ jq1(function($) {
       var ere = $("#ere").val();
       if(ere==1)
       {
-    	  $("#emsgdial").dialog("open");
+    	  $("#emsgdial").modal();
       }
       
    })
@@ -258,9 +258,9 @@ jq1(function($) {
                       <li><a href="movieFinder.com">무비 파인더</a></li>
                   </ul>
              </li>
-             <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">예매</a></li> 
-             <li><a href="movietheater.com?mt_number=1">영화관</a></li> 
-             <li><a href="#">이벤트</a></li> 
+             <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">예매</a></li>
+             <li><a href="movietheater.com?mt_number=1">영화관</a></li>
+             <li><a href="event.com">이벤트</a></li> 
              <li><a id="listboard">공지사항</a></li> 
          </ul>
       </div>
