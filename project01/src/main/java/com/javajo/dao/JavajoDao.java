@@ -251,5 +251,5 @@ public class JavajoDao {
 	public List<MovieVo_j> mslist() {
 		// TODO Auto-generated method stub
 		return JavajoManager.mslist();
-	}	
+	}
 }

@@ -38,6 +38,9 @@ display: inline-block;
 #bottom {
 	position: relative; background-color: brown; color: white;
 }
+.table{
+	cursor: pointer;
+}
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -45,7 +48,6 @@ display: inline-block;
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		
 		$.ajax({
 			url : "mslist.com",
 			success : function(data) {
@@ -77,11 +79,11 @@ display: inline-block;
 						$("#msimg_inner").animate({left:idx2});
 						to = setTimeout(function () {
 							tm();
-						},10000);
+						},5000);
 					});
 				});
 			}
-		});
+		});	
 	});
 </script>
 </head>
@@ -112,9 +114,7 @@ display: inline-block;
 	<br>
 	<br>
 	<div id="bottom">
-		<label for="center"><jsp:include
-				page="/WEB-INF/views/mainbottom.jsp">
-		</jsp:include></label>
+		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
 	</div>
 </body>
 </html>
