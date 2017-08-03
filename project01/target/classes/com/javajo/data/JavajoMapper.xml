@@ -206,4 +206,17 @@
   <update id="hitupdate">
   	update event set e_hit=e_hit+1 where e_number=#{e_number}
   </update>
+  <select id="myt" resultType="myticketVo">
+  	select ticket_number,m_name,mt_name,t_name,ticket_date,r_start,ticket_peoplenum,ticket_price
+from customer c, movie m, movietheater mt, theater t, ticket tk, running r
+where c.c_id=tk.c_id and t.t_number=tk.t_number and mt.mt_number=tk.mt_number and
+m.m_number=tk.m_number and  r.r_number=tk.r_number and
+tk.c_id=#{c_id} order by ticket_number desc
+  </select>
+  <select id="myh" resultType="myhistoryVo">
+  	select m_name,mt_name,t_name,h_ticket_date,h_ticket_peoplenum,h_ticket_price
+from customer c, movie m, movietheater mt, theater t, history h
+where c.c_id=h.c_id and t.t_number=h.t_number and mt.mt_number=h.mt_number and
+m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
+  </select>
 </mapper>

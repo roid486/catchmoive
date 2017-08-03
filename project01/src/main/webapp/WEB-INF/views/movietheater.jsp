@@ -9,9 +9,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
-	div{
-		border: 1 solid black;
-	}
 	#menu{
 		position: relative;
 		z-index: 999;
