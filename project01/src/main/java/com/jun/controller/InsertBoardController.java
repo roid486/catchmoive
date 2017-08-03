@@ -70,21 +70,23 @@ public class InsertBoardController {
 	
 	
 	@RequestMapping(value="/insertBoard.com",method=RequestMethod.POST)
-	public ModelAndView submit(BoardVo b,HttpServletRequest request,CustomerVo cv,HttpSession session, String c_id)
+	public ModelAndView submit(BoardVo b,HttpServletRequest request,HttpSession session)
 	{
 		
 		ModelAndView mav = new ModelAndView();
-		String id=(String)session.getAttribute("c_id");
-		String re = dao1.loginok(cv);
+		String se_id=(String)session.getAttribute("se_id");
+		
+		/*String re = dao1.loginok(cv);
 
 		mav.setViewName("redirect:login.com");
 		if (re == null)
 			mav.setViewName("redirect:/login.com");
 		else {
-			session.setAttribute("c_id", c_id);
-		}
-		System.out.println("인서트 id:"+id);
-		System.out.println("인서트 re:"+re);
+			session.setAttribute("se_id", se_id);
+		}*/		
+		System.out.println("인서트 id:"+se_id);
+		//System.out.println("인서트 re:"+re);
+	
 		
 		b.setB_ip(request.getRemoteAddr());
 		String path = request.getRealPath("resources/jun");
@@ -110,20 +112,6 @@ public class InsertBoardController {
 		} catch (Exception e) {
 			// TODO: handle exc	``eption
 			System.out.println("submit : "+e.getMessage());
-		}
-		
-		//이미 달려있는 답글들의 b_step을 증가시킨다.
-		
-				/*새글,
-					  no = b_ref
-				 답글 
-				 	no != b_ref
-				 */
-		if(b.getB_number() != b.getB_b_ref())
-		{
-			dao.updateStep(b.getB_b_ref(), b.getB_b_step() );		
-			b.setB_b_step(b.getB_b_step()+1);
-			b.setB_b_level(b.getB_b_level()+1);
 		}
 		
 		

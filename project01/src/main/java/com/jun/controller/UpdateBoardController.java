@@ -37,7 +37,7 @@ public class UpdateBoardController {
 	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView submit(BoardVo b, HttpServletRequest request)
 	{
-		//원래상품명
+		
 		ModelAndView mav = new ModelAndView();
 		String oldFname = b.getB_fname();
 		String path = request.getRealPath("resources/jun");

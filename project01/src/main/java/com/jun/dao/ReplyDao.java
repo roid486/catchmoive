@@ -2,7 +2,10 @@ package com.jun.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Repository;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.jun.data.JavajoManager;
 import com.jun.vo.ReplyVo;
@@ -19,10 +22,25 @@ public class ReplyDao {
 		// TODO Auto-generated method stub
 		return JavajoManager.listRe(b_number);
 	}
+	
 	public int getNextRe() {
 		// TODO Auto-generated method stub
 		return JavajoManager.getNextRe();
 	}
+	public int deleteRe(int re_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.deleteRe(re_number);
+	}
+	public ReplyVo getReply(int re_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.getReply(re_number);
+	}
+	public int updateRe(ReplyVo r) {
+		// TODO Auto-generated method stub
+		return JavajoManager.updateRe(r);
+		
+	}
+	
 	
 
 

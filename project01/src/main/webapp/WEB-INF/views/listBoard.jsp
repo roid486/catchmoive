@@ -13,9 +13,9 @@
 <script type="text/javascript">
 	$(function() {
 		/* var customer_id */
-		 var id1 = <%= session.getAttribute("se_id")%>
+		 <%-- var id1 = <%= session.getAttribute("se_id")%> --%>
 		<%-- var id2 = "<%= (String)session.getAttribute("customerid2")%>" --%>
-		/* var id1 = $("#se_id").val(); */
+		 var id1 = $("#se_id").val();
 
 		$("#msgdialog").dialog({
 	         autoOpen:false,
@@ -23,6 +23,7 @@
 	      });
 	
 		$("#btn_insert").click(function() {
+			alert("id1  ::   "+id1)
 			if(id1==null || id1=="")
 			{
 				$("#msgdialog").dialog("open");
@@ -33,16 +34,7 @@
 			} 			
 		});
 		
-		$("#btn_detail").click(function() {
-			if(id1==null || id1="")
-			{
-				$("#msgdialog").dialog("open");
-			}
-			else
-			{
-				location.href="detailBoard.com";
-			}
-		})
+
 		
 	}); 
 
@@ -61,6 +53,7 @@
 			<td>TYPE</td>
 			<td>제목</td>
 			<td>ID</td>
+			<td>작성자</td>			
 			<td>등록일</td>
 			<td>조회수</td>
 		</tr>
@@ -71,7 +64,7 @@
 			<td>${b.b_number }</td>
 			<td>${b.b_type }</td>
 			<td>
-			<a id="btn_detail" href="detailBoard.com?b_number=${b.b_number }">${b.b_title }
+			<a href="detailBoard.com?b_number=${b.b_number }">${b.b_title }
                     <c:if test="${b.b_recnt > 0}">
                     <span style="color: red;">(${b.b_recnt})
                     </span>
@@ -79,6 +72,7 @@
 			</a>
 			</td>
 			<td>${b.c_id }</td>
+			<td>${b.c_name }</td>
 			<td>${b.b_regdate }</td>
 			<td>${b.b_hit }</td>
 		</tr>
