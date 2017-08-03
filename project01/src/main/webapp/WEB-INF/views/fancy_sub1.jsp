@@ -44,9 +44,10 @@
 				var a1 = $("<a></a>").attr({
 					href : "#",
 					id : item.m_number,
-					name : "sub1"
+					name : "sub1",
+					idx : item.m_image1
 				}).html(item.m_name)
-
+				
 				$("#sub1_form").append(a1, "<br>");
 			})
 		})
@@ -62,6 +63,7 @@
 				movie_number = $(this).attr("id");
 				var mname = $(this).text();
 				$("#name").html(mname);
+				$("#post").html("<img width='80px' height='100px' src='resources/upload/"+$(this).attr("idx")+"'>")
 				$("#sub2_form").empty();
 				$.ajax({
 					url : "secondList.com",
@@ -197,7 +199,7 @@
 					<a href="#" class="button" id="btn1">뒤로가기</a>
 				</div>
 				<div id="small2">
-					영화 포스터/영화이름<br> <span id="name" style="color: white;"></span>
+					<span id='post'></span><br> <span id="name" style="color: white;"></span>
 				</div>
 				<div id="small3">
 					극장 <br> <span id="the" style="color: white;"></span><br>상영관<br>

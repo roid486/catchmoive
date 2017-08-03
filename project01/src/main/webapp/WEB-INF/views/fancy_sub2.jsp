@@ -352,7 +352,7 @@
 							</center>
 						</div>
 						<div id="small2">
-							영화 포스터/영화이름 <br>
+							<span><img width='80px' height='100px' src="resources/upload/${movie_image1 }"></span><br>
 							<font style="color: white;">${movie_name }</font>
 						</div>
 						<div id="small3">

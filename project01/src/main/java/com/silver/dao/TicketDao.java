@@ -44,7 +44,9 @@ public class TicketDao {
 	public String getmoviename(String movie_number) {
 		return TicketManager.getmoviename(movie_number);
 	}
-
+	public String getpost(String movie_number) {
+		return TicketManager.getpost(movie_number);
+	}
 	public int historyinsert() {
 		return TicketManager.inserthistory();
 	}

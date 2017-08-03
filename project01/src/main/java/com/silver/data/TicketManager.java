@@ -86,6 +86,12 @@ public class TicketManager {
 		String str = session.selectOne("ticket.getmovie", movie_number);
 		return str;
 	}
+	public static String getpost(String movie_number) {
+		SqlSession session = factory.openSession();
+		String str = session.selectOne("ticket.getpost", movie_number);
+		return str;
+	}
+	
 	public static int inserthistory() {
 		SqlSession session = factory.openSession(true);
 		List<TicketVo> list = session.selectList("ticket.tlist");
