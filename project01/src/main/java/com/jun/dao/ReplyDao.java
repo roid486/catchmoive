@@ -31,6 +31,15 @@ public class ReplyDao {
 		// TODO Auto-generated method stub
 		return JavajoManager.deleteRe(re_number);
 	}
+	public ReplyVo getReply(int re_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.getReply(re_number);
+	}
+	public int updateRe(ReplyVo r) {
+		// TODO Auto-generated method stub
+		return JavajoManager.updateRe(r);
+		
+	}
 	
 	
 

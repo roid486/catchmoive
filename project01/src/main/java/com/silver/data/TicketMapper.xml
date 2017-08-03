@@ -23,6 +23,9 @@
 		select
 		nvl(max(ticket_number),0)+1 from ticket
 	</select>
+	<select id="getmovie" resultType="java.lang.String">
+		select m_name from movie where m_number = #{movie_number}
+	</select>
 
 	<insert id="insert">
 		insert into ticket

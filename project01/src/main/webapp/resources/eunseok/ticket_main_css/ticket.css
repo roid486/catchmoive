@@ -1,12 +1,22 @@
 @CHARSET "EUC-KR";
 
+body{
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	background: black;
+}
+
 .table {
+	width: 100%;
+	height: 100%;
+	top: -10px;
 	position: relative;
 	border-collapse: separate;
 	table-layout: fixed;
 	background-color: #fdfdee;
-	margin-top: 20px;
-
+	margin-top: 15px;
+	box-shadow: 10px 10px 5px 0px #000000;
 }
 
 .ticket_content {
@@ -23,17 +33,16 @@ a {
 
 #adult {
 	display: inline-block;
-	
 }
 
 #youth {
 	display: inline-block;
-	margin-top:4px;
+	margin-top: 4px;
 }
 
 #special {
 	display: inline-block;
-	margin-top:4px;
+	margin-top: 4px;
 }
 
 .r {
@@ -64,7 +73,7 @@ a {
 	width: 490px;
 	height: 21px;
 	background: gray;
-	margin-top:10px;
+	margin-top: 10px;
 	top: 10px;
 }
 
@@ -89,75 +98,86 @@ a {
 	text-decoration: underline;
 }
 
-a{
-    -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-    -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-    -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-    -o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-    transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-    display: block;
-    margin: 20px auto;
-    max-width: 180px;
-    text-decoration: none;
-    border-radius: 4px;
-    padding: 20px 30px;
+a {
+	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	display: block;
+	margin: 20px auto;
+	max-width: 180px;
+	text-decoration: none;
+	border-radius: 4px;
+	padding: 20px 30px;
 }
 
 a.button {
-    color: rgba(255, 255, 255, 1);
-    box-shadow: rgba(255, 255, 255, 1) 0 0px 0px 2px inset;
-    display:
-    border: 2px solid white;
-    height: 40px;
+	color: rgba(255, 255, 255, 1);
+	box-shadow: rgba(255, 255, 255, 1) 0 0px 0px 2px inset;
+	border: 2px solid white;
+	height: 40px;
 }
 
 a.button:hover {
-    color: rgba(0, 0, 0, 0.54);
-    box-shadow: rgba(255, 255, 255, 1) 0 0px 0px 40px inset;
+	color: rgba(0, 0, 0, 0.54);
+	box-shadow: rgba(255, 255, 255, 1) 0 0px 0px 40px inset;
 }
-#big{
-	
+
+#big {
 	display: inline-block;
 	width: 100%;
 	height: 100%;
 }
 
-#big > *{
+#big>* {
 	color: gray;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
 }
-#small1{
+
+#small1 {
 	/* display: inline-block; */
 	float: left;
 	width: 11%;
 	text-align: left;
 	/* height: 90%; */
 }
-#small2{
+
+#small2 {
 	display: inline-block;
 	float: left;
 	width: 22%;
 	border: 1px solid black;
+	text-align: center;
 }
-#small3{
+
+#small3 {
 	display: inline-block;
 	float: left;
 	width: 25%;
 	border: 1px solid black;
+	text-align: center;
 }
-#small4{
+
+#small4 {
 	display: inline-block;
 	float: left;
 	width: 22%;
 	border: 1px solid black;
+	text-align: center;
 }
-#small5{
+
+#small5 {
 	display: inline-block;
 	float: right;
 	width: 11%;
 	/* height: 90%; */
-	text-align:right; 
+	text-align: right;
 }
-#radio{
+
+#radio {
 	margin-left: 10px;
 }
 
@@ -189,8 +209,8 @@ input[type=radio]+label:BEFORE {
 }
 
 input[type=radio]:checked+label:BEFORE {
-	content: "\2710"; /* 체크모양 */
-	text-shadow: 0px 0px 0px rgba(0, 0, 0,0);
+	content: "\2714";
+	체크모양 text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 	font-size: 18px;
 	font-weight: 800;
 	color: #0000;
@@ -199,16 +219,16 @@ input[type=radio]:checked+label:BEFORE {
 	line-height: 18px;
 }
 
+#es{
+	margin-left: -8px;
+}
 input[type=checkbox] {
 	display: none;
 }
 
-#col>label {
-	width: 20px;
-	height: 20px;
-}
 
 input[type=checkbox]+label {
+	text-align: center;
 	cursor: pointer;
 	position: relative;
 	width: 20px;
@@ -217,7 +237,6 @@ input[type=checkbox]+label {
 	padding-left: 5px;
 	padding-top: 5px;
 	margin-right: 5px;
-	text-align: center;
 	font-size: 13px;
 }
 
@@ -246,6 +265,20 @@ input[type=checkbox]:checked+label:BEFORE { /*체크 박스에 체크  */
 	background: #0000;
 	text-align: center;
 	line-height: 18px; */
+	display: inline-block;
+	width: 21px;
+	height: 21px;
+	position: relative;
+	left: 4px;
+	bottom: -1px;
+	background-color: #fdfdee;
+	border-radius: 1px;
+	box-sizing: border-box;
+	border: 1px solid black;
+}
+
+input[type=checkbox]:disabled+label:BEFORE { /*체크 박스에 체크  */
+	content: "\274c"; /* 체크모양 */
 	display: inline-block;
 	width: 21px;
 	height: 21px;

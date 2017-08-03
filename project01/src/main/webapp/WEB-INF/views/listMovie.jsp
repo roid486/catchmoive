@@ -16,7 +16,7 @@
 
 #menu{
  background-color: #80d4ff;
-
+ color: #80d4ff;
 
 }
 
@@ -44,6 +44,9 @@ font-family: -윤고딕340;
 }
 
 #side_lab{
+	color: #666666;
+}
+.side_lab{
 	color: #666666;
 }
 
@@ -134,8 +137,11 @@ $(function(){
 				<div>
 				<center>
 				<label id="side_lab"><f:formatDate value="${l.m_opendate }" pattern="yyyy.MM.dd"></f:formatDate> 개봉&nbsp;|&nbsp;예매율:&nbsp;${l.m_boxoffice }%</label>
+				<br>
+				<label class="side_lab">평점 : ${l.m_score }</label>
 				</center>
 				</div>
+			
 			</td>
                      
                <c:if test="${(status.index+1) % 3 ==0 }">

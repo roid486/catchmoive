@@ -9,4 +9,21 @@
   <select id="selectAll" resultType="MovieScoreVo">
   	select * from moviescore
   </select>
+   <select id="selectOne" resultType="MovieScoreVo">
+   select * from moviescore where ms_mid=#{ms_mid} order by ms_no desc
+ <!-- 	select rownum,ms_no,ms_custid,ms_mid,ms_score,ms_comment from (select ms_no,ms_custid,ms_mid,ms_score,ms_comment from moviescore where ms_mid=#{ms_mid} order by ms_no desc) where rownum between #{start} and #{end}  -->
+  </select>
+  <select id="getTotal" resultType="java.lang.Integer">
+  	select nvl(count(*),0) from moviescore where ms_mid=#{ms_mid}
+  </select>
+   <select id="getNextNo" resultType="java.lang.Integer">
+  	select nvl(max(ms_no),0)+1 from moviescore where ms_mid=#{ms_mid}
+   </select>
+     <update id="updateMovieScore">
+   		update moviescore set ms_score=#{ms_score},ms_comment=#{ms_comment}
+ 	 </update>
+ 	<delete id="deleteMovieScore">
+ 		delete moviescore where ms_no=#{ms_no}
+ 	</delete>	 
+   
 </mapper>

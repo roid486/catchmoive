@@ -70,8 +70,8 @@ public class HomeController {
 		list1 = tdao.theaterSeat(theater_number,movietheater_number);
 		ModelAndView mav = new ModelAndView();
 		String movietheater_name = tdao.getmovietheatername(movietheater_number);
-		//running_start, movietheater_name, theater_number, runnning_date
-		System.out.println(running_start+"//"+ movietheater_name+"//"+  theater_number+"//"+  running_date);
+		String movie_name = tdao.getmoviename(movie_number);
+		System.out.println(movie_name);
 		mav.addObject("movietheater_number", movietheater_number);
 		mav.addObject("theater_number", theater_number);
 		mav.addObject("running_start", running_start);
@@ -80,6 +80,7 @@ public class HomeController {
 		mav.addObject("movie_number", movie_number);
 		mav.addObject("movietheater_name", movietheater_name);
 		mav.addObject("seat_num", tdao.seatNum(Integer.parseInt(theater_number)));
+		mav.addObject("movie_name", movie_name);
 		return mav;
 	}
 	

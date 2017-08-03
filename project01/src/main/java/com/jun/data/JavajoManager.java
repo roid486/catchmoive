@@ -144,7 +144,26 @@ public class JavajoManager {
 		return re;
 	}
 
+	public static ReplyVo getReply(int re_number) {
+		// TODO Auto-generated method stub
+		
+		SqlSession session = factory.openSession();
+		ReplyVo r = session.selectOne("javajo.getReply",re_number);
+		session.close();
+		return r;
+	}
+
+	public static int updateRe(ReplyVo r) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		System.out.println("¸Å´ÏÀú r.get     :::"+r.getRe_content()+r.getRe_number());
+		int re = session.update("javajo.updateReply",r);
 	
+		session.close();
+		
+		return re;
+	}
+
 
 
 	

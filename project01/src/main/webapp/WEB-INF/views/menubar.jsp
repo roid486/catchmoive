@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="resources/ui/jquery-ui.structure.min.css">
 <link rel="stylesheet" href="resources/ui/jquery-ui.theme.min.css">
 <link rel="stylesheet" type="text/css"
-   href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+   href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css?a=2" media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
@@ -84,6 +84,9 @@
    #scpw{
    		cursor: pointer;
    }
+.whateverYouChooseforWrapCSS .fancybox-skin {
+  background: none;
+}
   
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -105,10 +108,12 @@ jq1(function($) {
    $("a[rel=fancybox]").fancybox({
       width : 1000,
       height : 600,
-      showCloseButton : false,
+      showCloseButton : true,
       opcity : 0.2,
       overlayShow : true,
-      scrolling : "no"
+      scrolling : "no",
+      overlayColor:"#000000",
+      overlayOpacity:0.5
    });
 }) 
  jq3(function ($) {
@@ -266,66 +271,6 @@ jq1(function($) {
          </ul>
       </div>
    </div>
-   <div id="logindial" title="로그인">
-      <center>
-         <form action="login.com" method="post">
-            <table align="center">
-               <tr>
-                  <td>
-                     <input type="text" name="c_id" placeholder="ID"><br>
-                     <input type="password" name="c_pw" placeholder="PASSWORD">
-                  </td>
-                  <td>
-                     <input type="submit" value="로그인">
-                  </td>
-               </tr>
-               <tr>
-                  <td><span id="scid">아이디</span>/<span id="scpw">비밀번호</span> 찾기</td>
-               </tr>
-            </table>
-         </form>
-      </center>
-   </div>
-   <div id="sciddial" title="아이디찾기">
-      <center>
-         <form action="scid.com" method="post">
-            <table align="center">
-               <tr>
-                  <td>
-                     <input type="text" name="name" placeholder="이름"><br>
-                     <input type="text" name="email" placeholder="Email">
-                  </td>
-                  <td>
-                     <input type="submit" value="찾기">
-                  </td>
-               </tr>
-            </table>
-         </form>
-      </center>
-   </div>
-   <div id="scpwdial" title="비밀번호찾기">
-      <center>
-         <form action="scpw.com" method="post">
-            <table align="center">
-               <tr>
-                  <td>
-                     <input type="text" name="id" placeholder="ID"><br>
-                     <input type="text" name="name" placeholder="이름"><br>
-                     <input type="text" name="email" placeholder="Email">
-                  </td>
-                  <td>
-                     <input type="submit" value="찾기">
-                  </td>
-               </tr>
-            </table>
-         </form>
-      </center>
-   </div>
-   <div id="errordial" title="오류">
-      <center><span>존재하지 않는 아이디/비밀번호 입니다.</span></center>
-   </div>
-   <div id="emsgdial" title="오류">
-      <center><span>${emsg }</span></center>
-   </div>
+   
 </body>
 </html>

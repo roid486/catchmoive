@@ -7,7 +7,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+	
+
+function showReplyModify(re_number){
+	alert("리스트리플라이 re_number  ::" +re_number);
+
+    $.ajax({
+        type: "get",
+        url: "detailReply.com?re_number="+re_number,
+        success: function(result){
+        	alert("성공!!!!!!!!");
+            $("#modifyReply").html(result);
+            // 태그.css("속성", "값")
+            $("#modifyReply").css("visibility", "visible");
+        },
+        error: function(result){
+        	alert("실패부분?")
+        	$("#modifyReply").html(result);
+        	// 태그.css("속성", "값")
+        	$("#modifyReply").css("visibility", "visible");
+		}
+    });
+};
+
+</script>
 </head>
+
 <body>
 <input type="hidden" id="se_id" value="${se_id }" >
 	<table>
@@ -17,18 +48,16 @@
 			<td>내용:${row.re_content}(비밀여부:${row.re_secretreply})</td>
 		<!-- 본인 댓글만 수정버튼 생성되도록 처리 -->
 				<td>
-                <c:if test="${sessionScope.se_id == row.c_id}">							 
-                    <input type="button" id="btnModify" value="수정" onclick="deleteRe('${row.re_number}')">
-                </c:if>
+                <%-- <c:if test="${sessionScope.se_id == row.c_id}">	 --%>						 
+                    <input type="button" id="btnModify" value="수정" onclick="showReplyModify('${row.re_number}')">
+                <%-- </c:if> --%>
                 </td>
 		</tr>
 		
 		</c:forEach>
 	</table>
+	<!-- 댓글 수정 영역-->
+    <div id="modifyReply"></div>
 	
-	<%-- <c:if test="${sessionScope.se_id == b.c_id}">
-	<a href="deleteBoard.com?b_number=${b.b_number }"><button type="button" id="btn_del">삭제</button></a>
-    <a href="updateBoard.com?b_number=${b.b_number }"><button type="button" id="btn_update">수정</button></a>
-    </c:if> --%>
 </body>
 </html>

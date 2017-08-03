@@ -19,9 +19,22 @@ $(function() {
 	    modal:true
 	 }); 
 
+/* 	 function listReply(){
+	        $.ajax({
+	            type: "get",
+	            url: "listReply/${b.b_number}",
+	            success: function(result){
+	            // responseText가 result에 저장됨.
+	                $("#listReply").html(result);
+	            },
+	        	error: function(result){
+				alert("에러부분//나와라리스트야.");
+				 $("#listReply").html(result);
+				}
+	        });
+	    }; */ 
 	listReply();
- 	
-
+ 
 	function listReply(){
 		
 		$.ajax({
@@ -31,7 +44,7 @@ $(function() {
 				$("#listReply").html(result);
 			}		
 		});	
-	};
+	}; 
 	
 	//댓글쓰는거 	
 	$("#btnReply").click(function() {
@@ -85,7 +98,29 @@ $(function() {
         return false;
         
     });
-	//댓글 삭제
+ 
+    // **댓글 수정화면 생성
+/*     function showReplyModify(b.re_number){
+        $.ajax({
+            type: "get",
+            url: "detailReply.com?re_number=${re_number},
+            success: function(result){
+                $("#modifyReply").html(result);
+                // 태그.css("속성", "값")
+                $("#modifyReply").css("visibility", "visible");
+            },
+            error: function(result){
+            	alert("실패부분?")
+            	$("#modifyReply").html(result);
+            	// 태그.css("속성", "값")
+            	$("#modifyReply").css("visibility", "visible");
+			}
+        });
+    }; */
+    
+ 
+ 
+	/* //댓글 삭제
 	
     function deleteRe(re_number){
 		if(confirm("삭제할거니?")){
@@ -102,7 +137,7 @@ $(function() {
     	  }
     	 })
     	}
-	}
+	} */
 	
 /*  // 5. 댓글 삭제
     $("#btnReplyDelete").click(function(){
@@ -124,6 +159,16 @@ $(function() {
 }); */
 });
 </script>
+<style>
+    #modifyReply {
+        width: 600px;
+        height: 130px;
+        background-color: gray;
+        padding: 10px;
+        z-index: 10;
+        visibility: hidden;
+    }
+</style>
 </head>
 <body>
 <input type="hidden" id="se_id" value="${se_id }" >

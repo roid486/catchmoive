@@ -32,11 +32,17 @@ from board b, customer c where b.c_id=c.c_id order by b_number desc
   <select id="getBoard" resultType="boardVo">
   	select * from board where b_number = #{b_number}
   </select>
-  
+
+
   <update id="updateBoard">
   	update board set b_title=#{b_title},b_pwd=#{b_pwd},
   	b_content=#{b_content},b_fname=#{b_fname},b_type=#{b_type} where b_number=#{b_number}
   </update>
+   <update id="updateReply">
+  	update reply set re_content=#{re_content} where re_number=#{re_number}
+  	
+  </update>
+ 
   
   <delete id="deleteBoard" >
   	delete from board where b_number=#{b_number}
@@ -50,7 +56,7 @@ from board b, customer c where b.c_id=c.c_id order by b_number desc
   	update board set b_b_step = b_b_step + 1 where b_b_ref= #{b_b_ref} and b_b_step > #{b_b_step}
   </update>
   
-
+<!--   REPLY부분  -->
   <select id="selectRe" resultType="replyVo">
  	select re_number,re_content,re_regdate,re_updatedate,b_number,r.c_id,c_name from reply r,customer c where r.c_id=c.c_id and b_number=#{b_number} order by re_number
   </select>
@@ -63,7 +69,10 @@ from board b, customer c where b.c_id=c.c_id order by b_number desc
   	delete from reply where re_number=#{re_number}
   </delete>
     
-    
+   <select id="getReply" resultType="replyVo">
+  	select * from reply where re_number = #{re_number}
+  </select>
+  
   
 	
 </mapper>
