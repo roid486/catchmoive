@@ -259,13 +259,7 @@ jq1(function($) {
                   </ul>
              </li>
              <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">예매</a></li> 
-             <li><a id="movietheater">영화관</a>
-                <ul>
-                   <m:forEach var="mtl" items="${mtlist }">
-                    <li><a href="#">${mtl.mt_name }</a></li>
-                   </m:forEach>
-               </ul>
-             </li> 
+             <li><a href="movietheater.com?mt_number=1">영화관</a></li> 
              <li><a href="#">이벤트</a></li> 
              <li><a id="listboard">공지사항</a></li> 
          </ul>

@@ -499,6 +499,4 @@ public class JavajoManager {
 		session.close();
 		return list;
 	}
-
-
 }

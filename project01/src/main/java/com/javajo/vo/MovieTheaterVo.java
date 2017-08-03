@@ -1,5 +1,7 @@
 package com.javajo.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MovieTheaterVo {
 
 	private int mt_number;
@@ -7,17 +9,22 @@ public class MovieTheaterVo {
 	private String mt_loc;
 	private double mt_x;
 	private double mt_y;
+	private String mt_img;
+	private MultipartFile file;
 	public MovieTheaterVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MovieTheaterVo(int mt_number, String mt_name, String mt_loc, double mt_x, double mt_y) {
+	public MovieTheaterVo(int mt_number, String mt_name, String mt_loc, double mt_x, double mt_y, String mt_img,
+			MultipartFile file) {
 		super();
 		this.mt_number = mt_number;
 		this.mt_name = mt_name;
 		this.mt_loc = mt_loc;
 		this.mt_x = mt_x;
 		this.mt_y = mt_y;
+		this.mt_img = mt_img;
+		this.file = file;
 	}
 	public int getMt_number() {
 		return mt_number;
@@ -48,6 +55,18 @@ public class MovieTheaterVo {
 	}
 	public void setMt_y(double mt_y) {
 		this.mt_y = mt_y;
+	}
+	public String getMt_img() {
+		return mt_img;
+	}
+	public void setMt_img(String mt_img) {
+		this.mt_img = mt_img;
+	}
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 	
 }
