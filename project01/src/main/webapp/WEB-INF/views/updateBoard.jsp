@@ -20,7 +20,6 @@
 				<option value="기타">기타</option>		
 			</select><br>
 	제목 : <input type="text" name="b_title" value="${b.b_title }"><br>
-	암호 : <input type="text" name="b_pwd" value="${b.b_pwd }"><br>
 	내용:<br>
 	<textarea rows="10" cols="60" name="b_content">${b.b_content }</textarea><br>
 	<img alt="" src="resources/jun/${b.b_fname }" width="60" height="60"><br>
