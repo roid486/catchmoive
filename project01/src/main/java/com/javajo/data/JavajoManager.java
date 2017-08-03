@@ -294,7 +294,7 @@ public class JavajoManager {
 		return list;
 	}
 
-	public static int sinsert(int row, String col, int t_number, int mt_number) {
+	public static int sinsert(int row, String col, int t_number, int maxrnum, int mt_number) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession(true);
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -302,6 +302,7 @@ public class JavajoManager {
 		map.put("col", col);
 		map.put("ft", "n");
 		map.put("t_number", t_number);
+		map.put("maxrnum", maxrnum);
 		map.put("mt_number", mt_number);
 		int re = session.insert("javajo.sinsert", map);
 		session.close();
@@ -519,5 +520,23 @@ public class JavajoManager {
 		int re = session.update("javajo.hitupdate", map);
 		session.close();
 		return re;
+	}
+
+	public static int tseat(int t_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("t_number", t_number);
+		int tseat = session.selectOne("javajo.tseat", map);
+		session.close();
+		return tseat;
+	}
+
+	public static int maxrnum() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		int maxrnum = session.selectOne("javajo.maxrnum");
+		session.close();
+		return maxrnum;
 	}
 }

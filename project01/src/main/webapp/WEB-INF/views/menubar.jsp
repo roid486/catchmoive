@@ -193,6 +193,11 @@ jq1(function($) {
          location.href="masterpage.com";
       });
       
+      $("#mypage").click(function () {
+    	  var c_id = $("#loginid").val();
+         location.href="mypage.com?c_id="+c_id;
+      });
+      
       $(".logout").click(function () {
     	  location.href="logout.com";
       });
