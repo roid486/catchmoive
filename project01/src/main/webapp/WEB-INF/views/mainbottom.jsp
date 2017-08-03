@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Insert title here</title>
+
 </head>
 <body>
 	<div>
@@ -37,7 +38,7 @@
               <button type="submit" id="logbtn" class="btn btn-info btn-block"><span class="glyphicon glyphicon-off"></span>로그인</button>
           </form>
           <p style="color: black;"><span id="scid">아이디</span>&nbsp;/&nbsp;<span id="scpw">비밀번호</span> 찾기</p>
-          <img src="resources/images/naver_Green.PNG" width="230px" height="45px">
+          <button id="naverBtn"><img src="resources/images/naver_Green.PNG"  width="230px" height="45px" onclick="window.open('naverLogin.com','네이버 : 로그인','width=550, height=600, toolbar=no, menubar=no, scrollbars=no, resizable=no');return false;"></button>
     
         </div>
         <div class="modal-footer">

@@ -101,7 +101,10 @@
   	 background-color: skyblue;
   	 border-color: skyblue;
   }
-  
+  #naverBtn{
+  	border: none;
+  	background: white;
+  }
 </style>
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -161,19 +164,21 @@ jq1(function($) {
       
       $("#login").click(function () {
          //$("#logindial").dialog("open");
-    	  $("#logindial").modal();
+    	  $("#logindial").modal({keyboard:true});
       });
       
       $("#scid").click(function () {
           //$("#logindial").dialog("close");
            $("#logindial").modal('hide');
-          $("#sciddial").modal();
+          $("#sciddial").modal({keyboard:true});
        });
        $("#scpw").click(function () {
           $("#logindial").modal('hide');
-          $("#scpwdial").modal();
+          $("#scpwdial").modal({keyboard:true});
        });
-      
+       
+       
+     
       
       var signupnum = $("#signupnum").val();
       if(signupnum == 2)
