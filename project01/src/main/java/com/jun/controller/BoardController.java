@@ -90,7 +90,8 @@ public class BoardController {
 	public ModelAndView delete(int b_number)
 	{
 		ModelAndView mav = new ModelAndView();
-		//mav.addObject("b", dao.delete(b_number));
+		mav.addObject("b", dao.delete(b_number));
+		
 		dao.delete(b_number);
 		mav.setViewName("redirect:/listBoard.com");
 		return mav;

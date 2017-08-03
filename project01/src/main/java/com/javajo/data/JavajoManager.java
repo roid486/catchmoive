@@ -16,6 +16,7 @@ import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
 import com.javajo.vo.RunningVo;
 import com.javajo.vo.RunningVo2;
+import com.javajo.vo.RunningVo3;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 
@@ -500,4 +501,23 @@ public class JavajoManager {
 		return list;
 	}
 
+	public static List<RunningVo3> runninglist(int t_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("t_number", t_number);
+		List<RunningVo3> list = session.selectList("javajo.runninglist", map);
+		session.close();
+		return list;
+	}
+
+	public static int hitupdate(int e_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("e_number", e_number);
+		int re = session.update("javajo.hitupdate", map);
+		session.close();
+		return re;
+	}
 }

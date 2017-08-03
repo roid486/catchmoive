@@ -4,10 +4,13 @@ import java.io.Reader;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.jun.vo.BoardVo;
 import com.jun.vo.ReplyVo;
@@ -108,6 +111,7 @@ public class JavajoManager {
 	public static List<ReplyVo> listRe(int b_number) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
+		
 		List<ReplyVo> listRe = session.selectList("javajo.selectRe",b_number);
 		session.close();
 		return listRe;
@@ -130,6 +134,38 @@ public class JavajoManager {
 		session.close();
 		return re;
 	}
+
+	public static int deleteRe(int re_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		
+		int re = session.delete("javajo.deleteRe", re_number);
+		session.close();
+		return re;
+	}
+
+	public static ReplyVo getReply(int re_number) {
+		// TODO Auto-generated method stub
+		
+		SqlSession session = factory.openSession();
+		ReplyVo r = session.selectOne("javajo.getReply",re_number);
+		session.close();
+		return r;
+	}
+
+	public static int updateRe(ReplyVo r) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		System.out.println("¸Å´ÏÀú r.get     :::"+r.getRe_content()+r.getRe_number());
+		int re = session.update("javajo.updateReply",r);
+	
+		session.close();
+		
+		return re;
+	}
+
+
+
 	
 	/*public static List<BoardVo> list(String searchField, String keyword) {
 		// TODO Auto-generated method stub

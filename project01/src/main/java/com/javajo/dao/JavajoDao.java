@@ -12,6 +12,7 @@ import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
 import com.javajo.vo.RunningVo;
 import com.javajo.vo.RunningVo2;
+import com.javajo.vo.RunningVo3;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 
@@ -251,5 +252,15 @@ public class JavajoDao {
 	public List<MovieVo_j> mslist() {
 		// TODO Auto-generated method stub
 		return JavajoManager.mslist();
-	}	
+	}
+
+	public List<RunningVo3> runninglist(int t_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.runninglist(t_number);
+	}
+
+	public int hitupdate(int e_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.hitupdate(e_number);
+	}
 }

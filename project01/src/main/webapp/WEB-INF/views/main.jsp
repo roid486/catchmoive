@@ -38,6 +38,9 @@ display: inline-block;
 #bottom {
 	position: relative; background-color: brown; color: white;
 }
+.table{
+	cursor: pointer;
+}
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -45,7 +48,6 @@ display: inline-block;
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		
 		$.ajax({
 			url : "mslist.com",
 			success : function(data) {
@@ -66,7 +68,7 @@ display: inline-block;
 				$.each(JSON.parse(data), function(idx, item) {
 					tr = $("<tr></tr>");
 					td = $("<td></td>");
-					$(td).text(item.m_name).attr({"colspan":"2","idx":idx}).appendTo(tr);
+					$(td).text(item.m_name).attr({"idx":idx}).appendTo(tr);
 					$(tr).appendTo("#mslsee");
 					var img = $("<img/>");
 					$(img).attr({"src":"resources/upload/"+item.m_image,"width":"900","height":"400"}).addClass("mimg").appendTo("#msimg_inner");
@@ -77,11 +79,11 @@ display: inline-block;
 						$("#msimg_inner").animate({left:idx2});
 						to = setTimeout(function () {
 							tm();
-						},10000);
+						},5000);
 					});
 				});
 			}
-		});
+		});	
 	});
 </script>
 </head>
@@ -94,8 +96,7 @@ display: inline-block;
 			<table class="table">
 				<thead>
 					<tr>
-						<th id="scorem">평점 순위</th>
-						<th id="boxm">예매율 순위</th>
+						<th id="boxm">BoxOffice</th>
 					</tr>
 				</thead>
 				<tbody id="mslsee">

@@ -56,9 +56,11 @@ public class Email {
 	@RequestMapping("/scid.com")
 	public ModelAndView scid(final String name,final String email)
 	{
+		System.out.println("이름:"+name+" 이메일 : "+email);
 		ModelAndView mav = new ModelAndView("redirect:/main.com");
 		JavajoDao dao = new JavajoDao();
 		final String id = dao.scid(name,email);
+		System.out.println("id= "+id);
 		if(id==null)
 		{
 			MainContoller.emsg = "회원가입을 하십시오.";
