@@ -115,7 +115,7 @@
   	select * from movietheater
   </select>
   <insert id="sinsert">
-  	insert into seat values(se_seat.nextval,#{row},#{col},#{ft},null,#{t_number},null,#{mt_number})
+  	insert into seat values(se_seat.nextval,#{row},#{col},#{ft},null,#{t_number},#{maxrnum},#{mt_number})
   </insert>
   <select id="t_num" resultType="java.lang.Integer">
   	select max(t_number) from theater
@@ -193,4 +193,17 @@
   <select id="mslist" resultType="movieVo_j">
   	select * from movie where m_isshowing=1 order by m_score
   </select>
+  <select id="tseat" resultType="java.lang.Integer">
+  	select t_seat from theater where t_number=#{t_number}
+  </select>
+  <select id="maxrnum" resultType="java.lang.Integer">
+  	select nvl(max(r_number),1) from running
+  </select>
+  <select id="runninglist" resultType="runningVo3">
+  	select r.r_number,m.m_name,mt.mt_name,t.t_name,to_char(r_date,'YYYY/MM/DD') r_date,r_start from running r, theater t, movietheater mt, movie m 
+	where r.m_number=m.m_number and r.mt_number=mt.mt_number and r.t_number=t.t_number and r.t_number=#{t_number}
+  </select>
+  <update id="hitupdate">
+  	update event set e_hit=e_hit+1 where e_number=#{e_number}
+  </update>
 </mapper>

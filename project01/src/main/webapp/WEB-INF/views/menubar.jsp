@@ -198,6 +198,11 @@ jq1(function($) {
          location.href="masterpage.com";
       });
       
+      $("#mypage").click(function () {
+    	  var c_id = $("#loginid").val();
+         location.href="mypage.com?c_id="+c_id;
+      });
+      
       $(".logout").click(function () {
     	  location.href="logout.com";
       });
@@ -263,9 +268,9 @@ jq1(function($) {
                       <li><a href="movieFinder.com">무비 파인더</a></li>
                   </ul>
              </li>
-             <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">예매</a></li> 
-             <li><a id="movietheater">영화관</a></li> 
-             <li><a href="#">이벤트</a></li> 
+             <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">예매</a></li>
+             <li><a href="movietheater.com?mt_number=1">영화관</a></li>
+             <li><a href="event.com">이벤트</a></li> 
              <li><a id="listboard">공지사항</a></li> 
          </ul>
       </div>

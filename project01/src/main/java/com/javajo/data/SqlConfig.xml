@@ -11,6 +11,7 @@
 		<typeAlias type="com.javajo.vo.TheaterVo" alias="theaterVo"/>
 		<typeAlias type="com.javajo.vo.RunningVo" alias="runningVo"/>
 		<typeAlias type="com.javajo.vo.RunningVo2" alias="runningVo2"/>
+		<typeAlias type="com.javajo.vo.RunningVo3" alias="runningVo3"/>
 		<typeAlias type="com.javajo.vo.EventVo" alias="eventVo"/>
 		<typeAlias type="com.jihye.vo.MovieVo_j" alias="movieVo_j"/>
 	</typeAliases>

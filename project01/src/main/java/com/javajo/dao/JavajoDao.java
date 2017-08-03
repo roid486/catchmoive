@@ -12,6 +12,7 @@ import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
 import com.javajo.vo.RunningVo;
 import com.javajo.vo.RunningVo2;
+import com.javajo.vo.RunningVo3;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 
@@ -148,9 +149,9 @@ public class JavajoDao {
 		return JavajoManager.mlist2();
 	}
 
-	public int sinsert(int row, String string, int t_number, int mt_number) {
+	public int sinsert(int row, String string, int t_number, int maxrnum, int mt_number) {
 		// TODO Auto-generated method stub
-		return JavajoManager.sinsert(row,string,t_number,mt_number);
+		return JavajoManager.sinsert(row,string,t_number,maxrnum,mt_number);
 	}
 
 	public int t_num() {
@@ -251,5 +252,25 @@ public class JavajoDao {
 	public List<MovieVo_j> mslist() {
 		// TODO Auto-generated method stub
 		return JavajoManager.mslist();
+	}
+
+	public List<RunningVo3> runninglist(int t_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.runninglist(t_number);
+	}
+
+	public int hitupdate(int e_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.hitupdate(e_number);
+	}
+
+	public int tseat(int t_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.tseat(t_number);
+	}
+
+	public int maxrnum() {
+		// TODO Auto-generated method stub
+		return JavajoManager.maxrnum();
 	}
 }

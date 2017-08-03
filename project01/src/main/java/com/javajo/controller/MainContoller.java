@@ -16,8 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javajo.dao.JavajoDao;
 import com.javajo.vo.CustomerVo;
+import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
+import com.javajo.vo.RunningVo;
+import com.javajo.vo.RunningVo2;
+import com.javajo.vo.RunningVo3;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 
@@ -179,6 +183,34 @@ public class MainContoller {
 		return mav;
 	}
 	
+	@RequestMapping("/movietheater.com")
+	public ModelAndView movietheater(int mt_number)
+	{
+		ModelAndView mav = new ModelAndView();
+		MovieTheaterVo2 mtv2 = dao.mtdetail(mt_number);
+		mav.addObject("mtd", mtv2);
+		mav.addObject("mtl", dao.mtlist());
+		mav.addObject("theaterlist", dao.tsele(mt_number));
+		return mav;
+	}
+	
+	@RequestMapping("/eventdetail.com")
+	public ModelAndView eventdetail(int e_number)
+	{
+		ModelAndView mav = new ModelAndView();
+		dao.hitupdate(e_number);
+		mav.addObject("ede", dao.edetail(e_number));
+		return mav;
+	}
+	
+	@RequestMapping("/mypage.com")
+	public ModelAndView mypage(String c_id)
+	{
+		ModelAndView mav = new ModelAndView();
+		System.out.println(c_id);
+		return mav;
+	}
+	
 	@RequestMapping(value="/movieselect.com",produces = "text/plain;charset=utf-8")
 	@ResponseBody
 	public String movieselect()
@@ -232,9 +264,24 @@ public class MainContoller {
 	public String mslist()
 	{
 		String str = "";
-		System.out.println();
 		ObjectMapper mapper = new ObjectMapper();
 		List<MovieVo_j> list = dao.mslist();
+		try{
+			str = mapper.writeValueAsString(list);
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		return str;
+	}
+	
+	@RequestMapping(value="/runninglist.com",produces = "text/plain;charset=utf-8")
+	@ResponseBody
+	public String theaterlist(int t_number)
+	{
+		String str = "";
+		ObjectMapper mapper = new ObjectMapper();
+		List<RunningVo3> list = dao.runninglist(t_number);
 		try{
 			str = mapper.writeValueAsString(list);
 		}catch (Exception e) {

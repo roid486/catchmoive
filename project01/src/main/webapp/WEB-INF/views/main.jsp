@@ -68,7 +68,7 @@ display: inline-block;
 				$.each(JSON.parse(data), function(idx, item) {
 					tr = $("<tr></tr>");
 					td = $("<td></td>");
-					$(td).text(item.m_name).attr({"colspan":"2","idx":idx}).appendTo(tr);
+					$(td).text(item.m_name).attr({"idx":idx}).appendTo(tr);
 					$(tr).appendTo("#mslsee");
 					var img = $("<img/>");
 					$(img).attr({"src":"resources/upload/"+item.m_image,"width":"900","height":"400"}).addClass("mimg").appendTo("#msimg_inner");
@@ -96,8 +96,7 @@ display: inline-block;
 			<table class="table">
 				<thead>
 					<tr>
-						<th id="scorem">평점 순위</th>
-						<th id="boxm">예매율 순위</th>
+						<th id="boxm">BoxOffice</th>
 					</tr>
 				</thead>
 				<tbody id="mslsee">
