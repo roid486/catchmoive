@@ -6,8 +6,8 @@
   <insert id="insertMovieScore">
    insert into moviescore values(nvl(seq_moviescore.nextval,1),#{ms_custid},#{ms_mid},#{ms_score},#{ms_comment})
   </insert>
-  <select id="selectAll" resultType="MovieScoreVo">
-  	select * from moviescore
+  <select id="selectRow" resultType="MovieScoreVo">
+  	select * from moviescore where ms_no=#{ms_no}
   </select>
    <select id="selectOne" resultType="MovieScoreVo">
    select * from moviescore where ms_mid=#{ms_mid} order by ms_no desc
@@ -19,9 +19,16 @@
    <select id="getNextNo" resultType="java.lang.Integer">
   	select nvl(max(ms_no),0)+1 from moviescore where ms_mid=#{ms_mid}
    </select>
-     <update id="updateMovieScore">
-   		update moviescore set ms_score=#{ms_score},ms_comment=#{ms_comment}
- 	 </update>
+   
+   	<select id="getAvg" resultType="java.lang.Double">
+ 	select round(avg(ms_score),1) from moviescore where ms_mid=#{ms_mid}
+ 	</select>
+   
+    <update id="updateMovieScore">
+   		<!-- update moviescore set ms_score=#{ms_score},ms_comment=#{ms_comment} where ms_no=67 --> 
+   		update moviescore set ms_score=#{ms_score},ms_comment=#{ms_comment} where ms_no=#{ms_no}
+
+ 	</update>
  	<delete id="deleteMovieScore">
  		delete moviescore where ms_no=#{ms_no}
  	</delete>	 

@@ -11,55 +11,83 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
-$(function() {
-	var id1 = $("#se_id").val();
-	alert("id1 디테일보드  ::"+id1);
-	
 
-	
-	 // 댓글 수정
-    $("#btnReplyUpdate").click(function(){
-        var re_content = $("#re_content").val();
-        
-        var re_number = "${r.re_number}";
-        alert("re_content 내용::"+re_content);
-        
-        var param="re_content"+re_content+"&re_number= "+re_number;
-        alert("param ::"+param)
-       
-        $.ajax({
-            type:"post",
-            dataType:"text",
-            url:"updateReply.com?re_number=${r.re_number}",
-            data:{"re_content":re_content,"re_number":re_number},
-            success: function(data){
-                
-                	alert("성공");
-                    $("#modifyReply").css("visibility", "hidden");
-                    // 댓글 목록 갱신
-                    /* location.href="listBoard.com"; */
-                   
-                    
-                },
-                error: function(data){ 
-                	
-                    	alert("실패");
-                    	$("#modifyReply").css("visibility", "hidden");
-                        // 댓글 목록 갱신
-                    	 
-                	}
-                
-            
-        });
-    });
-   
-    
-    //  댓글 상세화면 닫기
-    $("#btnReplyClose").click(function(){
-        $("#modifyReply").css("visibility", "hidden");
-    });
-    
-});
+
+	$(function() {
+
+		var id1 = $("#se_id").val();
+		alert("id1 디테일보드  ::" + id1);
+
+		// 댓글 수정
+		$("#btnReplyUpdate").click(
+				function() {
+					if (confirm("수정하시겠습니까?")) {
+						var re_content = $("#re_content").val();
+
+						var re_number = "${r.re_number}";
+						alert("re_content 내용::" + re_content);
+
+						var param = "re_content" + re_content + "&re_number= "
+								+ re_number;
+						alert("param ::" + param)
+
+						$.ajax({
+							type : "post",
+							dataType : "text",
+							url : "updateReply.com?re_number=${r.re_number}",
+							data : {
+								"re_content" : re_content,
+								"re_number" : re_number
+							},
+							success : function(data) {
+
+								alert("성공");
+								$("#modifyReply").css("visibility", "hidden");
+								// 댓글 목록 갱신
+								/* location.href="listBoard.com"; */
+
+							},
+							error : function(data) {
+
+								alert("실패");
+								$("#modifyReply").css("visibility", "hidden");
+								// 댓글 목록 갱신
+
+							}
+
+						});
+					}
+
+				});
+
+		// 5. 댓글 삭제
+		$("#btnReplyDelete").click(function() {
+			if (confirm("삭제하시겠습니까?")) {
+				var param ="re_number="+re_number;
+				$.ajax({
+					type : "delete",
+					url : "deleteReply.com?re_number=${r.re_number}",
+					data : param,
+					success : function(data) { 
+							alert("삭제되었습니다.");
+							$("#modifyReply").css("visibility", "hidden");
+					},
+					error: function(data) {
+						alert("삭제되엇어요 에러멧");
+						
+						$("#modifyReply").css("visibility", "hidden");
+					}
+				});
+			}
+
+		});
+
+		//  댓글 상세화면 닫기
+		$("#btnReplyClose").click(function() {
+			$("#modifyReply").css("visibility", "hidden");
+		});
+
+	});
 </script>
 </head>
 <body>
@@ -71,6 +99,7 @@ $(function() {
        <%--  <c:if test="${sessionScope.se_id == r.c_id}"> --%>
             <button type="button" id="btnReplyUpdate" >수정</button>
             <button type="button" id="btnReplyDelete" >삭제</button>
+            
      <!-- c:if마감해줘야함 -->
         <button type="button" id="btnReplyClose" >닫기</button>
     </div>

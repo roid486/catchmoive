@@ -45,8 +45,6 @@ public class ReplyController {
 	@RequestMapping("detailReply.com")
     public ModelAndView getReply(int re_number, ModelAndView mav){
         ReplyVo r = dao.getReply(re_number);
-        System.out.println("re_number 컨트롤랄 ////////////////////////////////"+re_number);
-        System.out.println("r 컨트롤랄 ////////////////////////////////"+r);
         // 뷰이름 지정
         mav.setViewName("detailReply");
         // 뷰에 전달할 데이터 지정
@@ -54,18 +52,16 @@ public class ReplyController {
         // replyDetail.jsp로 포워딩
         return mav;
     }
-
+	//댓글수정
 	@RequestMapping(value="updateReply.com",method=RequestMethod.POST)
 	public ModelAndView submit(ReplyVo r, HttpServletRequest request)
 	{
 		
 		ModelAndView mav = new ModelAndView();
 		System.out.println("찬석이형짱짜아ㅉ아짱ㅉㅇ::::"+r.getRe_content()+r.getRe_number());
-		System.err.println("rrrrrrrrrrrr::::::::::::::"+r);
 		int re = dao.updateRe(r);
-		System.out.println("dao.update 컨트롤러 ::"+re);
 	
-		mav.setViewName("listReply");
+		mav.setViewName("listReply.com");
 		return mav;
 	}
 
@@ -99,48 +95,7 @@ public class ReplyController {
 		
 
 	}
-	/*
-	@RequestMapping(value="listReply/{b_number}",method=RequestMethod.GET)
-	public ModelAndView list(@PathVariable("b_number") int b_number, HttpSession session){
-//		HttpSession session = request.getSession();
-//		session.setAttribute("customerid2","비누주스라우");
-		
-//		String se_id=(String)session.getAttribute("se_id");
-		ModelAndView mav = new ModelAndView();
-		String se_id = (String) session.getAttribute("se_id");
-		List<ReplyVo> items = dao.listRe(b_number);
-        for(ReplyVo vo : items){
-        	System.out.println("vo    ::"+vo);
-        	System.out.println("items   ::"+items);
-        	System.out.println("getRe_secretreply   ::"+vo.getRe_secretreply());
-        	
-            // 댓글 목록중에 중에 비밀 댓글이 있을 경우
-            if(vo.getRe_secretreply()==null){
-                if(se_id== null){ // 비로그인 상태면 비밀 댓글로 처리
-                    vo.setRe_content("비밀 댓글입니다.");
-                } else { // 로그인 상태일 경우
-                    //String writer = vo.getWriter(); // 게시물 작성자 저장
-                    String replyer = vo.getC_id(); // 댓글 작성자 저장
-                    // 로그인한 사용자가 게시물의 작성자X 댓글 작성자도 X 비밀댓글로 처리
-                    if(!se_id.equals(writer) && !se_id.equals(replyer)) {
-                        vo.setRe_content("비밀 댓글입니다.");
-                    }
-                }
-            }
-        }
-		
-		List<ReplyVo> listRe = dao.listRe(b_number);
-        System.out.println("listRe의  items ::     "+items);
-        System.out.println("listRe  b_number ::     "+b_number);
-        // 뷰이름 지정
-        mav.setViewName("listReply");
-        // 뷰에 전달할 데이터 지정
-        mav.addObject("listRe", items);
-        
-        // replyList.jsp로 포워딩
-        return mav;
-    }*/
-	
+
 	@RequestMapping("listReply.com")
 	public ModelAndView list(@RequestParam int b_number, HttpSession session){
 //		HttpSession session = request.getSession();

@@ -38,8 +38,8 @@ public class InsertMovieScoreController {
 	
 	@RequestMapping(value="/insertMovieScore.com",produces = "text/plain;charset=utf-8")
 	@ResponseBody
-	public ModelAndView submit(MovieScoreVo ms,HttpServletRequest request,HttpSession session,HttpServletResponse response){
-		ModelAndView mav = new ModelAndView();
+	public String submit(MovieScoreVo ms,HttpServletRequest request,HttpSession session,HttpServletResponse response){
+		String str="";
 		int re = dao.insertMovieScore(ms);
 		//System.out.println("인서트 무비스코어 : "+ms.getMs_mid());
 		//request.setAttribute("m_number", ms.getMs_mid()); //request는 페이지 한번 넘어갈때만 유효! session은 서버가 켜잇는 동안 유효 
@@ -62,11 +62,32 @@ public class InsertMovieScoreController {
 		
 		if(re==1){
 			System.out.println("데이터 삽입 성공!!!");
+		
+			double avg = dao.getScoreAvg(ms.getMs_mid());
+			
+			//System.out.println("평균 평점 : "+avg);
+			int up = dao.updateMovieTableScore(avg, ms.getMs_mid());
+			if(up==1){
+				System.out.println(avg+"영화테이블에 반영된 평균 값 m_score수정에 성공하였습니다. ");
+			}
 		}
 		else{
 			System.out.println("삽입 실패 ㅠㅠ");
 		}
-		return mav;
+		
+		
+		List<MovieScoreVo> list = dao.getMoveiScore(ms.getMs_mid());
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			str = mapper.writeValueAsString(list);
+		
+			
+		} catch (Exception e) {
+			System.out.println("여기는 평점 인서트 get방식 데이터() mapper   ::    " + e.getMessage());
+		}
+		
+		
+		return str;
 	}
 	
 	
@@ -98,10 +119,10 @@ public class InsertMovieScoreController {
 	}
 	
 	
-	@RequestMapping(value="/updateMovieScore.com",produces = "text/plain;charset=utf-8")
-	@ResponseBody
+	/*@RequestMapping(value="/updateMovieScore.com",produces = "text/plain;charset=utf-8")
 	public String updateMovieScore(MovieScoreVo ms){
 		String str="";
+		System.out.println(ms.getMs_no()+" : "+ms.getMs_score());
 		int re = dao.updateMovieScore(ms);
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -121,5 +142,5 @@ public class InsertMovieScoreController {
 			System.out.println("평점 수정 실패ㅠㅠ");
 		}
 		return str;
-	}
+	}*/
 }

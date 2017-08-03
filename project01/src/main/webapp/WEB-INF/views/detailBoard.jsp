@@ -98,65 +98,7 @@ $(function() {
         return false;
         
     });
- 
-    // **댓글 수정화면 생성
-/*     function showReplyModify(b.re_number){
-        $.ajax({
-            type: "get",
-            url: "detailReply.com?re_number=${re_number},
-            success: function(result){
-                $("#modifyReply").html(result);
-                // 태그.css("속성", "값")
-                $("#modifyReply").css("visibility", "visible");
-            },
-            error: function(result){
-            	alert("실패부분?")
-            	$("#modifyReply").html(result);
-            	// 태그.css("속성", "값")
-            	$("#modifyReply").css("visibility", "visible");
-			}
-        });
-    }; */
-    
- 
- 
-	/* //댓글 삭제
-	
-    function deleteRe(re_number){
-		if(confirm("삭제할거니?")){
-    	 $.ajax({
-    	  url:"deleteReply.com?re_number=${re_number}",
-    	  type:"get",
-    	  success:function(){ 
-    	   alert("성공");
-    	   listReply();
-    	  },
-    	  error:function(){
-    	   alert("실패");
-    	   listReply();
-    	  }
-    	 })
-    	}
-	} */
-	
-/*  // 5. 댓글 삭제
-    $("#btnReplyDelete").click(function(){
-        if(confirm("삭제하시겠습니까?")){
-            $.ajax({
-                type: "delete",
-                url: "${path}/reply/delete/${vo.rno}",
-                success: function(result){
-                    if(result == "success"){
-                        alert("삭제되었습니다.");
-                        $("#modifyReply").css("visibility", "hidden");
-                        listReplyRest("1");
-                    }
-                }
-            });
-        }
-	
-	
-}); */
+
 });
 </script>
 <style>

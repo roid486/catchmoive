@@ -96,6 +96,14 @@ public class MovieDao {
 			return MovieManager.getMovieScore(ms_mid);
 		}
 		
+		public double getScoreAvg(int ms_mid){
+			return MovieManager.getScoreAvg(ms_mid);
+		}
+		
+		public int updateMovieTableScore(double avg,int ms_mid){
+			return MovieManager.updateMovieTableScore(avg, ms_mid);
+		}
+		
 	
  
 	public int insertMovie(MovieVo_j m){
@@ -123,12 +131,12 @@ public class MovieDao {
 		return MovieManager.updateMovieScore(ms);
 	}
 	
-	public int deleteMovieScore(MovieScoreVo ms){
-		return MovieManager.deleteMovieScore(ms);
+	public int deleteMovieScore(int ms_no){
+		return MovieManager.deleteMovieScore(ms_no);
 	}
 	
-	public List<MovieScoreVo> listMovieScore(){
-		return MovieManager.listMovieScore();
+	public MovieScoreVo listMovieScore(int ms_no){
+		return MovieManager.listMovieScore(ms_no);
 	}
 	
 	

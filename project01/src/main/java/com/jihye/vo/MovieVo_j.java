@@ -17,7 +17,7 @@ public class MovieVo_j {
 	private String m_synop;
 	private String m_image;
 	private String m_trailer;
-	private int m_score;
+	private double m_score;
 	private String m_image1;
 	private String m_image2;
 	private String m_image3;
@@ -58,7 +58,7 @@ public class MovieVo_j {
 	}
 	public MovieVo_j(int m_number, String m_name, String m_director, String m_actor, String m_nation, int m_runningtime,
 			String m_grade, String m_genre, Date m_opendate, String m_synop, String m_image, String m_trailer,
-			int m_score, String m_image1, String m_image2, String m_image3, int m_isshowing, int m_boxoffice) {
+			double m_score, String m_image1, String m_image2, String m_image3, int m_isshowing, int m_boxoffice) {
 		super();
 		this.m_number = m_number;
 		this.m_name = m_name;
@@ -151,7 +151,7 @@ public class MovieVo_j {
 	public void setM_trailer(String m_trailer) {
 		this.m_trailer = m_trailer;
 	}
-	public int getM_score() {
+	public double getM_score() {
 		return m_score;
 	}
 	public void setM_score(int m_score) {
