@@ -19,20 +19,6 @@ $(function() {
 	    modal:true
 	 }); 
 
-/* 	 function listReply(){
-	        $.ajax({
-	            type: "get",
-	            url: "listReply/${b.b_number}",
-	            success: function(result){
-	            // responseText가 result에 저장됨.
-	                $("#listReply").html(result);
-	            },
-	        	error: function(result){
-				alert("에러부분//나와라리스트야.");
-				 $("#listReply").html(result);
-				}
-	        });
-	    }; */ 
 	listReply();
  
 	function listReply(){
@@ -154,15 +140,7 @@ $(function() {
     </c:if>
  
     	
-	<hr>
-	
-
-<%-- 	<a href="insertReply.com?b_number=${b.b_number }">댓글쓰기</a><br> --%>
-	
-	
-	
-	
-	
+	<hr>	
 	
 	<div id="msgdialog">
 		<center><font color="red">로그인을 하십시오.</font></center>

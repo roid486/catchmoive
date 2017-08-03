@@ -58,7 +58,6 @@ public class ReplyController {
 	{
 		
 		ModelAndView mav = new ModelAndView();
-		System.out.println("찬석이형짱짜아ㅉ아짱ㅉㅇ::::"+r.getRe_content()+r.getRe_number());
 		int re = dao.updateRe(r);
 	
 		mav.setViewName("listReply.com");
@@ -126,8 +125,6 @@ public class ReplyController {
         }
 		
 		List<ReplyVo> listRe = dao.listRe(b_number);
-        System.out.println("listRe의  items ::     "+items);
-        System.out.println("listRe  b_number ::     "+b_number);
         // 뷰이름 지정
         mav.setViewName("listReply");
         // 뷰에 전달할 데이터 지정

@@ -16,7 +16,6 @@
 	
 
 function showReplyModify(re_number){
-	alert("리스트리플라이 re_number  ::" +re_number);
 
     $.ajax({
         type: "get",
@@ -48,9 +47,9 @@ function showReplyModify(re_number){
 			<td>내용:${row.re_content}(비밀여부:${row.re_secretreply})</td>
 		<!-- 본인 댓글만 수정버튼 생성되도록 처리 -->
 				<td>
-                <%-- <c:if test="${sessionScope.se_id == row.c_id}">	 --%>						 
-                    <input type="button" id="btnModify" value="수정" onclick="showReplyModify('${row.re_number}')">
-                <%-- </c:if> --%>
+                <c:if test="${sessionScope.se_id == row.c_id}">						 
+                    <input type="button" id="btnModify" value="수정&삭제" onclick="showReplyModify('${row.re_number}')">
+                </c:if> 
                 </td>
 		</tr>
 		

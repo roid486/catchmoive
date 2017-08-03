@@ -109,9 +109,7 @@
 	<br>
 	<br>
 	<div id="bottom">
-		<label for="center"><jsp:include
-				page="/WEB-INF/views/mainbottom.jsp">
-		</jsp:include></label>
+		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
 	</div>
 </body>
 </html>

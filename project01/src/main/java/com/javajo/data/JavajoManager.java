@@ -500,4 +500,5 @@ public class JavajoManager {
 		return list;
 	}
 
+
 }
