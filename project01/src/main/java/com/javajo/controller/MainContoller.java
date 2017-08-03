@@ -232,6 +232,7 @@ public class MainContoller {
 	public String mslist()
 	{
 		String str = "";
+		System.out.println();
 		ObjectMapper mapper = new ObjectMapper();
 		List<MovieVo_j> list = dao.mslist();
 		try{
@@ -241,6 +242,5 @@ public class MainContoller {
 			System.out.println(e.getMessage());
 		}
 		return str;
-	}	
-	
+	}
 }
