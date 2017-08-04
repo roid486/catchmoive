@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket.css?a=113313" />
+	href="resources/eunseok/ticket_main_css/ticket.css" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
@@ -86,22 +86,22 @@
 			$.each(data, function(index, item) {
 				if ((index + 1) % 5 == 1) {
 					divrow = $("<div></div>").attr("id", "row").append(
-							"<span id='label'>" + item.seat_row + "</span>")
+							"<span id='label'>" + item.s_row + "</span>")
 				}
 				var divcol = $("<div></div>").attr({
 					id: "col"
 				})
 				var input = $("<input></input>").attr({
 					type : 'checkbox',
-					id : item.seat_row + item.seat_column,
+					id : item.s_row + item.s_column,
 					name : "chk",
-					value : item.seat_row + item.seat_column
+					value : item.s_row + item.s_column
 				})
 				var label = $("<label/>").attr("for",
-						item.seat_row + item.seat_column).css("text-align","center")
-						.html("<span id=es>"+item.seat_column+"</span>"); 
+						item.s_row + item.s_column).css("text-align","center")
+						.html("<span id=es>"+item.s_column+"</span>"); 
 
-				if(item.seat_ft=='y')
+				if(item.s_ft=='y')
 					{
 					input.attr({
 						checked:true,
@@ -109,7 +109,7 @@
 					});
 					}
 				
-				if(item.seat_ft=='n'){
+				if(item.s_ft=='n'){
 					flag=flag+1;
 					
 				 $(label).hover(function() {
@@ -352,7 +352,7 @@
 							</center>
 						</div>
 						<div id="small2">
-							영화 포스터/영화이름 <br>
+							<span><img width='80px' height='100px' src="resources/upload/${movie_image1 }"></span><br>
 							<font style="color: white;">${movie_name }</font>
 						</div>
 						<div id="small3">
