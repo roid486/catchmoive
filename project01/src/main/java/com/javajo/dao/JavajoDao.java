@@ -10,6 +10,8 @@ import com.javajo.vo.EventVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
+import com.javajo.vo.MyhistoryVo;
+import com.javajo.vo.MyticketVo;
 import com.javajo.vo.RunningVo;
 import com.javajo.vo.RunningVo2;
 import com.javajo.vo.RunningVo3;
@@ -272,5 +274,15 @@ public class JavajoDao {
 	public int maxrnum() {
 		// TODO Auto-generated method stub
 		return JavajoManager.maxrnum();
+	}
+
+	public List<MyticketVo> myt(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.myt(c_id);
+	}
+
+	public List<MyhistoryVo> mth(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.myh(c_id);
 	}
 }

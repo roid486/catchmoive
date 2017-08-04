@@ -14,6 +14,8 @@ import com.javajo.vo.EventVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
+import com.javajo.vo.MyhistoryVo;
+import com.javajo.vo.MyticketVo;
 import com.javajo.vo.RunningVo;
 import com.javajo.vo.RunningVo2;
 import com.javajo.vo.RunningVo3;
@@ -538,5 +540,25 @@ public class JavajoManager {
 		int maxrnum = session.selectOne("javajo.maxrnum");
 		session.close();
 		return maxrnum;
+	}
+
+	public static List<MyticketVo> myt(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("c_id", c_id);
+		List<MyticketVo> list = session.selectList("javajo.myt", map);
+		session.close();
+		return list;
+	}
+
+	public static List<MyhistoryVo> myh(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("c_id", c_id);
+		List<MyhistoryVo> list = session.selectList("javajo.myh", map);
+		session.close();
+		return list;
 	}
 }

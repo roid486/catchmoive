@@ -112,6 +112,27 @@
 				</div>
 		  </div>
 	    </div>
+	    <div class="panel panel-danger">
+	      <div class="panel-heading"><h3>History내역</h3></div>
+	      <div class="panel-body">
+				<div class="container">          
+				  <table class="table" style="width: 70%;">
+				    <tbody>
+				    	<m:forEach var="myh" items="${myh }">
+				    		<tr>
+						        <td>${myh.m_name }</td>
+								<td>${myh.mt_name }</td>
+								<td>${myh.t_name }</td>
+								<td><fm:formatDate value="${myh.h_ticket_date }" pattern="yyyy/MM/dd"/></td>
+								<td>${myh.h_ticket_peoplenum }</td>
+								<td>${myh.h_ticket_price }</td>
+							</tr>
+				    	</m:forEach>
+				    </tbody>
+				  </table>
+				</div>
+		  </div>
+	    </div>
 	</div>
 	<br>
 	<br>
