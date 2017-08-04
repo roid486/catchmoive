@@ -163,6 +163,7 @@ public class HomeController {
 			num = tdao.insertseat(map2,arr);
 			
 		}
+		
 		System.out.println("arr.length : "+arr.length +"  num"+ num);
 		if(arr.length==num)
 		{
