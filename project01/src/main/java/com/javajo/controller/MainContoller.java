@@ -32,7 +32,7 @@ public class MainContoller {
 
 	@Autowired
 	private JavajoDao dao;
-	private String id;
+	public static String id;
 	public static String id2;
 	private String msg;
 	private int re;
