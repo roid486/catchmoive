@@ -38,10 +38,10 @@ public class SocialManager {
 		map.put("c_email", c_email);
 		map.put("c_gender", c_gender);
 		
-		System.out.println("소셜매니저컨트롤러에서 : "+c_id+" / "+c_email+" / "+c_gender);
+		
 		SqlSession session = factory.openSession(true);
 		int re = session.insert("SocialLogin.insertnaverMember",map);
-		System.out.println("매니저가 묻기를 성공했니? "+re);
+	
 		session.close();
 		return re;
 	}

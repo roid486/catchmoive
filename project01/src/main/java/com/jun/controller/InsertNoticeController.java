@@ -63,7 +63,7 @@ public class InsertNoticeController {
 			System.out.println(e.getMessage());
 		}
 	
-		ModelAndView mav = new ModelAndView("redirect:/listNotice.com");
+		ModelAndView mav = new ModelAndView("redirect:/nblist.com");
 		dao.insertNb(n);
 		
 		

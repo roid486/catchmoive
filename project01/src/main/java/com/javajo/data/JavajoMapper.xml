@@ -109,7 +109,7 @@
     where rowm between #{num1} and #{num2}
   </select>
   <insert id="tinsert">
-  	insert into theater values(se_theater.nextval,#{t_seat},#{mt_number},#{t_name})
+  	insert into theater values(se_theater.nextval,#{t_name},#{t_seat},#{mt_number})
   </insert>
   <select id="mlist2" resultType="movietheaterVo2">
   	select * from movietheater
@@ -142,7 +142,7 @@
     where rowm between #{num1} and #{num2}
   </select>
   <insert id="insertr">
-  	insert into running values(se_running.nextval,#{t_number},#{m_number},#{mt_number},to_date(#{r_date},'yyyy,mm,dd'),#{r_start})
+  	insert into running values(se_running.nextval,#{t_number},#{m_number},#{mt_number},to_date(#{r_date},'yyyy/mm/dd'),#{r_start})
   </insert>
   <select id="msele" resultType="movieVo_j">
   	select m_number,m_name from movie

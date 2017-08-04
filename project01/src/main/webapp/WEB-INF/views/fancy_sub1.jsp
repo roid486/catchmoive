@@ -38,7 +38,7 @@
 		var running_start;
 		var theater_number;
 		var running_number;
-		var org;
+		var org="";
 		$.getJSON("firstList.com", function(data) {
 			$.each(data, function(index, item) {
 				var a1 = $("<a></a>").attr({
@@ -140,7 +140,6 @@
 							}).html(item.r_start)
 							$("#sub4_form").append(a4, "<br>");
 							theater_number = item.t_number;
-							running_number = item.r_number;
 						})
 					}
 				})
@@ -154,6 +153,21 @@
 				running_start = $(this).attr("id");
 				$("#the1").html(theater_number + "°ü")
 				$("#day").html($("#day").text() + " " + $(this).text())
+				$.ajax({
+					url : "fifthList.com",
+					datatype : "json",
+					type : "GET",
+					data : {
+						running_start : running_start,
+						running_date : running_date
+					},
+					success : function(data){
+						running_number = eval(data);
+					},
+					error : function(data){
+						alert("½ÇÆĞ" + data)
+					}
+				})
 			}
 		})
 

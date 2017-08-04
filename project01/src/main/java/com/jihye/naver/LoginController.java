@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.javajo.controller.MainContoller;
 import com.javajo.vo.CustomerVo;
 import com.jihye.dao.NaverDao;
 
@@ -55,11 +57,11 @@ public class LoginController {
 
 	//네이버 로그인 성공시 callback호출 메소드
 	@RequestMapping(value = "/naverLoginOk.com", method = { RequestMethod.GET, RequestMethod.POST })
-	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
+	public ModelAndView callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
 			throws IOException {
 		
-		
-		System.out.println("여기는 callback");
+		String str="";
+		System.out.println("여기는 네아로 성공 callback");
 		OAuth2AccessToken oauthToken;
         oauthToken = naverLoginBO.getAccessToken(session, code, state);
         //로그인 사용자 정보를 읽어온다.
@@ -96,14 +98,15 @@ public class LoginController {
 	    	for(CustomerVo v : list){
 	    		
 	    		idx++;
-	    		System.out.println("index= "+idx);
+	    		
 	    		String id = v.getC_id();
-	    		System.out.println("조회하는 아이디 : "+id);
+	    	
 	    		
 	    		if(idx==lsize){ //list가 마지막 사이즈 일때 
 	    			if(!id.equals(c_id)){ //멤버테이블에 회원이 없으면 (가입되어있지않음) 
 		    			int re = dao.insertNaverMember(c_id, c_email, c_gender);
 		    			if(re==1){
+		    				str="새멤버 환영해";
 		    				System.out.println("네이버회원 멤버테이블 추가 성공");
 		    			}
 		    			else{
@@ -117,17 +120,27 @@ public class LoginController {
 
 	    	}
 	    	
+	    	/*session.setAttribute("se_id", c_id);*/
+	    	MainContoller.id=c_id;
 	    }
 	 
-	   // ModelAndView mav = new ModelAndView();
+	    ModelAndView mav = new ModelAndView();
+	    mav.addObject("result",apiResult);
+	    mav.addObject("SuccessInsert",str);
+	    mav.setViewName("naverSuccess");
 	    
 	    
-	
-	    System.out.println("apiResult: "+apiResult);
+		System.out.println("apiResult: "+apiResult);
 		model.addAttribute("result", apiResult);
+		model.addAttribute("SuccessInsert",str);
+		
+		System.out.println("str = "+str);
+		
+		
+	  
 
         /* 네이버 로그인 성공 페이지 View 호출 */
-		return "naverSuccess";
+		return mav;
 	}
 
 }
