@@ -16,9 +16,9 @@ public class TicketDao {
 		return TicketManager.seatNum(theater_num);
 	}
 
-	public List<SeatVo> theaterSeat(String theater_number, String movietheater_number) {
+	public List<SeatVo> theaterSeat(String theater_number, String movietheater_number,String running_number) {
 		// TODO Auto-generated method stub
-		return TicketManager.theaterSeat(theater_number,movietheater_number);
+		return TicketManager.theaterSeat(theater_number,movietheater_number,running_number);
 	}
 
 	public String getmovietheatername(String movietheater_number) {
@@ -50,6 +50,7 @@ public class TicketDao {
 	public int historyinsert() {
 		return TicketManager.inserthistory();
 	}
+
 
 	
 

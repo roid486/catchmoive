@@ -82,7 +82,8 @@ public class HomeController {
 
 	@RequestMapping("/fancy_sub2.com")
 	public ModelAndView test3(String movie_number,String movietheater_number,String running_date,String running_start,String theater_number,String running_number) {
-		list1 = tdao.theaterSeat(theater_number,movietheater_number);
+		System.out.println(theater_number+"::"+movietheater_number+"::"+running_number);
+		list1 = tdao.theaterSeat(theater_number,movietheater_number,running_number);
 		ModelAndView mav = new ModelAndView();
 		String movietheater_name = tdao.getmovietheatername(movietheater_number);
 		String movie_name = tdao.getmoviename(movie_number);
@@ -236,9 +237,9 @@ public class HomeController {
 	         code.addRCode("library(RODBC)");
 	         code.addRCode("library(ggplot2)");
 	      code.addRCode("javajo=odbcConnect('javajo',uid='javajo',pwd='javajo')");
-	         code.addRCode("val=sqlQuery(javajo,'select sum(h_ticket_price) 가격, h_ticket_date 날짜 from history group by h_ticket_date;')");
+	         code.addRCode("val=sqlQuery(javajo,'select sum(h_ticket_price) 매출, h_ticket_date 날짜 from history group by h_ticket_date;')");
 	   
-	         code.addRCode("t1=val$가격");
+	         code.addRCode("t1=val$매출");
 	         code.addRCode("t2=val$날짜");
 	         code.addRCode("season1 <- heat.colors(length(t2), alpha=1)");
 	         code.addRCode("season2 <-rainbow(length(t2), s = 1, v = 1, start = 0, end = max(1,8 - 1)/8, alpha = 0.7)");
@@ -248,7 +249,7 @@ public class HomeController {
 	         code.addRCode("mean.df$date<-rownames(mean.df)");
 	         code.addRCode("names(mean.df)<-c('price', 'date')");
 	         code.addRCode("mean.df");
-	         code.addRCode("d1=ggplot(mean.df, aes(x=t2,y=t1))+geom_bar(stat='identity',fill=season2)+xlab('날짜')+ylab('가격')+ggtitle('날짜별 매출')");
+	         code.addRCode("d1=ggplot(mean.df, aes(x=t2,y=t1))+geom_bar(stat='identity',fill='white', colour='red')+xlab('날짜')+ylab('매출')+ggtitle('날짜별 매출')");
 	         code.addRCode("d1+theme(plot.title=element_text(size=15,face='bold',color='dark blue'))+theme(axis.text.x=element_text(angle=45, hjust=1))");
 	       
 	   

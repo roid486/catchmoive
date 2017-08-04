@@ -16,10 +16,6 @@ text/html; charset=UTF-8"
 // 	 response.sendRedirect("test_e.com");
 	 
 		//response.sendRedirect("main.com");
-		//response.sendRedirect("listBoard.com");
-		//response.sendRedirect("insertMovie.com");
-		//response.sendRedirect("listBoard.com");
-		//response.sendRedirect("listMovie.com");
 
 	%>
 </body>

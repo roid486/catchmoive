@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jun.vo.BoardVo;
+import com.jun.vo.NoticeVo;
 import com.jun.vo.ReplyVo;
 
 public class JavajoManager {
@@ -108,6 +109,7 @@ public class JavajoManager {
 		return re;
 	}
 
+	//Reply 부분
 	public static List<ReplyVo> listRe(int b_number) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
@@ -163,24 +165,92 @@ public class JavajoManager {
 		
 		return re;
 	}
-
-
-
+	//공지사항부분
 	
-	/*public static List<BoardVo> list(String searchField, String keyword) {
+	public static List<NoticeVo> listNb(int start, int end, String searchField, String keyword, String pOrderField) {
 		// TODO Auto-generated method stub
+		System.out.println("pOrderField:"+pOrderField);
+		System.out.println(start);
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);
 		map.put("searchField", searchField);
 		map.put("keyword", keyword);
+		map.put("orderField", pOrderField);
 		
 		SqlSession session = factory.openSession();
-		List<BoardVo> list=session.selectList("javajo.selectAll",map);
+		List<NoticeVo> listNb = session.selectList("javajo.selectNb", map);
+		System.out.println("Notice Manager :::   "+listNb.get(0).getNb_number());
 		
-		//List<BoardVo> list=session.selectList("javajo.selectAll");
-		System.out.println("manager    ::    "+list.get(0).getB_regdate());
 		session.close();
-		return list;
 		
-	}*/
+		
+		return listNb;
+	}
+
+	
+	
+	public static int getTotal(String searchField, String keyword) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("searchField", searchField);
+		map.put("keyword", keyword);
+		int re = session.selectOne("javajo.getTotal", map);
+		session.close();
+		return re;
+	}
+
+	public static NoticeVo getNotice(int nb_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		NoticeVo n = session.selectOne("javajo.getNotice",nb_number);
+		session.close();
+		return n;
+	}
+
+	public static int noticeHit(int nb_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.update("javajo.noticeHit",nb_number);
+		session.close();
+		return re;
+	}
+
+	public static int getNextNb() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re =  session.selectOne("javajo.getNextNb");
+		session.close();
+		return re;
+	}
+
+	public static int insertNb(NoticeVo n) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.insert("javajo.insertNotice",n);
+		session.close();
+		return re;
+	}
+
+	public static int updateNb(NoticeVo n) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.update("javajo.updateNotice", n);
+		session.close();
+		return re;
+	}
+
+	public static int deleteNb(int nb_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		int re = session.delete("javajo.deleteNotice",nb_number);
+		session.close();
+		return re;
+	}
+	
+
+	
 		
 }

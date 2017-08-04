@@ -43,6 +43,23 @@ public class InsertrController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mtlist", dao.mtlist());
 		int re = dao.insertr(rv);
+		int tseat = dao.tseat(rv.getT_number());
+		int maxrnum = dao.maxrnum();
+		int row = 65;
+		int col = 1;
+		for(int i=0;i<tseat;i++)
+		{
+			if(i!=0)
+			{
+				if(i%5==0)
+				{
+					row++;
+					col = 1;
+				}
+			}
+			int re2 = dao.sinsert((char)row,col+"",rv.getT_number(),maxrnum,rv.getMt_number());
+			col++;
+		}
 		if(re==1)
 		{
 			mav.setViewName("redirect:/rlist.com");

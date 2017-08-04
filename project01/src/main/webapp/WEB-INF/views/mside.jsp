@@ -42,6 +42,9 @@
 		$("#event").click(function () {
 			location.href="elist.com";
 		});
+		$("#price").click(function () {
+			location.href="test_e.com";
+		});
 	});
 </script>
 </head>
@@ -77,6 +80,9 @@
 	      </tr>
 	      <tr id="event">
 	        <td>이벤트정보</td>
+	      </tr>
+	      <tr class="success" id="price">
+	        <td>매출정보</td>
 	      </tr>
 	    </tbody>
 	  </table>

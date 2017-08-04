@@ -203,6 +203,14 @@ public class MainContoller {
 		return mav;
 	}
 	
+	@RequestMapping("/mypage.com")
+	public ModelAndView mypage(String c_id)
+	{
+		ModelAndView mav = new ModelAndView();
+		System.out.println(c_id);
+		return mav;
+	}
+	
 	@RequestMapping(value="/movieselect.com",produces = "text/plain;charset=utf-8")
 	@ResponseBody
 	public String movieselect()

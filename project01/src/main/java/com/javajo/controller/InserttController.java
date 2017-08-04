@@ -50,21 +50,7 @@ public class InserttController {
 		mav.addObject("mtlist", dao.mtlist());
 		int re = dao.insertt(tv);
 		int t_num = dao.t_num();
-		int row = 65;
-		int col = 1;
-		for(int i=0;i<tv.getT_seat();i++)
-		{
-			if(i!=0)
-			{
-				if(i%5==0)
-				{
-					row++;
-					col = 1;
-				}
-			}
-			int re2 = dao.sinsert((char)row,col+"",t_num,tv.getMt_number());
-			col++;
-		}
+		
 		if(re==1)
 		{
 			mav.setViewName("redirect:/tlist.com");

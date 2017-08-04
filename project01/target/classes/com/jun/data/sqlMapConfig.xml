@@ -9,6 +9,7 @@
 		<typeAlias type="com.javajo.vo.CustomerVo" alias="customerVo"/> 
 		<typeAlias type="com.jun.vo.BoardVo" alias="boardVo"/>
 		<typeAlias type="com.jun.vo.ReplyVo" alias="replyVo"/> 
+		<typeAlias type="com.jun.vo.NoticeVo" alias="noticeVo"/> 
 	</typeAliases>
 <environments default="development">
     <environment id="development">

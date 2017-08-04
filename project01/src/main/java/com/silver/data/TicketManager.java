@@ -33,13 +33,13 @@ public class TicketManager {
 		int num = session.selectOne("ticket.seatNum",theater_num);
 		return num;
 	}
-	public static List<SeatVo> theaterSeat(String theater_number, String movietheater_number) {
+	public static List<SeatVo> theaterSeat(String theater_number, String movietheater_number, String running_number) {
 		
 		SqlSession session = factory.openSession();
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("theater_number", theater_number);
 		map.put("movietheater_number", movietheater_number);
-		
+		map.put("running_number",running_number);
 		List<SeatVo> list = session.selectList("ticket.theaterseat",map);
 		return list;
 	}
