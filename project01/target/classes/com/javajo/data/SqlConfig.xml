@@ -13,6 +13,8 @@
 		<typeAlias type="com.javajo.vo.RunningVo2" alias="runningVo2"/>
 		<typeAlias type="com.javajo.vo.RunningVo3" alias="runningVo3"/>
 		<typeAlias type="com.javajo.vo.EventVo" alias="eventVo"/>
+		<typeAlias type="com.javajo.vo.MyticketVo" alias="myticketVo"/>
+		<typeAlias type="com.javajo.vo.MyhistoryVo" alias="myhistoryVo"/>
 		<typeAlias type="com.jihye.vo.MovieVo_j" alias="movieVo_j"/>
 	</typeAliases>
   <environments default="development">

@@ -207,7 +207,16 @@ public class MainContoller {
 	public ModelAndView mypage(String c_id)
 	{
 		ModelAndView mav = new ModelAndView();
-		System.out.println(c_id);
+		mav.addObject("myt", dao.myt(c_id));
+		return mav;
+	}
+	
+	@RequestMapping("/myticket.com")
+	public ModelAndView myticket(String c_id)
+	{
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("myt", dao.myt(c_id));
+		mav.addObject("myh", dao.mth(c_id));
 		return mav;
 	}
 	
