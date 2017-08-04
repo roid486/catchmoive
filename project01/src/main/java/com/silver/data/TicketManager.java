@@ -68,7 +68,7 @@ public class TicketManager {
 	public static int insertseat(HashMap<String, Object> map2, String arr[]) {
 		SqlSession session = factory.openSession(true);
 		int num = 0;
-		System.out.println(arr.length);
+		System.out.println("arr.length    ::       "+arr.length);
 		for(int i = 0; i < arr.length;i++)
 		{
 			

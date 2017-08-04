@@ -53,8 +53,8 @@
 	</insert>
 
 	<update id="update">
-		update seat set s_ft='y', ticket_number = #{ticket_number}, r_number=#{r_number}
-		where t_number =#{t_number} and mt_number=#{mt_number} 
+		update seat set s_ft='y', ticket_number = #{ticket_number}
+		where t_number =#{t_number} and mt_number=#{mt_number} and r_number=#{r_number}
 		and s_column = #{b} and s_row=#{a}
 	</update>
 </mapper>
