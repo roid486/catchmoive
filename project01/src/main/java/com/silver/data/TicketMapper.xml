@@ -28,8 +28,8 @@
 	<select id="theaterseat" resultType="com.silver.vo.SeatVo">
 		select * from seat where
 		t_number =#{theater_number} and mt_NUMBER =
-		#{movietheater_number}
-		order by seat_number
+		#{movietheater_number} and r_number=#{running_number}
+		order by s_number
 	</select>
 	<select id="getname" resultType="java.lang.String">
 		select mt_name from movietheater
@@ -43,6 +43,9 @@
 	<select id="getmovie" resultType="java.lang.String">
 		select m_name from movie where m_number = #{movie_number}
 	</select>
+	<select id="getpost" resultType="java.lang.String">
+		select m_image1 from movie where m_number = #{movie_number}
+	</select>
 
 	<insert id="insert">
 		insert into ticket
@@ -50,8 +53,8 @@
 	</insert>
 
 	<update id="update">
-		update seat set seat_ft='y', ticket_number = #{ticket_number}, r_number=#{r_number}
+		update seat set s_ft='y', ticket_number = #{ticket_number}, r_number=#{r_number}
 		where t_number =#{t_number} and mt_number=#{mt_number} 
-		and seat_column = #{b} and seat_row=#{a}
+		and s_column = #{b} and s_row=#{a}
 	</update>
 </mapper>

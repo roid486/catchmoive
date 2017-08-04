@@ -38,29 +38,32 @@
 	</div>
 	<div class="container" id="clist" style="width: 60%;">
 	  <h2>이벤트 목록</h2>
-	  <p><a href="inserte.com"><button class="btn btn-primary">이벤트 추가</button></a></p>
-	  <form action="elist.com" method="post">
-			<input type="text" name="key" placeholder="이벤트명을 입력하시오.">
+	  <p><a href="insertBoard.com"><button class="btn btn-primary">게시글 추가</button></a></p>
+	  <form action="blist.com" method="post">
+			<input type="text" name="key" placeholder="게시글명을 입력하시오.">
 			<button type="submit" class="btn btn-primary">검색</button>
 	  </form>
 	  
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	        <th>Type</th>
 	        <th>Title</th>
 	        <th>Regdate</th>
-	        <th>Hit</th>
+	        <th>writer</th>
 	        <th>비고</th>
 	        <th>비고</th>
 	      </tr>
 	    </thead>
 	    <tbody>
-	    <m:forEach var="el" items="${clist }">
+	    <m:forEach var="bl" items="${clist }">
 	      <tr>
-	        <td>${el.e_title }</td>
-	        <td>${el.e_hit }</td>
-	        <td><a href="eupdate.com?e_number=${el.e_number }"><button class="btn btn-primary">수정</button></a></td>
-	        <td><a href="edelete.com?e_number=${el.e_number }"><button class="btn btn-primary">삭제</button></a></td>
+	        <td>${bl.b_type }</td>
+	        <td>${bl.b_title }</td>
+	        <td>${bl.b_regdate }</td>
+	        <td>${bl.c_name }</td>
+	        <td><a href="updateBoard.com?b_number=${bl.b_number }"><button class="btn btn-primary">수정</button></a></td>
+	        <td><a href="deleteBoard.com?b_number=${bl.b_number }"><button class="btn btn-primary">삭제</button></a></td>
 	      </tr>
 	    </m:forEach>
 	    </tbody>

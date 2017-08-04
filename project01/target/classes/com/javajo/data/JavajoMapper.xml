@@ -98,7 +98,7 @@
   <select id="ttotal" resultType="java.lang.Integer">
   	select count(*) from theater
   	<if test="key != null">
-    	where m_name like '%'||#{key}||'%'
+    	where t_name like '%'||#{key}||'%'
     </if>
   </select>
   <select id="tlist" resultType="theaterVo">
@@ -109,7 +109,7 @@
     where rowm between #{num1} and #{num2}
   </select>
   <insert id="tinsert">
-  	insert into theater values(se_theater.nextval,#{t_name},#{t_seat},#{mt_number})
+  	insert into theater values(se_theater.nextval,#{t_seat},#{mt_number},#{t_name})
   </insert>
   <select id="mlist2" resultType="movietheaterVo2">
   	select * from movietheater
@@ -133,11 +133,11 @@
     </if>
   </select>
   <select id="rlist" resultType="runningVo2">
-  	select * from (select rownum rowm, a.* from (
-	select r.r_number,m.m_name,mt.mt_name,t.t_name,r_date,r_start from running r, theater t, movietheater mt, movie m 
+    select * from (select rownum rowm, a.* from (
+    select r.r_number,m.m_name,mt.mt_name,t.t_name,r_date,r_start from running r, theater t, movietheater mt, movie m 
 	where r.m_number=m.m_number and r.mt_number=mt.mt_number and r.t_number=t.t_number
   	<if test="key != null">
-  		where r_date = to_date(#{key},'yyyy/mm/dd')
+  		and r_date = to_date(#{key},'yyyy/mm/dd')
   	</if>) a) 
     where rowm between #{num1} and #{num2}
   </select>
@@ -171,7 +171,7 @@
   <select id="elist" resultType="eventVo">
   	select * from (select rownum rowm, a.* from (select * from event
   	<if test="key != null">
-  		where t_name like '%'||#{key}||'%'
+  		where e_title like '%'||#{key}||'%'
   	</if>) a) 
     where rowm between #{num1} and #{num2}
   </select>
@@ -226,15 +226,18 @@ m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
     </if>
   </select>
   <select id="blist" resultType="boardVo">
-  	select * from (select rownum rowm, a.* from (select b_number,b_title,b_content,b_hit,to_char(b_regdate,'YYYY-MM-DD
-		hh24:mm:ss') b_regdate,b_ip,b_b_ref,b_b_level,b_b_step,b_fname,
-		b_fsize,b_type,b.c_id,
-		(select count(*) from reply WHERE b_number=b.b_number) AS b_recnt,
-		c_name
-		from board b, customer c where b.c_id=c.c_id
-  	<if test="key != null">
-  		where t_name like '%'||#{key}||'%'
-  	</if>) a) 
+  	select * from 
+  	(select rownum rowm, a.* from 
+  		(select b_number,b_title,b_content,b_hit,
+		  	to_char(b_regdate,'YYYY-MM-DD hh24:mm:ss') b_regdate,
+		  	b_ip,b_b_ref,b_b_level,b_b_step,b_fname,b_fsize,b_type,b.c_id,
+			(select count(*) from reply WHERE b_number=b.b_number) AS b_recnt,
+			c_name from board b, customer c where b.c_id=c.c_id
+		  	<if test="key != null">
+		  		and b_title like '%'||#{key}||'%'
+  			</if>
+  		)
+  	 a) 
     where rowm between #{num1} and #{num2}
   </select>
 </mapper>

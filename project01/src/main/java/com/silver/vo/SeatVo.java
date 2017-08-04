@@ -2,36 +2,37 @@ package com.silver.vo;
 
 public class SeatVo {
 
-	private int seat_number;       
-	private String seat_row;                    
-	private String seat_column;                  
-	private String seat_ft;                     
+	private int s_number;       
+	private String s_row;                    
+	private String s_column;                  
+	private String s_ft;                     
 	private int ticket_number;                       
-	private int theater_number;                      
-	private int movietheater_number;
-	public int getSeat_number() {
-		return seat_number;
+	private int t_number;                      
+	private int mt_number;
+	private int r_number;
+	public int getS_number() {
+		return s_number;
 	}
-	public void setSeat_number(int seat_number) {
-		this.seat_number = seat_number;
+	public void setS_number(int s_number) {
+		this.s_number = s_number;
 	}
-	public String getSeat_row() {
-		return seat_row;
+	public String getS_row() {
+		return s_row;
 	}
-	public void setSeat_row(String seat_row) {
-		this.seat_row = seat_row;
+	public void setS_row(String s_row) {
+		this.s_row = s_row;
 	}
-	public String getSeat_column() {
-		return seat_column;
+	public String getS_column() {
+		return s_column;
 	}
-	public void setSeat_column(String seat_column) {
-		this.seat_column = seat_column;
+	public void setS_column(String s_column) {
+		this.s_column = s_column;
 	}
-	public String getSeat_ft() {
-		return seat_ft;
+	public String getS_ft() {
+		return s_ft;
 	}
-	public void setSeat_ft(String seat_ft) {
-		this.seat_ft = seat_ft;
+	public void setS_ft(String s_ft) {
+		this.s_ft = s_ft;
 	}
 	public int getTicket_number() {
 		return ticket_number;
@@ -39,33 +40,41 @@ public class SeatVo {
 	public void setTicket_number(int ticket_number) {
 		this.ticket_number = ticket_number;
 	}
-	public int getTheater_number() {
-		return theater_number;
+	public int getT_number() {
+		return t_number;
 	}
-	public void setTheater_number(int theater_number) {
-		this.theater_number = theater_number;
+	public void setT_number(int t_number) {
+		this.t_number = t_number;
 	}
-	public int getMovietheater_number() {
-		return movietheater_number;
+	public int getMt_number() {
+		return mt_number;
 	}
-	public void setMovietheater_number(int movietheater_number) {
-		this.movietheater_number = movietheater_number;
+	public void setMt_number(int mt_number) {
+		this.mt_number = mt_number;
 	}
-	public SeatVo(int seat_number, String seat_row, String seat_column, String seat_ft, int ticket_number,
-			int theater_number, int movietheater_number) {
+	public int getR_number() {
+		return r_number;
+	}
+	public void setR_number(int r_number) {
+		this.r_number = r_number;
+	}
+	public SeatVo(int s_number, String s_row, String s_column, String s_ft, int ticket_number, int t_number,
+			int mt_number, int r_number) {
 		super();
-		this.seat_number = seat_number;
-		this.seat_row = seat_row;
-		this.seat_column = seat_column;
-		this.seat_ft = seat_ft;
+		this.s_number = s_number;
+		this.s_row = s_row;
+		this.s_column = s_column;
+		this.s_ft = s_ft;
 		this.ticket_number = ticket_number;
-		this.theater_number = theater_number;
-		this.movietheater_number = movietheater_number;
+		this.t_number = t_number;
+		this.mt_number = mt_number;
+		this.r_number = r_number;
 	}
 	public SeatVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 	
 }

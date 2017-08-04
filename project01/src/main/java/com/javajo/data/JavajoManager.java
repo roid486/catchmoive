@@ -264,7 +264,9 @@ public class JavajoManager {
 	public static int ttotalrecode(String key) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
-		int re = session.selectOne("javajo.ttotal", key);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("key", key);
+		int re = session.selectOne("javajo.ttotal", map);
 		session.close();
 		return re;
 	}
