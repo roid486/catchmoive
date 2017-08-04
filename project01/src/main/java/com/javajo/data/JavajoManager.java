@@ -21,6 +21,7 @@ import com.javajo.vo.RunningVo2;
 import com.javajo.vo.RunningVo3;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
+import com.jun.vo.BoardVo;
 
 public class JavajoManager {
 	private static SqlSessionFactory factory;
@@ -558,6 +559,28 @@ public class JavajoManager {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("c_id", c_id);
 		List<MyhistoryVo> list = session.selectList("javajo.myh", map);
+		session.close();
+		return list;
+	}
+
+	public static int btotal(String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("key", key);
+		int re = session.selectOne("javajo.btotal", map);
+		session.close();
+		return re;
+	}
+
+	public static List<BoardVo> blist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("num1", num1);
+		map.put("num2", num2);
+		map.put("key", key);
+		List<BoardVo> list = session.selectList("javajo.blist", map);
 		session.close();
 		return list;
 	}

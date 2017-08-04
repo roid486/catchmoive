@@ -219,4 +219,22 @@ from customer c, movie m, movietheater mt, theater t, history h
 where c.c_id=h.c_id and t.t_number=h.t_number and mt.mt_number=h.mt_number and
 m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
   </select>
+  <select id="btotal" resultType="java.lang.Integer">
+  	select count(*) from board
+  	<if test="key != null">
+    	where b_title like '%'||#{key}||'%'
+    </if>
+  </select>
+  <select id="blist" resultType="boardVo">
+  	select * from (select rownum rowm, a.* from (select b_number,b_title,b_content,b_hit,to_char(b_regdate,'YYYY-MM-DD
+		hh24:mm:ss') b_regdate,b_ip,b_b_ref,b_b_level,b_b_step,b_fname,
+		b_fsize,b_type,b.c_id,
+		(select count(*) from reply WHERE b_number=b.b_number) AS b_recnt,
+		c_name
+		from board b, customer c where b.c_id=c.c_id
+  	<if test="key != null">
+  		where t_name like '%'||#{key}||'%'
+  	</if>) a) 
+    where rowm between #{num1} and #{num2}
+  </select>
 </mapper>
