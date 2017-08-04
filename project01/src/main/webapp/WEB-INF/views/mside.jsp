@@ -34,10 +34,10 @@
 			location.href="rlist.com";
 		});
 		$("#board").click(function () {
-			alert("hi");
+			location.href="blist.com";
 		});
 		$("#noticeboard").click(function () {
-			alert("hi");
+			location.href="nblist.com";
 		});
 		$("#event").click(function () {
 			location.href="elist.com";

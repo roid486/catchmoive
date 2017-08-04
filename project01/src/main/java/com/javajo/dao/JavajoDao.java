@@ -17,6 +17,7 @@ import com.javajo.vo.RunningVo2;
 import com.javajo.vo.RunningVo3;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
+import com.jun.vo.BoardVo;
 
 @Repository
 public class JavajoDao {
@@ -284,5 +285,15 @@ public class JavajoDao {
 	public List<MyhistoryVo> mth(String c_id) {
 		// TODO Auto-generated method stub
 		return JavajoManager.myh(c_id);
+	}
+
+	public int btotalRecode(String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.btotal(key);
+	}
+
+	public List<BoardVo> blist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.blist(num1,num2,key);
 	}
 }
