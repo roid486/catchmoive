@@ -2,16 +2,18 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="javajo">
 	<select id="selectAll" resultType="boardVo">
 		select
 		b_number,b_title,b_content,b_hit,to_char(b_regdate,'YYYY-MM-DD
 		hh24:mm:ss') b_regdate,b_ip,b_b_ref,b_b_level,b_b_step,b_fname,
 		b_fsize,b_type,b.c_id,
-		(select count(*) from reply WHERE b_number=b.b_number) AS b_recnt,
+		(select count(*) from reply WHERE
+		b_number=b.b_number) AS b_recnt,
 		c_name
-		from board b, customer c where b.c_id=c.c_id order by b_number desc
+		from board b, customer c where
+		b.c_id=c.c_id order by b_number desc
 
 		<if test="keyword !=null and keyword !=''">
 			where ${searchField} like '%' || #{keyword} || '%'
@@ -19,22 +21,27 @@
 	</select>
 
 	<select id="getNextNo" resultType="java.lang.Integer">
-		select nvl(max(b_number),0)+1 from board
+		select nvl(max(b_number),0)+1
+		from board
 	</select>
 
 	<select id="getNextRe" resultType="java.lang.Integer">
-		select nvl(max(re_number),0)+1 from reply
+		select nvl(max(re_number),0)+1
+		from reply
 	</select>
 
 
 	<insert id="insertBoard">
-		insert into board values(#{b_number}, #{b_title},#{b_content}, 0,
-		sysdate, #{b_ip}, 0, 0, 0, #{b_fname}, #{b_fsize}, #{b_type},#{c_id},0
+		insert into board values(#{b_number},
+		#{b_title},#{b_content}, 0,
+		sysdate, #{b_ip}, 0, 0, 0, #{b_fname},
+		#{b_fsize}, #{b_type},#{c_id},0
 		)
 	</insert>
 
 	<select id="getBoard" resultType="boardVo">
-		select * from board where b_number = #{b_number}
+		select * from board where
+		b_number = #{b_number}
 	</select>
 
 
@@ -50,18 +57,21 @@
 	</delete>
 
 	<update id="updateHit">
-		update board set b_hit = b_hit + 1 where b_number = #{b_number}
+		update board set b_hit = b_hit + 1 where b_number =
+		#{b_number}
 	</update>
 
 	<update id="updateStep">
-		update board set b_b_step = b_b_step + 1 where b_b_ref= #{b_b_ref} and
+		update board set b_b_step = b_b_step + 1 where
+		b_b_ref= #{b_b_ref} and
 		b_b_step > #{b_b_step}
 	</update>
 
 	<!-- REPLY부분 -->
-	
+
 	<select id="selectRe" resultType="replyVo">
-		select re_number,re_content,re_regdate,re_updatedate,b_number,r.c_id,c_name
+		select
+		re_number,re_content,re_regdate,re_updatedate,b_number,r.c_id,c_name
 		from reply r,customer c where r.c_id=c.c_id and b_number=#{b_number}
 		order by re_number
 	</select>
@@ -77,68 +87,75 @@
 	</delete>
 
 	<select id="getReply" resultType="replyVo">
-		select * from reply where re_number = #{re_number}
+		select * from reply where
+		re_number = #{re_number}
 	</select>
 
 	<update id="updateReply">
-		update reply set re_content=#{re_content} where re_number=#{re_number}
+		update reply set re_content=#{re_content} where
+		re_number=#{re_number}
 
 	</update>
-	 
-	 
- 	<!-- Notice 부분 -->
+
+
+	<!-- Notice 부분 -->
 	<select id="selectNb" resultType="noticeVo">
 		select nb_number,nb_title,nb_content,to_char(nb_regdate,'YYYY-MM-DD
 		hh24:mm:ss') nb_regdate,nb_hit,nb_fname,nb_fsize
 		from
-		(select rownum n, nb_number,nb_title,nb_content,nb_regdate,nb_hit,nb_fname,nb_fsize from
+		(select rownum n,
+		nb_number,nb_title,nb_content,nb_regdate,nb_hit,nb_fname,nb_fsize from
 		(select * from noticeboard
 		<if test="keyword != null">
 			where ${searchField} like '%' || #{keyword} || '%'
 		</if>
 		order by
 		<if test="orderField == null">
- 		nb_number desc
- 		</if>
+			nb_number desc
+		</if>
 		<if test="orderField != null">
 			${orderField}
 		</if>
 		)) a
 		where a.n between #{start} and #{end}
 	</select>
-	
-	<select id="getNextNb" resultType="java.lang.Integer">
-  	select nvl(max(nb_number),0)+1 from noticeboard
-  </select>  
 
-  
-  <select id="getTotal" resultType="java.lang.Integer">
-  	select nvl(count(*),0) from noticeboard 
-  	<if test="keyword != null">
-   	 	where ${searchField} like '%' || #{keyword} || '%'
-  	</if>
-  </select>
-  <update id="noticeHit">
-  	update noticeboard set nb_hit = nb_hit + 1 where nb_number = #{nb_number}
-  </update>
-  <select id="getNotice" resultType="noticeVo">
-  	select * from noticeboard where nb_number = #{nb_number}
-  </select>
-  <insert id="insertNotice">
-  	insert into noticeboard values(#{nb_number},#{nb_title},#{nb_content},sysdate,0,#{nb_fname},#{nb_fsize} )
-  </insert>
-  
-  
-  <update id="updateNotice">
-		update noticeboard set nb_title=#{nb_title},nb_content=#{nb_content},nb_fname=#{nb_fname} where
+	<select id="getNextNb" resultType="java.lang.Integer">
+		select nvl(max(nb_number),0)+1 from noticeboard
+	</select>
+
+
+	<select id="getTotal" resultType="java.lang.Integer">
+		select nvl(count(*),0) from noticeboard
+		<if test="keyword != null">
+			where ${searchField} like '%' || #{keyword} || '%'
+		</if>
+	</select>
+	<update id="noticeHit">
+		update noticeboard set nb_hit = nb_hit + 1 where nb_number = #{nb_number}
+	</update>
+	<select id="getNotice" resultType="noticeVo">
+		select * from noticeboard where nb_number = #{nb_number}
+	</select>
+	<insert id="insertNotice">
+		insert into noticeboard
+		values(#{nb_number},#{nb_title},#{nb_content},sysdate,0,#{nb_fname},#{nb_fsize}
+		)
+	</insert>
+
+
+	<update id="updateNotice">
+		update noticeboard set
+		nb_title=#{nb_title},nb_content=#{nb_content},nb_fname=#{nb_fname}
+		where
 		nb_number=#{nb_number}
 	</update>
-	
+
 	<delete id="deleteNotice">
 		delete from noticeboard where nb_number=#{nb_number}
 	</delete>
 
-	
-  
-	
+
+
+
 </mapper>

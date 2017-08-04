@@ -352,21 +352,17 @@
 							</center>
 						</div>
 						<div id="small2">
-							영화 포스터/영화이름 <br>
-							<font style="color: white;">${movie_name }</font>
+							영화 포스터/영화이름 <br> <font style="color: white;">${movie_name }</font>
 						</div>
 						<div id="small3">
 							극장<br> <font style="color: white;">${movietheater_name }</font><br>
-							상영관<br>
-							<font style="color: white;">${theater_number }관</font> <br>
-							일시<br>
-							<font style="color: white;">${running_date }
+							상영관<br> <font style="color: white;">${theater_number }관</font>
+							<br> 일시<br> <font style="color: white;">${running_date }
 								${running_start }</font><br>
 						</div>
 						<div id="small4">
-							인원<br>
-							<span id='pnum' style="color: white;"></span><br>좌석 번호 <br>
-							<span id="nseat" style="color: white;"></span>
+							인원<br> <span id='pnum' style="color: white;"></span><br>좌석
+							번호 <br> <span id="nseat" style="color: white;"></span>
 						</div>
 						<div id="small5">
 							<center>

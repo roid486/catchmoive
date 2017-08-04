@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="m" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="m" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,114 +10,163 @@
 <link rel="stylesheet" href="resources/ui/jquery-ui.structure.min.css">
 <link rel="stylesheet" href="resources/ui/jquery-ui.theme.min.css">
 <link rel="stylesheet" type="text/css"
-   href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css?a=2" media="screen" />
+	href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css?a=2"
+	media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
-   #logo{
-      padding: 20px;
-   }
-   .menu-bar{
-      text-align: center;
-      background-color: skyblue;
-      cursor: pointer;
-   }
-   .zeta-menu-bar {
-	  background: skyblue;
-	  display: inline-block;
-	  width: 40%;
-	}
-	.zeta-menu { margin: 0; padding: 0; }
-	.zeta-menu li {
-	  float: left;
-	  list-style:none;
-	  position: relative;
-	}
-	.zeta-menu li:hover { background: pink; }
-	.zeta-menu li.expand { background: white; }
-	.zeta-menu li.expand>a { color: hotpink; }
-	.zeta-menu a {
-	  color: white;
-	  display: block;
-	  padding: 10px 20px;
-	  text-decoration: none;
-	}
-	.zeta-menu ul {
-	  background: #eee;
-	  border: 1px solid silver;
-	  display: none;
-	  padding: 0;
-	  position: absolute;
-	  left: 0;
-	  top: 100%;
-	  width: 180px;
-	}
-	.zeta-menu ul li { float: none; }
-	.zeta-menu ul li.expand { background: #ddd; }
-	.zeta-menu ul li.expand a { color: black; }
-	.zeta-menu ul a { color: black; }
-	.zeta-menu ul ul { left: 100%; top: 0; }
-   
-   .topmenu{
-      text-align: right;
-      cursor: pointer;
-      font-family: -윤고딕340;
-   }
-   #login:HOVER{
-      color: hotpink;
-   }
-   #signup:HOVER{
-      color: hotpink;
-   }
-   .logout:HOVER{
-      color: hotpink;
-   }
-   #masterpage:HOVER{
-      color: hotpink;
-   }
-   #mypage:HOVER{
-      color: hotpink;
-   }
-   #scid{
-   		cursor: pointer;
-   }
-   #scpw{
-   		cursor: pointer;
-   }
-.whateverYouChooseforWrapCSS .fancybox-skin {
-  background: none;
+#logo {
+	padding: 20px;
 }
-  .modal-header, .close {
-      background-color: skyblue;
-      color:white !important;
-      text-align: center;
-      font-size: 30px;
-      
-  }
-  .modal-footer {
-      background-color: #f9f9f9;
-  }
-  #logbtn{
-  	 background-color: skyblue;
-  	 border-color: skyblue;
-  }
-  
+
+.menu-bar {
+	text-align: center;
+	background-color: skyblue;
+	cursor: pointer;
+}
+
+.zeta-menu-bar {
+	background: skyblue;
+	display: inline-block;
+	width: 40%;
+}
+
+.zeta-menu {
+	margin: 0;
+	padding: 0;
+}
+
+.zeta-menu li {
+	float: left;
+	list-style: none;
+	position: relative;
+}
+
+.zeta-menu li:hover {
+	background: pink;
+}
+
+.zeta-menu li.expand {
+	background: white;
+}
+
+.zeta-menu li.expand>a {
+	color: hotpink;
+}
+
+.zeta-menu a {
+	color: white;
+	display: block;
+	padding: 10px 20px;
+	text-decoration: none;
+}
+
+.zeta-menu ul {
+	background: #eee;
+	border: 1px solid silver;
+	display: none;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 100%;
+	width: 180px;
+}
+
+.zeta-menu ul li {
+	float: none;
+}
+
+.zeta-menu ul li.expand {
+	background: #ddd;
+}
+
+.zeta-menu ul li.expand a {
+	color: black;
+}
+
+.zeta-menu ul a {
+	color: black;
+}
+
+.zeta-menu ul ul {
+	left: 100%;
+	top: 0;
+}
+
+.topmenu {
+	text-align: right;
+	cursor: pointer;
+	font-family: -윤고딕340;
+}
+
+#login:HOVER {
+	color: hotpink;
+}
+
+#signup:HOVER {
+	color: hotpink;
+}
+
+.logout:HOVER {
+	color: hotpink;
+}
+
+#masterpage:HOVER {
+	color: hotpink;
+}
+
+#mypage:HOVER {
+	color: hotpink;
+}
+
+#scid {
+	cursor: pointer;
+}
+
+#scpw {
+	cursor: pointer;
+}
+
+.whateverYouChooseforWrapCSS .fancybox-skin {
+	background: none;
+}
+
+.modal-header, .close {
+	background-color: skyblue;
+	color: white !important;
+	text-align: center;
+	font-size: 30px;
+}
+
+.modal-footer {
+	background-color: #f9f9f9;
+}
+
+#logbtn {
+	background-color: skyblue;
+	border-color: skyblue;
+}
 </style>
- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 var jq3= jQuery.noConflict();
 </script>
-<script type="text/javascript" src="resources/eunseok/jquery-migrate-1.4.1.min.js"></script>
+<script type="text/javascript"
+	src="resources/eunseok/jquery-migrate-1.4.1.min.js"></script>
 <script type="text/javascript">
 var jq1= jQuery.noConflict();
 </script>
 <script type="text/javascript"
-   src="resources/eunseok/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	src="resources/eunseok/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 <script type="text/javascript"
-   src="resources/eunseok/fancybox/jquery.fancybox-1.3.4_patch.js"></script>
+	src="resources/eunseok/fancybox/jquery.fancybox-1.3.4_patch.js"></script>
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 jq1(function($) {
@@ -235,41 +284,41 @@ jq1(function($) {
 </script>
 </head>
 <body>
-   <input type="hidden" id="signupnum" value="${signupnum }">
-   <input type="hidden" id="ere" value="${ere }">
-   <input type="hidden" id="loginid" value="${se_id }">
-   <div class="topmenu">
-   	  <div id="unlogindiv">
-	      <span id="login">로그인</span>/<span id="signup">회원가입</span>
-   	  </div>
-   	  <div id="logindiv">
-	      <span id="mypage">MyPage</span>/<span class="logout">로그아웃</span>
-   	  </div>
-   	  <div id="masterdiv">
-	      <span id="masterpage">MasterPage</span>/<span class="logout">로그아웃</span>
-   	  </div>
-   </div>
-   <div id="logo">
-      <center>
-         <a href="main.com"><img src="resources/logo/Mainlogo02.png" width="300" height="120"></a>
-      </center>
-   </div>
-   <div class="menu-bar">
-      <div class='zeta-menu-bar'>
-         <ul class="zeta-menu">
-             <li><a href="#">영화</a>
-                <ul>
-                    <li><a href="listMovie.com">영화 정보</a></li>
-                      <li><a href="movieFinder.com">무비 파인더</a></li>
-                  </ul>
-             </li>
-             <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">예매</a></li>
-             <li><a href="movietheater.com?mt_number=1">영화관</a></li>
-             <li><a href="event.com">이벤트</a></li> 
-             <li><a id="listboard">공지사항</a></li> 
-         </ul>
-      </div>
-   </div>
-   
+	<input type="hidden" id="signupnum" value="${signupnum }">
+	<input type="hidden" id="ere" value="${ere }">
+	<input type="hidden" id="loginid" value="${se_id }">
+	<div class="topmenu">
+		<div id="unlogindiv">
+			<span id="login">로그인</span>/<span id="signup">회원가입</span>
+		</div>
+		<div id="logindiv">
+			<span id="mypage">MyPage</span>/<span class="logout">로그아웃</span>
+		</div>
+		<div id="masterdiv">
+			<span id="masterpage">MasterPage</span>/<span class="logout">로그아웃</span>
+		</div>
+	</div>
+	<div id="logo">
+		<center>
+			<a href="main.com"><img src="resources/logo/Mainlogo02.png"
+				width="300" height="120"></a>
+		</center>
+	</div>
+	<div class="menu-bar">
+		<div class='zeta-menu-bar'>
+			<ul class="zeta-menu">
+				<li><a href="#">영화</a>
+					<ul>
+						<li><a href="listMovie.com">영화 정보</a></li>
+						<li><a href="movieFinder.com">무비 파인더</a></li>
+					</ul></li>
+				<li><a rel="fancybox" class="iframe" href="fancy_sub1.com">예매</a></li>
+				<li><a href="movietheater.com?mt_number=1">영화관</a></li>
+				<li><a href="event.com">이벤트</a></li>
+				<li><a id="listboard">공지사항</a></li>
+			</ul>
+		</div>
+	</div>
+
 </body>
 </html>

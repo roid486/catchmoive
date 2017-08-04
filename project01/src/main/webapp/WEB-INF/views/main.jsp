@@ -13,32 +13,45 @@
 	position: relative;
 	z-index: 999;
 }
+
 #center {
 	position: relative;
 	display: inline-block;
 	width: 100%;
 }
 
-#mslist{
-width:50%;
-height: 400px;
-display: inline-block;
+#mslist {
+	width: 50%;
+	height: 400px;
+	display: inline-block;
 }
-#msimg_outter{
-	width: 900px; height: 400px;
+
+#msimg_outter {
+	width: 900px;
+	height: 400px;
 	display: inline-block;
 	overflow: hidden;
 }
-#msimg_inner{
-	width: 9000px; height: 400px; position: relative;
+
+#msimg_inner {
+	width: 9000px;
+	height: 400px;
+	position: relative;
 }
-.mimg{
-	float: left; width: 900px; height: 400px;
+
+.mimg {
+	float: left;
+	width: 900px;
+	height: 400px;
 }
+
 #bottom {
-	position: relative; background-color: brown; color: white;
+	position: relative;
+	background-color: brown;
+	color: white;
 }
-.table{
+
+.table {
 	cursor: pointer;
 }
 </style>
@@ -105,9 +118,7 @@ display: inline-block;
 			</table>
 		</div>
 		<div id="msimg_outter">
-			<div id="msimg_inner">
-			
-			</div>
+			<div id="msimg_inner"></div>
 		</div>
 	</div>
 	<br>

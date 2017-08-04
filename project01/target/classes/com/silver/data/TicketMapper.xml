@@ -4,22 +4,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ticket">
 	<select id="tlist" resultType="com.silver.vo.TicketVo">
-	select * from ticket
+		select * from ticket
 	</select>
-	
+
 	<delete id="deleteTicket">
-	delete from ticket;
+		delete from ticket;
 	</delete>
-	
+
 	<insert id="historyinsert">
-	insert into history
-	values(seq_his.nextval,to_date(#{ticket_date},'yyyy-mm-dd  HH24:MI:SS'),#{ticket_peoplenum},#{mt_number},#{t_number},#{ticket_price},#{c_id},#{m_number})
+		insert into history
+		values(seq_his.nextval,to_date(#{ticket_date},'yyyy-mm-dd
+		HH24:MI:SS'),#{ticket_peoplenum},#{mt_number},#{t_number},#{ticket_price},#{c_id},#{m_number})
 	</insert>
-	
+
 	<update id="resetSeat">
-	update seat set ticket_number=null, seat_ft='n'
+		update seat set ticket_number=null, seat_ft='n'
 	</update>
-	
+
 	<select id="seatNum" resultType="java.lang.Integer">
 		select t_seat from theater where
 		t_number=#{theater_num}
@@ -41,7 +42,8 @@
 		nvl(max(ticket_number),0)+1 from ticket
 	</select>
 	<select id="getmovie" resultType="java.lang.String">
-		select m_name from movie where m_number = #{movie_number}
+		select m_name from movie where
+		m_number = #{movie_number}
 	</select>
 
 	<insert id="insert">
@@ -50,8 +52,10 @@
 	</insert>
 
 	<update id="update">
-		update seat set seat_ft='y', ticket_number = #{ticket_number}, r_number=#{r_number}
-		where t_number =#{t_number} and mt_number=#{mt_number} 
+		update seat set seat_ft='y', ticket_number =
+		#{ticket_number}, r_number=#{r_number}
+		where t_number =#{t_number} and
+		mt_number=#{mt_number}
 		and seat_column = #{b} and seat_row=#{a}
 	</update>
 </mapper>

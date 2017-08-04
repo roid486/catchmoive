@@ -3,30 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<properties resource="com/javajo/data/javajo.properties"/>
+	<properties resource="com/javajo/data/javajo.properties" />
 	<typeAliases>
-		<typeAlias type="com.javajo.vo.MovieTheaterVo" alias="movietheaterVo"/>
-		<typeAlias type="com.javajo.vo.MovieTheaterVo2" alias="movietheaterVo2"/>
-		<typeAlias type="com.javajo.vo.CustomerVo" alias="customerVo"/>
-		<typeAlias type="com.javajo.vo.TheaterVo" alias="theaterVo"/>
-		<typeAlias type="com.javajo.vo.RunningVo" alias="runningVo"/>
-		<typeAlias type="com.javajo.vo.RunningVo2" alias="runningVo2"/>
-		<typeAlias type="com.javajo.vo.RunningVo3" alias="runningVo3"/>
-		<typeAlias type="com.javajo.vo.EventVo" alias="eventVo"/>
-		<typeAlias type="com.jihye.vo.MovieVo_j" alias="movieVo_j"/>
+		<typeAlias type="com.javajo.vo.MovieTheaterVo" alias="movietheaterVo" />
+		<typeAlias type="com.javajo.vo.MovieTheaterVo2" alias="movietheaterVo2" />
+		<typeAlias type="com.javajo.vo.CustomerVo" alias="customerVo" />
+		<typeAlias type="com.javajo.vo.TheaterVo" alias="theaterVo" />
+		<typeAlias type="com.javajo.vo.RunningVo" alias="runningVo" />
+		<typeAlias type="com.javajo.vo.RunningVo2" alias="runningVo2" />
+		<typeAlias type="com.javajo.vo.RunningVo3" alias="runningVo3" />
+		<typeAlias type="com.javajo.vo.EventVo" alias="eventVo" />
+		<typeAlias type="com.jihye.vo.MovieVo_j" alias="movieVo_j" />
 	</typeAliases>
-  <environments default="development">
-    <environment id="development">
-      <transactionManager type="JDBC"/>
-      <dataSource type="POOLED">
-        <property name="driver" value="${driver}"/>
-        <property name="url" value="${url}"/>
-        <property name="username" value="${user}"/>
-        <property name="password" value="${pwd}"/>
-      </dataSource>
-    </environment>
-  </environments>
-  <mappers>
-    <mapper resource="com/javajo/data/JavajoMapper.xml"/>
-  </mappers>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${user}" />
+				<property name="password" value="${pwd}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/javajo/data/JavajoMapper.xml" />
+	</mappers>
 </configuration>
