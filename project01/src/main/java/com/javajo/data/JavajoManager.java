@@ -16,12 +16,14 @@ import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
 import com.javajo.vo.MyhistoryVo;
 import com.javajo.vo.MyticketVo;
+import com.javajo.vo.NoticeboardVo;
 import com.javajo.vo.RunningVo;
 import com.javajo.vo.RunningVo2;
 import com.javajo.vo.RunningVo3;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 import com.jun.vo.BoardVo;
+import com.jun.vo.NoticeVo;
 
 public class JavajoManager {
 	private static SqlSessionFactory factory;
@@ -586,4 +588,61 @@ public class JavajoManager {
 		session.close();
 		return list;
 	}
+
+	public static int nbtotal(String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("key", key);
+		int re = session.selectOne("javajo.nbtotal", map);
+		session.close();
+		return re;
+	}
+
+	public static List<NoticeboardVo> nblist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("num1", num1);
+		map.put("num2", num2);
+		map.put("key", key);
+		List<NoticeboardVo> list = session.selectList("javajo.nblist", map);
+		session.close();
+		return list;
+	}
+
+	public static int mybtotal(String key, String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("key", key);
+		map.put("c_id", c_id);
+		int re = session.selectOne("javajo.mybtotal", map);
+		session.close();
+		return re;
+	}
+
+	public static List<BoardVo> myblist(int num1, int num2, String key, String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("num1", num1);
+		map.put("num2", num2);
+		map.put("key", key);
+		map.put("c_id", c_id);
+		List<BoardVo> list = session.selectList("javajo.myblist", map);
+		session.close();
+		return list;
+	}
+
+	public static List<BoardVo> myb(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("c_id", c_id);
+		List<BoardVo> list = session.selectList("javajo.myb", map);
+		session.close();
+		return list;
+	}
+	
 }

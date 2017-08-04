@@ -12,8 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.javajo.dao.JavajoDao;
 
 @Controller
-@RequestMapping("/nblist.com")
-public class NblistController {
+@RequestMapping("/myboard.com")
+public class MyboardController {
 
 	@Autowired
 	private JavajoDao dao;
@@ -21,16 +21,17 @@ public class NblistController {
 	private int pageSize=5;
 	private int pageGroup=5;
 	private String key;
+	private String c_id;
 	
 	public void setDao(JavajoDao dao) {
 		this.dao = dao;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ModelAndView blist(@RequestParam(value="pageNUM", defaultValue="1") int pageNUM, HttpServletRequest request)
+	public ModelAndView blist(@RequestParam(value="pageNUM", defaultValue="1") int pageNUM, HttpServletRequest request,String c_id)
 	{
-		int totalRecode = dao.nbtotalRecode(this.key);
-		System.out.println(totalRecode);
+		this.c_id=c_id;
+		int totalRecode = dao.mybtotalRecode(this.key,c_id);
 		int totalpage=1;
 		if(totalRecode % pageSize != 0)
 		{
@@ -45,11 +46,11 @@ public class NblistController {
 		int end = start+pageGroup-1;
 		if(start > pageGroup)
 		{
-			pageNUM2 += "<a href='nblist.com?pageNUM="+(start-1)+"'>이전</a> ";
+			pageNUM2 += "<a href='myboard.com?pageNUM="+(start-1)+"&&c_id="+c_id+"'>이전</a> ";
 		}
 		for(int i = start; i <= end; i++)
 		{
-			pageNUM2 += "<a href='nblist.com?pageNUM="+i+"'>"+i+"</a> ";
+			pageNUM2 += "<a href='myboard.com?pageNUM="+i+"&&c_id="+c_id+"'>"+i+"</a> ";
 			if(i >= totalpage)
 			{
 				break;
@@ -57,13 +58,13 @@ public class NblistController {
 		}
 		if(end < totalpage)
 		{
-			pageNUM2 += "<a href='nblist.com?pageNUM="+(end+1)+"'>다음</a> ";
+			pageNUM2 += "<a href='myboard.com?pageNUM="+(end+1)+"&&c_id="+c_id+"'>다음</a> ";
 		}
 		ModelAndView mav = new ModelAndView();
 		int num2 = pageNUM*pageSize;
 		int num1 = num2-pageSize+1;
 		mav.addObject("mtlist", dao.mtlist());
-		mav.addObject("clist", dao.nblist(num1,num2,this.key));
+		mav.addObject("clist", dao.myblist(num1,num2,this.key,c_id));
 		mav.addObject("pagenum", pageNUM2);
 		return mav;
 	}
@@ -72,7 +73,7 @@ public class NblistController {
 	public ModelAndView blistserch(@RequestParam(value="key", required=false) String key,@RequestParam(value="pageNUM", defaultValue="1") int pageNUM)
 	{
 		this.key = key;
-		int totalRecode = dao.nbtotalRecode(key);
+		int totalRecode = dao.mybtotalRecode(key,c_id);
 		int totalpage=1;
 		if(totalRecode % pageSize != 0)
 		{
@@ -87,11 +88,11 @@ public class NblistController {
 		int end = start+pageGroup-1;
 		if(start > pageGroup)
 		{
-			pageNUM2 += "<a href='nblist.com?pageNUM="+(start-1)+"'>이전</a> ";
+			pageNUM2 += "<a href='myboard.com?pageNUM="+(start-1)+"&&c_id="+c_id+"'>이전</a> ";
 		}
 		for(int i = start; i <= end; i++)
 		{
-			pageNUM2 += "<a href='nblist.com?pageNUM="+i+"'>"+i+"</a> ";
+			pageNUM2 += "<a href='myboard.com?pageNUM="+i+"&&c_id="+c_id+"'>"+i+"</a> ";
 			if(i >= totalpage)
 			{
 				break;
@@ -99,13 +100,13 @@ public class NblistController {
 		}
 		if(end < totalpage)
 		{
-			pageNUM2 += "<a href='nblist.com?pageNUM="+(end+1)+"'>다음</a> ";
+			pageNUM2 += "<a href='myboard.com?pageNUM="+(end+1)+"&&c_id="+c_id+"'>다음</a> ";
 		}
 		ModelAndView mav = new ModelAndView();
 		int num2 = pageNUM*pageSize;
 		int num1 = num2-pageSize+1;
 		mav.addObject("mtlist", dao.mtlist());
-		mav.addObject("clist", dao.nblist(num1,num2,key));
+		mav.addObject("clist", dao.myblist(num1,num2,key,c_id));
 		mav.addObject("pagenum", pageNUM2);
 		return mav;
 	}
