@@ -16,11 +16,20 @@ public class MovieDao {
 		//한 화면에 보여줄 게시물의 수
 		public static int pageSIZE= 3;
 		
+		//무비차트 화면에 보여줄 게시물의 수
+		public static int moviepageSIZE= 9;
+		
 		//전체 레코드수 
 		public static int totalRecord;
 		
+		//무비차트 전체 레코드수 
+		public static int movietotalRecord;
+		
 		//전체 페이지수
 		public static int totalPage;
+		
+		//무비 차트 전체 페이지수
+		public static int movietotalPage;
 		
 		//한 화면에 보여줄 페이지수
 		public static int pageGRUOP=3;
@@ -120,7 +129,12 @@ public class MovieDao {
 	}
 	
 	public List<MovieVo_j> listMovie(String select){
+		
 		return MovieManager.listMovie(select);
+	}
+	
+	public List<MovieVo_j> preMovie(){
+		return MovieManager.preMovie();
 	}
 	
 	public int insertMovieScore(MovieScoreVo ms){

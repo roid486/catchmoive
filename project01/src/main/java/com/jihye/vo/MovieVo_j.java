@@ -27,58 +27,6 @@ public class MovieVo_j {
 	private MultipartFile uploadFile1;
 	private MultipartFile uploadFile2;
 	private MultipartFile uploadFile3;
-	
-	public MultipartFile getUploadFile() {
-		return uploadFile;
-	}
-	public void setUploadFile(MultipartFile uploadFile) {
-		this.uploadFile = uploadFile;
-	}
-	public MultipartFile getUploadFile1() {
-		return uploadFile1;
-	}
-	public void setUploadFile1(MultipartFile uploadFile1) {
-		this.uploadFile1 = uploadFile1;
-	}
-	public MultipartFile getUploadFile2() {
-		return uploadFile2;
-	}
-	public void setUploadFile2(MultipartFile uploadFile2) {
-		this.uploadFile2 = uploadFile2;
-	}
-	public MultipartFile getUploadFile3() {
-		return uploadFile3;
-	}
-	public void setUploadFile3(MultipartFile uploadFile3) {
-		this.uploadFile3 = uploadFile3;
-	}
-	public MovieVo_j() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public MovieVo_j(int m_number, String m_name, String m_director, String m_actor, String m_nation, int m_runningtime,
-			String m_grade, String m_genre, Date m_opendate, String m_synop, String m_image, String m_trailer,
-			double m_score, String m_image1, String m_image2, String m_image3, int m_isshowing, int m_boxoffice) {
-		super();
-		this.m_number = m_number;
-		this.m_name = m_name;
-		this.m_director = m_director;
-		this.m_actor = m_actor;
-		this.m_nation = m_nation;
-		this.m_runningtime = m_runningtime;
-		this.m_grade = m_grade;
-		this.m_genre = m_genre;
-		this.m_opendate = m_opendate;
-		this.m_synop = m_synop;
-		this.m_image = m_image;
-		this.m_trailer = m_trailer;
-		this.m_score = m_score;
-		this.m_image1 = m_image1;
-		this.m_image2 = m_image2;
-		this.m_image3 = m_image3;
-		this.m_isshowing = m_isshowing;
-		this.m_boxoffice = m_boxoffice;
-	}
 	public int getM_number() {
 		return m_number;
 	}
@@ -154,7 +102,7 @@ public class MovieVo_j {
 	public double getM_score() {
 		return m_score;
 	}
-	public void setM_score(int m_score) {
+	public void setM_score(double m_score) {
 		this.m_score = m_score;
 	}
 	public String getM_image1() {
@@ -187,7 +135,30 @@ public class MovieVo_j {
 	public void setM_boxoffice(int m_boxoffice) {
 		this.m_boxoffice = m_boxoffice;
 	}
-	
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	public MultipartFile getUploadFile1() {
+		return uploadFile1;
+	}
+	public void setUploadFile1(MultipartFile uploadFile1) {
+		this.uploadFile1 = uploadFile1;
+	}
+	public MultipartFile getUploadFile2() {
+		return uploadFile2;
+	}
+	public void setUploadFile2(MultipartFile uploadFile2) {
+		this.uploadFile2 = uploadFile2;
+	}
+	public MultipartFile getUploadFile3() {
+		return uploadFile3;
+	}
+	public void setUploadFile3(MultipartFile uploadFile3) {
+		this.uploadFile3 = uploadFile3;
+	}
 	
 	
 }
