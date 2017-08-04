@@ -82,7 +82,7 @@ public class HomeController {
 
 	@RequestMapping("/fancy_sub2.com")
 	public ModelAndView test3(String movie_number,String movietheater_number,String running_date,String running_start,String theater_number,String running_number) {
-		System.out.println(theater_number+"::"+movietheater_number+"::"+running_number);
+		System.out.println("theater_number"+theater_number+"::movietheater_number"+movietheater_number+"::running_number"+running_number);
 		list1 = tdao.theaterSeat(theater_number,movietheater_number,running_number);
 		ModelAndView mav = new ModelAndView();
 		String movietheater_name = tdao.getmovietheatername(movietheater_number);
@@ -140,6 +140,18 @@ public class HomeController {
 		map1.put("r_number", r_number);
 		map1.put("ticket_price", ticket_price);
 
+		
+			System.out.println(map1.get("ticket_number"));
+			System.out.println(map1.get("ticket_peoplenum"));
+			System.out.println(map1.get("m_number"));
+			System.out.println(map1.get("mt_number"));
+			System.out.println(map1.get("t_number"));
+			System.out.println(map1.get("c_id"));
+			System.out.println(map1.get("r_number"));
+			System.out.println(map1.get("ticket_price"));
+			
+			
+		
 		if(tdao.insertticket(map1)==1)
 		{
 			HashMap<String, Object> map2 = new HashMap<String, Object>();
@@ -152,6 +164,7 @@ public class HomeController {
 			
 		}
 		
+		System.out.println("arr.length : "+arr.length +"  num"+ num);
 		if(arr.length==num)
 		{
 			System.out.println("success");
@@ -222,6 +235,20 @@ public class HomeController {
 		return str;
 	}
 
+	@RequestMapping(value = "fifthList.com", produces = "text/plain;charset=utf-8")
+	@ResponseBody
+	public String fifthList(String running_start, String running_date) {
+		String str = "";
+		String list = bdao.fifthList(running_start,running_date);
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			str = mapper.writeValueAsString(list);
+		} catch (Exception e) {
+			System.out.println("fourth() mapper   ::    " + e.getMessage());
+		}
+		
+		return str;
+	}
 	@RequestMapping("/test_e.com")
 	public ModelAndView rview(HttpServletRequest request){
 		String fname ="";

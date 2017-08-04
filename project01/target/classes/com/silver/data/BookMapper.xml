@@ -18,4 +18,9 @@ select distinct to_char(r_date,'YYYY-MM-DD') r_date from running r,movietheater 
   <select id="fourthList" resultType="com.silver.vo.RunningstartVo">
  select r_start ,t.t_number, r_number,m.m_number,mt.mt_number, r.r_date from running r,movietheater mt, movie m,theater t where mt.mt_number = t.mt_number and m.m_number = r.m_number and r.t_number = t.t_number and mt.mt_number=#{movietheater_number} and r_date = to_date(#{running_date},'YYYY-MM-DD hh24:mi:ss') and m.m_number=#{movie_number}
  </select> 
+ 
+ 
+  <select id="fifthList" resultType="java.lang.String">
+	select r_number from running where r_start = #{running_start} and r_date =#{running_date}
+ </select> 
 </mapper>

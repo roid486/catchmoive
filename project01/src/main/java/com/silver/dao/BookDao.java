@@ -34,5 +34,10 @@ public class BookDao {
 		return BookManager.fourthList(movie_number,movietheater_number,running_date);
 	}
 
+	public String fifthList(String running_start, String running_date) {
+		// TODO Auto-generated method stub
+		return BookManager.fifthList(running_start,running_date);
+	}
+
 	
 }

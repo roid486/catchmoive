@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="m" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -88,45 +87,25 @@
 		  </table>
 		</div>
 	<div id="center" style="width: 70%; margin-left: 20%;">
-		<div class="panel panel-info">
-	      <div class="panel-heading"><h3>예매내역</h3></div>
+		<div class="panel panel-danger">
+	      <div class="panel-heading"><h3>나의 게시판</h3></div>
 	      <div class="panel-body">
 				<div class="container">          
 				  <table class="table" style="width: 70%;">
 				    <tbody>
-				    	<m:forEach var="myt" items="${myt }">
-				    		<tr>
-						        <td>${myt.ticket_number }</td>
-						        <td>${myt.m_name }</td>
-								<td>${myt.mt_name }</td>
-								<td>${myt.t_name }</td>
-								<td><fm:formatDate value="${myt.ticket_date }" pattern="yyyy/MM/dd"/></td>
-								<td>${myt.r_start }</td>
-								<td>${myt.ticket_peoplenum }</td>
-								<td>${myt.ticket_price }</td>
-							</tr>
-				    	</m:forEach>
-				    </tbody>
-				  </table>
-				</div>
-		  </div>
-	    </div>
-	    <div class="panel panel-danger">
-	      <div class="panel-heading"><h3>예매내역</h3></div>
-	      <div class="panel-body">
-				<div class="container">          
-				  <table class="table" style="width: 70%;">
-				    <tbody>
-				    	<m:forEach var="mybl" items="${myb }">
+				    	<m:forEach var="mybl" items="${clist }">
 				    		<tr>
 						        <td>${mybl.b_type }</td>
 						        <td>${mybl.b_title }</td>
 						        <td>${mybl.b_regdate }</td>
 						        <td>${mybl.c_name }</td>
+						        <td><a href="updateBoard.com?b_number=${mybl.b_number }"><button class="btn btn-primary">수정</button></a></td>
+						        <td><a href="deleteBoard.com?b_number=${mybl.b_number }"><button class="btn btn-primary">삭제</button></a></td>
 							</tr>
 				    	</m:forEach>
 				    </tbody>
 				  </table>
+				  	${pagenum }
 				</div>
 		  </div>
 	    </div>

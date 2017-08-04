@@ -208,6 +208,7 @@ public class MainContoller {
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("myt", dao.myt(c_id));
+		mav.addObject("myb", dao.myb(c_id));
 		return mav;
 	}
 	
