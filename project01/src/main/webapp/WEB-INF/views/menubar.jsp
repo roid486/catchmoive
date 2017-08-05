@@ -19,6 +19,7 @@
 #logo {
 	padding: 20px;
 }
+<<<<<<< HEAD
 
 .menu-bar {
 	text-align: center;
@@ -147,6 +148,26 @@
 	background-color: skyblue;
 	border-color: skyblue;
 }
+=======
+  .modal-header, .close {
+      background-color: skyblue;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+      
+  }
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
+  #logbtn{
+  	 background-color: skyblue;
+  	 border-color: skyblue;
+  }
+  #naverBtn{
+  	border: none;
+  	background: white;
+  }
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -210,19 +231,21 @@ jq1(function($) {
       
       $("#login").click(function () {
          //$("#logindial").dialog("open");
-    	  $("#logindial").modal();
+    	  $("#logindial").modal({keyboard:true});
       });
       
       $("#scid").click(function () {
           //$("#logindial").dialog("close");
            $("#logindial").modal('hide');
-          $("#sciddial").modal();
+          $("#sciddial").modal({keyboard:true});
        });
        $("#scpw").click(function () {
           $("#logindial").modal('hide');
-          $("#scpwdial").modal();
+          $("#scpwdial").modal({keyboard:true});
        });
-      
+       
+       
+     
       
       var signupnum = $("#signupnum").val();
       if(signupnum == 2)

@@ -75,7 +75,7 @@ public class UpdateNoticeController {
 	
 		
 		
-		mav.setViewName("redirect:/listNotice.com");
+		mav.setViewName("redirect:/nblist.com");
 		return mav;
 	}
 	

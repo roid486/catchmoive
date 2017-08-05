@@ -10,6 +10,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
+<<<<<<< HEAD
 div {
 	border: 1 solid black;
 }
@@ -56,6 +57,41 @@ div {
 	background-color: brown;
 	color: white;
 }
+=======
+	#menu {
+		position: relative;
+		z-index: 999;
+	}
+	#mside{
+		position: absolute;
+		left: 0px;
+		display: inline-block;
+		width: 20%;
+		height: 100%;
+	}
+	.mt_num{
+		cursor: pointer;
+	}
+	#movietheaterdetail{
+		position: relative;
+		z-index: 1;
+		display: inline-block;
+		width: 60%;
+	}
+	#theaterl{
+		width: 100%;
+	}
+	#rlist{
+		width: 100%;
+	}
+	#map {
+        height: 400px;
+        width: 100%;
+	}
+	#bottom {
+		position: relative;   background-color:  #e6f3ff; color: black;
+	}
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -173,7 +209,19 @@ div {
 
 			<div id="map"></div>
 		</div>
+<<<<<<< HEAD
 	</center>
 
+=======
+		</center>
+		<p></p>
+		<p></p>
+		<p></p>
+		<br>
+		<br>
+		<div id="bottom">
+			<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
+		</div>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 </body>
 </html>

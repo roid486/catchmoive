@@ -78,6 +78,8 @@ tr, th, td {
 			<a href="listBoard.com" class="w3-bar-item w3-button">게시판</a> <br> <a href="listNotice.com" class="w3-bar-item w3-button">공지사항</a>
 
 		</div>
+		
+		<div style="margin-left:15%">
 
 	<center>
 		<h1>
@@ -154,5 +156,8 @@ tr, th, td {
 			<font color="red">로그인을 하십시오.</font>
 		</center>
 	</div>
+	
+	</div>
+	
 </body>
 </html>

@@ -33,13 +33,13 @@ public class TicketManager {
 		int num = session.selectOne("ticket.seatNum",theater_num);
 		return num;
 	}
-	public static List<SeatVo> theaterSeat(String theater_number, String movietheater_number) {
+	public static List<SeatVo> theaterSeat(String theater_number, String movietheater_number, String running_number) {
 		
 		SqlSession session = factory.openSession();
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("theater_number", theater_number);
 		map.put("movietheater_number", movietheater_number);
-		
+		map.put("running_number",running_number);
 		List<SeatVo> list = session.selectList("ticket.theaterseat",map);
 		return list;
 	}
@@ -68,7 +68,7 @@ public class TicketManager {
 	public static int insertseat(HashMap<String, Object> map2, String arr[]) {
 		SqlSession session = factory.openSession(true);
 		int num = 0;
-		System.out.println(arr.length);
+		System.out.println("arr.length    ::       "+arr.length);
 		for(int i = 0; i < arr.length;i++)
 		{
 			
@@ -86,6 +86,12 @@ public class TicketManager {
 		String str = session.selectOne("ticket.getmovie", movie_number);
 		return str;
 	}
+	public static String getpost(String movie_number) {
+		SqlSession session = factory.openSession();
+		String str = session.selectOne("ticket.getpost", movie_number);
+		return str;
+	}
+	
 	public static int inserthistory() {
 		SqlSession session = factory.openSession(true);
 		List<TicketVo> list = session.selectList("ticket.tlist");

@@ -8,6 +8,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
+<<<<<<< HEAD
 #menu {
 	position: relative;
 	z-index: 999;
@@ -18,6 +19,15 @@
 	background-color: brown;
 	color: white;
 }
+=======
+	#menu{
+		position: relative;
+		z-index: 999;
+	}
+	#bottom {
+	position: relative;   background-color:  #e6f3ff; color: black;
+	}
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -110,6 +120,9 @@
 			<font color="red">약관을 모두 동의해주세요.</font>
 		</center>
 	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

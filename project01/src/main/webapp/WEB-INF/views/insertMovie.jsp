@@ -135,14 +135,14 @@
 				</div>
 			</div>
 
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label class="control-label col-sm-2" for="m_score">평점:</label>
 				<div class="col-sm-3">
 					<input type="text" class="form-control" id="m_score"
 						placeholder="관리자는 평점 0으로 넣어주세요." name="m_score"
 						required="required">
 				</div>
-			</div>
+			</div> -->
 
 
 			<div class="form-group">
@@ -184,14 +184,14 @@
 				</div>
 			</div>
 
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label class="control-label col-sm-2" for="m_boxoffice">예매율:</label>
 				<div class="col-sm-3">
 					<input type="text" class="form-control" id="m_boxoffice"
 						placeholder="Default값 0으로 입력 바람" name="m_boxoffice"
 						required="required">
 				</div>
-			</div>
+			</div> -->
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">

@@ -1,5 +1,8 @@
 package com.silver.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,12 +20,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.rcaller.rStuff.RCaller;
+import com.github.rcaller.rStuff.RCode;
 import com.silver.dao.BookDao;
 import com.silver.dao.TicketDao;
 import com.silver.vo.MovieVo;
@@ -76,11 +82,13 @@ public class HomeController {
 
 	@RequestMapping("/fancy_sub2.com")
 	public ModelAndView test3(String movie_number,String movietheater_number,String running_date,String running_start,String theater_number,String running_number) {
-		list1 = tdao.theaterSeat(theater_number,movietheater_number);
+		System.out.println("theater_number"+theater_number+"::movietheater_number"+movietheater_number+"::running_number"+running_number);
+		list1 = tdao.theaterSeat(theater_number,movietheater_number,running_number);
 		ModelAndView mav = new ModelAndView();
 		String movietheater_name = tdao.getmovietheatername(movietheater_number);
 		String movie_name = tdao.getmoviename(movie_number);
-		System.out.println(movie_name);
+		String movie_image1 = tdao.getpost(movie_number);
+	
 		mav.addObject("movietheater_number", movietheater_number);
 		mav.addObject("theater_number", theater_number);
 		mav.addObject("running_start", running_start);
@@ -90,6 +98,9 @@ public class HomeController {
 		mav.addObject("movietheater_name", movietheater_name);
 		mav.addObject("seat_num", tdao.seatNum(Integer.parseInt(theater_number)));
 		mav.addObject("movie_name", movie_name);
+		System.out.println("movie_image1     ::      "+movie_image1);
+		mav.addObject("movie_image1", movie_image1);
+		
 		
 		return mav;
 	}
@@ -129,6 +140,18 @@ public class HomeController {
 		map1.put("r_number", r_number);
 		map1.put("ticket_price", ticket_price);
 
+		
+			System.out.println(map1.get("ticket_number"));
+			System.out.println(map1.get("ticket_peoplenum"));
+			System.out.println(map1.get("m_number"));
+			System.out.println(map1.get("mt_number"));
+			System.out.println(map1.get("t_number"));
+			System.out.println(map1.get("c_id"));
+			System.out.println(map1.get("r_number"));
+			System.out.println(map1.get("ticket_price"));
+			
+			
+		
 		if(tdao.insertticket(map1)==1)
 		{
 			HashMap<String, Object> map2 = new HashMap<String, Object>();
@@ -141,6 +164,7 @@ public class HomeController {
 			
 		}
 		
+		System.out.println("arr.length : "+arr.length +"  num"+ num);
 		if(arr.length==num)
 		{
 			System.out.println("success");
@@ -209,6 +233,74 @@ public class HomeController {
 		}
 		
 		return str;
+	}
+
+	@RequestMapping(value = "fifthList.com", produces = "text/plain;charset=utf-8")
+	@ResponseBody
+	public String fifthList(String running_start, String running_date) {
+		String str = "";
+		String list = bdao.fifthList(running_start,running_date);
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			str = mapper.writeValueAsString(list);
+		} catch (Exception e) {
+			System.out.println("fourth() mapper   ::    " + e.getMessage());
+		}
+		
+		return str;
+	}
+	@RequestMapping("/test_e.com")
+	public ModelAndView rview(HttpServletRequest request){
+		String fname ="";
+		try {
+	      RCaller caller= new RCaller();
+	      caller.setRscriptExecutable("C:\\Program Files\\R\\R-3.4.1\\bin\\x64\\Rscript.exe");
+	      RCode code= new RCode();
+	      code.clear();
+	      System.out.println("얌마");
+	      File file;
+	         file= code.startPlot();
+	      code.addRCode("library(DBI)");
+	         code.addRCode("library(RODBC)");
+	         code.addRCode("library(ggplot2)");
+	      code.addRCode("javajo=odbcConnect('javajo',uid='javajo',pwd='javajo')");
+	         code.addRCode("val=sqlQuery(javajo,'select sum(h_ticket_price) 매출, h_ticket_date 날짜 from history group by h_ticket_date;')");
+	   
+	         code.addRCode("t1=val$매출");
+	         code.addRCode("t2=val$날짜");
+	         code.addRCode("season1 <- heat.colors(length(t2), alpha=1)");
+	         code.addRCode("season2 <-rainbow(length(t2), s = 1, v = 1, start = 0, end = max(1,8 - 1)/8, alpha = 0.7)");
+	         code.addRCode("season3 <-terrain.colors(length(t2), alpha = 1)");
+	         code.addRCode("season4 <-topo.colors(length(2), alpha = 1)");
+	         code.addRCode("mean.df<-as.data.frame(tapply(t1, t2, mean))");
+	         code.addRCode("mean.df$date<-rownames(mean.df)");
+	         code.addRCode("names(mean.df)<-c('price', 'date')");
+	         code.addRCode("mean.df");
+	         code.addRCode("d1=ggplot(mean.df, aes(x=t2,y=t1))+geom_bar(stat='identity',fill='white', colour='red')+xlab('날짜')+ylab('매출')+ggtitle('날짜별 매출')");
+	         code.addRCode("d1+theme(plot.title=element_text(size=15,face='bold',color='dark blue'))+theme(axis.text.x=element_text(angle=45, hjust=1))");
+	       
+	   
+	         code.endPlot();
+	         caller.setRCode(code);
+	         caller.runOnly();
+	         
+	         fname=file.getName();
+	         String path= request.getRealPath("resources/rfile");
+	         System.out.println(path);
+	         FileOutputStream fos= new FileOutputStream(path+"/"+fname);
+	         FileInputStream fis= new FileInputStream(file);
+	         
+	         FileCopyUtils.copy(fis, fos);
+	         
+	         fis.close();
+	         fos.close();
+	         
+		} catch (Exception e) {
+				System.out.println("r 부분        ::    "+e.getMessage());
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		return mav.addObject("fname", fname);
 	}
 
 }

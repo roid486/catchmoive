@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< HEAD
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
+=======
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -56,10 +62,22 @@
 .revise {
 	cursor: pointer;
 }
+<<<<<<< HEAD
 
 .delete {
 	cursor: pointer;
 }
+=======
+	#menu {
+		position: relative;
+		z-index: 999;
+	}
+#bottom {
+	position: relative;   background-color:  #e6f3ff; color: black;
+	}
+
+
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -418,6 +436,7 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="row">
@@ -427,6 +446,21 @@
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;영화상세</strong>
 				</h2>
 			</div>
+=======
+	<div id="menu">
+		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+	</div>
+<div class="container-fluid">
+    <div class="row">
+    <p>
+    <div class="col-md-2" style="float:left;"> <h2 align="left"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;영화상세</strong></h2></div>
+ 
+<%--     <div class="col-md-1" style="float:left;"> <a href="updateMovie.com?m_number=${m.m_number }"><button type="button" class="btn btn-primary" >수정</button></a> </div>
+ --%>	
+    </p>
+    </div>
+	</div>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 
 			<%--     <div class="col-md-1" style="float:left;"> <a href="updateMovie.com?m_number=${m.m_number }"><button type="button" class="btn btn-primary" >수정</button></a> </div>
  --%>
@@ -476,11 +510,128 @@
 
 			</div>
 
+<<<<<<< HEAD
 		</div>
+=======
+</div>
+<br><br><br>
 
+ <c:if test="${m.m_isshowing==1}" >
+<div>
+<div class="well well-sm" id="well" ><h4><strong>평점 주기</strong></h4><h5><strong>(현재 평점 : ${m.m_score })</strong></h5></div>
+ 
+ 
+
+ 
+<div id="div_comment">
+<span id="cnt">
+<div id="counter"> </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>/100</label>
+</span>
+</div>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
+
+<<<<<<< HEAD
 		<br>
 		<br>
 
+=======
+<div id="div_rating" style=" float:left; width: 20%;">
+ 	<div class="media-left media-top" style="float: left;">
+      <img src="resources/images/user.png" class="media-object" style="width:50px">
+    </div>
+	<div id="score_lab" ></div>
+</div>
+<span>
+<form id="formId">
+    <div class="form-group" >
+		<span class="" style="float: left; ">
+		<input type="hidden" id="mnumber" name="ms_mid" value="${m.m_number }">
+		<input id="star" type="hidden" name="ms_score">
+		<input id="logId" type="hidden" name="ms_custid">
+      <textarea maxlength="100" class="form-control col-sm-4" rows="3" id="comment" name="ms_comment" placeholder="로그인한 회원만 이용 가능합니다." style="width:580px;"></textarea>
+     
+      <button type="button" id="btn_register" class="btn btn-default btn-lg" style="height: 60px"><strong>등록</strong></button></span>
+    </div>
+ </form>
+ 
+ 
+
+</span>
+<br><br><br><br>
+
+<div id="reply"><!-- moviescore select 해올 부분 (댓글달린거 보여주려고) -->
+	<div id="paste_no"></div>
+	
+	<table id="re_table" width="90%">
+	
+	</table><br>
+	<div id="page"><center>${pageStr }</center></div>
+	
+</div> 
+
+</div>
+</c:if>
+
+<br><br><br>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <center><h4 class="modal-title"><strong>알림</strong></h4></center>
+        </div>
+        <div class="modal-body">
+          <center><p>로그인 후 이용가능한 서비스 입니다.</p></center>
+        </div>
+        <div class="modal-footer">
+          <center><button type="button" class="btn btn-info" data-dismiss="modal">확인</button></center>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- 평점 수정 Modal -->
+  <div class="modal fade" id="reviseModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <center><h4 class="modal-title"><strong>평점 수정</strong></h4></center>
+        </div>
+        <div class="modal-body">
+        	<div id="modal_mid" style="display: none;"></div>
+        	<form id="reviseForm">
+        		<div class="form-group" >
+        			<input type="hidden" id="revise_send_star" name="ms_score">
+        			<input type="hidden" id="revise_no" name="ms_no">
+        			<img src="resources/images/user.png" width="30px" height="30px" style="float: left;">
+        		<div id="modal_rating" style="float: left; left: -20px"></div><span id="span_rating" style="float: left;"></span>
+         			<div>
+         			      <textarea maxlength="100" class="form-control col-sm-3" rows="3" id="revise_comment" name="ms_comment" style="resize: none;"  required></textarea>
+
+         			</div>
+         		</div>
+        	</form>
+         
+        </div>
+        <div class="modal-footer">
+          <center><button id="btn_revise" type="button" class="btn btn-info">수정</button></center>
+        </div>
+      </div>
+    </div>
+  </div>
+	<p></p>
+	<p></p>
+	<p></p>
+	<br>
+	<br>
+	<div id="bottom">
+		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
+	</div>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 
 
 		<div class="container">

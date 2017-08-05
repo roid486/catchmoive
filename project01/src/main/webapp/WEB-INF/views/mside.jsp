@@ -41,18 +41,22 @@
 			location.href="rlist.com";
 		});
 		$("#board").click(function () {
-			alert("hi");
+			location.href="blist.com";
 		});
 		$("#noticeboard").click(function () {
-			alert("hi");
+			location.href="nblist.com";
 		});
 		$("#event").click(function () {
 			location.href="elist.com";
+		});
+		$("#price").click(function () {
+			location.href="test_e.com";
 		});
 	});
 </script>
 </head>
 <body>
+<<<<<<< HEAD
 	<div id="mside" class="container" style="width: 20%;">
 		<table class="table">
 			<thead>
@@ -87,6 +91,45 @@
 				</tr>
 			</tbody>
 		</table>
+=======
+	<div id="mside" class="container" style="width:20%;">
+	  <table class="table">
+	    <thead>
+	      <tr>
+	        <th>MasterMenu</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr id="customer">
+	        <td>회원정보</td>
+	      </tr>      
+	      <tr class="success" id="movie">
+	        <td>영화정보</td>
+	      </tr>
+	      <tr class="danger" id="mt">
+	        <td>영화관정보</td>
+	      </tr>
+	      <tr class="info" id="theater">
+	        <td>상영관정보</td>
+	      </tr>
+	      <tr class="warning" id="running">
+	        <td>상영시간표정보</td>
+	      </tr>
+	      <tr class="warning" id="board">
+	        <td>게시판정보</td>
+	      </tr>
+	      <tr class="active" id="noticeboard">
+	        <td>공지사항정보</td>
+	      </tr>
+	      <tr id="event">
+	        <td>이벤트정보</td>
+	      </tr>
+	      <tr class="success" id="price">
+	        <td>매출정보</td>
+	      </tr>
+	    </tbody>
+	  </table>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 	</div>
 </body>
 </html>

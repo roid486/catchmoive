@@ -9,6 +9,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
+<<<<<<< HEAD
 #menu {
 	position: relative;
 	z-index: 999;
@@ -23,6 +24,18 @@
 	background-color: brown;
 	color: white;
 }
+=======
+	#menu{
+		position: relative;
+		z-index: 999;
+	}
+	#clist{
+		position: relative;
+	}
+	#bottom {
+	position: relative;   background-color:  #e6f3ff; color: black;
+	}
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -39,7 +52,9 @@
 	<div id="menu">
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
-	<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
+	<div id="msi">
+		<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
+	</div>
 	<div class="container" id="clist" style="width: 60%;">
 		<h2>상영관 목록</h2>
 		<p>
@@ -49,6 +64,7 @@
 		<form action="tlist.com" method="post">
 			<input type="text" name="key" placeholder="상영관을 입력하시오.">
 			<button type="submit" class="btn btn-primary">검색</button>
+<<<<<<< HEAD
 		</form>
 		<table class="table table-striped">
 			<thead>
@@ -74,7 +90,36 @@
 			</tbody>
 		</table>
 		<center>${pagenum }</center>
+=======
+	  </form>
+	  <table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th>Number</th>
+	        <th>Name</th>
+	        <th>Seat</th>
+	        <th>Mt_number</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    <m:forEach var="tl" items="${tlist }">
+	      <tr>
+	        <td>${tl.t_number }</td>
+	        <td>${tl.t_name }</td>
+	        <td>${tl.t_seat }</td>
+	        <td>${tl.mt_number }</td>
+	      </tr>
+	    </m:forEach>
+	    </tbody>
+	  </table>
+	  <center>
+	  	${pagenum }
+	  </center>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="resources/ui/jquery-ui.structure.min.css">
 <link rel="stylesheet" href="resources/ui/jquery-ui.theme.min.css">
 <style type="text/css">
+<<<<<<< HEAD
 #menu {
 	position: relative;
 	z-index: 999;
@@ -20,6 +21,15 @@
 	background-color: brown;
 	color: white;
 }
+=======
+	#menu{
+		position: relative;
+		z-index: 999;
+	}
+	#bottom {
+	position: relative;   background-color:  #e6f3ff; color: black;
+	}
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 </style>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -147,6 +157,9 @@
 			<font color="red">${msg }</font>
 		</center>
 	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

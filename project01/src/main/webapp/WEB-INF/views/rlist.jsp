@@ -10,6 +10,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
+<<<<<<< HEAD
 #menu {
 	position: relative;
 	z-index: 999;
@@ -25,6 +26,19 @@
 	background-color: brown;
 	color: white;
 }
+=======
+	#menu{
+		position: relative;
+		z-index: 999;
+	}
+	#clist{
+		position: relative;
+		z-index: 1;
+	}
+	#bottom {
+	position: relative;   background-color:  #e6f3ff; color: black;
+	}
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -53,6 +67,7 @@
 		<form action="rlist.com" method="post">
 			<input type="date" name="key">
 			<button type="submit" class="btn btn-primary">검색</button>
+<<<<<<< HEAD
 		</form>
 		<table class="table table-striped">
 			<thead>
@@ -83,7 +98,41 @@
 			</tbody>
 		</table>
 		<center>${pagenum }</center>
+=======
+	  </form>
+	  <table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th>M_number</th>
+	        <th>Mt_number</th>
+	        <th>T_number</th>
+	        <th>r_date</th>
+	        <th>r_start</th>
+	        <th>비고</th>
+	        <th>비고</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    <m:forEach var="rl" items="${rl }">
+	      <tr>
+	        <td>${rl.m_name }</td>
+	        <td>${rl.mt_name }</td>
+	        <td>${rl.t_name }</td>
+	        <td><fm:formatDate value="${rl.r_date }" pattern="yyyy.MM.dd"/></td>
+	        <td>${rl.r_start }</td>
+	        <td><a href="rupdate.com?r_number=${rl.r_number }"><button class="btn btn-primary">수정</button></a></td>
+	      </tr>
+	    </m:forEach>
+	    </tbody>
+	  </table>
+	  <center>
+	  	${pagenum }
+	  </center>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

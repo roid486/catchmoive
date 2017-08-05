@@ -38,15 +38,16 @@
 		var running_start;
 		var theater_number;
 		var running_number;
-		var org;
+		var org="";
 		$.getJSON("firstList.com", function(data) {
 			$.each(data, function(index, item) {
 				var a1 = $("<a></a>").attr({
 					href : "#",
 					id : item.m_number,
-					name : "sub1"
+					name : "sub1",
+					idx : item.m_image1
 				}).html(item.m_name)
-
+				
 				$("#sub1_form").append(a1, "<br>");
 			})
 		})
@@ -62,6 +63,7 @@
 				movie_number = $(this).attr("id");
 				var mname = $(this).text();
 				$("#name").html(mname);
+				$("#post").html("<img width='80px' height='100px' src='resources/upload/"+$(this).attr("idx")+"'>")
 				$("#sub2_form").empty();
 				$.ajax({
 					url : "secondList.com",
@@ -138,7 +140,6 @@
 							}).html(item.r_start)
 							$("#sub4_form").append(a4, "<br>");
 							theater_number = item.t_number;
-							running_number = item.r_number;
 						})
 					}
 				})
@@ -152,38 +153,61 @@
 				running_start = $(this).attr("id");
 				$("#the1").html(theater_number + "관")
 				$("#day").html($("#day").text() + " " + $(this).text())
+				$.ajax({
+					url : "fifthList.com",
+					datatype : "json",
+					type : "GET",
+					data : {
+						running_start : running_start,
+						running_date : running_date
+					},
+					success : function(data){
+						running_number = eval(data);
+					},
+					error : function(data){
+						alert("실패" + data)
+					}
+				})
 			}
 		})
 
 		$("#move_sub2")
 				.click(
 						function() {
-							if (movie_number != null
-									&& movietheater_number != null
-									&& running_date != null
-									&& running_start != null
-									&& theater_number != null
-									&& running_number != null) {
-								window.location.href = "fancy_sub2.com?movie_number="
-										+ movie_number
-										+ "&movietheater_number="
-										+ movietheater_number
-										+ "&running_date="
-										+ running_date
-										+ "&running_start="
-										+ running_start
-										+ "&theater_number="
-										+ theater_number
-										+ "&running_number=" + running_number;
-							} else {
-								alert("선택하지 않은 항목이 있습니다.")
+							var loginid = $("#loginid").val();
+							if(loginid!=null && loginid!="")
+							{
+								if (movie_number != null
+										&& movietheater_number != null
+										&& running_date != null
+										&& running_start != null
+										&& theater_number != null
+										&& running_number != null) {
+									window.location.href = "fancy_sub2.com?movie_number="
+											+ movie_number
+											+ "&movietheater_number="
+											+ movietheater_number
+											+ "&running_date="
+											+ running_date
+											+ "&running_start="
+											+ running_start
+											+ "&theater_number="
+											+ theater_number
+											+ "&running_number=" + running_number;
+								} else {
+									alert("선택하지 않은 항목이 있습니다.")
+								}
+							}
+							else{
+								alert("로그인 하십시오.");
+								
 							}
 						})
 	})
 </script>
 </head>
 <body>
-
+	<input type="hidden" id="loginid" value="${se_id }">
 	<center>
 		<div id="main_form">
 			<div id="chk1">
@@ -197,7 +221,7 @@
 					<a href="#" class="button" id="btn1">뒤로가기</a>
 				</div>
 				<div id="small2">
-					영화 포스터/영화이름<br> <span id="name" style="color: white;"></span>
+					<span id='post'></span><br> <span id="name" style="color: white;"></span>
 				</div>
 				<div id="small3">
 					극장 <br> <span id="the" style="color: white;"></span><br>상영관<br>
