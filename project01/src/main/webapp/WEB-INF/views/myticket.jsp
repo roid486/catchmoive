@@ -47,12 +47,10 @@
 			location.href="myticket.com?c_id="+id;
 		});
 		$("#board").click(function () {
-			alert("hi");
-			/* location.href="tlist.com"; */
+			location.href="myboard.com?c_id="+id;
 		});
 		$("#cdelete").click(function () {
-			alert("hi");
-			/* location.href="rlist.com"; */
+			location.href="mycdelete.com?c_id="+id;
 		});
 	});
 </script>

@@ -46,7 +46,6 @@
 	        <th>Name</th>
 	        <th>LOC</th>
 	        <th>비고</th>
-	        <th>비고</th>
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -55,7 +54,6 @@
 	        <td>${mtl.mt_name }</td>
 	        <td>${mtl.mt_loc }</td>
 	        <td><a href="mtupdate.com?mt_number=${mtl.mt_number }"><button class="btn btn-primary">수정</button></a></td>
-	        <td><a href="mtdelete.com?mt_number=${mtl.mt_number }"><button class="btn btn-primary">삭제</button></a></td>
 	      </tr>
 	    </m:forEach>
 	    </tbody>

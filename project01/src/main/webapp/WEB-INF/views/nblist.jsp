@@ -60,7 +60,6 @@
 	      <tr>
 	        <td>${nbl.nb_number }</td>
 	        <td>${nbl.nb_title }</td>
-	        <td>${nbl.nb_regdate }</td>
 	        <td><fm:formatDate value="${nbl.nb_regdate }" pattern="yyyy/MM/dd-HH:mm:ss"/> </td>
 	        <td><a href="updateNotice.com?nb_number=${nbl.nb_number }"><button class="btn btn-primary">수정</button></a></td>
 	        <td><a href="deleteNotice.com?nb_number=${nbl.nb_number }"><button class="btn btn-primary">삭제</button></a></td>

@@ -644,5 +644,76 @@ public class JavajoManager {
 		session.close();
 		return list;
 	}
+
+	public static int mysdelete(String c_id, String c_pw) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		map.put("c_pw", c_pw);
+		int re = session.delete("javajo.mycdelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int ticketdelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.ticketdelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int boarddelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.boarddelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int historytdelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.historytdelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int replydelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.replydelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int moviescoredelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.moviescoredelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int seatupdate(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.seatupdate", map);
+		session.close();
+		return re;
+	}
 	
 }

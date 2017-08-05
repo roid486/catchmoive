@@ -50,8 +50,7 @@
 			location.href="myboard.com?c_id="+id;
 		});
 		$("#cdelete").click(function () {
-			alert("hi");
-			/* location.href="rlist.com"; */
+			location.href="mycdelete.com?c_id="+id;
 		});
 	});
 </script>

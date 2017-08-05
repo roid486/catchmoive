@@ -65,7 +65,6 @@
 	        <td><fm:formatDate value="${rl.r_date }" pattern="yyyy.MM.dd"/></td>
 	        <td>${rl.r_start }</td>
 	        <td><a href="rupdate.com?r_number=${rl.r_number }"><button class="btn btn-primary">수정</button></a></td>
-	        <td><a href="rdelete.com?r_number=${rl.r_number }"><button class="btn btn-primary">삭제</button></a></td>
 	      </tr>
 	    </m:forEach>
 	    </tbody>

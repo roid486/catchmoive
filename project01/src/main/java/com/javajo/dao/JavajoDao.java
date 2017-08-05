@@ -324,4 +324,39 @@ public class JavajoDao {
 		return JavajoManager.myb(c_id);
 	}
 
+	public int mycelete(String c_id, String c_pw) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mysdelete(c_id,c_pw);
+	}
+
+	public int ticketdelete(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.ticketdelete(c_id);
+	}
+
+	public int boarddelete(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.boarddelete(c_id);
+	}
+
+	public int historytdelete(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.historytdelete(c_id);
+	}
+
+	public int replydelete(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.replydelete(c_id);
+	}
+
+	public int moviescoredelete(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.moviescoredelete(c_id);
+	}
+
+	public int seatupdate(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.seatupdate(c_id);
+	}
+
 }
