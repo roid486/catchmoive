@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
@@ -515,10 +516,15 @@ float: right;
 
 </div>
 <br><br><br>
+
+ <c:if test="${m.m_isshowing==1}" >
+<div>
 <div class="well well-sm" id="well" ><h4><strong>평점 주기</strong></h4><h5><strong>(현재 평점 : ${m.m_score })</strong></h5></div>
  
  
-<div>
+
+ 
+<div id="div_comment">
 <span id="cnt">
 <div id="counter"> </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>/100</label>
 </span>
@@ -557,6 +563,9 @@ float: right;
 	<div id="page"><center>${pageStr }</center></div>
 	
 </div> 
+
+</div>
+</c:if>
 
 <br><br><br>
 

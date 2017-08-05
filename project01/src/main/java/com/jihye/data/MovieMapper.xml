@@ -31,7 +31,7 @@
   	</select>
   	
   	<select id="premoviegetTotal" resultType="java.lang.Integer">
-  	select nvl(count(*),0) from movie where m_isshowing=2
+  	select nvl(count(*),0) from movie where m_isshowing=2 order by m_opendate desc
   	</select>
   
 </mapper>
