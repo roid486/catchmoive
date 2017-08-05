@@ -5,35 +5,13 @@
 <configuration>
 	<properties resource="com/jihye/data/javajo.properties" />
 	<typeAliases>
-<<<<<<< HEAD
-		<typeAlias type="com.jihye.vo.MovieVo_j" alias="movieVo" />
-		<typeAlias type="com.jihye.vo.MovieScoreVo" alias="MovieScoreVo" />
-=======
+
 		<typeAlias type="com.jihye.vo.MovieVo_j" alias="movieVo"/>
 		<typeAlias type="com.jihye.vo.MovieScoreVo" alias="MovieScoreVo"/>
 		<typeAlias type="com.javajo.vo.CustomerVo" alias="customerVo"/>
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
+
 	</typeAliases>
 
-<<<<<<< HEAD
-
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC" />
-			<dataSource type="POOLED">
-				<property name="driver" value="${driver}" />
-				<property name="url" value="${url}" />
-				<property name="username" value="${user}" />
-				<property name="password" value="${pwd}" />
-			</dataSource>
-		</environment>
-	</environments>
-	<mappers>
-		<mapper resource="com/jihye/data/MovieMapper.xml" />
-		<mapper resource="com/jihye/data/MovieScoreMapper.xml" />
-		<mapper resource="com/jihye/data/MovieFinderMapper.xml" />
-	</mappers>
-=======
 	
   <environments default="development">
     <environment id="development">
@@ -52,5 +30,5 @@
     <mapper resource="com/jihye/data/MovieFinderMapper.xml"/>
     <mapper resource="com/jihye/naver/SocialLoginMapper.xml"/>
   </mappers>
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
+
 </configuration>

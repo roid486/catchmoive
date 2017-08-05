@@ -55,16 +55,16 @@
 	</insert>
 
 	<update id="update">
-<<<<<<< HEAD
+
 		update seat set seat_ft='y', ticket_number =
 		#{ticket_number}, r_number=#{r_number}
 		where t_number =#{t_number} and
 		mt_number=#{mt_number}
 		and seat_column = #{b} and seat_row=#{a}
-=======
+
 		update seat set s_ft='y', ticket_number = #{ticket_number}
 		where t_number =#{t_number} and mt_number=#{mt_number} and r_number=#{r_number}
 		and s_column = #{b} and s_row=#{a}
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
+
 	</update>
 </mapper>

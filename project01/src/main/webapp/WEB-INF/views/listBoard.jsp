@@ -65,6 +65,14 @@
 tr, th, td {
 	padding: 10px;
 }
+#menu {
+	position: absolute; 
+	top:500px;
+	color: #80d4ff;
+}
+#w3-bar-item {
+	font-family: -윤고딕340;
+}
 </style>
 </head>
 
@@ -73,10 +81,13 @@ tr, th, td {
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	
 	<!-- Sidebar -->
-		<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 15%" id="menu">
-			<h3 class="w3-bar-item" id="w3-bar-item">게시판종류</h3>
-			<a href="listBoard.com" class="w3-bar-item w3-button">게시판</a> <br> <a href="listNotice.com" class="w3-bar-item w3-button">공지사항</a>
-
+		<div  class="w3-sidebar w3-light-grey w3-bar-block" style="width: 15%; border:1px solid #80d4ff"  id="menu">
+			<h3 class="w3-bar-item" id="w3-bar-item">Side Bar</h3>
+			<a href="listBoard.com" class="w3-bar-item w3-button">게시판</a>
+			<br><a href="listNotice.com" class="w3-bar-item w3-button">공지사항</a>
+			<br>
+			<br>
+			
 		</div>
 		
 		<div style="margin-left:15%">

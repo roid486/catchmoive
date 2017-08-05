@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="javajo">
-<<<<<<< HEAD
+
 	<select id="mtAll" resultType="movietheaterVo">
 		select * from movietheater
 	</select>
@@ -234,7 +234,7 @@
 	<update id="hitupdate">
 		update event set e_hit=e_hit+1 where e_number=#{e_number}
 	</update>
-=======
+
   <select id="mtAll" resultType="movietheaterVo">
     select * from movietheater
   </select>
@@ -540,5 +540,5 @@ m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
   <update id="trupdate">
   	update ticket set r_number=null where r_number in(select r_number from running where r_date=#{sysday})
   </update>
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
+
 </mapper>

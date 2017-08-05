@@ -5,7 +5,7 @@
 <configuration>
 	<properties resource="com/javajo/data/javajo.properties" />
 	<typeAliases>
-<<<<<<< HEAD
+
 		<typeAlias type="com.javajo.vo.MovieTheaterVo" alias="movietheaterVo" />
 		<typeAlias type="com.javajo.vo.MovieTheaterVo2" alias="movietheaterVo2" />
 		<typeAlias type="com.javajo.vo.CustomerVo" alias="customerVo" />
@@ -15,7 +15,7 @@
 		<typeAlias type="com.javajo.vo.RunningVo3" alias="runningVo3" />
 		<typeAlias type="com.javajo.vo.EventVo" alias="eventVo" />
 		<typeAlias type="com.jihye.vo.MovieVo_j" alias="movieVo_j" />
-=======
+
 		<typeAlias type="com.javajo.vo.MovieTheaterVo" alias="movietheaterVo"/>
 		<typeAlias type="com.javajo.vo.MovieTheaterVo2" alias="movietheaterVo2"/>
 		<typeAlias type="com.javajo.vo.CustomerVo" alias="customerVo"/>
@@ -29,7 +29,7 @@
 		<typeAlias type="com.javajo.vo.NoticeboardVo" alias="noticeboardVo"/>
 		<typeAlias type="com.jun.vo.BoardVo" alias="boardVo"/>
 		<typeAlias type="com.jihye.vo.MovieVo_j" alias="movieVo_j"/>
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
+
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">

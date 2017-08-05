@@ -4,7 +4,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="book">
-<<<<<<< HEAD
+
 	<select id="firstList" resultType="com.silver.vo.MovieVo">
 		select * from movie
 	</select>
@@ -30,7 +30,7 @@
 		to_date(#{running_date},'YYYY-MM-DD hh24:mi:ss') and
 		m.m_number=#{movie_number}
 	</select>
-=======
+
  <select id="firstList" resultType="com.silver.vo.MovieVo">
 	select * from movie
  </select>
@@ -50,5 +50,5 @@ select distinct to_char(r_date,'YYYY-MM-DD') r_date from running r,movietheater 
   <select id="fifthList" resultType="java.lang.String">
 	select r_number from running where r_start = #{running_start} and r_date =#{running_date}
  </select> 
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
+
 </mapper>

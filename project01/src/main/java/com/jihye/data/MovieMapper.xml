@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="movie">
-<<<<<<< HEAD
+
 	<insert id="insertMovie">
 		insert into movie
 		values(seq_movie.nextval,#{m_name},#{m_director},#{m_actor},#{m_nation},#{m_runningtime},#{m_grade},#{m_genre},#{m_opendate},#{m_synop},#{m_image},#{m_trailer},#{m_score},#{m_image1},#{m_image2},#{m_image3},#{m_isshowing},#{m_boxoffice})
@@ -30,7 +30,7 @@
 	<select id="getTotal" resultType="java.lang.Integer">
 		select nvl(count(*),0) from movie
 	</select>
-=======
+
  	<insert id="insertMovie">
  	insert into movie values(seq_movie.nextval,#{m_name},#{m_director},#{m_actor},#{m_nation},#{m_runningtime},#{m_grade},#{m_genre},#{m_opendate},#{m_synop},#{m_image},#{m_trailer},0,#{m_image1},#{m_image2},#{m_image3},#{m_isshowing},0)
  	</insert>
@@ -62,5 +62,5 @@
   	select nvl(count(*),0) from movie where m_isshowing=2 order by m_opendate desc
   	</select>
   
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
+
 </mapper>

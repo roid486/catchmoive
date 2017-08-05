@@ -131,19 +131,6 @@ $(function() {
 			</h2>
 		</center>
 
-		<%-- 			<!-- 본인이 쓴 게시물만 수정, 삭제가 가능하도록 처리 -->
-			<c:if test="${sessionScope.se_id == b.c_id}">
-				<div class="container">
-					<div class="col-sm-offset-2-col-sm-8">
-						<a href="updateBoard.com?b_number=${b.b_number }">
-							<button type="button" class="btn btn-default" style="color: #8CCBFB" id="btn_update">수정</button>
-						</a> <a href="deleteBoard.com?b_number=${b.b_number }">
-							<button type="button" class="btn btn-default" style="color: #8CCBFB" id="btn_del">삭제</button>
-						</a>
-					</div>
-				</div>
-			</c:if>
-		 --%>
 
 		<hr style="border: solid 1px #A1D6FE;">
 

@@ -17,7 +17,7 @@
 		<h1><strong>${head }</strong></h1>
 		<hr>
 
-		<form class="form-horizontal action=" insertBoard.com" method="post" enctype="multipart/form-data">
+		<form class="form-horizonta" action="insertBoard.com" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<input type="hidden" name="c_id" value="${se_id }">
 				<input type="hidden" name="b_number" value="${b_number }">
