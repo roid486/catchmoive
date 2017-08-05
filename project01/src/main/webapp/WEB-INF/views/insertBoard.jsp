@@ -14,7 +14,7 @@
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	<input type="hidden" id="se_id" value="${se_id }">
 	<div class="container">
-		<h1>${head }</h1>
+		<h1><strong>${head }</strong></h1>
 		<hr>
 
 		<form class="form-horizontal action=" insertBoard.com" method="post" enctype="multipart/form-data">
@@ -54,7 +54,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<input class="btn btn-default" type="submit" value="등록">
+					<input class="btn btn-info" type="submit" value="등록">
 				</div>
 			</div>
 		</form>
