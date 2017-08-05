@@ -299,4 +299,13 @@ m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
   <update id="seatupdate">
   	update seat set ticket_number=null where ticket_number=(select ticket_number from ticket where c_id=#{c_id})
   </update>
+  <delete id="runningscedule">
+  	delete running where r_date=#{sysday}
+  </delete>
+  <update id="srupdate">
+  	update seat set r_number=null where r_number in(select r_number from running where r_date=#{sysday})
+  </update>
+  <update id="trupdate">
+  	update ticket set r_number=null where r_number in(select r_number from running where r_date=#{sysday})
+  </update>
 </mapper>

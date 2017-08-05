@@ -711,7 +711,38 @@ public class JavajoManager {
 		SqlSession session = factory.openSession(true);
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("c_id", c_id);
-		int re = session.delete("javajo.seatupdate", map);
+		int re = session.update("javajo.seatupdate", map);
+		session.close();
+		return re;
+	}
+
+	public static int runningscedule(String sysday) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("sysday", sysday);
+		System.out.println(sysday);
+		int re = session.delete("javajo.runningscedule",map);
+		session.close();
+		return re;
+	}
+
+	public static int srupdate(String sysday) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("sysday", sysday);
+		int re = session.update("javajo.srupdate", map);
+		session.close();
+		return re;
+	}
+
+	public static int trupdate(String sysday) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("sysday", sysday);
+		int re = session.update("javajo.trupdate", map);
 		session.close();
 		return re;
 	}

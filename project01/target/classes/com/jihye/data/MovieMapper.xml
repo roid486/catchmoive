@@ -4,26 +4,34 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="movie">
  	<insert id="insertMovie">
- 	insert into movie values(seq_movie.nextval,#{m_name},#{m_director},#{m_actor},#{m_nation},#{m_runningtime},#{m_grade},#{m_genre},#{m_opendate},#{m_synop},#{m_image},#{m_trailer},#{m_score},#{m_image1},#{m_image2},#{m_image3},#{m_isshowing},#{m_boxoffice})
+ 	insert into movie values(seq_movie.nextval,#{m_name},#{m_director},#{m_actor},#{m_nation},#{m_runningtime},#{m_grade},#{m_genre},#{m_opendate},#{m_synop},#{m_image},#{m_trailer},0,#{m_image1},#{m_image2},#{m_image3},#{m_isshowing},0)
  	</insert>
  	<update id="updateMovie">
- 	update movie set m_name=#{m_name},m_director=#{m_director},m_actor=#{m_actor},m_nation=#{m_nation},m_runningtime=#{m_runningtime},m_grade=#{m_grade},m_genre=#{m_genre},m_opendate=#{m_opendate},m_synop=#{m_synop},m_image=#{m_image},m_trailer=#{m_trailer},m_score2=#{m_score},m_image1=#{m_image1},m_image2=#{m_image2},m_image3=#{m_image3},m_isshowing=#{m_isshowing},m_boxoffice=#{m_boxoffice} where m_number=#{m_number} 
+ 	update movie set m_name=#{m_name},m_director=#{m_director},m_actor=#{m_actor},m_nation=#{m_nation},m_runningtime=#{m_runningtime},m_grade=#{m_grade},m_genre=#{m_genre},m_opendate=#{m_opendate},m_synop=#{m_synop},m_image=#{m_image},m_trailer=#{m_trailer},m_score=#{m_score},m_image1=#{m_image1},m_image2=#{m_image2},m_image3=#{m_image3},m_isshowing=#{m_isshowing},m_boxoffice=#{m_boxoffice} where m_number=#{m_number} 
  	</update>
  	<select id="selectOne" resultType="movieVo">
- 	select * from movie where m_number=#{m_number}
+ 	select m_number,m_name,m_director,m_actor,m_nation,m_runningtime,m_grade,m_genre,m_opendate,m_synop,m_image,m_trailer,m_score,m_image1,m_image2,m_image3,m_isshowing,m_boxoffice from movie where m_number=#{m_number}
  	</select>
  	<update id="updateMScore">
- 	update movie set m_score2=#{m_score} where m_number=#{m_number} 
+ 	update movie set m_score=#{m_score} where m_number=#{m_number} 
  	</update>
  	
  	<select id="selectAll" resultType="movieVo">
- 	select * from movie
+ 	select m_number,m_name,m_director,m_actor,m_nation,m_runningtime,m_grade,m_genre,m_opendate,m_synop,m_image,m_trailer,m_score,m_image1,m_image2,m_image3,m_isshowing,m_boxoffice from movie where m_isshowing=1
  	<if test="s!=null">
  	 order by ${s} desc
  	</if>
  	</select>
- 	
- 	<select id="getTotal" resultType="java.lang.Integer">
-  	select nvl(count(*),0) from movie 
+ 	<select id="getPreMovie" resultType="movieVo">
+ 	select m_number,m_name,m_director,m_actor,m_nation,m_runningtime,m_grade,m_genre,m_opendate,m_synop,m_image,m_trailer,m_score,m_image1,m_image2,m_image3,m_isshowing,m_boxoffice from movie where m_isshowing=2
+ 	</select>
+ 	 
+ 	<select id="moviegetTotal" resultType="java.lang.Integer">
+  	select nvl(count(*),0) from movie where m_isshowing=1 
   	</select>
+  	
+  	<select id="premoviegetTotal" resultType="java.lang.Integer">
+  	select nvl(count(*),0) from movie where m_isshowing=2
+  	</select>
+  
 </mapper>

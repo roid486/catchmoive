@@ -359,4 +359,19 @@ public class JavajoDao {
 		return JavajoManager.seatupdate(c_id);
 	}
 
+	public int runningscedule(String sysday) {
+		// TODO Auto-generated method stub
+		return JavajoManager.runningscedule(sysday);
+	}
+
+	public int srupdate(String sysday) {
+		// TODO Auto-generated method stub
+		return JavajoManager.srupdate(sysday);
+	}
+
+	public int trupdate(String sysday) {
+		// TODO Auto-generated method stub
+		return JavajoManager.trupdate(sysday);
+	}
+
 }

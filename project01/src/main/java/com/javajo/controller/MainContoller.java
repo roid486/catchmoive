@@ -2,12 +2,14 @@ package com.javajo.controller;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -219,6 +221,19 @@ public class MainContoller {
 		mav.addObject("myt", dao.myt(c_id));
 		mav.addObject("myh", dao.mth(c_id));
 		return mav;
+	}
+	
+	@Scheduled(cron="0 55 23 * * *")
+	public void runningscedule()
+	{
+		Date date = new Date();
+		int y = date.getYear()+1900;
+		int m = date.getMonth()+1;
+		int d = date.getDay()-1;
+		String sysday = y+"/"+m+"/"+d;
+		int a = dao.srupdate(sysday);
+		int b = dao.trupdate(sysday);
+		int re = dao.runningscedule(sysday);
 	}
 	
 	@RequestMapping(value="/movieselect.com",produces = "text/plain;charset=utf-8")

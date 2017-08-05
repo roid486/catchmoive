@@ -74,7 +74,7 @@ font-family: -윤고딕340;
 <script type="text/javascript">
 $(function(){
 
-	$("#btn_go").click(function(){
+	/* $("#btn_go").click(function(){
 		var data = $("#select_sort option:selected").val();
 		
 		if(data){
@@ -82,9 +82,19 @@ $(function(){
 		}
 		
 		
+	}); */
+	
+	/* $("#pre-movie").click(function(){
+		alert("상영예정작 클릭");
+		$.ajax({
+			url:"pre-movie.com",
+		});
 	});
 	
-	
+	$("#listmovie").click(function(){
+		alert("무비 차트 클릭");
+	});
+	 */
 });
 
 
@@ -115,13 +125,13 @@ $(function(){
 
 <center>
 
-	<span id="s">
+<!-- 	<span id="s">
 		<select id="select_sort">
 			<option value="m_boxoffice">예매율순</option>
 			<option value="m_score">평점순</option>
 		</select>
 		<button class="w3-btn w3-white w3-border w3-border-blue w3-round-large" id="btn_go">go</button>
-	</span>
+	</span> -->
 <table cellspacing="5" id="listTable">
  	<tr>
     		<c:forEach var="l" items="${l }" varStatus="status">
