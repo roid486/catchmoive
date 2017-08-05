@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
-	#menu{
+	#menu {
 		position: relative;
 		z-index: 999;
 	}
@@ -40,7 +40,7 @@
         width: 100%;
 	}
 	#bottom {
-	position: relative; background-color: brown; color: white;
+		position: relative;   background-color:  #e6f3ff; color: black;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -156,6 +156,13 @@
 			<div id="map"></div>
 		</div>
 		</center>
-		
+		<p></p>
+		<p></p>
+		<p></p>
+		<br>
+		<br>
+		<div id="bottom">
+			<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
+		</div>
 </body>
 </html>

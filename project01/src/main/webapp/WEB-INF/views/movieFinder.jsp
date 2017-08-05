@@ -16,6 +16,10 @@
  background-color: #80d4ff;
  color: #80d4ff;
 }
+#bottom {
+	position: relative; width:100%;   background-color:  #e6f3ff; color: black;
+	
+}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -84,10 +88,10 @@ $(function(){
 						$("#title").show();
 				
 						
-						html+='<td style="padding-right: 40px; padding-bottom: 50px; padding-left: 40px; padding-top: 50px>';
-						html+='<a href="detailMovie.com?m_number="'+item.m_number+'">';
-						html+='<img src="resources/upload/'+item.m_image+'" id="tb_img" width="220" height="320" style="cursor: pointer;"><br></a>';
-						html+='<div style="text-align: center;font-size: 12pt">'
+						html+='<td style="padding-right: 40px; padding-bottom: 50px; padding-left: 40px; padding-top: 50px">';
+						html+='<a href="detailMovie.com?m_number='+item.m_number+'">';
+						html+='<img src="resources/upload/'+item.m_image+'" id="tb_img" width="220" height="320" style="cursor: pointer;">';
+						html+='</a><div style="text-align: center;font-size: 12pt">'
 						html+='<a href="detailMovie.com?m_number='+item.m_number+'">';
 						html+='<label id="tb_lab" style="cursor: pointer;"><strong>'+item.m_name+'</strong></label></a></div>';
 						
@@ -156,7 +160,7 @@ $(function(){
   
 </div>
 		
-<div style="margin-left:18%">
+<div style="margin-left:15%">
 	
 	
 	<form id="formId" action="movieFinder.com" method="post">
@@ -324,16 +328,15 @@ $(function(){
 	</table></center>
 	
 	
-	
-	
-	
-	
-	
-		
-		
-		
+
 	</div>
 	
+
+	
+	<div id="bottom">
+		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
+	</div>
+		
 
 	
 

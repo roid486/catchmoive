@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
-	#menu{
+	#menu {
 		position: relative;
 		z-index: 999;
 	}
@@ -16,7 +16,7 @@
 		position: relative;
 	}
 	#bottom {
-	position: relative; background-color: brown; color: white;
+	position: relative;   background-color:  #e6f3ff; color: black;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -32,7 +32,9 @@
 	<div id="menu">
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
-	<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
+	<div id="msi">
+		<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
+	</div>
 	<div class="container" id="clist" style="width: 60%;">
 	  <h2>영화관 목록</h2>
 	  <p><a href="insertmt.com"><button class="btn btn-primary">영화관 추가</button></a></p>
@@ -62,6 +64,9 @@
 	  	${pagenum }
 	  </center>
 	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

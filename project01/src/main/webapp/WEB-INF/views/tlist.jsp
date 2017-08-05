@@ -16,7 +16,7 @@
 		position: relative;
 	}
 	#bottom {
-	position: relative; background-color: brown; color: white;
+	position: relative;   background-color:  #e6f3ff; color: black;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -32,7 +32,9 @@
 	<div id="menu">
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
-	<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
+	<div id="msi">
+		<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
+	</div>
 	<div class="container" id="clist" style="width: 60%;">
 	  <h2>상영관 목록</h2>
 	  <p><a href="insertt.com"><button class="btn btn-primary">상영관 추가</button></a></p>
@@ -64,6 +66,9 @@
 	  	${pagenum }
 	  </center>
 	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

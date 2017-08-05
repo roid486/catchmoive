@@ -5,12 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
-	#menu{
+	#menu {
 		position: relative;
 		z-index: 999;
 	}
 	#bottom {
-	position: relative; background-color: brown; color: white;
+	position: relative;   background-color:  #e6f3ff; color: black;
 	}
 </style>
 <title>Insert title here</title>
@@ -22,6 +22,9 @@
 	<center>
 		<h1>${msg }</h1>
 	</center>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

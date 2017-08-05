@@ -8,6 +8,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>캐치무비 >> 무비차트</title>
 <style type="text/css">
+@font-face { 
+	font-family: 'NanumGothic'; 
+	src: url('font/NanumGothicCoding.ttf').format('truetype'); 
+	}
+	body{font-family: 'NanumGothic';}
+
 #s{
 	float: right;
 	position: relative;
@@ -52,6 +58,9 @@ font-family: -윤고딕340;
 .list{
 	cursor: pointer;
 	color: black;
+}
+#bottom {
+	position: relative; width:100%;   background-color:  #e6f3ff; color: black;
 }
 
 /* #di_index2{
@@ -111,7 +120,7 @@ $(function(){
 </div>
 
 <!-- Page Content -->
-<div style="margin-left:20%">
+<div style="margin-left:15%">
 
 <center>
 
@@ -163,7 +172,9 @@ $(function(){
     <%-- <center><strong>${pageStr }</strong></center> --%>
 
 
-
+	<div id="bottom">
+		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
+	</div>
 
 </div>
 
