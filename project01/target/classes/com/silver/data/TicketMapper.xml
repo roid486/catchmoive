@@ -44,7 +44,7 @@
 		select m_name from movie where m_number = #{movie_number}
 	</select>
 	<select id="getpost" resultType="java.lang.String">
-		select m_image1 from movie where m_number = #{movie_number}
+		select m_image from movie where m_number = #{movie_number}
 	</select>
 
 	<insert id="insert">
