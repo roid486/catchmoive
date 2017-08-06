@@ -24,8 +24,36 @@
 	<div id="msi">
 		<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
 	</div>
-	<div class="container" id="clist" style="width: 60%;">
-		<img src= "resources/rfile/${fname }">
+	<div class="container" id="clist" style="width: 70%; margin-right: 10%;">
+		<div class="panel panel-info">
+	      <div class="panel-heading"><h3>총 매출</h3></div>
+	      <div class="panel-body">
+				<h4>${totalprice }</h4>
+		  </div>
+	    </div>
+		<div class="panel panel-info">
+	      <div class="panel-heading"><h3>일별 매출</h3></div>
+	      <div class="panel-body">
+				<img src= "resources/rfile/${fname }">
+		  </div>
+	    </div>
+		<div class="panel panel-info">
+	      <div class="panel-heading"><h3>영화별 매출</h3></div>
+	      <div class="panel-body">
+				<div class="container">          
+				  <table class="table" style="width: 70%;">
+				    <tbody>
+				    	<m:forEach var="mp" items="${mprice }">
+				    		<tr>
+						        <td>${mp.m_name }</td>
+						        <td>${mp.m_price }</td>
+							</tr>
+				    	</m:forEach>
+				    </tbody>
+				  </table>
+				</div>
+		  </div>
+	    </div>
 	
 	</div>	
 	<p></p>

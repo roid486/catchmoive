@@ -148,7 +148,7 @@
           <h4 class="modal-title glyphicon glyphicon-exclamation-sign" style="background: skyblue;"><strong>알림</strong></h4>
         </div>
         <div class="modal-body">
-          <center><p style="color: black;">${emsg }</p></center>
+          <center><p id="emsg" style="color: black;">${emsg }</p></center>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-info" data-dismiss="modal">확인</button>
@@ -157,7 +157,7 @@
     </div>
   </div>
 </div>
-  
+
 
 
 </body>

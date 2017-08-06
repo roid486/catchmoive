@@ -10,6 +10,7 @@ import com.javajo.vo.EventVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
+import com.javajo.vo.MpriceVo;
 import com.javajo.vo.MyhistoryVo;
 import com.javajo.vo.MyticketVo;
 import com.javajo.vo.NoticeboardVo;
@@ -372,6 +373,16 @@ public class JavajoDao {
 	public int trupdate(String sysday) {
 		// TODO Auto-generated method stub
 		return JavajoManager.trupdate(sysday);
+	}
+
+	public int totalprice() {
+		// TODO Auto-generated method stub
+		return JavajoManager.totalprice();
+	}
+
+	public List<MpriceVo> mprice() {
+		// TODO Auto-generated method stub
+		return JavajoManager.mprice();
 	}
 
 }

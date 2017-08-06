@@ -29,6 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.rcaller.rStuff.RCaller;
 import com.github.rcaller.rStuff.RCode;
+import com.javajo.dao.JavajoDao;
 import com.silver.dao.BookDao;
 import com.silver.dao.TicketDao;
 import com.silver.vo.MovieVo;
@@ -46,6 +47,13 @@ public class HomeController {
 	TicketDao tdao;
 	BookDao bdao;
 	List<SeatVo> list1 =null;
+	
+	@Autowired
+	private JavajoDao dao;
+	
+	public void setDao(JavajoDao dao) {
+		this.dao = dao;
+	}
 
 	@Autowired
 	public void setTdao(TicketDao tdao) {
@@ -303,7 +311,10 @@ public class HomeController {
 		}
 		
 		ModelAndView mav = new ModelAndView();
-		return mav.addObject("fname", fname);
+		mav.addObject("fname", fname);
+		mav.addObject("totalprice", dao.totalprice());
+		mav.addObject("mprice", dao.mprice());
+		return mav;
 	}
 
 }
