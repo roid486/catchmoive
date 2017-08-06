@@ -7,7 +7,7 @@
       
   </head>
   <body>
-    <div id="map" style="width:345px;height:300px;"></div>
+    <div id="map" style="width:346px;height:300px; border: 4px solid black;" ></div>
     <script>
     var map = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(37.556448, 126.940198),

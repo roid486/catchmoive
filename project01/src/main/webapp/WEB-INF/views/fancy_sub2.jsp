@@ -42,7 +42,15 @@
 	
 	jq1(function($) {
 		$("#btn1").click(function() {
-			
+		
+		var winHeight = document.body.clientHeight;	// 현재창의 높이
+		var winWidth = document.body.clientWidth;	// 현재창의 너비
+		var winX = window.screenLeft;	// 현재창의 x좌표
+		var winY = window.screenTop;	// 현재창의 y좌표
+
+		var popX = winX + (winWidth - 400)/2;
+		var popY = winY + (winHeight - 650)/2;
+		
 			var str ="";
 			for(i=0;i<arr.length;i++)
 				{
@@ -61,15 +69,19 @@
 					str : str
 				},
 				success : function(data) {
-					if(data=="ok")
+					if(data!="no")
 						{
-						alert("성공적으로 예매 되었습니다.")
+						
+						var win = window.open("ticketCheck.com?ticket_number="+data+"&seat_rc="+str,
+								"popup",
+								"resizable=no,toolbar=no,menubar=no,location=no,scrollbar=no, width=343,height=590,top="+popY+",left="+popX);
+						parent.jq1.fancybox.close();	
 						
 						}else{
 							alert("예매 실패 다시 예매해주세요")
 						}
-					window.location.href = "ticketCheck.com";
-// 					parent.jq1.fancybox.close();
+					
+					
 				}
 
 			})
