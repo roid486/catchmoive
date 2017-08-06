@@ -5,38 +5,46 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>캐치무비에 오신것을 환영합니다.</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="font.css" type="text/css" rel="stylesheet">
 <style type="text/css">
+@font-face { 
+	font-family: 'NanumGothic'; 
+	src: url('font/NanumGothicCoding.ttf').format('truetype'); 
+	}
+
+
+
 #menu {
 	position: relative;
 	z-index: 999;
 }
-#center {
-	position: relative;
-	display: inline-block;
-	width: 100%;
-}
-
 #mslist{
-width:50%;
-height: 400px;
+font-family: NanumGothic;
 display: inline-block;
+		position: absolute;
+		left: 0px;
+		display: inline-block;
+		width: 20%;
+		height: 400px;
+		cursor: pointer;
 }
 #msimg_outter{
-	width: 900px; height: 400px;
+	margin-left: 25%;
+	width: 900px; height: auto;
 	display: inline-block;
 	overflow: hidden;
 }
 #msimg_inner{
-	width: 9000px; height: 400px; position: relative;
+	width: 9000px; height: auto; position: relative;
 }
 .mimg{
-	float: left; width: 900px; height: 400px;
+	float: left; width: 900px; height: 550px;
 }
 #bottom {
-	position: relative; background-color: brown; color: white;
+	position: relative;   background-color:  #e6f3ff; color: black;
 }
 .table{
 	cursor: pointer;
@@ -68,10 +76,33 @@ display: inline-block;
 				$.each(JSON.parse(data), function(idx, item) {
 					tr = $("<tr></tr>");
 					td = $("<td></td>");
+					td1 = $("<td></td>").html("<strong>"+(idx+1)+". </strong>&nbsp;&nbsp;&nbsp;");
+					var grade = item.m_grade;
+					
+					
+					if(grade=="전체 관람가"){
+						var grade_img_all = $("<img/>").attr({"src":"resources/images/movie_play_level_all.png","width":"25px","height":"25px"});
+						$(td1).append($(grade_img_all)).appendTo(tr);
+					}
+					if(grade=="12세 관람가"){
+						var grade_img_12 = $("<img/>").attr({"src":"resources/images/movie_play_level_12.png","width":"25px","height":"25px"});
+						$(td1).append($(grade_img_12)).appendTo(tr);
+					}
+					if(grade=="15세 관람가"){
+						var grade_img_15 = $("<img/>").attr({"src":"resources/images/movie_play_level_15.png","width":"25px","height":"25px"});
+						$(td1).append($(grade_img_15)).appendTo(tr);
+					
+					}
+					if(grade=="청소년 관람불가"){
+						var grade_img_18 = $("<img/>").attr({"src":"resources/images/movie_play_level_18.png","width":"25px","height":"25px"});
+						$(td1).append($(grade_img_18)).appendTo(tr);
+					}
+					
+					
 					$(td).text(item.m_name).attr({"idx":idx}).appendTo(tr);
 					$(tr).appendTo("#mslsee");
 					var img = $("<img/>");
-					$(img).attr({"src":"resources/upload/"+item.m_image,"width":"900","height":"400"}).addClass("mimg").appendTo("#msimg_inner");
+					$(img).attr({"src":"resources/upload/"+item.m_image,"width":"900","height":"auto"}).addClass("mimg").appendTo("#msimg_inner");
 					$(td).click(function () {
 						var idx2 = $(this).attr("idx")*-900;
 						clearInterval(time);
@@ -91,12 +122,11 @@ display: inline-block;
 	<div id="menu">
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
-	<div id="center">
-		<div id="mslist" class="container" style="width: 25%;">
+		<div id="mslist" class="container" style="width: 23%;">
 			<table class="table">
-				<thead>
-					<tr>
-						<th id="boxm">BoxOffice</th>
+				<thead id="thead">
+					<tr> 
+						<center><th id="boxm"><h4><strong>BOX OFFICE</strong></h4></th></center>
 					</tr>
 				</thead>
 				<tbody id="mslsee">
@@ -109,7 +139,9 @@ display: inline-block;
 			
 			</div>
 		</div>
-	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

@@ -12,12 +12,14 @@ import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
 import com.javajo.vo.MyhistoryVo;
 import com.javajo.vo.MyticketVo;
+import com.javajo.vo.NoticeboardVo;
 import com.javajo.vo.RunningVo;
 import com.javajo.vo.RunningVo2;
 import com.javajo.vo.RunningVo3;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 import com.jun.vo.BoardVo;
+import com.jun.vo.NoticeVo;
 
 @Repository
 public class JavajoDao {
@@ -296,4 +298,80 @@ public class JavajoDao {
 		// TODO Auto-generated method stub
 		return JavajoManager.blist(num1,num2,key);
 	}
+
+	public int nbtotalRecode(String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.nbtotal(key);
+	}
+
+	public List<NoticeboardVo> nblist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		return JavajoManager.nblist(num1,num2,key);
+	}
+
+	public int mybtotalRecode(String key, String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mybtotal(key,c_id);
+	}
+
+	public List<BoardVo> myblist(int num1, int num2, String key, String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.myblist(num1,num2,key,c_id);
+	}
+
+	public List<BoardVo> myb(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.myb(c_id);
+	}
+
+	public int mycelete(String c_id, String c_pw) {
+		// TODO Auto-generated method stub
+		return JavajoManager.mysdelete(c_id,c_pw);
+	}
+
+	public int ticketdelete(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.ticketdelete(c_id);
+	}
+
+	public int boarddelete(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.boarddelete(c_id);
+	}
+
+	public int historytdelete(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.historytdelete(c_id);
+	}
+
+	public int replydelete(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.replydelete(c_id);
+	}
+
+	public int moviescoredelete(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.moviescoredelete(c_id);
+	}
+
+	public int seatupdate(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.seatupdate(c_id);
+	}
+
+	public int runningscedule(String sysday) {
+		// TODO Auto-generated method stub
+		return JavajoManager.runningscedule(sysday);
+	}
+
+	public int srupdate(String sysday) {
+		// TODO Auto-generated method stub
+		return JavajoManager.srupdate(sysday);
+	}
+
+	public int trupdate(String sysday) {
+		// TODO Auto-generated method stub
+		return JavajoManager.trupdate(sysday);
+	}
+
 }

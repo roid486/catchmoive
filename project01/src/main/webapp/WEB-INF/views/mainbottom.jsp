@@ -10,9 +10,10 @@
 </head>
 <body>
 	<div>
-		(04377)서울특별시 용산구 한강대로 23길 55, 아이파크몰 6층(한강로동)
-		대표이사 : 서정사업자등록번호 : 104-81-45690	통신판매업신고번호 : 2017-서울용산-0662
-		개인정보보호 책임자 : 마케팅 담당 정종민	대표이메일 : cjcgvmaster@cj.netCGV	고객센터 : 1544-1122
+		<img src="resources/images/catchmovieLogo-iloveimg-resized.png" height="80px" style="float: left;">
+		<p>서울 마포구 백범로 23 구프라자3층</p>
+		<p>대표이사 : 자바조 사업자등록번호 : 100-12-123456	통신판매업신고번호 : 2017-서울마포-0662</p>
+		<p>개인정보보호 책임자 : 조장 고이삭	대표이메일 : roid486@naver.com	고객센터 :02)707-1480</p>
 	</div>
 	<!-- Modal -->
   <div class="modal fade" id="logindial"  role="dialog">

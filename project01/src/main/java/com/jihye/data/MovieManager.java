@@ -30,6 +30,8 @@ public class MovieManager {
 		
 	}
 	
+////////////////*公厚 抛捞喉 贸府 *//////////////////////
+	
 	public static int insertMovie(MovieVo_j m){
 		
 		SqlSession session = factory.openSession(true);
@@ -62,9 +64,42 @@ public class MovieManager {
 		
 		map.put("s", s);
 		List<MovieVo_j> list = session.selectList("movie.selectAll",map);
+		
 		session.close();
 		return list;
 	}
+	
+	public static List<MovieVo_j> preMovie(){
+		SqlSession session = factory.openSession();
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		List<MovieVo_j> list = session.selectList("movie.getPreMovie");
+		
+		session.close();
+		return list;
+	}
+	
+	public static int moviegetTotal()
+	{
+		
+		SqlSession session = factory.openSession(true);
+		int re =  session.selectOne("movie.moviegetTotal");
+		session.close();
+		return re;
+	}
+	
+	public static int preMovieGetTotal()
+	{
+		
+		SqlSession session = factory.openSession(true);
+		int re =  session.selectOne("movie.premoviegetTotal");
+		session.close();
+		return re;
+	}
+	
+	
+	////////////////*公厚 胶内绢 贸府 *//////////////////////
 	
 	public static int insertMovieScore(MovieScoreVo ms){
 		

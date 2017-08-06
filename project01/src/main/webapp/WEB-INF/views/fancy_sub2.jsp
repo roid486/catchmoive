@@ -64,10 +64,12 @@
 					if(data=="ok")
 						{
 						alert("성공적으로 예매 되었습니다.")
+						
 						}else{
 							alert("예매 실패 다시 예매해주세요")
 						}
-					parent.jq1.fancybox.close();
+					window.location.href = "ticketCheck.com";
+// 					parent.jq1.fancybox.close();
 				}
 
 			})

@@ -16,12 +16,14 @@ import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
 import com.javajo.vo.MyhistoryVo;
 import com.javajo.vo.MyticketVo;
+import com.javajo.vo.NoticeboardVo;
 import com.javajo.vo.RunningVo;
 import com.javajo.vo.RunningVo2;
 import com.javajo.vo.RunningVo3;
 import com.javajo.vo.TheaterVo;
 import com.jihye.vo.MovieVo_j;
 import com.jun.vo.BoardVo;
+import com.jun.vo.NoticeVo;
 
 public class JavajoManager {
 	private static SqlSessionFactory factory;
@@ -586,4 +588,163 @@ public class JavajoManager {
 		session.close();
 		return list;
 	}
+
+	public static int nbtotal(String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("key", key);
+		int re = session.selectOne("javajo.nbtotal", map);
+		session.close();
+		return re;
+	}
+
+	public static List<NoticeboardVo> nblist(int num1, int num2, String key) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("num1", num1);
+		map.put("num2", num2);
+		map.put("key", key);
+		List<NoticeboardVo> list = session.selectList("javajo.nblist", map);
+		session.close();
+		return list;
+	}
+
+	public static int mybtotal(String key, String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("key", key);
+		map.put("c_id", c_id);
+		int re = session.selectOne("javajo.mybtotal", map);
+		session.close();
+		return re;
+	}
+
+	public static List<BoardVo> myblist(int num1, int num2, String key, String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("num1", num1);
+		map.put("num2", num2);
+		map.put("key", key);
+		map.put("c_id", c_id);
+		List<BoardVo> list = session.selectList("javajo.myblist", map);
+		session.close();
+		return list;
+	}
+
+	public static List<BoardVo> myb(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("c_id", c_id);
+		List<BoardVo> list = session.selectList("javajo.myb", map);
+		session.close();
+		return list;
+	}
+
+	public static int mysdelete(String c_id, String c_pw) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		map.put("c_pw", c_pw);
+		int re = session.delete("javajo.mycdelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int ticketdelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.ticketdelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int boarddelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.boarddelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int historytdelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.historytdelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int replydelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.replydelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int moviescoredelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.moviescoredelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int seatupdate(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.update("javajo.seatupdate", map);
+		session.close();
+		return re;
+	}
+
+	public static int runningscedule(String sysday) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("sysday", sysday);
+		System.out.println(sysday);
+		int re = session.delete("javajo.runningscedule",map);
+		session.close();
+		return re;
+	}
+
+	public static int srupdate(String sysday) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("sysday", sysday);
+		int re = session.update("javajo.srupdate", map);
+		session.close();
+		return re;
+	}
+
+	public static int trupdate(String sysday) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("sysday", sysday);
+		int re = session.update("javajo.trupdate", map);
+		session.close();
+		return re;
+	}
+	
 }

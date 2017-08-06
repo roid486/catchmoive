@@ -8,6 +8,15 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style type="text/css">
+	#menu {
+		position: relative;
+		z-index: 999;
+	}
+	#bottom {
+	position: relative;   background-color:  #e6f3ff; color: black;
+	}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -19,7 +28,9 @@
 </script>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+	<div id="menu">
+		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+	</div>
 	
 	<div class="container">
 	  <h2 style="font-family: -윤고딕340;">이벤트 정보</h2>           
@@ -47,5 +58,13 @@
 	<center>
 		<button id="backcom">목록보기</button>
 	</center>
+	<p></p>
+	<p></p>
+	<p></p>
+	<br>
+	<br>
+	<div id="bottom">
+		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
+	</div>
 </body>
 </html>

@@ -10,11 +10,15 @@
 <link rel="stylesheet" href="resources/ui/jquery-ui.theme.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
+	#menu {
+		position: relative;
+		z-index: 999;
+	}
 	#mtl{
 		position: relative;
 	}
 	#bottom {
-	position: relative; background-color: brown; color: white;
+	position: relative;   background-color:  #e6f3ff; color: black;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -32,8 +36,12 @@
 </head>
 <body>
 	<input type="hidden" id="re" value="${re }">
-	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
+	<div id="menu">
+		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+	</div>
+	<div id="msi">
+		<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
+	</div>
 	<div class="container" id="mtl" style="width: 60%;">
 	  <h2>영화관 등록</h2>
 	  <form class="form-horizontal" action="insertmt.com" method="post" enctype="multipart/form-data">
@@ -74,6 +82,9 @@
 	    </div>
 	  </form>
 	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

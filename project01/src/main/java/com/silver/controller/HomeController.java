@@ -65,6 +65,9 @@ public class HomeController {
 		tdao.historyinsert();
 	}
 	
+	@RequestMapping("/ticketCheck.com")
+	public void ticketCheck(){
+	}
 	@RequestMapping("/fancy_main.com")
 	public ModelAndView test() {
 		ModelAndView mav = new ModelAndView();

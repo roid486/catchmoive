@@ -26,7 +26,7 @@
 		width: 60%;
 	}
 	#bottom {
-	position: relative; background-color: brown; color: white;
+	position: relative;   background-color:  #e6f3ff; color: black;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -45,12 +45,10 @@
 			location.href="myticket.com?c_id="+id;
 		});
 		$("#board").click(function () {
-			alert("hi");
-			/* location.href="tlist.com"; */
+			location.href="myboard.com?c_id="+id;
 		});
 		$("#cdelete").click(function () {
-			alert("hi");
-			/* location.href="rlist.com"; */
+			location.href="mycdelete.com?c_id="+id;
 		});
 	});
 </script>
@@ -181,6 +179,9 @@
 		  </div>
 	    </div>
 	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

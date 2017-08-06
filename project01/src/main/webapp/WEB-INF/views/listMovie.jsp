@@ -8,6 +8,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>캐치무비 >> 무비차트</title>
 <style type="text/css">
+@font-face { 
+	font-family: 'NanumGothic'; 
+	src: url('font/NanumGothicCoding.ttf').format('truetype'); 
+	}
+	body{font-family: 'NanumGothic';}
+
 #s{
 	float: right;
 	position: relative;
@@ -49,6 +55,13 @@ font-family: -윤고딕340;
 .side_lab{
 	color: #666666;
 }
+.list{
+	cursor: pointer;
+	color: black;
+}
+#bottom {
+	position: relative; width:100%;   background-color:  #e6f3ff; color: black;
+}
 
 /* #di_index2{
 	width: 220px;
@@ -80,6 +93,7 @@ $(function(){
 		
 	});
 	
+	
 });
 
 
@@ -88,7 +102,10 @@ $(function(){
 <body>
 <jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
  <h2><strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;무비 차트</strong></h2>
+  <a href="pre-movie.com" class="list" id="pre-movie" style="position:relative; right: -1100px">▶상영예정작</a>
+  <a href="listMovie.com?select=m_boxoffice" class="list" id="listmovie" style="position:relative; right: -1120px">▶무비차트</a>
   <br>
+  
   <hr>
   <br>
  
@@ -103,7 +120,7 @@ $(function(){
 </div>
 
 <!-- Page Content -->
-<div style="margin-left:20%">
+<div style="margin-left:15%">
 
 <center>
 
@@ -114,7 +131,7 @@ $(function(){
 		</select>
 		<button class="w3-btn w3-white w3-border w3-border-blue w3-round-large" id="btn_go">go</button>
 	</span>
-<table cellspacing="5">
+<table cellspacing="5" id="listTable">
  	<tr>
     		<c:forEach var="l" items="${l }" varStatus="status">
          	<td style="padding-right: 40px; padding-bottom: 30px; padding-left: 40px; padding-top: 30px">
@@ -155,7 +172,9 @@ $(function(){
     <%-- <center><strong>${pageStr }</strong></center> --%>
 
 
-
+	<div id="bottom">
+		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
+	</div>
 
 </div>
 

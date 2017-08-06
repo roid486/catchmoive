@@ -197,32 +197,40 @@
 		$("#move_sub2")
 				.click(
 						function() {
-							if (movie_number != null
-									&& movietheater_number != null
-									&& running_date != null
-									&& running_start != null
-									&& theater_number != null
-									&& running_number != null) {
-								window.location.href = "fancy_sub2.com?movie_number="
-										+ movie_number
-										+ "&movietheater_number="
-										+ movietheater_number
-										+ "&running_date="
-										+ running_date
-										+ "&running_start="
-										+ running_start
-										+ "&theater_number="
-										+ theater_number
-										+ "&running_number=" + running_number;
-							} else {
-								alert("선택하지 않은 항목이 있습니다.")
+							var loginid = $("#loginid").val();
+							if(loginid!=null && loginid!="")
+							{
+								if (movie_number != null
+										&& movietheater_number != null
+										&& running_date != null
+										&& running_start != null
+										&& theater_number != null
+										&& running_number != null) {
+									window.location.href = "fancy_sub2.com?movie_number="
+											+ movie_number
+											+ "&movietheater_number="
+											+ movietheater_number
+											+ "&running_date="
+											+ running_date
+											+ "&running_start="
+											+ running_start
+											+ "&theater_number="
+											+ theater_number
+											+ "&running_number=" + running_number;
+								} else {
+									alert("선택하지 않은 항목이 있습니다.")
+								}
+							}
+							else{
+								alert("로그인 하십시오.");
+								
 							}
 						})
 	})
 </script>
 </head>
 <body>
-
+	<input type="hidden" id="loginid" value="${se_id }">
 	<center>
 		<div id="main_form">
 			<div id="chk1">
