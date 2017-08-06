@@ -50,6 +50,8 @@ public class Email {
 				messageHelper.setText("<h1>Email인증을 하셔야 서비스 이용이 가능합니다.<h1><br> <a href='http://192.168.0.12:8089/controller/emailok.com?email="+email+"'>인증하기</a>", true);
 			}
 		});
+		MainContoller.ere=1;
+		MainContoller.emsg="Email을 확인하시기 바랍니다.";
 		return mav;
 	}
 	

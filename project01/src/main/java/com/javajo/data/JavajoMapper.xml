@@ -308,4 +308,10 @@ m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
   <update id="trupdate">
   	update ticket set r_number=null where r_number in(select r_number from running where r_date=#{sysday})
   </update>
+  <select id="totalprice" resultType="java.lang.Integer">
+  	select sum(h_ticket_price) from history
+  </select>
+  <select id="mprice" resultType="mpriceVo">
+  	select sum(h_ticket_price) m_price,m_name from history h,movie m where h.m_number=m.m_number group by m_name
+  </select>
 </mapper>

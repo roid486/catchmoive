@@ -24,13 +24,10 @@
 <script type="text/javascript">
 	$(function () {
 		var msg = $("#msg").val();
-		$("#msgdialog").dialog({
-	         autoOpen:false,
-	         modal:true
-	      });
 		if(msg!="")
 		{
-			$("#msgdialog").dialog("open");
+			$("#emsg").text(msg);
+			$("#emsgdial").modal();
 		}
 	});
 </script>
@@ -78,9 +75,6 @@
 		</center>
 	</div>
 	<input type="hidden" id="msg" value="${msg }">
-	<div id="msgdialog">
-		<center><font color="red">${msg }</font></center>
-	</div>
 	<p></p>
 	<p></p>
 	<p></p>

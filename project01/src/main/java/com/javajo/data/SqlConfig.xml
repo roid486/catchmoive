@@ -16,6 +16,7 @@
 		<typeAlias type="com.javajo.vo.MyticketVo" alias="myticketVo"/>
 		<typeAlias type="com.javajo.vo.MyhistoryVo" alias="myhistoryVo"/>
 		<typeAlias type="com.javajo.vo.NoticeboardVo" alias="noticeboardVo"/>
+		<typeAlias type="com.javajo.vo.MpriceVo" alias="mpriceVo"/>
 		<typeAlias type="com.jun.vo.BoardVo" alias="boardVo"/>
 		<typeAlias type="com.jihye.vo.MovieVo_j" alias="movieVo_j"/>
 	</typeAliases>

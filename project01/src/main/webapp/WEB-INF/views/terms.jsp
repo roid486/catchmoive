@@ -40,7 +40,8 @@
 			}
 			else
 			{
-				$("#msgdialog").dialog("open");
+				$("#emsg").text("약관을 모두 동의해 주십시오");
+				$("#emsgdial").modal();
 			}
 		});
 	});
@@ -103,9 +104,6 @@
 			<button id="termsok">다음</button>
 		</div>
 	</center>
-	<div id="msgdialog">
-		<center><font color="red">약관을 모두 동의해주세요.</font></center>
-	</div>
 	<p></p>
 	<p></p>
 	<p></p>
