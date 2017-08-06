@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
-	pageEncoding="UTF-8"%>
-=======
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
+
 <%@taglib prefix="m" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 >>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
@@ -59,9 +57,8 @@
 	});
 </script>
 </head>
-<<<<<<< HEAD
-<body>hi
-=======
+<body>
+
 <body>
 	<input type="hidden" id="loginid" value="${se_id }">
 	<div id="menu">
