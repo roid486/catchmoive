@@ -29,6 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.rcaller.rStuff.RCaller;
 import com.github.rcaller.rStuff.RCode;
+import com.javajo.dao.JavajoDao;
 import com.silver.dao.BookDao;
 import com.silver.dao.TicketDao;
 import com.silver.vo.MovieVo;
@@ -36,6 +37,8 @@ import com.silver.vo.MovietheatersubVo;
 import com.silver.vo.RunningVo;
 import com.silver.vo.RunningstartVo;
 import com.silver.vo.SeatVo;
+import com.silver.vo.TicketCheckVo;
+import com.silver.vo.TicketInfo;
 
 /**
  * Handles requests for the application home page.
@@ -46,6 +49,13 @@ public class HomeController {
 	TicketDao tdao;
 	BookDao bdao;
 	List<SeatVo> list1 =null;
+	
+	@Autowired
+	private JavajoDao dao;
+	
+	public void setDao(JavajoDao dao) {
+		this.dao = dao;
+	}
 
 	@Autowired
 	public void setTdao(TicketDao tdao) {
@@ -59,19 +69,34 @@ public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@Scheduled(cron="0 44 12 * * *")
+	@Scheduled(cron="0 49 11 * * *")
 	public void historyscedule()
 	{//historyÅ×ÀÌºí insert
 		tdao.historyinsert();
 	}
 	
+	@RequestMapping("/ticketCheck.com")
+	public ModelAndView ticketCheck(int ticket_number, String seat_rc){
+		
+		ModelAndView mav = new ModelAndView();
+		seat_rc = seat_rc.substring(0,seat_rc.length()-1);
+	
+		TicketCheckVo t = tdao.ticketcheck(ticket_number);
+		
+		TicketInfo info = tdao.ticketinfo(ticket_number);
+		
+		mav.addObject("info", info);
+		mav.addObject("t", t);
+		mav.addObject("seat_rc", seat_rc);
+		return mav;
+	}
 	@RequestMapping("/fancy_main.com")
 	public ModelAndView test() {
 		ModelAndView mav = new ModelAndView();
 
 		return mav;
 	}
-
+	
 	@RequestMapping("/fancy_sub1.com")
 	public ModelAndView test2() {
 		ModelAndView mav = new ModelAndView();
@@ -141,14 +166,14 @@ public class HomeController {
 		map1.put("ticket_price", ticket_price);
 
 		
-			System.out.println(map1.get("ticket_number"));
-			System.out.println(map1.get("ticket_peoplenum"));
-			System.out.println(map1.get("m_number"));
-			System.out.println(map1.get("mt_number"));
-			System.out.println(map1.get("t_number"));
-			System.out.println(map1.get("c_id"));
-			System.out.println(map1.get("r_number"));
-			System.out.println(map1.get("ticket_price"));
+//			System.out.println(map1.get("ticket_number"));
+//			System.out.println(map1.get("ticket_peoplenum"));
+//			System.out.println(map1.get("m_number"));
+//			System.out.println(map1.get("mt_number"));
+//			System.out.println(map1.get("t_number"));
+//			System.out.println(map1.get("c_id"));
+//			System.out.println(map1.get("r_number"));
+//			System.out.println(map1.get("ticket_price"));
 			
 			
 		
@@ -168,7 +193,7 @@ public class HomeController {
 		if(arr.length==num)
 		{
 			System.out.println("success");
-			chk = "ok";
+			chk = ticket_number+"";
 		}else
 		{
 			chk = "no";
@@ -237,14 +262,14 @@ public class HomeController {
 
 	@RequestMapping(value = "fifthList.com", produces = "text/plain;charset=utf-8")
 	@ResponseBody
-	public String fifthList(String running_start, String running_date) {
+	public String fifthList(String running_start, String running_date, String mt_number) {
 		String str = "";
-		String list = bdao.fifthList(running_start,running_date);
+		String list = bdao.fifthList(running_start,running_date,mt_number);
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			str = mapper.writeValueAsString(list);
 		} catch (Exception e) {
-			System.out.println("fourth() mapper   ::    " + e.getMessage());
+			System.out.println("fifth() mapper   ::    " + e.getMessage());
 		}
 		
 		return str;
@@ -300,7 +325,10 @@ public class HomeController {
 		}
 		
 		ModelAndView mav = new ModelAndView();
-		return mav.addObject("fname", fname);
+		mav.addObject("fname", fname);
+		mav.addObject("totalprice", dao.totalprice());
+		mav.addObject("mprice", dao.mprice());
+		return mav;
 	}
 
 }

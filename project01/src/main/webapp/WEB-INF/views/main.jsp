@@ -91,7 +91,7 @@
 				$.each(JSON.parse(data), function(idx, item) {
 					tr = $("<tr></tr>");
 					td = $("<td></td>");
-					td1 = $("<td></td>").html("<strong>"+(idx+1)+". </strong>&nbsp;&nbsp;&nbsp;");
+					td1 = $("<td></td>").html("<strong>"+(item.rownum)+". </strong>&nbsp;&nbsp;&nbsp;");
 					var grade = item.m_grade;
 					
 					

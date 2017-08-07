@@ -26,7 +26,6 @@ public class SerchcustController {
 	public ModelAndView serchcust()
 	{
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("mtlist", dao.mtlist());
 		return mav;
 	}
 	
@@ -36,7 +35,6 @@ public class SerchcustController {
 		ModelAndView mav = new ModelAndView();
 		String email = front_email+back_email;
 		int re = dao.serchcust(name,email);
-		mav.addObject("mtlist", dao.mtlist());
 		if(re==0)
 		{
 			this.name=name;

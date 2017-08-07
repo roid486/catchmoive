@@ -21,7 +21,7 @@
 >>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 	float: right;
 	position: relative;
-	right: 190px;
+	right: 180px;
 }
 
 #menu {
@@ -119,14 +119,7 @@ $(function(){
 
 =======
 <jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
- <h2><strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;무비 차트</strong></h2>
-  <a href="pre-movie.com" class="list" id="pre-movie" style="position:relative; right: -1100px">▶상영예정작</a>
-  <a href="listMovie.com?select=m_boxoffice" class="list" id="listmovie" style="position:relative; right: -1120px">▶무비차트</a>
-  <br>
-  
-  <hr>
-  <br>
- 
+
  
 	
 >>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
@@ -143,8 +136,21 @@ $(function(){
 <!-- Page Content -->
 <div style="margin-left:15%">
 
+<<<<<<< HEAD
 	<!-- Page Content -->
 	<div style="margin-left: 20%">
+=======
+ <h2><strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;무비 차트</strong></h2>
+  <a href="pre-movie.com" class="list" id="pre-movie" style="position:relative; right: -1100px">▶상영예정작</a>
+  <a href="listMovie.com?select=m_boxoffice" class="list" id="listmovie" style="position:relative; right: -1120px">▶무비차트</a>
+  <br>
+  
+  <hr>
+  <br>
+ 
+
+<center>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 
 <<<<<<< HEAD
 		<center>

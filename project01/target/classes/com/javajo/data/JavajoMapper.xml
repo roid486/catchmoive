@@ -190,8 +190,14 @@
   <update id="eupdate">
      update event set e_title=#{e_title},e_regdate=sysdate,e_img=#{e_img},e_content=#{e_content} where e_number=#{e_number}
   </update>
+<<<<<<< HEAD
   <select id="mslist" resultType="movieVo_j">
      select * from movie where m_isshowing=1 order by m_score
+=======
+  <select id="mslist" resultType="movieVo">  	
+	select rownum,a.* from (select * from movie where m_isshowing=1 order by m_boxoffice desc) a
+	where rownum between 1 and 10
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
   </select>
   <select id="tseat" resultType="java.lang.Integer">
      select t_seat from theater where t_number=#{t_number}
@@ -308,4 +314,10 @@ m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
   <update id="trupdate">
      update ticket set r_number=null where r_number in(select r_number from running where r_date=#{sysday})
   </update>
+  <select id="totalprice" resultType="java.lang.Integer">
+  	select sum(h_ticket_price) from history
+  </select>
+  <select id="mprice" resultType="mpriceVo">
+  	select sum(h_ticket_price) m_price,m_name from history h,movie m where h.m_number=m.m_number group by m_name
+  </select>
 </mapper>

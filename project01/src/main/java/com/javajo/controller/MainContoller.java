@@ -20,6 +20,7 @@ import com.javajo.dao.JavajoDao;
 import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
+import com.javajo.vo.MovieVo;
 import com.javajo.vo.MovienameVo;
 import com.javajo.vo.RunningVo;
 import com.javajo.vo.RunningVo2;
@@ -48,7 +49,6 @@ public class MainContoller {
 	public ModelAndView main(HttpServletRequest request)
 	{
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("mtlist", dao.mtlist());
 		HttpSession session = request.getSession();
 		session.setAttribute("se_id", id);
 		mav.addObject("signupnum", re);
@@ -68,7 +68,6 @@ public class MainContoller {
 		String yes = "yes";
 		ModelAndView mav = new ModelAndView();
 		int echeck = dao.echeckupdate(email,yes);
-		mav.addObject("mtlist", dao.mtlist());
 		mav.addObject("loginid", id);
 		mav.addObject("signupnum", re);
 		if(echeck!=0)
@@ -104,7 +103,6 @@ public class MainContoller {
 	public ModelAndView terms()
 	{
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("mtlist", dao.mtlist());
 		return mav;
 	}
 
@@ -112,7 +110,6 @@ public class MainContoller {
 	public ModelAndView serchcustok()
 	{
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("mtlist", dao.mtlist());
 		mav.addObject("serchid", id2);
 		mav.addObject("msg", msg);
 		mav.addObject("name", SerchcustController.name);
@@ -290,7 +287,7 @@ public class MainContoller {
 	{
 		String str = "";
 		ObjectMapper mapper = new ObjectMapper();
-		List<MovieVo_j> list = dao.mslist();
+		List<MovieVo> list = dao.mslist();
 		try{
 			str = mapper.writeValueAsString(list);
 		}catch (Exception e) {

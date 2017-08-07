@@ -48,7 +48,7 @@ select distinct to_char(r_date,'YYYY-MM-DD') r_date from running r,movietheater 
  
  
   <select id="fifthList" resultType="java.lang.String">
-	select r_number from running where r_start = #{running_start} and r_date =#{running_date}
+	select r_number from running where r_start = #{running_start} and r_date =#{running_date} and mt_number=#{mt_number}
  </select> 
 
 </mapper>

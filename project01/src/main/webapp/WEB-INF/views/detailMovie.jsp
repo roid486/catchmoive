@@ -8,8 +8,18 @@
 <html lang="en">
 <head>
 <style type="text/css">
+<<<<<<< HEAD
 .end {
 	border-radius: 5px;
+=======
+
+
+#w3-bar-item{
+font-family: -윤고딕340;
+}
+.end{
+ 	border-radius: 5px;
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 	border: 2px solid gray;
 	color: gray;
 }
@@ -74,6 +84,7 @@ HEAD
 }
 
 #bottom {
+<<<<<<< HEAD
 	position: relative;
 	background-color: #e6f3ff;
 	color: black;
@@ -93,18 +104,38 @@ https
 .com
 /roid486/catchmoive
 .git
+=======
+	position: relative;   background-color:  #e6f3ff; color: black;
+	width: 100%;
+	}
+
+
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+=======
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 <!-- <link rel="stylesheet" href="rating/modal.min.css"> -->
 <link rel="stylesheet" href="rating/jquery.raty.css">
 <script type="text/javascript" src="rating/jquery.raty.js"></script>
+<<<<<<< HEAD
 <!-- <script type="text/javascript" src="rating/modal.min.js"></script> -->
 <script type="text/javascript">
+=======
+
+  <script type="text/javascript">
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
   	$(function(){
   		var showing = $("#lab_showing").text();
   		var ms_mid = $("#ms_mid").val();
@@ -197,8 +228,7 @@ https
   			} */
   			
   			
-  			
-  			//alert(page); 
+  	
   			$.ajax({
   				type:"get",
   				url:"listMovieScore.com?ms_mid=${m.m_number}",
@@ -208,6 +238,7 @@ https
   					$("#re_table").empty();
   				
   					$.each(JSON.parse(data),function(index,item){
+  					
   						
   						tr = $("<tr></tr>").attr("height","50px");
   						var td = $("<td></td>")
@@ -306,8 +337,9 @@ https
 						 
 						 var tr=$(this).closest("tr"); //누른거의 가장 가까운 tr을 찾는 코드 ! 
 						 no= $(tr).find(".ms_no").attr("idx");	 
-						 var mid = $("#mnumber").val();
-						 
+						 //var mid = $("#mnumber").val();
+						 var mid = "${m.m_number}";
+						
 						
 						 if(firm){
 							 
@@ -376,7 +408,7 @@ https
   			});	//ajax
   			
   		
-  		};
+  		};//listMoviescore함수
   		
   	
   		
@@ -387,7 +419,7 @@ https
   									로그인되있을시 -> moviescore insert하기!  */
   		$("#btn_register").click(function(){
   			var currentScore = $('#div_rating').raty('score'); //별점
-  		
+  			
   			
   			
   			$("#star").val(currentScore);
@@ -412,7 +444,7 @@ https
   					return;
   				}
   				else{
-  					
+  			
   					$.ajax({
   		  				
   	  					url:"insertMovieScore.com",
@@ -421,8 +453,12 @@ https
   	  					success:function(data){ 
   	  						$("#comment").val("");
   	  						listMovieScore();
+  	  						if(data=="실패"){
+  	  							alert("이미 등록된 평점입니다.");
+  	  						}
   	  						
   	  					},
+  	  					
   	  					
   	  				
   	  				});
@@ -448,6 +484,7 @@ https
 
 </head>
 <body>
+<<<<<<< HEAD
 	<<<<<<< HEAD
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	<div class="container-fluid">
@@ -470,6 +507,36 @@ https
 							<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;영화상세</strong>
 						</h2>
 					</div>
+=======
+	<div id="menu">
+		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+	</div>
+	
+	
+		
+	<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%" id="menu">
+  <h3 class="w3-bar-item" id="w3-bar-item">영화</h3>
+  <a href="listMovie.com" class="w3-bar-item w3-button">무비차트</a>
+  <a href="movieFinder.com" class="w3-bar-item w3-button">무비파인더</a>
+  
+</div>
+
+<!-- Page Content -->
+<div style="margin-left:15%">
+	
+	
+<div class="container-fluid">
+    <div class="row">
+    <p>
+    <div class="col-md-2" style="float:left;"> <h2 align="left"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;영화상세</strong></h2></div>
+ 
+<%--     <div class="col-md-1" style="float:left;"> <a href="updateMovie.com?m_number=${m.m_number }"><button type="button" class="btn btn-primary" >수정</button></a> </div>
+ --%>	
+    </p>
+    </div>
+	</div>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 
 					<%--     <div class="col-md-1" style="float:left;"> <a href="updateMovie.com?m_number=${m.m_number }"><button type="button" class="btn btn-primary" >수정</button></a> </div>
  --%>
@@ -562,6 +629,11 @@ https
 					</div>
 				</form>
 
+<<<<<<< HEAD
+=======
+
+<br><br><br>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 
 
 			</span> <br>
@@ -753,7 +825,7 @@ https
 			</div>
 		</form>
 
-
+</div>
 
 	</span>
 	<br>

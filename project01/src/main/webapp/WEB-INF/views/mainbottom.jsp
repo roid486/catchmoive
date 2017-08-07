@@ -8,8 +8,13 @@
 <title>Insert title here</title>
 
 </head>
+<<<<<<< HEAD
 <body>
 	<div>
+=======
+<body>
+	<div style="width: 100%">
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 		<img src="resources/images/catchmovieLogo-iloveimg-resized.png" height="80px" style="float: left;">
 		<p>서울 마포구 백범로 23 구프라자3층</p>
 		<p>대표이사 : 자바조 사업자등록번호 : 100-12-123456	통신판매업신고번호 : 2017-서울마포-0662</p>
@@ -112,6 +117,7 @@
 					<img src="resources/images/naver_Green.PNG" width="230px"
 						height="45px">
 
+<<<<<<< HEAD
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-danger btn-default pull-left"
@@ -263,6 +269,26 @@
 		</div>
 	</div>
 	</div>
+=======
+<!--오류 메시지2 Modal -->
+  <div class="modal fade" id="emsgdial" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title glyphicon glyphicon-exclamation-sign" style="background: skyblue;"><strong>알림</strong></h4>
+        </div>
+        <div class="modal-body">
+          <center><p id="emsg" style="color: black;">${emsg }</p></center>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 
 
 

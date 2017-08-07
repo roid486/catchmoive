@@ -170,7 +170,7 @@
 	<div id="msi">
 		<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
 	</div>
-	<div class="container" style="width:70%;">
+	<div class="container" style="width:70%; margin-right: 10%">
 	  <form class="form-horizontal" action="cupdate.com" method="post">
 	  	<input type="hidden" name="c_echeck" value="${cdetail.c_echeck }">
 	  	<input type="hidden" name="c_email1" value="${cdetail.c_email }">

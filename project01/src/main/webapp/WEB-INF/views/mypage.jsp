@@ -115,7 +115,7 @@ pageEncoding="UTF-8"%>
 		  </div>
 	    </div>
 	    <div class="panel panel-danger">
-	      <div class="panel-heading"><h3>예매내역</h3></div>
+	      <div class="panel-heading"><h3>나의 문의</h3></div>
 	      <div class="panel-body">
 				<div class="container">          
 				  <table class="table" style="width: 70%;">

@@ -37,7 +37,7 @@
 		<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
 	</div>
 	<div class="container" id="clist" style="width: 60%;">
-	  <h2>이벤트 목록</h2>
+	  <h2>게시판목록</h2>
 	  <p><a href="insertBoard.com"><button class="btn btn-primary">게시글 추가</button></a></p>
 	  <form action="blist.com" method="post">
 			<input type="text" name="key" placeholder="게시글명을 입력하시오.">

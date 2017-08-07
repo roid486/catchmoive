@@ -6,6 +6,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
@@ -50,6 +51,8 @@ public class Email {
 				messageHelper.setText("<h1>Email인증을 하셔야 서비스 이용이 가능합니다.<h1><br> <a href='http://192.168.0.12:8089/controller/emailok.com?email="+email+"'>인증하기</a>", true);
 			}
 		});
+		MainContoller.ere=1;
+		MainContoller.emsg="Email을 확인하시기 바랍니다.";
 		return mav;
 	}
 	
@@ -118,7 +121,7 @@ public class Email {
 	}
 	
 	@RequestMapping("/eventmail.com")
-	public ModelAndView eventmail(final String e_content)
+	public ModelAndView eventmail(final String e_content,final String e_img)
 	{
 		List<CustomerVo> celist = dao.celist();
 		ModelAndView mav = new ModelAndView("redirect:/elist.com");
@@ -132,7 +135,8 @@ public class Email {
 					messageHelper.setFrom("roid486@naver.com");
 					messageHelper.setTo(cv.getC_email());
 					messageHelper.setSubject("Event 공지");
-					messageHelper.setText("<pre>"+e_content+"</pre>", true);
+					messageHelper.setText("<img src='cid:logo' width='900' height='550'/><br><pre>"+e_content+"</pre>", true);
+					messageHelper.addInline("logo", new ClassPathResource("com/javajo/img/"+e_img));
 				}
 			});
 		}
