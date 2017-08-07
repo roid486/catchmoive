@@ -31,9 +31,11 @@ public class JavajoManager {
 		}
 	}
 
-	public static List<BoardVo> list(String searchField, String keyword) {
+	public static List<BoardVo> list(int start, int end, String searchField, String keyword) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);
 		map.put("searchField", searchField);
 		map.put("keyword", keyword);
 		
@@ -46,6 +48,20 @@ public class JavajoManager {
 		return list;
 		
 	}
+
+	public static int getTotal(String searchField, String keyword) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("searchField", searchField);
+		map.put("keyword", keyword);
+		int re = session.selectOne("javajo.getTotal", map);
+		session.close();
+		System.out.println("re ∏≈¥œ¿˙ ∞Ÿ≈‰≈ª:::::::"+re);
+		return re;
+	}
+
 
 	public static int insert(BoardVo b) {
 		// TODO Auto-generated method stub
@@ -190,14 +206,14 @@ public class JavajoManager {
 
 	
 	
-	public static int getTotal(String searchField, String keyword) {
+	public static int getTotalNb(String searchField, String keyword) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession(true);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		map.put("searchField", searchField);
 		map.put("keyword", keyword);
-		int re = session.selectOne("javajo.getTotal", map);
+		int re = session.selectOne("javajo.getTotalNb", map);
 		session.close();
 		return re;
 	}
@@ -249,6 +265,12 @@ public class JavajoManager {
 		session.close();
 		return re;
 	}
+
+
+
+
+
+
 	
 
 	

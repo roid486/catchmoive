@@ -74,10 +74,7 @@ tr, th, td {
 					<input type="submit" value="검색">
 				</form>
 				<hr>
-				<c:if test="${sessionScope.se_id == 'master'}">
-					<a href="insertNotice.com">등록</a>
-					<br>
-				</c:if>
+				
 
 
 				<table id="table" class="table">
@@ -89,7 +86,7 @@ tr, th, td {
 
 						<td align="center" bgcolor="#A1D6FE" colspan="2">제목</td>
 						<!-- <a href="listNotice.com?orderField=nb_title"> 제목</a> -->
-
+ 
 
 						<td align="center" bgcolor="#A1D6FE">작성일</td>
 						<!-- <a href="listNotice.com?orderField=nb_regdate"> 작성일</a> -->
@@ -98,6 +95,7 @@ tr, th, td {
 					</tr>
 					<c:forEach var="n" items="${list }">
 						<tr>
+						
 							<td width="15%">${n.nb_number }</td>
 							<td width="50%">
 								<a href="detailNotice.com?nb_number=${n.nb_number }">${n.nb_title }</a>

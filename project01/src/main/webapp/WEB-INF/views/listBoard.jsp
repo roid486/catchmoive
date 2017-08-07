@@ -54,6 +54,12 @@
 
 </script>
 <style type="text/css">
+#bottom {
+	position: relative;
+	background-color: brown;
+	color: white;
+}
+
 #table {
 	width: 100%;
 	border: 1px solid black;
@@ -130,6 +136,7 @@ tr, th, td {
 				</c:forEach>
 
 			</table>
+			<center>${pageStr }</center>
 			<hr style="border:solid 1px #A1D6FE;">
 		</div>
 	</div>
@@ -162,10 +169,8 @@ tr, th, td {
 		
 		</form>
 	</div>
-	<div id="msgdialog">
-		<center>
-			<font color="red">로그인을 하십시오.</font>
-		</center>
+	<div id="bottom">
+		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
 	</div>
 	
 	</div>

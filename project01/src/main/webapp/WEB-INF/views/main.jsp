@@ -18,8 +18,6 @@
 	z-index: 999;
 }
 
-<<<<<<<
-HEAD
 
 #center {
 	position: relative;

@@ -19,8 +19,6 @@
 #logo {
 	padding: 20px;
 }
-<<<<<<< HEAD
-
 .menu-bar {
 	text-align: center;
 	background-color: skyblue;
@@ -133,22 +131,6 @@
 	background: none;
 }
 
-.modal-header, .close {
-	background-color: skyblue;
-	color: white !important;
-	text-align: center;
-	font-size: 30px;
-}
-
-.modal-footer {
-	background-color: #f9f9f9;
-}
-
-#logbtn {
-	background-color: skyblue;
-	border-color: skyblue;
-}
-=======
   .modal-header, .close {
       background-color: skyblue;
       color:white !important;
