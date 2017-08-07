@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.silver.vo.MovieVo;
 import com.silver.vo.SeatVo;
 import com.silver.vo.TicketCheckVo;
+import com.silver.vo.TicketInfo;
 import com.silver.vo.TicketVo;
 
 
@@ -104,7 +105,7 @@ public class TicketManager {
 		}
 		if(re==list.size())
 		{
-			session.update("ticket.resetSeat");
+			session.delete("ticket.resetSeat");
 			session.delete("ticket.deleteTicket");
 		}
 		System.out.println(re);
@@ -115,5 +116,12 @@ public class TicketManager {
 		TicketCheckVo t = session.selectOne("ticket.ticketcheck", ticket_number);
 		
 		return t;
+	}
+	public static TicketInfo ticketinfo(int ticket_number) {
+		SqlSession session = factory.openSession();
+		TicketInfo info = session.selectOne("ticket.ticketinfo", ticket_number);
+		
+		
+		return info;
 	}
 }

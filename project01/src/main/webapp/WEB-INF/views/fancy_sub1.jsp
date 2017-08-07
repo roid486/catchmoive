@@ -181,6 +181,7 @@
 					datatype : "json",
 					type : "GET",
 					data : {
+					    mt_number : movietheater_number,
 						running_start : running_start,
 						running_date : running_date
 					},

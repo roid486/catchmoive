@@ -13,13 +13,17 @@
 		and ti.T_NUMBER = t.T_NUMBER
 		and ti.TICKET_NUMBER=#{param1}
 	</select>
+	
+	<select id="ticketinfo" resultType="com.silver.vo.TicketInfo">
+	select mt_loc, mt_x, mt_y from movietheater where mt_number =(select mt_number from ticket where ticket_number =#{param1})
+	</select>
 
 	<select id="tlist" resultType="com.silver.vo.TicketVo">
 		select * from ticket
 	</select>
 
 	<delete id="deleteTicket">
-		delete from ticket;
+		delete from ticket
 	</delete>
 
 	<insert id="historyinsert">
@@ -28,9 +32,9 @@
 		HH24:MI:SS'),#{ticket_peoplenum},#{mt_number},#{t_number},#{ticket_price},#{c_id},#{m_number})
 	</insert>
 
-	<update id="resetSeat">
-		update seat set ticket_number=null, seat_ft='n'
-	</update>
+	<delete id="resetSeat">
+		delete from seat
+	</delete>
 
 	<select id="seatNum" resultType="java.lang.Integer">
 		select t_seat from theater where

@@ -52,6 +52,7 @@ public class InserteController {
 		mav.addObject("mtlist", dao.mtlist());
 		String path = request.getRealPath("resources/eventimg");
 		String path2 = request.getRealPath("com/javajo/img");
+		System.out.println(path2);
 		MultipartFile file = ev.getFile();
 		String fname = "";
 		if(file!=null)
@@ -65,6 +66,9 @@ public class InserteController {
 			byte[]data = file.getBytes();
 			FileOutputStream fos= new FileOutputStream(path +"/" +fname);
 					fos.write(data);
+			byte[]data2 = file.getBytes();
+			FileOutputStream fos2= new FileOutputStream("C:/lastproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/project01/WEB-INF/classes/com/javajo/img/" +fname);
+			fos2.write(data2);
 			}catch(Exception e)
 			{
 				System.out.println(e.getMessage());
@@ -74,7 +78,7 @@ public class InserteController {
 		if(re==1)
 		{
 			System.out.println("¼º°ø");
-			mav.setViewName("redirect:/eventmail.com?e_content="+ev.getE_content());
+			mav.setViewName("redirect:/eventmail.com?e_content="+ev.getE_content()+"&&e_img="+ev.getE_img());
 		}
 		else
 		{

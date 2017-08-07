@@ -38,6 +38,7 @@ import com.silver.vo.RunningVo;
 import com.silver.vo.RunningstartVo;
 import com.silver.vo.SeatVo;
 import com.silver.vo.TicketCheckVo;
+import com.silver.vo.TicketInfo;
 
 /**
  * Handles requests for the application home page.
@@ -68,7 +69,7 @@ public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@Scheduled(cron="0 44 12 * * *")
+	@Scheduled(cron="0 49 11 * * *")
 	public void historyscedule()
 	{//historyÅ×ÀÌºí insert
 		tdao.historyinsert();
@@ -79,13 +80,12 @@ public class HomeController {
 		
 		ModelAndView mav = new ModelAndView();
 		seat_rc = seat_rc.substring(0,seat_rc.length()-1);
-		System.out.println("ticket_number   ::    "+ticket_number);
-		System.out.println("seat_rc     ::   "+seat_rc);
-		
+	
 		TicketCheckVo t = tdao.ticketcheck(ticket_number);
 		
+		TicketInfo info = tdao.ticketinfo(ticket_number);
 		
-		System.out.println("t   :"+t.toString());
+		mav.addObject("info", info);
 		mav.addObject("t", t);
 		mav.addObject("seat_rc", seat_rc);
 		return mav;
@@ -96,7 +96,7 @@ public class HomeController {
 
 		return mav;
 	}
-
+	
 	@RequestMapping("/fancy_sub1.com")
 	public ModelAndView test2() {
 		ModelAndView mav = new ModelAndView();
@@ -262,14 +262,14 @@ public class HomeController {
 
 	@RequestMapping(value = "fifthList.com", produces = "text/plain;charset=utf-8")
 	@ResponseBody
-	public String fifthList(String running_start, String running_date) {
+	public String fifthList(String running_start, String running_date, String mt_number) {
 		String str = "";
-		String list = bdao.fifthList(running_start,running_date);
+		String list = bdao.fifthList(running_start,running_date,mt_number);
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			str = mapper.writeValueAsString(list);
 		} catch (Exception e) {
-			System.out.println("fourth() mapper   ::    " + e.getMessage());
+			System.out.println("fifth() mapper   ::    " + e.getMessage());
 		}
 		
 		return str;

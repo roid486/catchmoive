@@ -289,7 +289,7 @@ float: right;
 						 no= $(tr).find(".ms_no").attr("idx");	 
 						 //var mid = $("#mnumber").val();
 						 var mid = "${m.m_number}";
-						 alert("mid : "+mid);
+						
 						
 						 if(firm){
 							 

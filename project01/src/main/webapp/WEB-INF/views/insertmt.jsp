@@ -54,7 +54,7 @@
 	    <div class="form-group">
 	      <label class="control-label col-sm-2" for="loc">Loc:</label>
 	      <div class="col-sm-10">          
-	        <input type="text" class="form-control" id="loc" placeholder="영화관 주소를 입력하십시오." name="mt_loc" required="required">
+	        <input type="text" class="form-control" id="loc" placeholder="EX)서울시 서대문구 신촌동" name="mt_loc" required="required">
 	      </div>
 	    </div>
 	    <div class="form-group">
