@@ -19,17 +19,14 @@
 		<%-- var id2 = "<%= (String)session.getAttribute("customerid2")%>" --%>
 		 var id1 = $("#se_id").val();
 
-	 	$("#msgdialog").dialog({
-	         autoOpen:false,
-	         modal:true
-	      }); 
+	 
 	
 		$("#btn_insert").click(function() {
-			alert("id1  ::   "+id1)
+			
 			if(id1==null || id1=="")
 			{
 				/* $("#msgdialog").dialog("open"); */
-				alert("이삭이 msdialog");
+				alert("로그인해주세요");
 			}
 			else
 			{

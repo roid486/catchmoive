@@ -59,7 +59,7 @@
 
 #bottom {
 	position: relative;
-	background-color: brown;
+	background-color: #e6f3ff;
 	color: white;
 }
 
