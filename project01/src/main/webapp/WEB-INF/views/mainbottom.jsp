@@ -136,7 +136,6 @@
       </div>
     </div>
   </div>
-</div>
 
 <!--오류 메시지2 Modal -->
   <div class="modal fade" id="emsgdial" role="dialog">
@@ -155,7 +154,5 @@
       </div>
     </div>
   </div>
-</div>
-
 </body>
 </html>
