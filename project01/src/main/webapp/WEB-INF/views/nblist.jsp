@@ -18,7 +18,7 @@
 		z-index: 1;
 	}
 	#bottom {
-	position: relative; background-color: brown; color: white;
+	position: relative;   background-color:  #e6f3ff; color: black;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -60,7 +60,6 @@
 	      <tr>
 	        <td>${nbl.nb_number }</td>
 	        <td>${nbl.nb_title }</td>
-	        <td>${nbl.nb_regdate }</td>
 	        <td><fm:formatDate value="${nbl.nb_regdate }" pattern="yyyy/MM/dd-HH:mm:ss"/> </td>
 	        <td><a href="updateNotice.com?nb_number=${nbl.nb_number }"><button class="btn btn-primary">수정</button></a></td>
 	        <td><a href="deleteNotice.com?nb_number=${nbl.nb_number }"><button class="btn btn-primary">삭제</button></a></td>
@@ -72,6 +71,9 @@
 	  	${pagenum }
 	  </center>
 	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

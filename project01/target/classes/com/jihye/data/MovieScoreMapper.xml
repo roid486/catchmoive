@@ -13,6 +13,9 @@
    select * from moviescore where ms_mid=#{ms_mid} order by ms_no desc
  <!-- 	select rownum,ms_no,ms_custid,ms_mid,ms_score,ms_comment from (select ms_no,ms_custid,ms_mid,ms_score,ms_comment from moviescore where ms_mid=#{ms_mid} order by ms_no desc) where rownum between #{start} and #{end}  -->
   </select>
+    <select id="isOneMember" resultType="java.lang.Integer">
+  	select count(*) from moviescore where ms_mid=#{ms_mid} and ms_custid=#{ms_custid}
+  </select>
   <select id="getTotal" resultType="java.lang.Integer">
   	select nvl(count(*),0) from moviescore where ms_mid=#{ms_mid}
   </select>
@@ -21,7 +24,7 @@
    </select>
    
    	<select id="getAvg" resultType="java.lang.Double">
- 	select round(avg(ms_score),1) from moviescore where ms_mid=#{ms_mid}
+ 	select nvl(round(avg(ms_score),1),0) from moviescore where ms_mid=#{ms_mid}
  	</select>
    
     <update id="updateMovieScore">

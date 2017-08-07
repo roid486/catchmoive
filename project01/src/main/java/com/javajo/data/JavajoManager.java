@@ -14,6 +14,7 @@ import com.javajo.vo.EventVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
 import com.javajo.vo.MovienameVo;
+import com.javajo.vo.MpriceVo;
 import com.javajo.vo.MyhistoryVo;
 import com.javajo.vo.MyticketVo;
 import com.javajo.vo.NoticeboardVo;
@@ -641,6 +642,124 @@ public class JavajoManager {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("c_id", c_id);
 		List<BoardVo> list = session.selectList("javajo.myb", map);
+		session.close();
+		return list;
+	}
+
+	public static int mysdelete(String c_id, String c_pw) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		map.put("c_pw", c_pw);
+		int re = session.delete("javajo.mycdelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int ticketdelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.ticketdelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int boarddelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.boarddelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int historytdelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.historytdelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int replydelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.replydelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int moviescoredelete(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.delete("javajo.moviescoredelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int seatupdate(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("c_id", c_id);
+		int re = session.update("javajo.seatupdate", map);
+		session.close();
+		return re;
+	}
+
+	public static int runningscedule(String sysday) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("sysday", sysday);
+		System.out.println(sysday);
+		int re = session.delete("javajo.runningscedule",map);
+		session.close();
+		return re;
+	}
+
+	public static int srupdate(String sysday) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("sysday", sysday);
+		int re = session.update("javajo.srupdate", map);
+		session.close();
+		return re;
+	}
+
+	public static int trupdate(String sysday) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("sysday", sysday);
+		int re = session.update("javajo.trupdate", map);
+		session.close();
+		return re;
+	}
+
+	public static int totalprice() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		int totalprice = session.selectOne("javajo.totalprice");
+		session.close();
+		return totalprice;
+	}
+
+	public static List<MpriceVo> mprice() {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		List<MpriceVo> list = session.selectList("javajo.mprice");
 		session.close();
 		return list;
 	}

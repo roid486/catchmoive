@@ -9,7 +9,7 @@
 
 </head>
 <body>
-	<div>
+	<div style="width: 100%">
 		<img src="resources/images/catchmovieLogo-iloveimg-resized.png" height="80px" style="float: left;">
 		<p>서울 마포구 백범로 23 구프라자3층</p>
 		<p>대표이사 : 자바조 사업자등록번호 : 100-12-123456	통신판매업신고번호 : 2017-서울마포-0662</p>
@@ -148,7 +148,7 @@
           <h4 class="modal-title glyphicon glyphicon-exclamation-sign" style="background: skyblue;"><strong>알림</strong></h4>
         </div>
         <div class="modal-body">
-          <center><p style="color: black;">${emsg }</p></center>
+          <center><p id="emsg" style="color: black;">${emsg }</p></center>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-info" data-dismiss="modal">확인</button>
@@ -157,7 +157,7 @@
     </div>
   </div>
 </div>
-  
+
 
 
 </body>

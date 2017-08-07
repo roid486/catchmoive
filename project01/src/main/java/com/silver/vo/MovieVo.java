@@ -11,7 +11,8 @@ public class MovieVo {
 	private String m_grade;                  
 	private String m_genre;              
 	private String m_opendate;                     
-	private String m_synop;                 
+	private String m_synop; 
+	private String m_image;
 	private String m_image1;
 	private String m_image2;
 	private String m_image3;
@@ -79,6 +80,12 @@ public class MovieVo {
 	public void setM_synop(String m_synop) {
 		this.m_synop = m_synop;
 	}
+	public String getM_image() {
+		return m_image;
+	}
+	public void setM_image(String m_image) {
+		this.m_image = m_image;
+	}
 	public String getM_image1() {
 		return m_image1;
 	}
@@ -122,8 +129,8 @@ public class MovieVo {
 		this.m_boxoffice = m_boxoffice;
 	}
 	public MovieVo(int m_number, String m_name, String m_director, String m_actor, String m_nation, int m_runningtime,
-			String m_grade, String m_genre, String m_opendate, String m_synop, String m_image1, String m_image2,
-			String m_image3, String m_trailer, int m_score, int m_isshowing, int m_boxoffice) {
+			String m_grade, String m_genre, String m_opendate, String m_synop, String m_image, String m_image1,
+			String m_image2, String m_image3, String m_trailer, int m_score, int m_isshowing, int m_boxoffice) {
 		super();
 		this.m_number = m_number;
 		this.m_name = m_name;
@@ -135,6 +142,7 @@ public class MovieVo {
 		this.m_genre = m_genre;
 		this.m_opendate = m_opendate;
 		this.m_synop = m_synop;
+		this.m_image = m_image;
 		this.m_image1 = m_image1;
 		this.m_image2 = m_image2;
 		this.m_image3 = m_image3;
@@ -146,8 +154,7 @@ public class MovieVo {
 	public MovieVo() {
 		super();
 		// TODO Auto-generated constructor stub
-	} 
-
-
+	}
+	
 	
 }

@@ -21,19 +21,18 @@
 	position: relative;
 	z-index: 999;
 }
-#center {
-	position: relative;
-	display: inline-block;
-	width: 100%;
-}
-
 #mslist{
 font-family: NanumGothic;
-width:60%;
-height: 400px;
 display: inline-block;
+		position: absolute;
+		left: 0px;
+		display: inline-block;
+		width: 20%;
+		height: 400px;
+		cursor: pointer;
 }
 #msimg_outter{
+	margin-left: 25%;
 	width: 900px; height: auto;
 	display: inline-block;
 	overflow: hidden;
@@ -123,7 +122,6 @@ display: inline-block;
 	<div id="menu">
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
-	<div id="center">
 		<div id="mslist" class="container" style="width: 23%;">
 			<table class="table">
 				<thead id="thead">
@@ -141,7 +139,6 @@ display: inline-block;
 			
 			</div>
 		</div>
-	</div>
 	<p></p>
 	<p></p>
 	<p></p>

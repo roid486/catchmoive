@@ -10,7 +10,7 @@
 	media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket_sub.css?a=43311" />
+	href="resources/eunseok/ticket_main_css/ticket_sub.css?a=1" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
@@ -38,7 +38,11 @@
 		var running_start;
 		var theater_number;
 		var running_number;
-		var org="";
+		var org = "";
+		var storethis;
+		var storeid="sub1_form";
+		var flag = 0;
+		var tx;
 		$.getJSON("firstList.com", function(data) {
 			$.each(data, function(index, item) {
 				var a1 = $("<a></a>").attr({
@@ -47,44 +51,61 @@
 					name : "sub1",
 					idx : item.m_image1
 				}).html(item.m_name)
-				
+
 				$("#sub1_form").append(a1, "<br>");
 			})
 		})
 
-		$(document).on("click", "a", function() {
-			var chk = $(this).attr("name");
-
-			$(this).css({
-				color : "red",
-				"font-weight" : "bold"
-			});
-			if (chk == "sub1") {
-				movie_number = $(this).attr("id");
-				var mname = $(this).text();
-				$("#name").html(mname);
-				$("#post").html("<img width='80px' height='100px' src='resources/upload/"+$(this).attr("idx")+"'>")
-				$("#sub2_form").empty();
-				$.ajax({
-					url : "secondList.com",
-					dataType : "json",
-					type : "GET",
-					data : {
-						movie_number : movie_number
-					},
-					success : function(data1) {
-						$.each(data1, function(index, item) {
-							var a2 = $("<a></a>").attr({
-								href : "#",
-								id : item.mt_number,
-								name : "sub2"
-							}).html(item.mt_name)
-							$("#sub2_form").append(a2, "<br>");
+		$(document).on(
+				"click",
+				"a",
+				function() {
+					var chk = $(this).attr("name");
+			 		
+					if (storethis != null) {
+						if (storethis != $(this)) {
+							storethis.css({
+								color : "#03c",
+								"font-weight" : "bold"
+							});
+							
+						}
+					}
+					
+					$(this).css({
+						color : "red",
+						"font-weight" : "bold"
+					});
+					
+					storethis = $(this);
+					if (chk == "sub1") {
+						movie_number = $(this).attr("id");
+						var mname = $(this).text();
+						$("#name").html(mname);
+						$("#post").html(
+								"<img width='80px' height='100px' src='resources/upload/"
+										+ $(this).attr("idx") + "'>")
+						$("#sub2_form").empty();
+						$.ajax({
+							url : "secondList.com",
+							dataType : "json",
+							type : "GET",
+							data : {
+								movie_number : movie_number
+							},
+							success : function(data1) {
+								$.each(data1, function(index, item) {
+									var a2 = $("<a></a>").attr({
+										href : "#",
+										id : item.mt_number,
+										name : "sub2"
+									}).html(item.mt_name)
+									$("#sub2_form").append(a2, "<br>");
+								})
+							}
 						})
 					}
 				})
-			}
-		})
 
 		$(document).on("click", " a", function() {
 			var chk = $(this).attr("name");
@@ -152,7 +173,9 @@
 			if (chk == "sub4") {
 				running_start = $(this).attr("id");
 				$("#the1").html(theater_number + "관")
-				$("#day").html($("#day").text() + " " + $(this).text())
+				
+				$("#day").html($("#day").text().substring(0,11) + " " +$(this).text())
+				tx = $(this).text();
 				$.ajax({
 					url : "fifthList.com",
 					datatype : "json",
@@ -161,10 +184,10 @@
 						running_start : running_start,
 						running_date : running_date
 					},
-					success : function(data){
+					success : function(data) {
 						running_number = eval(data);
 					},
-					error : function(data){
+					error : function(data) {
 						alert("실패" + data)
 					}
 				})
@@ -174,32 +197,40 @@
 		$("#move_sub2")
 				.click(
 						function() {
-							if (movie_number != null
-									&& movietheater_number != null
-									&& running_date != null
-									&& running_start != null
-									&& theater_number != null
-									&& running_number != null) {
-								window.location.href = "fancy_sub2.com?movie_number="
-										+ movie_number
-										+ "&movietheater_number="
-										+ movietheater_number
-										+ "&running_date="
-										+ running_date
-										+ "&running_start="
-										+ running_start
-										+ "&theater_number="
-										+ theater_number
-										+ "&running_number=" + running_number;
-							} else {
-								alert("선택하지 않은 항목이 있습니다.")
+							var loginid = $("#loginid").val();
+							if(loginid!=null && loginid!="")
+							{
+								if (movie_number != null
+										&& movietheater_number != null
+										&& running_date != null
+										&& running_start != null
+										&& theater_number != null
+										&& running_number != null) {
+									window.location.href = "fancy_sub2.com?movie_number="
+											+ movie_number
+											+ "&movietheater_number="
+											+ movietheater_number
+											+ "&running_date="
+											+ running_date
+											+ "&running_start="
+											+ running_start
+											+ "&theater_number="
+											+ theater_number
+											+ "&running_number=" + running_number;
+								} else {
+									alert("선택하지 않은 항목이 있습니다.")
+								}
+							}
+							else{
+								alert("로그인 하십시오.");
+								
 							}
 						})
 	})
 </script>
 </head>
 <body>
-
+	<input type="hidden" id="loginid" value="${se_id }">
 	<center>
 		<div id="main_form">
 			<div id="chk1">
@@ -213,7 +244,8 @@
 					<a href="#" class="button" id="btn1">뒤로가기</a>
 				</div>
 				<div id="small2">
-					<span id='post'></span><br> <span id="name" style="color: white;"></span>
+					<span id='post'></span><br> <span id="name"
+						style="color: white;"></span>
 				</div>
 				<div id="small3">
 					극장 <br> <span id="the" style="color: white;"></span><br>상영관<br>

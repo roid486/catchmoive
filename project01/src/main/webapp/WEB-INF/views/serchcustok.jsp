@@ -15,7 +15,7 @@
 		z-index: 999;
 	}
 	#bottom {
-	position: relative; background-color: brown; color: white;
+	position: relative;   background-color:  #e6f3ff; color: black;
 	}
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -25,13 +25,10 @@
 <script type="text/javascript">
 	$(function () {
 		var msg = $("#msg").val();
-		$("#msgdialog").dialog({
-	         autoOpen:false,
-	         modal:true
-	      });
 		if(msg!="")
 		{
-			$("#msgdialog").dialog("open");
+			$("#emsg").text(msg);
+			$("#emsgdial").modal();
 		}
 	});
 </script>
@@ -122,9 +119,9 @@
 	    </div>
 	  </form>
 	</div>
-	<div id="msgdialog">
-		<center><font color="red">${msg }</font></center>
-	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

@@ -2,12 +2,14 @@ package com.javajo.controller;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -46,7 +48,6 @@ public class MainContoller {
 	public ModelAndView main(HttpServletRequest request)
 	{
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("mtlist", dao.mtlist());
 		HttpSession session = request.getSession();
 		session.setAttribute("se_id", id);
 		mav.addObject("signupnum", re);
@@ -66,7 +67,6 @@ public class MainContoller {
 		String yes = "yes";
 		ModelAndView mav = new ModelAndView();
 		int echeck = dao.echeckupdate(email,yes);
-		mav.addObject("mtlist", dao.mtlist());
 		mav.addObject("loginid", id);
 		mav.addObject("signupnum", re);
 		if(echeck!=0)
@@ -102,7 +102,6 @@ public class MainContoller {
 	public ModelAndView terms()
 	{
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("mtlist", dao.mtlist());
 		return mav;
 	}
 
@@ -110,7 +109,6 @@ public class MainContoller {
 	public ModelAndView serchcustok()
 	{
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("mtlist", dao.mtlist());
 		mav.addObject("serchid", id2);
 		mav.addObject("msg", msg);
 		mav.addObject("name", SerchcustController.name);
@@ -219,6 +217,19 @@ public class MainContoller {
 		mav.addObject("myt", dao.myt(c_id));
 		mav.addObject("myh", dao.mth(c_id));
 		return mav;
+	}
+	
+	@Scheduled(cron="0 55 23 * * *")
+	public void runningscedule()
+	{
+		Date date = new Date();
+		int y = date.getYear()+1900;
+		int m = date.getMonth()+1;
+		int d = date.getDay()-1;
+		String sysday = y+"/"+m+"/"+d;
+		int a = dao.srupdate(sysday);
+		int b = dao.trupdate(sysday);
+		int re = dao.runningscedule(sysday);
 	}
 	
 	@RequestMapping(value="/movieselect.com",produces = "text/plain;charset=utf-8")

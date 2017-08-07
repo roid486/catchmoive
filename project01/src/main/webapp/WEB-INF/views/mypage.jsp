@@ -28,7 +28,7 @@
 		width: 60%;
 	}
 	#bottom {
-	position: relative; background-color: brown; color: white;
+	position: relative;   background-color:  #e6f3ff; color: black;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -50,8 +50,7 @@
 			location.href="myboard.com?c_id="+id;
 		});
 		$("#cdelete").click(function () {
-			alert("hi");
-			/* location.href="rlist.com"; */
+			location.href="mycdelete.com?c_id="+id;
 		});
 	});
 </script>
@@ -112,7 +111,7 @@
 		  </div>
 	    </div>
 	    <div class="panel panel-danger">
-	      <div class="panel-heading"><h3>예매내역</h3></div>
+	      <div class="panel-heading"><h3>나의 문의</h3></div>
 	      <div class="panel-body">
 				<div class="container">          
 				  <table class="table" style="width: 70%;">
@@ -131,6 +130,9 @@
 		  </div>
 	    </div>
 	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

@@ -95,14 +95,19 @@ public class MovieDao {
 		}*/
 		
 		
-		public List<MovieScoreVo> getMoveiScore(int ms_mid){
+		public List<MovieScoreVo> getMovieScore(int ms_mid){
 			
 			totalRecord= getTotal(ms_mid);
 			totalPage = (int)Math.ceil((double)totalRecord/pageSIZE);
-			System.out.println("totalRecord:"+ totalRecord);
-			System.out.println("totalPage:"+ totalPage);
+			//System.out.println("totalRecord:"+ totalRecord);
+			//System.out.println("totalPage:"+ totalPage);
 			
 			return MovieManager.getMovieScore(ms_mid);
+		}
+		
+		public int isOneMember(int ms_mid,String ms_custid){
+		
+			return MovieManager.isOneMember(ms_mid, ms_custid);
 		}
 		
 		public double getScoreAvg(int ms_mid){

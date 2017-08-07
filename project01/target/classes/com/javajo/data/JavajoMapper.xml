@@ -275,7 +275,43 @@ m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
     where rowm between #{num1} and #{num2}
   </select>
   <select id="myb" resultType="boardVo">
-  	select rownum, a.* from (select * from board where c_id='roid486' order by b_number desc) a
+  	select rownum, a.* from (select * from board where c_id=#{c_id} order by b_number desc) a
 	where rownum between 1 and 5
+  </select>
+  <delete id="mycdelete">
+  	delete customer where c_id=#{c_id} and c_pw=#{c_pw}
+  </delete>
+  <delete id="ticketdelete">
+  	delete ticket where c_id=#{c_id}
+  </delete>
+  <delete id="boarddelete">
+  	delete board where c_id=#{c_id}
+  </delete>
+  <delete id="historytdelete">
+  	delete history where c_id=#{c_id}
+  </delete>
+  <delete id="replydelete">
+  	delete reply where c_id=#{c_id}
+  </delete>
+  <delete id="moviescoredelete">
+  	delete moviescore where ms_custid=#{c_id}
+  </delete>
+  <update id="seatupdate">
+  	update seat set ticket_number=null where ticket_number=(select ticket_number from ticket where c_id=#{c_id})
+  </update>
+  <delete id="runningscedule">
+  	delete running where r_date=#{sysday}
+  </delete>
+  <update id="srupdate">
+  	update seat set r_number=null where r_number in(select r_number from running where r_date=#{sysday})
+  </update>
+  <update id="trupdate">
+  	update ticket set r_number=null where r_number in(select r_number from running where r_date=#{sysday})
+  </update>
+  <select id="totalprice" resultType="java.lang.Integer">
+  	select sum(h_ticket_price) from history
+  </select>
+  <select id="mprice" resultType="mpriceVo">
+  	select sum(h_ticket_price) m_price,m_name from history h,movie m where h.m_number=m.m_number group by m_name
   </select>
 </mapper>

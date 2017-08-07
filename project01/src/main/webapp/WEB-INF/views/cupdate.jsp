@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="resources/ui/jquery-ui.theme.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
-	#menu{
+	#menu {
 		position: relative;
 		z-index: 999;
 	}
@@ -18,8 +18,8 @@
 		position: relative;
 	}
 	#bottom {
-	position: relative; background-color: brown; color: white;
-}
+	position: relative;   background-color:  #e6f3ff; color: black;
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -42,8 +42,10 @@
 	<div id="menu">
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
-	<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
-	<div class="container" style="width:70%;">
+	<div id="msi">
+		<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
+	</div>
+	<div class="container" style="width:70%; margin-right: 10%">
 	  <form class="form-horizontal" action="cupdate.com" method="post">
 	  	<input type="hidden" name="c_echeck" value="${cdetail.c_echeck }">
 	  	<input type="hidden" name="c_email1" value="${cdetail.c_email }">
@@ -131,6 +133,9 @@
 	    </div>
 	  </form>
 	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">

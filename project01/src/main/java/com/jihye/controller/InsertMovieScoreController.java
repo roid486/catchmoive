@@ -40,7 +40,40 @@ public class InsertMovieScoreController {
 	@ResponseBody
 	public String submit(MovieScoreVo ms,HttpServletRequest request,HttpSession session,HttpServletResponse response){
 		String str="";
-		int re = dao.insertMovieScore(ms);
+		
+		int isExist = dao.isOneMember(ms.getMs_mid(), ms.getMs_custid());
+		if(isExist>=1){ //리스트 안에 있다는거 
+			str="실패";
+		}
+		else{
+			int re = dao.insertMovieScore(ms);
+			if(re==1){
+				System.out.println("데이터 삽입 성공!!!");
+			
+				double avg = dao.getScoreAvg(ms.getMs_mid());
+				
+				//System.out.println("평균 평점 : "+avg);
+				int up = dao.updateMovieTableScore(avg, ms.getMs_mid());
+				if(up==1){
+					System.out.println(avg+"영화테이블에 반영된 평균 값 m_score수정에 성공하였습니다. ");
+				}
+				List<MovieScoreVo> list = dao.getMovieScore(ms.getMs_mid());
+				ObjectMapper mapper = new ObjectMapper();
+				try {
+					str = mapper.writeValueAsString(list);
+				
+					
+				} catch (Exception e) {
+					System.out.println("여기는 평점 인서트 get방식 데이터() mapper   ::    " + e.getMessage());
+				}
+				
+			}
+			else{
+				System.out.println("삽입 실패 ㅠㅠ");
+			}
+		}
+	
+		
 		//System.out.println("인서트 무비스코어 : "+ms.getMs_mid());
 		//request.setAttribute("m_number", ms.getMs_mid()); //request는 페이지 한번 넘어갈때만 유효! session은 서버가 켜잇는 동안 유효 
 		
@@ -60,31 +93,9 @@ public class InsertMovieScoreController {
 		
 		
 		
-		if(re==1){
-			System.out.println("데이터 삽입 성공!!!");
-		
-			double avg = dao.getScoreAvg(ms.getMs_mid());
-			
-			//System.out.println("평균 평점 : "+avg);
-			int up = dao.updateMovieTableScore(avg, ms.getMs_mid());
-			if(up==1){
-				System.out.println(avg+"영화테이블에 반영된 평균 값 m_score수정에 성공하였습니다. ");
-			}
-		}
-		else{
-			System.out.println("삽입 실패 ㅠㅠ");
-		}
 		
 		
-		List<MovieScoreVo> list = dao.getMoveiScore(ms.getMs_mid());
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			str = mapper.writeValueAsString(list);
 		
-			
-		} catch (Exception e) {
-			System.out.println("여기는 평점 인서트 get방식 데이터() mapper   ::    " + e.getMessage());
-		}
 		
 		
 		return str;
@@ -99,7 +110,7 @@ public class InsertMovieScoreController {
 		String str="";
 		
 		//String pageStr = dao.getPageStr(ms_mid);
-		List<MovieScoreVo> list = dao.getMoveiScore(ms_mid);
+		List<MovieScoreVo> list = dao.getMovieScore(ms_mid);
 		
 		ObjectMapper mapper = new ObjectMapper();
 		try {

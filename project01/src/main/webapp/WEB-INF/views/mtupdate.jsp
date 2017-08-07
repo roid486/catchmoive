@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="resources/ui/jquery-ui.theme.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
-	#menu{
+	#menu {
 		position: relative;
 		z-index: 999;
 	}
@@ -18,7 +18,7 @@
 		position: relative;
 	}
 	#bottom {
-	position: relative; background-color: brown; color: white;
+	position: relative;   background-color:  #e6f3ff; color: black;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -39,7 +39,9 @@
 	<div id="menu">
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
-	<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
+	<div id="msi">
+		<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
+	</div>
 	<div class="container" style="width:70%;">
 	  <form class="form-horizontal" action="mtupdate.com" method="post" enctype="multipart/form-data">
 	  	<input type="hidden" name="mt_number" value="${mtdetail.mt_number }">
@@ -87,6 +89,9 @@
 	    </div>
 	  </form>
 	</div>
+	<p></p>
+	<p></p>
+	<p></p>
 	<br>
 	<br>
 	<div id="bottom">
