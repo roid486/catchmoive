@@ -11,14 +11,10 @@ text/html; charset=UTF-8"
 <body>
 
 	<%
-<<<<<<< HEAD
-		//response.sendRedirect("main.com"); 
-		response.sendRedirect("listBoard.com"); 
- 
-=======
+
 		response.sendRedirect("main.com"); 
 // 	response.sendRedirect("ticketCheck.com"); 
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
+
 // 	 response.sendRedirect("test_e.com");
 	 
 		//response.sendRedirect("main.com");

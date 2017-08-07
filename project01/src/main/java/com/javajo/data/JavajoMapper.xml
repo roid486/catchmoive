@@ -190,10 +190,7 @@
   <update id="eupdate">
      update event set e_title=#{e_title},e_regdate=sysdate,e_img=#{e_img},e_content=#{e_content} where e_number=#{e_number}
   </update>
-<<<<<<< HEAD
-  <select id="mslist" resultType="movieVo_j">
-     select * from movie where m_isshowing=1 order by m_score
-=======
+
   <select id="mslist" resultType="movieVo">  	
 	select rownum,a.* from (select * from movie where m_isshowing=1 order by m_boxoffice desc) a
 	where rownum between 1 and 10
