@@ -13,6 +13,7 @@ import com.javajo.vo.CustomerVo;
 import com.javajo.vo.EventVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
+import com.javajo.vo.MovieVo;
 import com.javajo.vo.MovienameVo;
 import com.javajo.vo.MpriceVo;
 import com.javajo.vo.MyhistoryVo;
@@ -502,10 +503,10 @@ public class JavajoManager {
 		return re;
 	}
 
-	public static List<MovieVo_j> mslist() {
+	public static List<MovieVo> mslist() {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
-		List<MovieVo_j> list = session.selectList("javajo.mslist");
+		List<MovieVo> list = session.selectList("javajo.mslist");
 		session.close();
 		return list;
 	}

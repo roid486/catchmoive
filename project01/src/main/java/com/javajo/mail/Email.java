@@ -6,6 +6,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
@@ -120,7 +121,7 @@ public class Email {
 	}
 	
 	@RequestMapping("/eventmail.com")
-	public ModelAndView eventmail(final String e_content)
+	public ModelAndView eventmail(final String e_content,final String e_img)
 	{
 		List<CustomerVo> celist = dao.celist();
 		ModelAndView mav = new ModelAndView("redirect:/elist.com");
@@ -134,7 +135,8 @@ public class Email {
 					messageHelper.setFrom("roid486@naver.com");
 					messageHelper.setTo(cv.getC_email());
 					messageHelper.setSubject("Event °øÁö");
-					messageHelper.setText("<pre>"+e_content+"</pre>", true);
+					messageHelper.setText("<img src='cid:logo' width='900' height='550'/><br><pre>"+e_content+"</pre>", true);
+					messageHelper.addInline("logo", new ClassPathResource("com/javajo/img/"+e_img));
 				}
 			});
 		}
