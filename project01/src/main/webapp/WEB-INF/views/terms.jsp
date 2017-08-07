@@ -1,25 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
-<<<<<<< HEAD
-#menu {
-	position: relative;
-	z-index: 999;
-}
-
-#bottom {
-	position: relative;
-	background-color: brown;
-	color: white;
-}
-=======
 	#menu{
 		position: relative;
 		z-index: 999;
@@ -27,12 +14,9 @@
 	#bottom {
 	position: relative;   background-color:  #e6f3ff; color: black;
 	}
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 </style>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	$(function () {
@@ -70,7 +54,8 @@
 	<center>
 		<table>
 			<tr>
-				<td><textarea rows="20" cols="50" readonly="readonly">
+				<td>
+					<textarea rows="20" cols="50" readonly="readonly">
 [필수입력정보 수집동의서]
 1. 개인정보의 수집 및 이용 목적 
 ① 고객에게 본인확인, 포인트 적립 및 결제 서비스
@@ -90,9 +75,11 @@
 ③ 대금결제 및 재화 등의 공급에 관한 기록 : 5년
 4. 동의를 거부할 권리 및 동의를 거부할 경우의 불이익 
 위 개인정보의 서비스 제공을 위한 최소한의 필수적인 수집·이용 정보이며 거부할 수 있습니다. 다만, 수집에 동의하지 않을 경우 서비스 이용이 제한됩니다.
-					</textarea><br> <input type="checkbox" id="term1" name="term"><span>동의합니다.</span>
+					</textarea><br>
+					<input type="checkbox" id="term1" name="term"><span>동의합니다.</span>
 				</td>
-				<td><textarea rows="20" cols="50" readonly="readonly">
+				<td>
+					<textarea rows="20" cols="50" readonly="readonly">
 [선택입력정보 수집동의서]
 1. 정보의 수집 및 이용 목적
 신규 서비스 등 최신정보 안내 및 개인맞춤서비스 제공을 위한 자료
@@ -107,7 +94,8 @@
 ③ 대금결제 및 재화 등의 공급에 관한 기록 : 5년
 4. 동의를 거부할 권리 및 동의를 거부할 경우의 불이익
 위 개인정보의 서비스 제공을 위한 최소한의 필수적인 수집·이용 정보이며 거부할 수 있습니다. 다만, 수집에 동의하지 않을 경우 서비스 이용이 제한됩니다.
-					</textarea><br> <input type="checkbox" id="term2" name="term"><span>동의합니다.</span>
+					</textarea><br>
+					<input type="checkbox" id="term2" name="term"><span>동의합니다.</span>
 				</td>
 			</tr>
 		</table>
@@ -116,14 +104,6 @@
 			<button id="termsok">다음</button>
 		</div>
 	</center>
-<<<<<<< HEAD
-	<div id="msgdialog">
-		<center>
-			<font color="red">약관을 모두 동의해주세요.</font>
-		</center>
-	</div>
-=======
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 	<p></p>
 	<p></p>
 	<p></p>

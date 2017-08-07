@@ -31,8 +31,6 @@ width:346px;
 border: 4px solid black;
 border-radius: 0px 0px 10px 10px; 
 }
-
-
 </style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -64,7 +62,6 @@ border-radius: 0px 0px 10px 10px;
 					if(flag < 14){
 						time = idx.substring(idx.indexOf("e")+1,idx.indexOf("h"))
 						if(!item.indexOf("S")){
-
 							$("<td></td>").html(time+":00").appendTo("#weather_ti");
 							$("<td></td>").html("<img width='35px' height='30px' src='resources/eunseok/weather_icons/"+item+".png'>").appendTo("#weather_em")
 						}
@@ -76,7 +73,7 @@ border-radius: 0px 0px 10px 10px;
 				})
 				$.each(data2, function(idx, item) {
 					if(flag1 < 7){
-						$("<td></td>").html(item.substring(0,2)+"¢¥C").appendTo("#weather_te")
+						$("<td></td>").html(item.substring(0,2)+"Â¢Â¥C").appendTo("#weather_te")
 					}
 					flag1++
 				})
@@ -92,7 +89,7 @@ border-radius: 0px 0px 10px 10px;
 </script>
  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=HXDb6FFIbjhAcZeJhqjy&submodules=geocoder"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Æ¼ÄÏ</title>
+<title>Ã†Â¼Ã„Ã</title>
 </head>
 <body>
 <center>
@@ -100,7 +97,7 @@ border-radius: 0px 0px 10px 10px;
 		<tr><td style="width: 10%;" rowspan="4"><img src="resources/upload/${t.m_image }" width="100px" height="130px"></td><td width="*">${t.m_name }</td></tr>
 		<tr><td>${t.mt_name } ${t.t_name }</td></tr>
 		<tr><td>${t.r_date } ${t.r_start }</td></tr>
-		<tr><td>ÀÎ¿ø: ${t.ticket_peoplenum }¸í ÁÂ¼®: ${seat_rc }</td></tr>
+		<tr><td>ì¸ì›: ${t.ticket_peoplenum }Â¸ë‚ ì§œ: ${seat_rc }</td></tr>
 		</table>
 	<table id="form">
 		<tr id="map"><jsp:include page="map.jsp"><jsp:param name="mx" value="${info.mt_x}"/><jsp:param name="my" value="${info.mt_y}"/></jsp:include></tr>
@@ -110,7 +107,7 @@ border-radius: 0px 0px 10px 10px;
 		<tr id="weather_te" style="text-align: center;"></tr>
 	</table>
 	<br>
-<button type="button" class="btn btn-primary btn-lg active">È®ÀÎ</button>
+<button type="button" class="btn btn-primary btn-lg active">í™•ì¸</button>
 	</center>
 </body>
 </html>

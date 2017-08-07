@@ -15,10 +15,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
-
-
 	$(function() {
-
 		var id1 = $("#se_id").val();
 		
 		function listReply(){
@@ -35,7 +32,6 @@
 				}
 			});	
 		}; 
-
 		
 		function listRe(){
 			
@@ -58,14 +54,11 @@
 				function() {
 					if (confirm("수정하시겠습니까?")) {
 						var re_content = $("#re_content").val();
-
 						var re_number = "${r.re_number}";
 						alert("re_content 내용::" + re_content);
-
 						var param = "re_content" + re_content + "&re_number= "
 								+ re_number;
 						alert("param ::" + param)
-
 						$.ajax({
 							type : "post",
 							dataType : "text",
@@ -75,28 +68,22 @@
 								"re_number" : re_number
 							},
 							success : function(data) {
-
 								alert("성공");
 								$("#modifyReply").css("visibility", "hidden");
 								// 댓글 목록 갱신
 								listRe();
 								//listReply();
-
 							},
 							error : function(data) {
-
 								alert("실패");
 								$("#modifyReply").css("visibility", "hidden");
 								// 댓글 목록 갱신
 								listRe();
 								//listReply();
 							}
-
 						});
 					}
-
 				});
-
 		// 5. 댓글 삭제
 		$("#btnReplyDelete").click(function() {
 			if (confirm("삭제하시겠습니까?")) {
@@ -121,14 +108,11 @@
 					}
 				});
 			}
-
 		});
-
 		//  댓글 상세화면 닫기
 		$("#btnReplyClose").click(function() {
 			$("#modifyReply").css("visibility", "hidden");
 		});
-
 	});
 </script>
 </head>

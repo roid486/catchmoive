@@ -17,7 +17,6 @@ $(function() {
 	    autoOpen:false,
 	    modal:true
 	 }); 
-
 	listReply();
  
 	function listReply(){
@@ -83,7 +82,6 @@ $(function() {
         return false;
         
     });
-
 });
 </script>
 <style>
@@ -95,15 +93,12 @@ $(function() {
 	z-index: 10;
 	visibility: hidden;
 }
-
 .form-group {
 	
 }
-
 .control-label-col {
 	font-size: 20px;
 }
-
 .col-sm-offset-2-col-sm-8 {
 	position: relative;
 }

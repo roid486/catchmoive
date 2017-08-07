@@ -103,7 +103,6 @@
 								<td>${myt.r_start }</td>
 								<td>${myt.ticket_peoplenum }</td>
 								<td>${myt.ticket_price }</td>
-								<td><a href="tkdelete.com?ticket_number=${myt.ticket_number }&&c_id=${se_id }"><button class="btn btn-primary">삭제</button></a></td>
 							</tr>
 				    	</m:forEach>
 				    </tbody>

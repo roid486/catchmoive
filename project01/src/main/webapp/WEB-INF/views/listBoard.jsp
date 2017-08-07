@@ -18,7 +18,6 @@
 		 <%-- var id1 = <%= session.getAttribute("se_id")%> --%>
 		<%-- var id2 = "<%= (String)session.getAttribute("customerid2")%>" --%>
 		 var id1 = $("#se_id").val();
-
 	 	$("#msgdialog").dialog({
 	         autoOpen:false,
 	         modal:true
@@ -48,10 +47,8 @@
 		
 		//임의
 		
-
 		
 	}); 
-
 </script>
 <style type="text/css">
 #bottom {
@@ -59,7 +56,6 @@
 	background-color: brown;
 	color: white;
 }
-
 #table {
 	width: 100%;
 	border: 1px solid black;
@@ -67,7 +63,6 @@
 	border-left: none;
 	border-bottom: none;
 }
-
 tr, th, td {
 	padding: 10px;
 }

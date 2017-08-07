@@ -6,17 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>캐치무비>>관리자>>영화 정보 추가</title>
 <style type="text/css">
-#lab {
-	font: normal;
-	color: blue;
-	font-size: 15pt;
-}
-
-#fail {
-	font: normal;
-	color: red;
-	font-size: 15pt;
-}
+	#lab{
+		font: normal;color: blue;
+		font-size: 15pt;
+	}
+	#fail{
+		font: normal;color: red;
+		font-size: 15pt;
+	}
 </style>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -30,7 +27,7 @@
 		<h2>영화 등록</h2>
 		<form class="form-horizontal" action="insertMovie.com" method="post"
 			enctype="multipart/form-data">
-
+			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="m_name">영화 제목:</label>
 				<div class="col-sm-5">
@@ -38,7 +35,7 @@
 						placeholder="영화 제목을 써주세요." name="m_name" required="required">
 				</div>
 			</div>
-
+			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="m_director">감독
 					이름:</label>
@@ -47,7 +44,7 @@
 						name="m_director" required="required">
 				</div>
 			</div>
-
+			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="m_actor">주연 배우:</label>
 				<div class="col-sm-5">
@@ -55,7 +52,7 @@
 						required="required">
 				</div>
 			</div>
-
+			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="m_nation">개봉 국가:</label>
 				<div class="col-sm-5">
@@ -63,7 +60,7 @@
 						name="m_nation" required="required">
 				</div>
 			</div>
-
+			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="m_runningtime">상영
 					시간:</label>
@@ -80,20 +77,20 @@
 						name="m_grade" required="required">
 				</div>
 			</div> -->
-
+		
 			<div class="form-group">
-				<span class="col-sm-2 control-label"> <label for="m_grade">영화
-						관람 등급:</label></span>
-				<div class="col-sm-4">
-					<select class="form-control" id="m_grade" name="m_grade">
-						<option>전체 관람가</option>
-						<option>12세 관람가</option>
-						<option>15세 관람가</option>
-						<option>청소년 관람불가</option>
-					</select>
-				</div>
+            <span class="col-sm-2 control-label">
+			<label for="m_grade">영화 관람 등급:</label></span>
+            <div class="col-sm-4">
+			<select class="form-control" id="m_grade" name="m_grade">
+				<option>전체 관람가</option>
+				<option>12세 관람가</option>
+				<option>15세 관람가</option>
+				<option>청소년 관람불가</option>
+			</select>
+            </div>
 			</div>
-
+			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="m_genre">영화 장르:</label>
 				<div class="col-sm-5">
@@ -121,14 +118,13 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="m_image">포스터 이미지:</label>
 				<div class="col-sm-8">
-					<input type="file" class="form-control" id="m_image"
-						name="uploadFile" required="required">
+					<input type="file" class="form-control" id="m_image" name="uploadFile"
+						required="required">
 				</div>
 			</div>
-
+			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_trailer">예고편
-					url:</label>
+				<label class="control-label col-sm-2" for="m_trailer">예고편 url:</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="m_trailer"
 						name="m_trailer" required="required">
@@ -172,16 +168,15 @@
 			</div>
 
 			<div class="form-group">
-				<div class="col-sm-2 control-label">
-					<label for="m_isshowing">영화 상영 여부:</label>
-				</div>
-				<div class="col-sm-3">
-					<select class="form-control" id="m_isshowing" name="m_isshowing">
-						<option value="1">상영중</option>
-						<option value="2">상영 예정</option>
-						<option value="0">상영 종료</option>
-					</select>
-				</div>
+            	<div class="col-sm-2 control-label">
+				<label for="m_isshowing">영화 상영 여부:</label> </div>
+                <div class="col-sm-3">
+			<select class="form-control" id="m_isshowing" name="m_isshowing">
+				<option value="1">상영중</option>
+				<option value="2">상영 예정</option>
+				<option value="0">상영 종료</option>
+			</select>
+            </div>
 			</div>
 
 			<!-- <div class="form-group">
@@ -196,7 +191,8 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-default">영화 등록</button>
-					<label id="lab">&nbsp;&nbsp;${success }</label> <label id="fail">&nbsp;&nbsp;${fail }</label>
+					<label id="lab">&nbsp;&nbsp;${success }</label>
+					<label id="fail">&nbsp;&nbsp;${fail }</label>
 				</div>
 			</div>
 		</form>

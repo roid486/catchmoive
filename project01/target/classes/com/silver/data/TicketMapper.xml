@@ -3,10 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ticket">
-<<<<<<< HEAD
-	<select id="tlist" resultType="com.silver.vo.TicketVo">
-		select * from ticket
-=======
 
 	<select id="ticketcheck" resultType="com.silver.vo.TicketCheckVo">
 		select distinct m.M_NAME,m.M_IMAGE ,mt.MT_NAME,t.T_NAME, to_char(r.R_DATE,'yyyy-mm-dd') r_date,
@@ -16,10 +12,7 @@
 		and ti.MT_NUMBER= mt.MT_NUMBER
 		and ti.T_NUMBER = t.T_NUMBER
 		and ti.TICKET_NUMBER=#{param1}
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 	</select>
-<<<<<<< HEAD
-=======
 	
 	<select id="ticketinfo" resultType="com.silver.vo.TicketInfo">
 	select mt_loc, mt_x, mt_y from movietheater where mt_number =(select mt_number from ticket where ticket_number =#{param1})
@@ -28,14 +21,9 @@
 	<select id="tlist" resultType="com.silver.vo.TicketVo">
 		select * from ticket
 	</select>
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 
 	<delete id="deleteTicket">
-<<<<<<< HEAD
-		delete from ticket;
-=======
 		delete from ticket
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 	</delete>
 
 	<insert id="historyinsert">
@@ -44,15 +32,9 @@
 		HH24:MI:SS'),#{ticket_peoplenum},#{mt_number},#{t_number},#{ticket_price},#{c_id},#{m_number})
 	</insert>
 
-<<<<<<< HEAD
-	<update id="resetSeat">
-		update seat set ticket_number=null, seat_ft='n'
-	</update>
-=======
 	<delete id="resetSeat">
 		delete from seat
 	</delete>
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 
 	<select id="seatNum" resultType="java.lang.Integer">
 		select t_seat from theater where
@@ -90,23 +72,10 @@
 	</insert>
 
 	<update id="update">
-<<<<<<< HEAD
-
-		update seat set seat_ft='y', ticket_number =
-		#{ticket_number}, r_number=#{r_number}
-		where t_number =#{t_number} and
-		mt_number=#{mt_number}
-		and seat_column = #{b} and seat_row=#{a}
-
-		update seat set s_ft='y', ticket_number = #{ticket_number}
-		where t_number =#{t_number} and mt_number=#{mt_number} and r_number=#{r_number}
-=======
 		update seat set s_ft='y', ticket_number =
 		#{ticket_number}
 		where t_number =#{t_number} and mt_number=#{mt_number}
 		and r_number=#{r_number}
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 		and s_column = #{b} and s_row=#{a}
-
 	</update>
 </mapper>
