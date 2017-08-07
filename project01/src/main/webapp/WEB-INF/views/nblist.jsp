@@ -38,7 +38,7 @@
 		<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
 	</div>
 	<div class="container" id="clist" style="width: 60%;">
-	  <h2>이벤트 목록</h2>
+	  <h2>공지사항 목록</h2>
 	  <p><a href="insertNotice.com"><button class="btn btn-primary">공지사항 추가</button></a></p>
 	  <form action="nblist.com" method="post">
 			<input type="text" name="key" placeholder="공지사항명을 입력하시오.">

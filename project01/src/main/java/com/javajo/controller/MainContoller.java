@@ -20,6 +20,7 @@ import com.javajo.dao.JavajoDao;
 import com.javajo.vo.CustomerVo;
 import com.javajo.vo.MovieTheaterVo;
 import com.javajo.vo.MovieTheaterVo2;
+import com.javajo.vo.MovieVo;
 import com.javajo.vo.MovienameVo;
 import com.javajo.vo.RunningVo;
 import com.javajo.vo.RunningVo2;
@@ -286,7 +287,7 @@ public class MainContoller {
 	{
 		String str = "";
 		ObjectMapper mapper = new ObjectMapper();
-		List<MovieVo_j> list = dao.mslist();
+		List<MovieVo> list = dao.mslist();
 		try{
 			str = mapper.writeValueAsString(list);
 		}catch (Exception e) {
