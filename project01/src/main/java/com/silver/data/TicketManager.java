@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.silver.vo.BoxofficeVo;
 import com.silver.vo.MovieVo;
 import com.silver.vo.SeatVo;
 import com.silver.vo.TicketCheckVo;
@@ -123,5 +124,20 @@ public class TicketManager {
 		
 		
 		return info;
+	}
+	public static void boxoffice() {
+		SqlSession session = factory.openSession();
+		int total = session.selectOne("ticket.histotal");
+		List<BoxofficeVo> list = session.selectList("ticket.hislis"); 
+		
+		for(int i=0; i < list.size(); i++)
+		{
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			list.get(i).
+			map.put("", value);
+			session.update("ticket.updateboxoffice", map);
+		}
+		
+		
 	}
 }

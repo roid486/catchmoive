@@ -73,6 +73,7 @@ public class HomeController {
 	public void historyscedule()
 	{//historyÅ×ÀÌºí insert
 		tdao.historyinsert();
+		tdao.boxoffice();
 	}
 	
 	@RequestMapping("/ticketCheck.com")
