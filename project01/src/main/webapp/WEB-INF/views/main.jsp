@@ -41,7 +41,9 @@ display: inline-block;
 	float: left; width: 900px; height: 550px;
 }
 #bottom {
+
 	position: relative;   background-color:  #e6f3ff; color: black;
+
 }
 .table{
 	cursor: pointer;

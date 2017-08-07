@@ -269,7 +269,7 @@ jq1(function($) {
              <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">예매</a></li>
              <li><a href="movietheater.com?mt_number=1">영화관</a></li>
              <li><a href="event.com">이벤트</a></li> 
-             <li><a id="listboard">공지사항</a></li> 
+             <li><a id="listboard">고객센터</a></li> 
          </ul>
       </div>
    </div>

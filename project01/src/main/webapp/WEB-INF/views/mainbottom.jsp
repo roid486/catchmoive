@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Insert title here</title>
-
 </head>
 <body>
 	<div style="width: 100%">
@@ -137,7 +136,6 @@
       </div>
     </div>
   </div>
-</div>
 
 <!--오류 메시지2 Modal -->
   <div class="modal fade" id="emsgdial" role="dialog">
@@ -156,6 +154,5 @@
       </div>
     </div>
   </div>
-</div>
 </body>
 </html>

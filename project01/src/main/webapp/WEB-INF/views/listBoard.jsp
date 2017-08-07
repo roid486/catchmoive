@@ -74,6 +74,11 @@ tr, th, td {
 #w3-bar-item {
 	font-family: -윤고딕340;
 }
+#bottom {
+
+	position: relative;   background-color:  #e6f3ff; color: black;
+
+}
 </style>
 </head>
 
@@ -164,10 +169,10 @@ tr, th, td {
 		
 		</form>
 	</div>
+	
+	</div>
 	<div id="bottom">
 		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
-	</div>
-	
 	</div>
 	
 </body>

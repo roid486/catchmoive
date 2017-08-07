@@ -158,7 +158,7 @@ public class UpdateMovieController {
 		
 		if(re==1){
 			
-			mav.addObject("success", "\""+m.getM_name()+"\""+" 데이터 수정에 성공 했습니다.");
+			mav.setViewName("redirect:/mlist.com");
 		}
 		else{
 			mav.addObject("fail", "\""+m.getM_name()+"\""+" 데이터 수정에 실패 했습니다.");
