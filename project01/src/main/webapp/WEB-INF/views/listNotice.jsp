@@ -26,17 +26,14 @@ $(function() {
 	border-left: none;
 	border-bottom: none;
 }
-
 tr, th, td {
 	padding: 10px;
 }
-
 #menu {
 	position: absolute;
 	top: 500px;
 	color: #80d4ff;
 }
-
 #w3-bar-item {
 	font-family: -윤고딕340;
 }
@@ -119,4 +116,3 @@ tr, th, td {
 	</div>
 </body>
 </html>
-

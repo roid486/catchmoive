@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,20 +8,8 @@
 <link rel="stylesheet" href="resources/ui/jquery-ui.min.css">
 <link rel="stylesheet" href="resources/ui/jquery-ui.structure.min.css">
 <link rel="stylesheet" href="resources/ui/jquery-ui.theme.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
-<<<<<<< HEAD
-#mtl {
-	position: relative;
-}
-
-#bottom {
-	position: relative;
-	background-color: brown;
-	color: white;
-}
-=======
 	#menu {
 		position: relative;
 		z-index: 999;
@@ -32,12 +20,9 @@
 	#bottom {
 	position: relative;   background-color:  #e6f3ff; color: black;
 	}
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 </style>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	$(function () {
@@ -102,40 +87,44 @@
 		<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
 	</div>
 	<div class="container" id="mtl" style="width: 60%;">
-		<h2>시간표 등록</h2>
-		<form class="form-horizontal" action="insertr.com" method="post">
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="m_number">영화:</label>
-				<div class="col-sm-10" id="msele"></div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="mt_number">영화관:</label>
-				<div class="col-sm-10" id="mtsele"></div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="t_number">상영관:</label>
-				<div class="col-sm-10" id="tsele"></div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="r_date">상영날짜:</label>
-				<div class="col-sm-10">
-					<input type="date" class="form-control" id="r_date" name="r_date"
-						required="required">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="r_start">상영 시작시간:</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="r_start"
-						placeholder="HH:MM으로 입력하십시오." name="r_start" required="required">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">등록</button>
-				</div>
-			</div>
-		</form>
+	  <h2>시간표 등록</h2>
+	  <form class="form-horizontal" action="insertr.com" method="post">
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="m_number">영화:</label>
+	      <div class="col-sm-10" id="msele">
+	        
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="mt_number">영화관:</label>
+	      <div class="col-sm-10" id="mtsele">          
+	        
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="t_number">상영관:</label>
+	      <div class="col-sm-10" id="tsele">
+	      
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="r_date">상영날짜:</label>
+	      <div class="col-sm-10">
+	        <input type="date" class="form-control" id="r_date" name="r_date" required="required">
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2" for="r_start">상영 시작시간:</label>
+	      <div class="col-sm-10">          
+	        <input type="text" class="form-control" id="r_start" placeholder="HH:MM으로 입력하십시오." name="r_start" required="required">
+	      </div>
+	    </div>
+	    <div class="form-group">        
+	      <div class="col-sm-offset-2 col-sm-10">
+	        <button type="submit" class="btn btn-default">등록</button>
+	      </div>
+	    </div>
+	  </form>
 	</div>
 	<p></p>
 	<p></p>

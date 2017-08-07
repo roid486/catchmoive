@@ -51,11 +51,9 @@
 					name : "sub1",
 					idx : item.m_image1
 				}).html(item.m_name)
-
 				$("#sub1_form").append(a1, "<br>");
 			})
 		})
-
 		$(document).on(
 				"click",
 				"a",
@@ -106,10 +104,8 @@
 						})
 					}
 				})
-
 		$(document).on("click", " a", function() {
 			var chk = $(this).attr("name");
-
 			if (chk == "sub2") {
 				movietheater_number = $(this).attr("id");
 				var the = $(this).text();
@@ -136,7 +132,6 @@
 				})
 			}
 		})
-
 		$(document).on("click", " a", function() {
 			var chk = $(this).attr("name");
 			if (chk == "sub3") {
@@ -164,10 +159,8 @@
 						})
 					}
 				})
-
 			}
 		})
-
 		$(document).on("click", " a", function() {
 			var chk = $(this).attr("name");
 			if (chk == "sub4") {
@@ -194,7 +187,6 @@
 				})
 			}
 		})
-
 		$("#move_sub2")
 				.click(
 						function() {

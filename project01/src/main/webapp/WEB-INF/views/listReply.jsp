@@ -13,7 +13,6 @@
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	function showReplyModify(re_number) {
-
 		$.ajax({
 			type : "get",
 			url : "detailReply.com?re_number=" + re_number,
@@ -40,7 +39,6 @@
 	border-left: none;
 	border-bottom: none;
 }
-
 tr, th, td {
 	padding: 10px;
 }

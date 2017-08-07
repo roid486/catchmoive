@@ -145,7 +145,7 @@
      insert into running values(se_running.nextval,#{t_number},#{m_number},#{mt_number},to_date(#{r_date},'yyyy/mm/dd'),#{r_start})
   </insert>
   <select id="msele" resultType="movieVo_j">
-     select m_number,m_name from movie
+  	select m_number,m_name from movie where m_isshowing=1
   </select>
   <select id="mtsele" resultType="movietheaterVo2">
      select mt_number,mt_name from movietheater
@@ -189,12 +189,14 @@
   </select>
   <update id="eupdate">
      update event set e_title=#{e_title},e_regdate=sysdate,e_img=#{e_img},e_content=#{e_content} where e_number=#{e_number}
+
   </update>
+
+
 
   <select id="mslist" resultType="movieVo">  	
 	select rownum,a.* from (select * from movie where m_isshowing=1 order by m_boxoffice desc) a
 	where rownum between 1 and 10
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
   </select>
   <select id="tseat" resultType="java.lang.Integer">
      select t_seat from theater where t_number=#{t_number}
@@ -317,4 +319,10 @@ m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
   <select id="mprice" resultType="mpriceVo">
   	select sum(h_ticket_price) m_price,m_name from history h,movie m where h.m_number=m.m_number group by m_name
   </select>
+  <update id="stkupdate">
+  	update seat set s_ft=#{s_ft}, ticket_number=null where ticket_number=#{ticket_number}
+  </update>
+  <delete id="tkdelete">
+  	delete ticket where ticket_number=#{ticket_number}
+  </delete>
 </mapper>

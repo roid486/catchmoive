@@ -47,7 +47,6 @@
 		var winWidth = document.body.clientWidth;	// 현재창의 너비
 		var winX = window.screenLeft;	// 현재창의 x좌표
 		var winY = window.screenTop;	// 현재창의 y좌표
-
 		var popX = winX + (winWidth - 400)/2;
 		var popY = winY + (winHeight - 650)/2;
 		
@@ -83,11 +82,9 @@
 					
 					
 				}
-
 			})
 		});
 		$("#btn2").click(function() {
-
 			history.back();
 		});
 	})
@@ -115,7 +112,6 @@
 				var label = $("<label/>").attr("for",
 						item.s_row + item.s_column).css("text-align","center")
 						.html("<span id=es>"+item.s_column+"</span>"); 
-
 				if(item.s_ft=='y')
 					{
 					input.attr({
@@ -246,7 +242,6 @@
 				}
 			})
 				$("#present").html("<b>"+flag+"</b>");
-
 		})
 		
 		$("#radio label").click(function() {
@@ -289,7 +284,6 @@
 			$("#nseat").html("");
 			
 		})
-
 	});
 </script>
 <title>Insert title here</title>
@@ -387,22 +381,21 @@
 							</center>
 						</div>
 						<div id="small2">
-<<<<<<< HEAD
-							영화 포스터/영화이름 <br> <font style="color: white;">${movie_name }</font>
-=======
 							<span><img width='80px' height='100px' src="resources/upload/${movie_image1 }"></span><br>
 							<font style="color: white;">${movie_name }</font>
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 						</div>
 						<div id="small3">
 							극장<br> <font style="color: white;">${movietheater_name }</font><br>
-							상영관<br> <font style="color: white;">${theater_number }관</font>
-							<br> 일시<br> <font style="color: white;">${running_date }
+							상영관<br>
+							<font style="color: white;">${theater_number }관</font> <br>
+							일시<br>
+							<font style="color: white;">${running_date }
 								${running_start }</font><br>
 						</div>
 						<div id="small4">
-							인원<br> <span id='pnum' style="color: white;"></span><br>좌석
-							번호 <br> <span id="nseat" style="color: white;"></span>
+							인원<br>
+							<span id='pnum' style="color: white;"></span><br>좌석 번호 <br>
+							<span id="nseat" style="color: white;"></span>
 						</div>
 						<div id="small5">
 							<center>

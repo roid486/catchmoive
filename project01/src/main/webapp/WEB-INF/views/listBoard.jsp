@@ -18,15 +18,17 @@
 		 <%-- var id1 = <%= session.getAttribute("se_id")%> --%>
 		<%-- var id2 = "<%= (String)session.getAttribute("customerid2")%>" --%>
 		 var id1 = $("#se_id").val();
-
-	 
+	 	$("#msgdialog").dialog({
+	         autoOpen:false,
+	         modal:true
+	      }); 
 	
 		$("#btn_insert").click(function() {
-			
+			alert("id1  ::   "+id1)
 			if(id1==null || id1=="")
 			{
 				/* $("#msgdialog").dialog("open"); */
-				alert("로그인해주세요");
+				alert("이삭이 msdialog");
 			}
 			else
 			{
@@ -45,10 +47,8 @@
 		
 		//임의
 		
-
 		
 	}); 
-
 </script>
 <style type="text/css">
 #bottom {
@@ -56,7 +56,6 @@
 	background-color: brown;
 	color: white;
 }
-
 #table {
 	width: 100%;
 	border: 1px solid black;
@@ -64,25 +63,21 @@
 	border-left: none;
 	border-bottom: none;
 }
-
 tr, th, td {
 	padding: 10px;
 }
-
 #menu {
-	position: absolute;
-	top: 500px;
+	position: absolute; 
+	top:500px;
 	color: #80d4ff;
 }
-
 #w3-bar-item {
 	font-family: -윤고딕340;
 }
-
 #bottom {
-	position: relative;
-	background-color: brown;
-	color: white;
+
+	position: relative;   background-color:  #e6f3ff; color: black;
+
 }
 </style>
 </head>
@@ -90,91 +85,95 @@ tr, th, td {
 <body>
 	<input type="hidden" id="se_id" value="${se_id }">
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
-
-	<!-- Sidebar -->
-	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 15%; border: 1px solid #80d4ff" id="menu">
-		<h3 class="w3-bar-item" id="w3-bar-item">Side Bar</h3>
-		<a href="listBoard.com" class="w3-bar-item w3-button">게시판</a> <br> <a href="listNotice.com" class="w3-bar-item w3-button">공지사항</a> <br> <br>
-
-	</div>
-
-	<div style="margin-left: 0%">
-
-		<center>
-			<h1>
-				<strong style="color: #8CCBFB">${title }</strong>
-			</h1>
-		</center>
 	
-
-		<hr>
-		<div class="table-responsive">
-			<div class="container">
-				<table id="table" class="table">
-					<tr>
-
-						<td align="center" bgcolor="#A1D6FE" colspan="3">제목</td>
-						<td bgcolor="#A1D6FE">작성자</td>
-						<td align="center" bgcolor="#A1D6FE">작성일</td>
-						<td bgcolor="#A1D6FE">조회</td>
-					</tr>
-
-
-					<c:forEach var="b" items="${list }">
-						<tr>
-							<td>${b.b_number }</td>
-							<td width="15%">${b.b_type }</td>
-							<td>
-								<a href="detailBoard.com?b_number=${b.b_number }">${b.b_title } <c:if test="${b.b_recnt > 0}">
-										<span class="badge"><span style="color: white;">${b.b_recnt}</span></span>
-									</c:if>
-								</a>
-							</td>
-							<td width="15%">${b.c_id }</td>
-							<%-- <td>${b.c_name }</td> --%>
-							<td width="15%">${b.b_regdate }</td>
-							<td width="5%">${b.b_hit }</td>
-						</tr>
-					</c:forEach>
-
-				</table>
-				<center>${pageStr }</center>
-				<hr style="border: solid 1px #A1D6FE;">
-			</div>
+	<!-- Sidebar -->
+		<div  class="w3-sidebar w3-light-grey w3-bar-block" style="width: 15%; border:1px solid #80d4ff"  id="menu">
+			<h3 class="w3-bar-item" id="w3-bar-item">Side Bar</h3>
+			<a href="listBoard.com" class="w3-bar-item w3-button">게시판</a>
+			<br><a href="listNotice.com" class="w3-bar-item w3-button">공지사항</a>
+			<br>
+			<br>
+			
 		</div>
+		
+		<div style="margin-left:15%">
 
+	<center>
+		<h1>
+			<strong style="color: #8CCBFB">${title }</strong>
+		</h1>
+	</center>
+	<a href="listNotice.com">임시공지사항이동</a>
+
+	<hr>
+	<div class="table-responsive">
 		<div class="container">
-			<div align="right">
-				<button class="btn btn-default" style="color: #8CCBFB" id="btn_insert">write</button>
-			</div>
-			<hr style="border: solid 2px #A1D6FE;">
-			<form class="form-horizontal" action="listBoard.com" method="post">
-				<center>
-					<div align="center" class="form-group">
+			<table id="table" class="table">
+				<tr>
 
-						<select class="control-label col-sm-1" name="searchField">
-							<option value=c_id>작성자</option>
-							<option value="b_title">제목</option>
-							<option value="b_content">내용</option>
-						</select>
-						<div class="col-sm-4">
-							<input ㅁclass="form-control" type="text" name="keyword">
-						</div>
-						<div class="col-sm-1">
-							<input class="btn btn-default" style="color: #8CCBFB" type="submit" value="검색">
-						</div>
+					<td align="center" bgcolor="#A1D6FE" colspan="3">제목</td>
+					<td bgcolor="#A1D6FE">작성자</td>
+					<td align="center" bgcolor="#A1D6FE">작성일</td>
+					<td bgcolor="#A1D6FE">조회</td>
+				</tr>
 
 
+				<c:forEach var="b" items="${list }">
+					<tr>
+						<td>${b.b_number }</td>
+						<td width="15%">${b.b_type }</td>
+						<td>
+							<a href="detailBoard.com?b_number=${b.b_number }">${b.b_title } <c:if test="${b.b_recnt > 0}">
+									<span class="badge"><span style="color: white;">${b.b_recnt}</span></span>
+								</c:if>
+							</a>
+						</td>
+						<td width="15%">${b.c_id }</td>
+						<%-- <td>${b.c_name }</td> --%>
+						<td width="15%">${b.b_regdate }</td>
+						<td width="5%">${b.b_hit }</td>
+					</tr>
+				</c:forEach>
 
-					</div>
-				</center>
-
-			</form>
+			</table>
+			<center>${pageStr }</center>
+			<hr style="border:solid 1px #A1D6FE;">
 		</div>
+	</div>
+	
+	<div class="container">
+		<div align="right">
+			<button class="btn btn-default" style="color: #8CCBFB" id="btn_insert">write</button>
+		</div>
+		<hr style="border:solid 2px #A1D6FE;">
+		<form class="form-horizontal" action="listBoard.com" method="post">
+		<center>
+			<div align="center" class="form-group">
+		
+				<select  class="control-label col-sm-1" name="searchField">
+						<option value=c_id>작성자</option>
+						<option value="b_title">제목</option>
+						<option value="b_content">내용</option>
+					</select> 
+					 <div class="col-sm-4">          
+ 					<input  class="form-control" type="text" name="keyword"> 
+    				 </div>
+					 <div class="col-sm-1">
+					<input  class="btn btn-default"  style="color: #8CCBFB" type="submit" value="검색">
+					</div>
 
+
+
+			</div>
+			</center>
+		
+		</form>
+	</div>
+	
 	</div>
 	<div id="bottom">
 		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
 	</div>
+	
 </body>
 </html>

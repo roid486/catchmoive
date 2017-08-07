@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="m" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -57,8 +55,6 @@ pageEncoding="UTF-8"%>
 	});
 </script>
 </head>
-<body>
-
 <body>
 	<input type="hidden" id="loginid" value="${se_id }">
 	<div id="menu">
@@ -142,6 +138,5 @@ pageEncoding="UTF-8"%>
 	<div id="bottom">
 		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
 	</div>
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 </body>
 </html>

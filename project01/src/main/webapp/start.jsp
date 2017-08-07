@@ -16,6 +16,7 @@ text/html; charset=UTF-8"
 // 	response.sendRedirect("ticketCheck.com"); 
 
 // 	 response.sendRedirect("test_e.com");
+
 	 
 		//response.sendRedirect("main.com");
 
