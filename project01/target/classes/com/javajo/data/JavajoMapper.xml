@@ -145,7 +145,7 @@
   	insert into running values(se_running.nextval,#{t_number},#{m_number},#{mt_number},to_date(#{r_date},'yyyy/mm/dd'),#{r_start})
   </insert>
   <select id="msele" resultType="movieVo_j">
-  	select m_number,m_name from movie
+  	select m_number,m_name from movie where m_isshowing=1
   </select>
   <select id="mtsele" resultType="movietheaterVo2">
   	select mt_number,mt_name from movietheater
@@ -303,16 +303,16 @@ m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
   <delete id="runningscedule">
   	delete running where r_date=#{sysday}
   </delete>
-  <update id="srupdate">
-  	update seat set r_number=null where r_number in(select r_number from running where r_date=#{sysday})
-  </update>
-  <update id="trupdate">
-  	update ticket set r_number=null where r_number in(select r_number from running where r_date=#{sysday})
-  </update>
   <select id="totalprice" resultType="java.lang.Integer">
   	select sum(h_ticket_price) from history
   </select>
   <select id="mprice" resultType="mpriceVo">
   	select sum(h_ticket_price) m_price,m_name from history h,movie m where h.m_number=m.m_number group by m_name
   </select>
+  <update id="stkupdate">
+  	update seat set s_ft=#{s_ft}, ticket_number=null where ticket_number=#{ticket_number}
+  </update>
+  <delete id="tkdelete">
+  	delete ticket where ticket_number=#{ticket_number}
+  </delete>
 </mapper>

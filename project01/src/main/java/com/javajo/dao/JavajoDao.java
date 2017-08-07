@@ -366,16 +366,6 @@ public class JavajoDao {
 		return JavajoManager.runningscedule(sysday);
 	}
 
-	public int srupdate(String sysday) {
-		// TODO Auto-generated method stub
-		return JavajoManager.srupdate(sysday);
-	}
-
-	public int trupdate(String sysday) {
-		// TODO Auto-generated method stub
-		return JavajoManager.trupdate(sysday);
-	}
-
 	public int totalprice() {
 		// TODO Auto-generated method stub
 		return JavajoManager.totalprice();
@@ -384,6 +374,16 @@ public class JavajoDao {
 	public List<MpriceVo> mprice() {
 		// TODO Auto-generated method stub
 		return JavajoManager.mprice();
+	}
+
+	public int stkupdate(int ticket_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.stkupdate(ticket_number);
+	}
+
+	public int tkdelete(int ticket_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.tkdelete(ticket_number);
 	}
 
 }
