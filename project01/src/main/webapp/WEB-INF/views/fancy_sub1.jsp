@@ -10,7 +10,7 @@
 	media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket_sub.css?a=1" />
+	href="resources/eunseok/ticket_main_css/ticket_sub.css?a=14323" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">

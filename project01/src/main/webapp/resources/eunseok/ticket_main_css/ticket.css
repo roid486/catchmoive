@@ -289,4 +289,11 @@ input[type=checkbox]:disabled+label:BEFORE { /*체크 박스에 체크  */
 	border-radius: 1px;
 	box-sizing: border-box;
 	border: 1px solid black;
+	
+}
+#btn3{
+	position: absolute;
+	cursor: pointer;
+	left: 700px;
+	top:150px;
 }
