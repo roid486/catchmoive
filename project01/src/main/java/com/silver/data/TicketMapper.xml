@@ -4,14 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ticket">
 
-	<select id="histotal">
+	<select id="histotal" resultType="java.lang.Integer">
 		select count(*) from history
 	</select>
 	
 	<select id="hislis" resultType ="com.silver.vo.BoxofficeVo">
-		select count(*), m_number from history group by m_number
+		select count(*) cnt, m_number from history group by m_number
 	</select>
 	
+	<update id="updateboxoffice">
+	update movie set m_boxoffice = #{boxoffice} where m_number = #{m_number}
+	</update>
 	
 	<select id="ticketcheck" resultType="com.silver.vo.TicketCheckVo">
 		select distinct
