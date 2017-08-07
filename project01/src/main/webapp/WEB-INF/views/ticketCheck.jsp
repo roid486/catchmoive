@@ -38,16 +38,24 @@ border-radius: 0px 0px 10px 10px;
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+		
+		var loc = "${info.mt_loc}";
+		var x = "${info.mt_x}";
+		var y = "${info.mt_y}";
 	
 	var flag = 0;
 	var flag1 = 0;
+		
+		
 		$.ajax({
 			url : "weather.jsp",
 			dataType : "json",
 			type : "GET",
-			// 		data : {
-			// 			movie_number : movie_number
-			// 		},
+			data : {
+				loc : loc,
+				mx : x,
+				my : y
+			},
 			success : function(data) {
 				var data1 = data.weather.forecast3days[0].fcst3hour.sky;
 				var data2 = data.weather.forecast3days[0].fcst3hour.temperature;
@@ -57,7 +65,7 @@ border-radius: 0px 0px 10px 10px;
 						time = idx.substring(idx.indexOf("e")+1,idx.indexOf("h"))
 						if(!item.indexOf("S")){
 
-							$("<td></td>").html(time+":00").appendTo("#weather_ti")
+							$("<td></td>").html(time+":00").appendTo("#weather_ti");
 							$("<td></td>").html("<img width='35px' height='30px' src='resources/eunseok/weather_icons/"+item+".png'>").appendTo("#weather_em")
 						}
 						else{
@@ -90,12 +98,12 @@ border-radius: 0px 0px 10px 10px;
 <center>
 	<table id ="ti" style="width: 348px; height: 50%; border:4px solid black; border-radius: 10px 10px 0px 0px;" >
 		<tr><td style="width: 10%;" rowspan="4"><img src="resources/upload/${t.m_image }" width="100px" height="130px"></td><td width="*">${t.m_name }</td></tr>
-		<tr><td>${t.mt_name } ${t.t_name }관</td></tr>
+		<tr><td>${t.mt_name } ${t.t_name }</td></tr>
 		<tr><td>${t.r_date } ${t.r_start }</td></tr>
 		<tr><td>인원: ${t.ticket_peoplenum }명 좌석: ${seat_rc }</td></tr>
 		</table>
 	<table id="form">
-		<tr id="map"><jsp:include page="map.jsp"/></tr>
+		<tr id="map"><jsp:include page="map.jsp"><jsp:param name="mx" value="${info.mt_x}"/><jsp:param name="my" value="${info.mt_y}"/></jsp:include></tr>
 		<tr id="weather_ti" style="text-align: center;"></tr>
 		<tr id="weather_em" style="text-align: center;"></tr>
 		<tr id="weather_ha"></tr>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.silver.data.TicketManager;
 import com.silver.vo.SeatVo;
 import com.silver.vo.TicketCheckVo;
+import com.silver.vo.TicketInfo;
 
 @Repository
 public class TicketDao {
@@ -55,6 +56,10 @@ public class TicketDao {
 	public TicketCheckVo ticketcheck(int ticket_number) {
 		return TicketManager.ticketcheck(ticket_number);
 		
+	}
+
+	public TicketInfo ticketinfo(int ticket_number) {
+		return TicketManager.ticketinfo(ticket_number);
 	}
 
 

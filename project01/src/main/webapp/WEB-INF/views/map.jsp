@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="org.apache.ibatis.executor.ReuseExecutor"%>
 <html>
   <head>
       <meta charset="UTF-8">
@@ -9,13 +10,17 @@
   <body>
     <div id="map" style="width:346px;height:300px; border: 4px solid black;" ></div>
     <script>
+ 	var x = "<%=request.getParameter("mx") %>";
+ 	var y = "<%=request.getParameter("my") %>";
+ 	
+    
     var map = new naver.maps.Map('map', {
-        center: new naver.maps.LatLng(37.556448, 126.940198),
+        center: new naver.maps.LatLng(x, y),
         zoom: 11
     });
 
     var marker = new naver.maps.Marker({
-        position: new naver.maps.LatLng(37.556448, 126.940198),
+        position: new naver.maps.LatLng(x, y),
         map: map
     });
       var myaddress = '신촌로 129';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
