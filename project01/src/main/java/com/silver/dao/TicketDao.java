@@ -62,6 +62,10 @@ public class TicketDao {
 		return TicketManager.ticketinfo(ticket_number);
 	}
 
+	public Object boxoffice() {
+		return TicketManager.boxoffice();
+	}
+
 
 	
 

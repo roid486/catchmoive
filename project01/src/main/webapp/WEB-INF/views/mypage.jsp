@@ -92,6 +92,18 @@
 	      <div class="panel-body">
 				<div class="container">          
 				  <table class="table" style="width: 70%;">
+				  	<thead>
+				      <tr>
+				        <th>티켓번호</th>
+				        <th>영화</th>
+				        <th>영화관</th>
+				        <th>상영관</th>
+				        <th>상영날짜</th>
+				        <th>상영시간</th>
+				        <th>상영 인원</th>
+				        <th>가격</th>
+				      </tr>
+				    </thead>
 				    <tbody>
 				    	<m:forEach var="myt" items="${myt }">
 				    		<tr>
@@ -115,6 +127,14 @@
 	      <div class="panel-body">
 				<div class="container">          
 				  <table class="table" style="width: 70%;">
+				  	<thead>
+				      <tr>
+				        <th>문의</th>
+				        <th>제목</th>
+				        <th>날짜</th>
+				        <th>작성자</th>
+				      </tr>
+				    </thead>
 				    <tbody>
 				    	<m:forEach var="mybl" items="${myb }">
 				    		<tr>

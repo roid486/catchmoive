@@ -91,6 +91,16 @@
 	      <div class="panel-body">
 				<div class="container">          
 				  <table class="table" style="width: 70%;">
+				  	<thead>
+				      <tr>
+				        <th>문의</th>
+				        <th>제목</th>
+				        <th>날짜</th>
+				        <th>작성자</th>
+				        <th>비고</th>
+				        <th>비고</th>
+				      </tr>
+				    </thead>
 				    <tbody>
 				    	<m:forEach var="mybl" items="${clist }">
 				    		<tr>
