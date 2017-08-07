@@ -28,6 +28,7 @@
 <script type="text/javascript">
 	var totalSum;
 	var totalNum;
+	var storeNum;
 	var movietheater_number = "${movietheater_number }"
 	var theater_number = "${theater_number }"
 	var running_start = "${running_start }"
@@ -41,7 +42,15 @@
 	
 	jq1(function($) {
 		$("#btn1").click(function() {
-			
+		
+		var winHeight = document.body.clientHeight;	// 현재창의 높이
+		var winWidth = document.body.clientWidth;	// 현재창의 너비
+		var winX = window.screenLeft;	// 현재창의 x좌표
+		var winY = window.screenTop;	// 현재창의 y좌표
+
+		var popX = winX + (winWidth - 400)/2;
+		var popY = winY + (winHeight - 650)/2;
+		
 			var str ="";
 			for(i=0;i<arr.length;i++)
 				{
@@ -60,13 +69,19 @@
 					str : str
 				},
 				success : function(data) {
-					if(data=="ok")
+					if(data!="no")
 						{
-						alert("성공적으로 예매 되었습니다.")
+						
+						var win = window.open("ticketCheck.com?ticket_number="+data+"&seat_rc="+str,
+								"popup",
+								"resizable=no,toolbar=no,menubar=no,location=no,scrollbar=no, width=343,height=590,top="+popY+",left="+popX);
+						parent.jq1.fancybox.close();	
+						
 						}else{
 							alert("예매 실패 다시 예매해주세요")
 						}
-					parent.jq1.fancybox.close();
+					
+					
 				}
 
 			})
@@ -119,18 +134,20 @@
 							"background-color" : "#C9C9C9",
 						})
 						if ($(this).text() <= 4 && totalNum >= 2) {
+							if(!$(this).parent().next().find("input[type=checkbox]").is(":checked")){
 							$(this).parent().next().find("label").css({
 								cursor : "pointer",
 								"background-color" : "#C9C9C9"
 							})
+						}
 						} else if($(this).text() >= 5 && totalNum >= 2){
+							if(!$(this).parent().prev().find("input[type=checkbox]").is(":checked")){
 							$(this).parent().prev().find("label").css({
 								cursor : "pointer",
 								"background-color" : "#C9C9C9"
 							})
 						}
-				}else{
-					  alert("관람할 인원을 선택해주세요")  
+						}
 				}
 				}, function() {
 					if (totalNum > 0) {
@@ -156,6 +173,8 @@
 							var one = $(this).parent().find(
 									"input[type=checkbox]");
 							var two;
+							if(totalNum>0){
+							
 							$(this).css({
 								"background-color" : "#fdfdee"
 							})
@@ -174,35 +193,49 @@
 								two = $(this).parent().prev().find(
 								"input[type=checkbox]");		
 							}
-							if(totalNum >=2 || totalNum==0){
-							if(two.is(":checked")){
-							two.prop("checked",false)
-							arr.pop(one.attr("id"))
-							arr.pop(two.attr("id"))
-							totalNum+=2;
+							alert("total "+totalNum +"storeNum "+storeNum)
+							
+							if(totalNum >=2 && !two.is(":disabled") && storeNum >= 2 ){
+// 								if(two.is(":checked")){
+// 									alert("해제 부분");
+// 									two.prop("checked",false)
+// 									arr.pop(one.attr("id"))
+// 									arr.pop(two.attr("id"))
+// 									totalNum+=2;
+// 								}
+// 								else{
+									two.attr("checked",true)
+									arr.push(one.attr("id"))
+									arr.push(two.attr("id"))
+									totalNum-=2;
+// 								}
 							}
 							else{
-							two.attr("checked",true)
-							arr.push(one.attr("id"))
-							arr.push(two.attr("id"))
-							totalNum-=2;
-							}
-							}
-							else{
+								if(!two.is(":disabled")&&two.is(":checked"))
+									{
+									alert("해제 부분");
+									two.prop("checked",false)
+									arr.pop(one.attr("id"))
+									arr.pop(two.attr("id"))
+									totalNum+=2;
+									}
+								else{
 								if(one.is(":checked")){
 									arr.pop(one.attr("id"))
 									totalNum+=1;
-									alert("one check")
 								}else{
 									arr.push(one.attr("id"))
 									totalNum-=1;
-									alert("one uncheck")
 								}
 							}
-							 
+							}
+							 alert("totalNum" + totalNum)
 							 $("#nseat").html("")
 							 $("#nseat").html(arr)
-						}) 
+							}else{
+								alert("관람인원을 초과하셨습니다.")
+								one.prop("checked",true);
+							}}) 
 				}
 				$(input).appendTo(divcol)
 				$(label).appendTo(divcol)
@@ -233,6 +266,7 @@
 			
 			totalSum = anum * 10000 + ynum * 7000 + snum * 5000;//총 가격
 			totalNum = anum + ynum + snum;//총 인원
+			storeNum = totalNum;
 			$("#pnum").html(t1+" "+t2+" "+t3);
 		})
 		$("#btn3").click(function(){
@@ -249,6 +283,7 @@
 			snum = 0;
 			totalNum = 0; 
 			totalSum = 0;
+			
 			arr = [];
 			$("#pnum").html("");
 			$("#nseat").html("");
