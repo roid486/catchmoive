@@ -40,7 +40,7 @@
 		<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
 	</div>
 	<div class="container" id="mtl" style="width: 60%;">
-	  <h2>상영관 등록</h2>
+	  <h2>이벤트 등록</h2>
 	  <form class="form-horizontal" action="inserte.com" method="post" enctype="multipart/form-data">
 	    <div class="form-group">
 	      <label class="control-label col-sm-2" for="title">Title:</label>

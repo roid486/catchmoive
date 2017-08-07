@@ -32,7 +32,11 @@ public class DetailMovieController {
 	public ModelAndView getMovie(int m_number,HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("m",dao.getMovie(m_number));
-		mav.addObject("ms",dao.getMoveiScore(m_number));
+		List<MovieScoreVo> list =  dao.getMovieScore(m_number);
+		/*for(MovieScoreVo m : list){
+			System.out.println("쿼리해온 mid를 디테일컨트롤러에서 찍어보자 :"+m.getMs_mid());
+		}*/
+		mav.addObject("ms",list);
 		//mav.addObject("ms",dao.listMovieScore());
 		//session.setAttribute("m", dao.getMovie(m_number));
 		

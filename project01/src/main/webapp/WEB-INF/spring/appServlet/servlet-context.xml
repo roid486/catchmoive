@@ -30,7 +30,6 @@
 	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
 	<beans:bean id="naverLoginBO" class="com.jihye.naver.NaverLoginBO" />
 
-
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
@@ -46,6 +45,7 @@
 
 	<context:component-scan base-package="com.jihye.dao" />
 	<context:component-scan base-package="com.jihye.controller" />
+
 	<context:component-scan base-package="com.jihye.naver"/>
 
 

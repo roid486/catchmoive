@@ -3,9 +3,8 @@ html, body, div, ul {
 	padding: 0;
 }
 
-
 body {
-    color: #262626;
+	color: #262626;
 	background: #ffffff;
 	font: normal 12px/18px Verdana, sans-serif;
 }
@@ -34,7 +33,8 @@ h1 span {
 
 hr {
 	border: none;
-	height: 1px; line-height: 1px;
+	height: 1px;
+	line-height: 1px;
 	background: #E5E5E5;
 	margin-bottom: 20px;
 	padding: 0;
@@ -57,13 +57,14 @@ a img {
 }
 
 a img.last {
-	margin-right: 0;	
+	margin-right: 0;
 }
 
 ul {
 	margin-bottom: 24px;
 	padding-left: 30px;
 }
+
 .whateverYouChooseforWrapCSS .fancybox-skin {
-  background: none;
+	background: none;
 }

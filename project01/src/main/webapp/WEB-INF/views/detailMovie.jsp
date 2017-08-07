@@ -6,6 +6,9 @@
 <html lang="en">
 <head>
 <style type="text/css">
+#w3-bar-item{
+font-family: -윤고딕340;
+}
 .end{
  	border-radius: 5px;
 	border: 2px solid gray;
@@ -25,22 +28,16 @@
  background: #DFF6FF;
  vertical-align: middle;
 }
-
 #comment{
-
 }
-
-
 #counter {
   /* background:rgba(255,0,0,0.5); */
   border-radius: 0.5em;
   padding: 0 .5em 0 .5em;
   font-size: 10pt;
   position: absolute;
-
   
 }
-
 #cnt{
 position:relative;
 top:-20px;
@@ -64,12 +61,12 @@ float: right;
 	}
 #bottom {
 	position: relative;   background-color:  #e6f3ff; color: black;
+	width: 100%;
 	}
-
-
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -77,7 +74,7 @@ float: right;
 <!-- <link rel="stylesheet" href="rating/modal.min.css"> -->
 <link rel="stylesheet" href="rating/jquery.raty.css">
 <script type="text/javascript" src="rating/jquery.raty.js"></script>
-<!-- <script type="text/javascript" src="rating/modal.min.js"></script> -->
+
   <script type="text/javascript">
   	$(function(){
   		var showing = $("#lab_showing").text();
@@ -171,8 +168,7 @@ float: right;
   			} */
   			
   			
-  			
-  			//alert(page); 
+  	
   			$.ajax({
   				type:"get",
   				url:"listMovieScore.com?ms_mid=${m.m_number}",
@@ -182,6 +178,7 @@ float: right;
   					$("#re_table").empty();
   				
   					$.each(JSON.parse(data),function(index,item){
+  					
   						
   						tr = $("<tr></tr>").attr("height","50px");
   						var td = $("<td></td>")
@@ -213,7 +210,6 @@ float: right;
   						$(tr).append(td4,td5); 
   						}
   						
-
 							 
   						$("#re_table").append(tr);
   					});
@@ -255,7 +251,6 @@ float: right;
   				  						alert("내용을 입력하지 않았습니다.");
   				  						  $('#revise_comment').focus();
   				  						  return;
-
   				  						}
   				  					else{
   				  							reviseComment();
@@ -280,8 +275,9 @@ float: right;
 						 
 						 var tr=$(this).closest("tr"); //누른거의 가장 가까운 tr을 찾는 코드 ! 
 						 no= $(tr).find(".ms_no").attr("idx");	 
-						 var mid = $("#mnumber").val();
-						 
+						 //var mid = $("#mnumber").val();
+						 var mid = "${m.m_number}";
+						 alert("mid : "+mid);
 						
 						 if(firm){
 							 
@@ -350,7 +346,7 @@ float: right;
   			});	//ajax
   			
   		
-  		};
+  		};//listMoviescore함수
   		
   	
   		
@@ -361,7 +357,7 @@ float: right;
   									로그인되있을시 -> moviescore insert하기!  */
   		$("#btn_register").click(function(){
   			var currentScore = $('#div_rating').raty('score'); //별점
-  		
+  			
   			
   			
   			$("#star").val(currentScore);
@@ -372,7 +368,6 @@ float: right;
   			if(cheklog == null || cheklog==""){
   				
   				var nonlogin = $("#myModal").modal();
-
   			}
   			else{
   				//alert("로그인했네?");
@@ -386,7 +381,7 @@ float: right;
   					return;
   				}
   				else{
-  					
+  			
   					$.ajax({
   		  				
   	  					url:"insertMovieScore.com",
@@ -395,8 +390,12 @@ float: right;
   	  					success:function(data){ 
   	  						$("#comment").val("");
   	  						listMovieScore();
+  	  						if(data=="실패"){
+  	  							alert("이미 등록된 평점입니다.");
+  	  						}
   	  						
   	  					},
+  	  					
   	  					
   	  				
   	  				});
@@ -410,7 +409,6 @@ float: right;
   			
   		});
   									
-
   									
   	});
   	
@@ -425,6 +423,21 @@ float: right;
 	<div id="menu">
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
+	
+	
+		
+	<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%" id="menu">
+  <h3 class="w3-bar-item" id="w3-bar-item">영화</h3>
+  <a href="listMovie.com" class="w3-bar-item w3-button">무비차트</a>
+  <a href="movieFinder.com" class="w3-bar-item w3-button">무비파인더</a>
+  
+</div>
+
+<!-- Page Content -->
+<div style="margin-left:15%">
+	
+	
 <div class="container-fluid">
     <div class="row">
     <p>
@@ -575,6 +588,7 @@ float: right;
 </div>
 </c:if>
 
+
 <br><br><br>
 
 <!-- Modal -->
@@ -635,7 +649,7 @@ float: right;
 		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
 	</div>
 
-
+</div>
 
 </body>
 </html>

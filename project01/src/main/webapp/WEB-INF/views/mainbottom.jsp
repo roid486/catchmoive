@@ -6,10 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Insert title here</title>
-
 </head>
 <body>
-	<div>
+	<div style="width: 100%">
 		<img src="resources/images/catchmovieLogo-iloveimg-resized.png" height="80px" style="float: left;">
 		<p>서울 마포구 백범로 23 구프라자3층</p>
 		<p>대표이사 : 자바조 사업자등록번호 : 100-12-123456	통신판매업신고번호 : 2017-서울마포-0662</p>
@@ -157,8 +156,6 @@
     </div>
   </div>
 </div>
-
-
 
 </body>
 </html>

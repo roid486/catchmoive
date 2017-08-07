@@ -13,17 +13,13 @@
 	position: relative;
 	right: 190px;
 }
-
 #menu{
  background-color: #80d4ff;
  color: #80d4ff;
-
 }
-
 #w3-bar-item{
 font-family: -윤고딕340;
 }
-
 #di_index{
 	width: 220px;
 	height: 20;
@@ -35,14 +31,12 @@ font-family: -윤고딕340;
 	color: white;
 	
 }
-
 #div_name{
 	text-align: center;
 	font-size: 12pt;
 	color:black;
 	cursor: pointer;
 }
-
 #side_lab{
 	color: #666666;
 }
@@ -53,7 +47,6 @@ font-family: -윤고딕340;
 	cursor: pointer;
 	color: black;
 }
-
 /* #di_index2{
 	width: 220px;
 	height: 30;
@@ -73,42 +66,14 @@ font-family: -윤고딕340;
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
-
-	/* $("#btn_go").click(function(){
-		var data = $("#select_sort option:selected").val();
-		
-		if(data){
-			location.href="listMovie.com?select="+data;
-		}
-		
-		
-	}); */
-	
-	/* $("#pre-movie").click(function(){
-		alert("상영예정작 클릭");
-		$.ajax({
-			url:"pre-movie.com",
-		});
-	});
-	
-	$("#listmovie").click(function(){
-		alert("무비 차트 클릭");
-	});
-	 */
 });
-
-
 </script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
- <h2><strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;무비 차트</strong></h2>
-  <a href="pre-movie.com" class="list" id="pre-movie" style="position:relative; right: -1100px">▶상영예정작</a>
-  <a href="listMovie.com?select=m_boxoffice" class="list" id="listmovie" style="position:relative; right: -1120px">▶무비차트</a>
-  <br>
-  
-  <hr>
-  <br>
+
+
+
  
  
 	
@@ -121,27 +86,30 @@ $(function(){
 </div>
 
 <!-- Page Content -->
-<div style="margin-left:20%">
+<div style="margin-left:15%">
+
+
+ <h2><strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;무비 차트</strong></h2>
+  <a href="pre-movie.com" class="list" id="pre-movie" style="position:relative; right: -1100px">▶상영예정작</a>
+  <a href="listMovie.com?select=m_boxoffice" class="list" id="listmovie" style="position:relative; right: -1120px">▶무비차트</a>
+  <br>
+  
+  <hr>
+  <br>
 
 <center>
 
-<!-- 	<span id="s">
-		<select id="select_sort">
-			<option value="m_boxoffice">예매율순</option>
-			<option value="m_score">평점순</option>
-		</select>
-		<button class="w3-btn w3-white w3-border w3-border-blue w3-round-large" id="btn_go">go</button>
-	</span> -->
+
 <table cellspacing="5" id="listTable">
  	<tr>
     		<c:forEach var="l" items="${l }" varStatus="status">
-         	<td style="padding-right: 40px; padding-bottom: 30px; padding-left: 40px; padding-top: 30px">
+         	<td style="padding-right: 50px; padding-bottom: 30px; padding-left: 50px; padding-top: 30px">
 				
-				<div id="di_index"> 
+			<%-- 	<div id="di_index"> 
 					<label>No.${status.index+1 }</label>
 					
 				</div>
-				
+				 --%>
 				
 				<a href="detailMovie.com?m_number=${l.m_number }">
 				
@@ -150,7 +118,7 @@ $(function(){
 				<a href="detailMovie.com?m_number=${l.m_number }">
 				<div style="text-align: center; font-size: 12pt;">
 				
-				<strong><label id="div_name" >${l.m_name }</label></strong></a></div>
+				<strong><label id="div_name" style="text-align: center;">${l.m_name }</label></strong></a></div>
 				
 				<div>
 				<center>
@@ -168,9 +136,10 @@ $(function(){
             </c:forEach> 
    		 </tr>
     
-    </table></center>
+    </table>
+    </center>
     <br>
-    <%-- <center><strong>${pageStr }</strong></center> --%>
+
 
 
 

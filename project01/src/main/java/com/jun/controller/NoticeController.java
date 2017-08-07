@@ -72,7 +72,7 @@ public class NoticeController {
 		System.out.println("path:"+path);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", dao.listNb(start, end,pSearchField,pKeyword, pOrderField));
-		mav.addObject("pageStr", dao.getPageStr(pageNUM, pSearchField,pKeyword,pOrderField));
+		mav.addObject("pageStr", dao.getPageStrNb(pageNUM, pSearchField,pKeyword,pOrderField));
 			
 		return mav;
 	}

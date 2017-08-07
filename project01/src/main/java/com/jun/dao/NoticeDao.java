@@ -33,10 +33,10 @@ public class NoticeDao {
 
 	public int getTotal(String searchField, String keyword) {
 		// TODO Auto-generated method stub
-		return JavajoManager.getTotal(searchField, keyword);
+		return JavajoManager.getTotalNb(searchField, keyword);
 	}
 
-	public String getPageStr(int pageNUM, String searchField, String keyword, String pOrderField)
+	public String getPageStrNb(int pageNUM, String searchField, String keyword, String pOrderField)
 	{
 		// 현재 페이지에 따른 시작페이지와 마지막페이지를 계산한다.
 		// 한화면에 보여줄 페이지수를 5

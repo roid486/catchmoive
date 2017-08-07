@@ -40,7 +40,7 @@
 		<jsp:include page="/WEB-INF/views/mside.jsp"></jsp:include>
 	</div>
 	<div class="container" id="mtl" style="width: 60%;">
-	  <h2>상영관 등록</h2>
+	  <h2>이벤트 수정</h2>
 	  <form class="form-horizontal" action="eupdate.com" method="post" enctype="multipart/form-data">
 	  	<input type="hidden" name="e_number" value="${edetail.e_number }">
 	  	<input type="hidden" name="fname" value="${edetail.e_img }">

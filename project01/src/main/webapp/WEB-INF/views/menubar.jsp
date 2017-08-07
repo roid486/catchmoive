@@ -148,7 +148,6 @@ jq1(function($) {
 		$(".zeta-menu ul li:has(ul)")
 			.find("a:first")
 			.append("<p style='float:right;margin:-3px'>&#9656;</p>");
-
 		$(".zeta-menu li>a").click(function(){
 			var li = $(this).parent();
 			var ul = li.parent()
@@ -189,7 +188,6 @@ jq1(function($) {
       $("#signup").click(function () {
          location.href="signup.com";
       });
-
       $("#listboard").click(function () {
          location.href="listBoard.com";
       });
