@@ -4,133 +4,131 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="movieFinder">
-  <select id="searchMovie" resultType="movieVo">
-    select * from movie
-    <where>
-	    <!-- 만약 검색어가 왔다면 -->
-	    <if test="keyword != null">
-    		${searchField} like '%' || #{keyword} ||'%'
-    	</if>
-    	
-    	<if test="m_genre1 != null">
-    	 and m_genre like '%' || #{m_genre1} ||'%'
-    	</if>
-    	
-    	<if test="m_genre2 != null">
-    	 or m_genre like '%' || #{m_genre2} ||'%'
-    	</if>
-    	
-    	<if test="m_genre3= null">
-    	 or m_genre like '%' || #{m_genre3} ||'%'
-    	</if>
-    	
-    	
-    	<if test="m_genre4 != null">
-    	 or m_genre like '%' || #{m_genre4} ||'%'
-    	</if>
-    	
-    	
-    	<if test="m_genre5 != null">
-    	 or m_genre like '%' || #{m_genre5} ||'%'
-    	</if>
-    	
-    	<if test="m_genre6 != null">
-    	 or m_genre like '%' || #{m_genre6} ||'%'
-    	</if>
-    	
-    	<if test="m_genre7 != null">
-    	 or m_genre like '%' || #{m_genre7} ||'%'
-    	</if>
-    	
-    	<if test="m_genre8 != null">
-    	 or m_genre like '%' || #{m_genre8} ||'%'
-    	</if>
-    	
-    	<if test="m_genre9 != null">
-    	 or m_genre like '%' || #{m_genre9} ||'%'
-    	</if>
-    	
-    	<if test="m_genre10 != null">
-    	 or m_genre like '%' || #{m_genre10} ||'%'
-    	</if>
-    	
-    	<if test="m_genre11 != null">
-    	 or m_genre like '%' || #{m_genre11} ||'%'
-    	</if>
-    	
-    	<if test="m_genre12 != null">
-    	 or m_genre like '%' || #{m_genre12} ||'%'
-    	</if>
-    	
-    	<if test="m_genre13 != null">
-    	 or m_genre like '%' || #{m_genre13} ||'%'
-    	</if>
-    	
-    	<if test="m_genre14 != null">
-    	 or m_genre like '%' || #{m_genre14} ||'%'
-    	</if>
-    	
-    	<if test="m_genre15 != null">
-    	 or m_genre like '%' || #{m_genre15} ||'%'
-    	</if>
-    	
-    	<if test="m_nation1 != null">
-    		and m_nation like '%' || #{m_nation1} ||'%'
-    	</if>
-    	
-    	<if test="m_nation2 != null">
-    		or m_nation like '%' || #{m_nation2} ||'%'
-    	</if>
-    	
-    	<if test="m_nation3 != null">
-    		or m_nation like '%' || #{m_nation3} ||'%'
-    	</if>
-    	
-    	<if test="m_nation4 != null">
-    		or m_nation like '%' || #{m_nation4} ||'%'
-    	</if>
-    	
-    	<if test="m_nation5 != null">
-    		or m_nation like '%' || #{m_nation5} ||'%'
-    	</if>
-    	
-    	<if test="m_nation6 != null">
-    		or m_nation like '%' || #{m_nation6} ||'%'
-    	</if>
-    	
-    	<if test="m_nation7 != null">
-    		or m_nation like '%' || #{m_nation7} ||'%'
-    	</if>
-    	
-    	<if test="m_nation8 != null">
-    		or m_nation like '%' || #{m_nation8} ||'%'
-    	</if>
-    	
-    	<if test="m_grade1 != null">
-    		and m_grade like '%' || #{m_grade1} ||'%'
-    	</if>
-    	
-    	<if test="m_grade2 != null">
-    		or m_grade like '%' || #{m_grade2} ||'%'
-    	</if>
-    	
-    	<if test="m_grade3 != null">
-    		or m_grade like '%' || #{m_grade3} ||'%'
-    	</if>
-    	
-    	<if test="m_grade4 != null">
-    		or m_grade like '%' || #{m_grade4} ||'%'
-    	</if>
-    	
-    	<!-- <if test="startyear!=0 and endyear != 0">
-    	 	and to_char(m_opendate,'yyyy') between #{startyear,jdbcType=INTEGER} and #{endyear,jdbcType=INTEGER}
-    	</if>
-    	 -->
-    	
-    	
-    	
-    	
-    </where>
-    
-  </select>
+	<select id="searchMovie" resultType="movieVo">
+		select * from movie
+		<where>
+			<!-- 만약 검색어가 왔다면 -->
+			<if test="keyword != null">
+				${searchField} like '%' || #{keyword} ||'%'
+			</if>
+
+			<if test="m_genre1 != null">
+				and m_genre like '%' || #{m_genre1} ||'%'
+			</if>
+
+			<if test="m_genre2 != null">
+				or m_genre like '%' || #{m_genre2} ||'%'
+			</if>
+
+			<if test="m_genre3= null">
+				or m_genre like '%' || #{m_genre3} ||'%'
+			</if>
+
+
+			<if test="m_genre4 != null">
+				or m_genre like '%' || #{m_genre4} ||'%'
+			</if>
+
+
+			<if test="m_genre5 != null">
+				or m_genre like '%' || #{m_genre5} ||'%'
+			</if>
+
+			<if test="m_genre6 != null">
+				or m_genre like '%' || #{m_genre6} ||'%'
+			</if>
+
+			<if test="m_genre7 != null">
+				or m_genre like '%' || #{m_genre7} ||'%'
+			</if>
+
+			<if test="m_genre8 != null">
+				or m_genre like '%' || #{m_genre8} ||'%'
+			</if>
+
+			<if test="m_genre9 != null">
+				or m_genre like '%' || #{m_genre9} ||'%'
+			</if>
+
+			<if test="m_genre10 != null">
+				or m_genre like '%' || #{m_genre10} ||'%'
+			</if>
+
+			<if test="m_genre11 != null">
+				or m_genre like '%' || #{m_genre11} ||'%'
+			</if>
+
+			<if test="m_genre12 != null">
+				or m_genre like '%' || #{m_genre12} ||'%'
+			</if>
+
+			<if test="m_genre13 != null">
+				or m_genre like '%' || #{m_genre13} ||'%'
+			</if>
+
+			<if test="m_genre14 != null">
+				or m_genre like '%' || #{m_genre14} ||'%'
+			</if>
+
+			<if test="m_genre15 != null">
+				or m_genre like '%' || #{m_genre15} ||'%'
+			</if>
+
+			<if test="m_nation1 != null">
+				and m_nation like '%' || #{m_nation1} ||'%'
+			</if>
+
+			<if test="m_nation2 != null">
+				or m_nation like '%' || #{m_nation2} ||'%'
+			</if>
+
+			<if test="m_nation3 != null">
+				or m_nation like '%' || #{m_nation3} ||'%'
+			</if>
+
+			<if test="m_nation4 != null">
+				or m_nation like '%' || #{m_nation4} ||'%'
+			</if>
+
+			<if test="m_nation5 != null">
+				or m_nation like '%' || #{m_nation5} ||'%'
+			</if>
+
+			<if test="m_nation6 != null">
+				or m_nation like '%' || #{m_nation6} ||'%'
+			</if>
+
+			<if test="m_nation7 != null">
+				or m_nation like '%' || #{m_nation7} ||'%'
+			</if>
+
+			<if test="m_nation8 != null">
+				or m_nation like '%' || #{m_nation8} ||'%'
+			</if>
+
+			<if test="m_grade1 != null">
+				and m_grade like '%' || #{m_grade1} ||'%'
+			</if>
+
+			<if test="m_grade2 != null">
+				or m_grade like '%' || #{m_grade2} ||'%'
+			</if>
+
+			<if test="m_grade3 != null">
+				or m_grade like '%' || #{m_grade3} ||'%'
+			</if>
+
+			<if test="m_grade4 != null">
+				or m_grade like '%' || #{m_grade4} ||'%'
+			</if>
+
+			<!-- <if test="startyear!=0 and endyear != 0"> and to_char(m_opendate,'yyyy') 
+				between #{startyear,jdbcType=INTEGER} and #{endyear,jdbcType=INTEGER} </if> -->
+
+
+
+
+		</where>
+
+	</select>
 </mapper>

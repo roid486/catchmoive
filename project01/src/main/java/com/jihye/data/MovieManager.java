@@ -134,11 +134,26 @@ public class MovieManager {
 		
 	}
 	
+	public static int isOneMember(int ms_mid,String ms_custid){
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("ms_mid", ms_mid);
+		map.put("ms_custid", ms_custid);
+		
+		int re = session.selectOne("moviescore.isOneMember",map);
+		session.close();
+		return re;
+		
+	}
+	
 	public static double getScoreAvg(int ms_mid){
 		SqlSession session = factory.openSession(true);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("ms_mid", ms_mid);
+		System.out.println("매니저에서 mid : "+ms_mid);
 		double re =session.selectOne("moviescore.getAvg",map);
+		System.out.println("re = "+re);
 		session.close();
 		return re;
 		

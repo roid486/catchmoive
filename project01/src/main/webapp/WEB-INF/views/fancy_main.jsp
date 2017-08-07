@@ -16,7 +16,8 @@
 <script type="text/javascript"
 	src="resources/eunseok/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+	href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css"
+	media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
 <script type="text/javascript">
 	$(function() {
@@ -30,8 +31,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1><a rel="fancybox" class="iframe" href="fancy_sub1.com">Test2</a></h1>
-		
+	<h1>
+		<a rel="fancybox" class="iframe" href="fancy_sub1.com">Test2</a>
+	</h1>
+
 	<!-- <a rel="fancybox" href="#pp">Go JSp</a>
 	<div id="pp">
 		<iframe width="560" height="315" src="test2.do" frameborder="0"

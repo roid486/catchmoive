@@ -71,11 +71,14 @@ public class BookManager {
 		return list;
 	}
 
-	public static String fifthList(String running_start, String running_date) {
+	public static String fifthList(String running_start, String running_date, String mt_number) {
 		SqlSession session = factory.openSession();
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		System.out.println("running_start "+running_start+"/running_date "+running_date);
 		map.put("running_start", running_start);
-		map.put("running_date", running_date);
+		map.put("running_date", running_date);		
+		map.put("mt_number", mt_number);
+		
 		
 		String list = session.selectOne("book.fifthList", map);
 		session.close();

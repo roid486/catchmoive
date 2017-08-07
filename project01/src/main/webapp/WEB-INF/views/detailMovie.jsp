@@ -1,84 +1,141 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
 <style type="text/css">
+<<<<<<< HEAD
+.end {
+	border-radius: 5px;
+=======
+
+
+#w3-bar-item{
+font-family: -윤고딕340;
+}
 .end{
  	border-radius: 5px;
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 	border: 2px solid gray;
 	color: gray;
 }
-.ing{
+
+.ing {
 	border-radius: 5px;
 	border: 2px solid blue;
 	color: blue;
 }
-.pre{
+
+.pre {
 	border-radius: 5px;
 	border: 2px solid red;
 	color: red;
 }
-#well{
- background: #DFF6FF;
- vertical-align: middle;
+
+#well {
+	background: #DFF6FF;
+	vertical-align: middle;
 }
 
-#comment{
-
+#comment {
+	
 }
-
 
 #counter {
-  /* background:rgba(255,0,0,0.5); */
-  border-radius: 0.5em;
-  padding: 0 .5em 0 .5em;
-  font-size: 10pt;
-  position: absolute;
-
-  
+	/* background:rgba(255,0,0,0.5); */
+	border-radius: 0.5em;
+	padding: 0 .5em 0 .5em;
+	font-size: 10pt;
+	position: absolute;
 }
 
-#cnt{
-position:relative;
-top:-20px;
-left:-340px;
-float: right;
+#cnt {
+	position: relative;
+	top: -20px;
+	left: -340px;
+	float: right;
 }
-.icon_grade{
+
+.icon_grade {
 	position: relative;
 	bottom: -20px;
 	left: -10px;
 }
-.revise{
+
+.revise {
 	cursor: pointer;
 }
-.delete{
+
+<<<<<<<
+HEAD
+
+.delete {
 	cursor: pointer;
 }
-	#menu {
-		position: relative;
-		z-index: 999;
-	}
+
+=======
+#menu {
+	position: relative;
+	z-index: 999;
+}
+
 #bottom {
+<<<<<<< HEAD
+	position: relative;
+	background-color: #e6f3ff;
+	color: black;
+}
+>>>>>>>
+branch
+ 
+'
+master
+'
+ 
+of
+ 
+https
+:
+//github
+.com
+/roid486/catchmoive
+.git
+=======
 	position: relative;   background-color:  #e6f3ff; color: black;
+	width: 100%;
 	}
 
 
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+=======
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 <!-- <link rel="stylesheet" href="rating/modal.min.css"> -->
 <link rel="stylesheet" href="rating/jquery.raty.css">
 <script type="text/javascript" src="rating/jquery.raty.js"></script>
+<<<<<<< HEAD
 <!-- <script type="text/javascript" src="rating/modal.min.js"></script> -->
+<script type="text/javascript">
+=======
+
   <script type="text/javascript">
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
   	$(function(){
   		var showing = $("#lab_showing").text();
   		var ms_mid = $("#ms_mid").val();
@@ -171,8 +228,7 @@ float: right;
   			} */
   			
   			
-  			
-  			//alert(page); 
+  	
   			$.ajax({
   				type:"get",
   				url:"listMovieScore.com?ms_mid=${m.m_number}",
@@ -182,6 +238,7 @@ float: right;
   					$("#re_table").empty();
   				
   					$.each(JSON.parse(data),function(index,item){
+  					
   						
   						tr = $("<tr></tr>").attr("height","50px");
   						var td = $("<td></td>")
@@ -280,8 +337,9 @@ float: right;
 						 
 						 var tr=$(this).closest("tr"); //누른거의 가장 가까운 tr을 찾는 코드 ! 
 						 no= $(tr).find(".ms_no").attr("idx");	 
-						 var mid = $("#mnumber").val();
-						 
+						 //var mid = $("#mnumber").val();
+						 var mid = "${m.m_number}";
+						
 						
 						 if(firm){
 							 
@@ -350,7 +408,7 @@ float: right;
   			});	//ajax
   			
   		
-  		};
+  		};//listMoviescore함수
   		
   	
   		
@@ -361,7 +419,7 @@ float: right;
   									로그인되있을시 -> moviescore insert하기!  */
   		$("#btn_register").click(function(){
   			var currentScore = $('#div_rating').raty('score'); //별점
-  		
+  			
   			
   			
   			$("#star").val(currentScore);
@@ -386,7 +444,7 @@ float: right;
   					return;
   				}
   				else{
-  					
+  			
   					$.ajax({
   		  				
   	  					url:"insertMovieScore.com",
@@ -395,8 +453,12 @@ float: right;
   	  					success:function(data){ 
   	  						$("#comment").val("");
   	  						listMovieScore();
+  	  						if(data=="실패"){
+  	  							alert("이미 등록된 평점입니다.");
+  	  						}
   	  						
   	  					},
+  	  					
   	  					
   	  				
   	  				});
@@ -416,15 +478,54 @@ float: right;
   	
   	
   </script>
-   
-    <title id="movie_title">${m.m_name }&lt;영화상세 &lt; 영화 | 캐치무비</title>
-    
+
+<title id="movie_title">${m.m_name }&lt;영화상세&lt;영화 | 캐치무비</title>
+
 
 </head>
 <body>
+<<<<<<< HEAD
+	<<<<<<< HEAD
+	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+	<div class="container-fluid">
+		<div class="row">
+			<p>
+			<div class="col-md-2" style="float: left;">
+				<h2 align="left">
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;영화상세</strong>
+				</h2>
+			</div>
+			=======
+			<div id="menu">
+				<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<p>
+					<div class="col-md-2" style="float: left;">
+						<h2 align="left">
+							<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;영화상세</strong>
+						</h2>
+					</div>
+=======
 	<div id="menu">
 		<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	</div>
+	
+	
+		
+	<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%" id="menu">
+  <h3 class="w3-bar-item" id="w3-bar-item">영화</h3>
+  <a href="listMovie.com" class="w3-bar-item w3-button">무비차트</a>
+  <a href="movieFinder.com" class="w3-bar-item w3-button">무비파인더</a>
+  
+</div>
+
+<!-- Page Content -->
+<div style="margin-left:15%">
+	
+	
 <div class="container-fluid">
     <div class="row">
     <p>
@@ -435,197 +536,196 @@ float: right;
     </p>
     </div>
 	</div>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 
+					<%--     <div class="col-md-1" style="float:left;"> <a href="updateMovie.com?m_number=${m.m_number }"><button type="button" class="btn btn-primary" >수정</button></a> </div>
+ --%>
+					</p>
+				</div>
+			</div>
+			>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 
-<hr>
-<div class="container">
-
- 
-<div class="row">
-	<div class="col-md-3">
-	<div id="img_grade"></div>
-	 <a href="resources/upload/${m.m_image }" title="포스터 크게 보기 새창" target="_blank">
-	<img alt="${m.m_name } 새창" src="resources/upload/${m.m_image }" width="220" height="340" style="display: block;">포스터 크게 보기
-	</a>
-	</div>
-	<div style="float: left;">
-		<div>
-		<h3><strong>${m.m_name }</strong></h3>
-		<label id="lab_showing">${m.m_isshowing }</label>
+			<%--     <div class="col-md-1" style="float:left;"> <a href="updateMovie.com?m_number=${m.m_number }"><button type="button" class="btn btn-primary" >수정</button></a> </div>
+ --%>
+			</p>
 		</div>
-		<label id="m_grade" style="visibility: hidden;">${m.m_grade }</label>
-		<br>
-		<label><b>감독 : ${m.m_director } / </b></label>
-		<label><b>주연 배우 :${m.m_actor }</b></label><br>
-		<label><b>장르 : ${m.m_genre }</b></label>&nbsp;&nbsp;/&nbsp;&nbsp;
-		<label><b>기본 :&nbsp; ${m.m_grade },&nbsp; ${m.m_runningtime }분,
-		&nbsp;${m.m_nation }</b></label><br>
-		<label><b>개봉 :&nbsp; <f:formatDate value="${m.m_opendate }" pattern="yyyy/MM/dd"></f:formatDate></b></label><br>
-		<br>
-			<%-- <label>${m.movie_synop }</label> --%>
 	</div>
-</div>
-<br><br><br>
-<hr>
-<div class="row">
-	 <div class="col-md-10" style="line-height: 3.0em">
-		<label>${m.m_synop }</label>
-	
-	</div> 
-
-</div>
-
-<br><br>
 
 
-  
- <div class="container">
- <div class="well well-sm" id="well"><h4><strong>스틸 이미지</strong></h4>  <br></div>
-    
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
+	<hr>
+	<div class="container">
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <img src="resources/upload/${m.m_image1 }" alt="${m.m_image1 }" style="width:100%; height:500px; ">
-      </div>
 
-      <div class="item">
-        <img src="resources/upload/${m.m_image2 }"  alt="${m.m_image2 }" style="width:100%;height:500px;">
-      </div>
-    
-      <div class="item">
-        <img src="resources/upload/${m.m_image3 }" alt="${m.m_image3 }" style="width:100%;height:500px;">
-      </div>
-    </div>
+		<div class="row">
+			<div class="col-md-3">
+				<div id="img_grade"></div>
+				<a href="resources/upload/${m.m_image }" title="포스터 크게 보기 새창" target="_blank"> <img alt="${m.m_name } 새창" src="resources/upload/${m.m_image }" width="220" height="340" style="display: block;">포스터 크게 보기
+				</a>
+			</div>
+			<div style="float: left;">
+				<div>
+					<h3>
+						<strong>${m.m_name }</strong>
+					</h3>
+					<label id="lab_showing">${m.m_isshowing }</label>
+				</div>
+				<label id="m_grade" style="visibility: hidden;">${m.m_grade }</label> <br> <label><b>감독 : ${m.m_director } / </b></label> <label><b>주연 배우 :${m.m_actor }</b></label><br> <label><b>장르 : ${m.m_genre }</b></label>&nbsp;&nbsp;/&nbsp;&nbsp;
+				<label><b>기본 :&nbsp; ${m.m_grade },&nbsp; ${m.m_runningtime }분, &nbsp;${m.m_nation }</b></label><br> <label><b>개봉 :&nbsp; <f:formatDate value="${m.m_opendate }" pattern="yyyy/MM/dd"></f:formatDate>
+				</b></label><br> <br>
+				<%-- <label>${m.movie_synop }</label> --%>
+			</div>
+		</div>
+		<br> <br> <br>
+		<hr>
+		<div class="row">
+			<div class="col-md-10" style="line-height: 3.0em">
+				<label>${m.m_synop }</label>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
-<br><br><br>
-<div>
-<div class="well well-sm" id="well"><h4><strong>메인 예고편</strong></h4>  <br></div>
-	
-	<iframe src="${m.m_trailer }" height="550" width="100%" style="border:none;"></iframe>
+			</div>
 
-</div>
-<br><br><br>
+			<<<<<<< HEAD
+		</div>
+		=======
+	</div>
+	<br>
+	<br>
+	<br>
 
- <c:if test="${m.m_isshowing==1}" >
-<div>
-<div class="well well-sm" id="well" ><h4><strong>평점 주기</strong></h4><h5><strong>(현재 평점 : ${m.m_score })</strong></h5></div>
- 
- 
+	<c:if test="${m.m_isshowing==1}">
+		<div>
+			<div class="well well-sm" id="well">
+				<h4>
+					<strong>평점 주기</strong>
+				</h4>
+				<h5>
+					<strong>(현재 평점 : ${m.m_score })</strong>
+				</h5>
+			</div>
 
- 
-<div id="div_comment">
-<span id="cnt">
-<div id="counter"> </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>/100</label>
-</span>
-</div>
 
-<div id="div_rating" style=" float:left; width: 20%;">
- 	<div class="media-left media-top" style="float: left;">
-      <img src="resources/images/user.png" class="media-object" style="width:50px">
-    </div>
-	<div id="score_lab" ></div>
-</div>
-<span>
-<form id="formId">
-    <div class="form-group" >
-		<span class="" style="float: left; ">
-		<input type="hidden" id="mnumber" name="ms_mid" value="${m.m_number }">
-		<input id="star" type="hidden" name="ms_score">
-		<input id="logId" type="hidden" name="ms_custid">
-      <textarea maxlength="100" class="form-control col-sm-4" rows="3" id="comment" name="ms_comment" placeholder="로그인한 회원만 이용 가능합니다." style="width:580px;"></textarea>
-     
-      <button type="button" id="btn_register" class="btn btn-default btn-lg" style="height: 60px"><strong>등록</strong></button></span>
-    </div>
- </form>
- 
- 
 
-</span>
-<br><br><br><br>
 
-<div id="reply"><!-- moviescore select 해올 부분 (댓글달린거 보여주려고) -->
-	<div id="paste_no"></div>
-	
-	<table id="re_table" width="90%">
-	
-	</table><br>
-	<div id="page"><center>${pageStr }</center></div>
-	
-</div> 
+			<div id="div_comment">
+				<span id="cnt">
+					<div id="counter"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>/100</label>
+				</span>
+			</div>
+			>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git <<<<<<< HEAD <br> <br> =======
+			<div id="div_rating" style="float: left; width: 20%;">
+				<div class="media-left media-top" style="float: left;">
+					<img src="resources/images/user.png" class="media-object" style="width: 50px">
+				</div>
+				<div id="score_lab"></div>
+			</div>
+			<span>
+				<form id="formId">
+					<div class="form-group">
+						<span class="" style="float: left;"> <input type="hidden" id="mnumber" name="ms_mid" value="${m.m_number }"> <input id="star" type="hidden" name="ms_score"> <input id="logId" type="hidden" name="ms_custid">
+							<textarea maxlength="100" class="form-control col-sm-4" rows="3" id="comment" name="ms_comment" placeholder="로그인한 회원만 이용 가능합니다." style="width: 580px;"></textarea>
 
-</div>
-</c:if>
+							<button type="button" id="btn_register" class="btn btn-default btn-lg" style="height: 60px">
+								<strong>등록</strong>
+							</button></span>
+					</div>
+				</form>
+
+<<<<<<< HEAD
+=======
 
 <br><br><br>
+>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 
-<!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-md">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <center><h4 class="modal-title"><strong>알림</strong></h4></center>
-        </div>
-        <div class="modal-body">
-          <center><p>로그인 후 이용가능한 서비스 입니다.</p></center>
-        </div>
-        <div class="modal-footer">
-          <center><button type="button" class="btn btn-info" data-dismiss="modal">확인</button></center>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  <!-- 평점 수정 Modal -->
-  <div class="modal fade" id="reviseModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <center><h4 class="modal-title"><strong>평점 수정</strong></h4></center>
-        </div>
-        <div class="modal-body">
-        	<div id="modal_mid" style="display: none;"></div>
-        	<form id="reviseForm">
-        		<div class="form-group" >
-        			<input type="hidden" id="revise_send_star" name="ms_score">
-        			<input type="hidden" id="revise_no" name="ms_no">
-        			<img src="resources/images/user.png" width="30px" height="30px" style="float: left;">
-        		<div id="modal_rating" style="float: left; left: -20px"></div><span id="span_rating" style="float: left;"></span>
-         			<div>
-         			      <textarea maxlength="100" class="form-control col-sm-3" rows="3" id="revise_comment" name="ms_comment" style="resize: none;"  required></textarea>
 
-         			</div>
-         		</div>
-        	</form>
-         
-        </div>
-        <div class="modal-footer">
-          <center><button id="btn_revise" type="button" class="btn btn-info">수정</button></center>
-        </div>
-      </div>
-    </div>
-  </div>
+			</span> <br>
+			<br>
+			<br>
+			<br>
+
+			<div id="reply">
+				<!-- moviescore select 해올 부분 (댓글달린거 보여주려고) -->
+				<div id="paste_no"></div>
+
+				<table id="re_table" width="90%">
+
+				</table>
+				<br>
+				<div id="page">
+					<center>${pageStr }</center>
+				</div>
+
+			</div>
+
+		</div>
+	</c:if>
+
+	<br>
+	<br>
+	<br>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<center>
+						<h4 class="modal-title">
+							<strong>알림</strong>
+						</h4>
+					</center>
+				</div>
+				<div class="modal-body">
+					<center>
+						<p>로그인 후 이용가능한 서비스 입니다.</p>
+					</center>
+				</div>
+				<div class="modal-footer">
+					<center>
+						<button type="button" class="btn btn-info" data-dismiss="modal">확인</button>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 평점 수정 Modal -->
+	<div class="modal fade" id="reviseModal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<center>
+						<h4 class="modal-title">
+							<strong>평점 수정</strong>
+						</h4>
+					</center>
+				</div>
+				<div class="modal-body">
+					<div id="modal_mid" style="display: none;"></div>
+					<form id="reviseForm">
+						<div class="form-group">
+							<input type="hidden" id="revise_send_star" name="ms_score">
+							<input type="hidden" id="revise_no" name="ms_no">
+							<img src="resources/images/user.png" width="30px" height="30px" style="float: left;">
+							<div id="modal_rating" style="float: left; left: -20px"></div>
+							<span id="span_rating" style="float: left;"></span>
+							<div>
+								<textarea maxlength="100" class="form-control col-sm-3" rows="3" id="revise_comment" name="ms_comment" style="resize: none;" required></textarea>
+
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<center>
+						<button id="btn_revise" type="button" class="btn btn-info">수정</button>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
 	<p></p>
 	<p></p>
 	<p></p>
@@ -634,8 +734,186 @@ float: right;
 	<div id="bottom">
 		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
 	</div>
+	>>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git
 
 
+	<div class="container">
+		<div class="well well-sm" id="well">
+			<h4>
+				<strong>스틸 이미지</strong>
+			</h4>
+			<br>
+		</div>
 
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="resources/upload/${m.m_image1 }" alt="${m.m_image1 }" style="width: 100%; height: 500px;">
+				</div>
+
+				<div class="item">
+					<img src="resources/upload/${m.m_image2 }" alt="${m.m_image2 }" style="width: 100%; height: 500px;">
+				</div>
+
+				<div class="item">
+					<img src="resources/upload/${m.m_image3 }" alt="${m.m_image3 }" style="width: 100%; height: 500px;">
+				</div>
+			</div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> <span class="sr-only">Previous</span>
+			</a> <a class="right carousel-control" href="#myCarousel" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> <span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div>
+		<div class="well well-sm" id="well">
+			<h4>
+				<strong>메인 예고편</strong>
+			</h4>
+			<br>
+		</div>
+
+		<iframe src="${m.m_trailer }" height="550" width="100%" style="border: none;"></iframe>
+
+	</div>
+	<br>
+	<br>
+	<br>
+	<div class="well well-sm" id="well">
+		<h4>
+			<strong>평점 주기</strong>
+		</h4>
+		<h5>
+			<strong>(현재 평점 : ${m.m_score })</strong>
+		</h5>
+	</div>
+
+
+	<div>
+		<span id="cnt">
+			<div id="counter"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>/100</label>
+		</span>
+	</div>
+
+	<div id="div_rating" style="float: left; width: 20%;">
+		<div class="media-left media-top" style="float: left;">
+			<img src="resources/images/user.png" class="media-object" style="width: 50px">
+		</div>
+		<div id="score_lab"></div>
+	</div>
+	<span>
+		<form id="formId">
+			<div class="form-group">
+				<span class="" style="float: left;"> <input type="hidden" id="mnumber" name="ms_mid" value="${m.m_number }"> <input id="star" type="hidden" name="ms_score"> <input id="logId" type="hidden" name="ms_custid">
+					<textarea maxlength="100" class="form-control col-sm-4" rows="3" id="comment" name="ms_comment" placeholder="로그인한 회원만 이용 가능합니다." style="width: 580px;"></textarea>
+
+					<button type="button" id="btn_register" class="btn btn-default btn-lg" style="height: 60px">
+						<strong>등록</strong>
+					</button></span>
+			</div>
+		</form>
+
+</div>
+
+	</span>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div id="reply">
+		<!-- moviescore select 해올 부분 (댓글달린거 보여주려고) -->
+		<div id="paste_no"></div>
+
+		<table id="re_table" width="90%">
+
+		</table>
+		<br>
+		<div id="page">
+			<center>${pageStr }</center>
+		</div>
+
+	</div>
+
+	<br>
+	<br>
+	<br>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<center>
+						<h4 class="modal-title">
+							<strong>알림</strong>
+						</h4>
+					</center>
+				</div>
+				<div class="modal-body">
+					<center>
+						<p>로그인 후 이용가능한 서비스 입니다.</p>
+					</center>
+				</div>
+				<div class="modal-footer">
+					<center>
+						<button type="button" class="btn btn-info" data-dismiss="modal">확인</button>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 평점 수정 Modal -->
+	<div class="modal fade" id="reviseModal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<center>
+						<h4 class="modal-title">
+							<strong>평점 수정</strong>
+						</h4>
+					</center>
+				</div>
+				<div class="modal-body">
+					<div id="modal_mid" style="display: none;"></div>
+					<form id="reviseForm">
+						<div class="form-group">
+							<input type="hidden" id="revise_send_star" name="ms_score">
+							<input type="hidden" id="revise_no" name="ms_no">
+							<img src="resources/images/user.png" width="30px" height="30px" style="float: left;">
+							<div id="modal_rating" style="float: left; left: -20px"></div>
+							<span id="span_rating" style="float: left;"></span>
+							<div>
+								<textarea maxlength="100" class="form-control col-sm-3" rows="3" id="revise_comment" name="ms_comment" style="resize: none;" required></textarea>
+
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<center>
+						<button id="btn_revise" type="button" class="btn btn-info">수정</button>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

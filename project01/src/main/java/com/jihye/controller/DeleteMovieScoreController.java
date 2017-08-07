@@ -25,7 +25,7 @@ public class DeleteMovieScoreController {
 	public String deleteMovieScore(int ms_no,int ms_mid){
 		String str="";
 		int re = dao.deleteMovieScore(ms_no);
-		
+		System.out.println("찍어보자 ms_mid : "+ms_mid);
 		if(re==1){
 			double avg = dao.getScoreAvg(ms_mid);
 			System.out.println("삭제후 평점 평균 : "+avg);

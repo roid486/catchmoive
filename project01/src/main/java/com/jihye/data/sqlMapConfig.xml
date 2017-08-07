@@ -3,11 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<properties resource="com/jihye/data/javajo.properties"/>
+	<properties resource="com/jihye/data/javajo.properties" />
 	<typeAliases>
+
 		<typeAlias type="com.jihye.vo.MovieVo_j" alias="movieVo"/>
 		<typeAlias type="com.jihye.vo.MovieScoreVo" alias="MovieScoreVo"/>
 		<typeAlias type="com.javajo.vo.CustomerVo" alias="customerVo"/>
+
 	</typeAliases>
 
 	
@@ -28,4 +30,5 @@
     <mapper resource="com/jihye/data/MovieFinderMapper.xml"/>
     <mapper resource="com/jihye/naver/SocialLoginMapper.xml"/>
   </mappers>
+
 </configuration>
