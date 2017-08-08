@@ -80,7 +80,7 @@
 						
 						var win = window.open("ticketCheck.com?ticket_number="+data+"&seat_rc="+str,
 								"popup",
-								"resizable=no,toolbar=no,menubar=no,location=no,scrollbar=no, width=343,height=590,top="+popY+",left="+popX);
+								"resizable=no,toolbar=no,menubar=no,location=no,scrollbar=no, width=356,height=600,top="+popY+",left="+popX);
 						parent.jq1.fancybox.close();	
 						
 						}else{
@@ -234,7 +234,6 @@
 // 									totalNum+=2;
 // 									}
 // 								else{
-									alert("2")
 								if(one.is(":checked")){
 									arr.pop(one.attr("id"))
 									totalNum+=1;

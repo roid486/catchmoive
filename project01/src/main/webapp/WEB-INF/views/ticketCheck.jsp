@@ -63,7 +63,7 @@ border-radius: 0px 0px 10px 10px;
 
 	setTimeout(function(){
 		window.close();
-	}, 20000);
+	}, 18000);
 
 
 	
@@ -123,7 +123,7 @@ border-radius: 0px 0px 10px 10px;
 		<tr><td style="width: 10%;" rowspan="4"><img src="resources/upload/${t.m_image }" width="100px" height="130px"></td><td width="*">${t.m_name }</td></tr>
 		<tr><td>${t.mt_name } ${t.t_name }</td></tr>
 		<tr><td>${t.r_date } ${t.r_start }</td></tr>
-		<tr><td>인원: ${t.ticket_peoplenum }¸날짜: ${seat_rc }</td></tr>
+		<tr><td>인원: ${t.ticket_peoplenum }¸날짜: ${seat_rc } ${t.ticket_price }</td></tr>
 		</table>
 	<table id="form">
 		<tr id="map"><jsp:include page="map.jsp"><jsp:param name="mx" value="${info.mt_x}"/><jsp:param name="my" value="${info.mt_y}"/></jsp:include></tr>
