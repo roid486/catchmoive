@@ -49,7 +49,7 @@
 					href : "#",
 					id : item.m_number,
 					name : "sub1",
-					idx : item.m_image1
+					idx : item.m_image
 				}).html(item.m_name)
 
 				$("#sub1_form").append(a1, "<br>");
