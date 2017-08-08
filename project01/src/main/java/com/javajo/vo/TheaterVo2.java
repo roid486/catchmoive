@@ -1,21 +1,21 @@
 package com.javajo.vo;
 
-public class TheaterVo {
+public class TheaterVo2 {
 
 	private int t_number;
 	private String t_name;
 	private int t_seat;
-	private int mt_number;
-	public TheaterVo(int t_number, String t_name, int t_seat, int mt_number) {
+	private String mt_name;
+	public TheaterVo2() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public TheaterVo2(int t_number, String t_name, int t_seat, String mt_name) {
 		super();
 		this.t_number = t_number;
 		this.t_name = t_name;
 		this.t_seat = t_seat;
-		this.mt_number = mt_number;
-	}
-	public TheaterVo() {
-		super();
-		// TODO Auto-generated constructor stub
+		this.mt_name = mt_name;
 	}
 	public int getT_number() {
 		return t_number;
@@ -35,11 +35,13 @@ public class TheaterVo {
 	public void setT_seat(int t_seat) {
 		this.t_seat = t_seat;
 	}
-	public int getMt_number() {
-		return mt_number;
+	public String getMt_name() {
+		return mt_name;
 	}
-	public void setMt_number(int mt_number) {
-		this.mt_number = mt_number;
+	public void setMt_name(String mt_name) {
+		this.mt_name = mt_name;
 	}
+	
+	
 	
 }

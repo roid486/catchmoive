@@ -45,8 +45,8 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
-	        <th>Name</th>
-	        <th>LOC</th>
+	        <th>영화관</th>
+	        <th>주소</th>
 	        <th>비고</th>
 	      </tr>
 	    </thead>

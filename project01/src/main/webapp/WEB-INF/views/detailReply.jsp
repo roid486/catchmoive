@@ -35,16 +35,16 @@
 		
 		function listRe(){
 			
-			alert("id1  ::   "+id1)
+			
 			var b_number = "${r.b_number}";
-			alert("b_number:::제발!"+b_number);
+		
 			if(id1==null || id1=="")
 			{
 				alert("아이디가없을리가?");
 			}
 			else
 			{
-				alert("가거라~");
+				
 				location.href="detailBoard.com?b_number=${r.b_number}";
 			} 			
 		};
@@ -55,10 +55,10 @@
 					if (confirm("수정하시겠습니까?")) {
 						var re_content = $("#re_content").val();
 						var re_number = "${r.re_number}";
-						alert("re_content 내용::" + re_content);
+						
 						var param = "re_content" + re_content + "&re_number= "
 								+ re_number;
-						alert("param ::" + param)
+						
 						$.ajax({
 							type : "post",
 							dataType : "text",
@@ -68,14 +68,14 @@
 								"re_number" : re_number
 							},
 							success : function(data) {
-								alert("성공");
+								alert("댓글이 수정되었습니다");
 								$("#modifyReply").css("visibility", "hidden");
 								// 댓글 목록 갱신
 								listRe();
 								//listReply();
 							},
 							error : function(data) {
-								alert("실패");
+								alert("댓글이 수정되었습니다");
 								$("#modifyReply").css("visibility", "hidden");
 								// 댓글 목록 갱신
 								listRe();
@@ -117,18 +117,25 @@
 </script>
 </head>
 <body>
-	<input type="hidden" id="se_id" value="${se_id }"> 댓글 번호 :
-	${r.re_number}
+	<div class="container">
+
+	<input type="hidden" id="se_id" value="${se_id }"><font style="color: #FFFFFF">번호 :${r.re_number}&nbsp&nbsp ${r.c_name }</font> 
 	<br>
-	<textarea id="re_content" rows="5" cols="82">${r.re_content}</textarea>
+	
+	<textarea id="re_content" rows="6" cols="150">${r.re_content}</textarea>
 	<div style="text-align: center;">
 		<!-- 본인 댓글만 수정, 삭제가 가능하도록 처리 -->
 		<c:if test="${sessionScope.se_id == r.c_id}">
-			<button type="button" id="btnReplyUpdate">수정</button>
-			<button type="button" id="btnReplyDelete">삭제</button>
+
+			<br>
+			<label><input type="checkbox" id="re_secretreply">비밀 댓글</label>				
+			<button class="btn btn-default" style="color: #8CCBFB" type="button" id="btnReplyUpdate">수정</button>
+			<button class="btn btn-default" style="color: #8CCBFB" type="button" id="btnReplyDelete">삭제</button>
+			
 		</c:if>
 
-		<button type="button" id="btnReplyClose">닫기</button>
+		<button class="btn btn-default" style="color: #8CCBFB" type="button" id="btnReplyClose">닫기</button>
+	</div>
 	</div>
 </body>
 </html>

@@ -47,11 +47,10 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
-	        <th>Type</th>
-	        <th>Title</th>
-	        <th>Regdate</th>
-	        <th>writer</th>
-	        <th>비고</th>
+	        <th>문의</th>
+	        <th>제목</th>
+	        <th>등록날짜</th>
+	        <th>작성자</th>
 	        <th>비고</th>
 	      </tr>
 	    </thead>
@@ -62,7 +61,6 @@
 	        <td>${bl.b_title }</td>
 	        <td>${bl.b_regdate }</td>
 	        <td>${bl.c_name }</td>
-	        <td><a href="updateBoard.com?b_number=${bl.b_number }"><button class="btn btn-primary">수정</button></a></td>
 	        <td><a href="deleteBoard.com?b_number=${bl.b_number }"><button class="btn btn-primary">삭제</button></a></td>
 	      </tr>
 	    </m:forEach>

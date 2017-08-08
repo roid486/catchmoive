@@ -9,27 +9,46 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
+<style type="text/css">
+#bottom {
+	position: relative;
+	background-color: #e6f3ff;
+	color: black;
+}
+
+#w3-bar-item {
+	font-family: -윤고딕340;
+	color: #80d4ff;
+}
+
+#side {
+	position: absolute;
+	top: 500px;
+	color: #80d4ff;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	<input type="hidden" id="se_id" value="${se_id }">
+	<!-- Sidebar -->
+	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%; border: 1px solid #80d4ff" id="side">
+		<h3 class="w3-bar-item" id="w3-bar-item">Side Bar</h3>
+		<a href="listBoard.com" class="w3-bar-item w3-button">게시판</a> <br> <a href="listNotice.com" class="w3-bar-item w3-button">공지사항</a> <br> <br>
 
+	</div>
 
-	<div class="container">
-		<!-- Sidebar -->
-		<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 15%" id="menu">
-			<h3 class="w3-bar-item" id="w3-bar-item">게시판종류</h3>
-			<a href="listBoard.com" class="w3-bar-item w3-button">게시판</a> <br> <a href="listNotice.com" class="w3-bar-item w3-button">공지사항</a>
+	<div style="margin-left: 0%">
 
-		</div>
-		<div style="margin-left: 15%">
+		<div class="container">
 
 			<h1>
 				<font style="color: #8CCBFB">수정하기</font>
 			</h1>
+
 			<hr>
 
-			<form class="form-horizontal action=" action="updateBoard.com" method="post" enctype="multipart/form-data">
+			<form class="form-horizontal" action="updateBoard.com" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<input type="hidden" name="b_fname" value="${b.b_fname }">
 					<input type="hidden" name="b_number" value="${b.b_number }">
@@ -60,26 +79,31 @@
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="pwd">&nbsp&nbsp&nbsp</label> 
+					<label class="control-label col-sm-2" for="pwd">&nbsp&nbsp&nbsp</label>
 				</div>
+				
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="pwd">첨부파일:</label>
 					<div class="col-sm-10">
 						<input type="file" name="uploadFile">
 					</div>
 					<div class="col-sm-4">
-					<img class="form-control" alt="" src="resources/jun/${b.b_fname }" width="50" height="50">				
+						<img class="form-control" alt="" src="resources/jun/${b.b_fname }" width="100" height="100">
+					</div>
 				</div>
-				</div>
+				
 				<br>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<input  class="btn btn-info" type="submit" value="수정">
+						<input class="btn btn-info" type="submit" value="수정">
 					</div>
 				</div>
 			</form>
 		</div>
 
+	</div>
+	<div id="bottom">
+		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
 	</div>
 </body>
 </html>

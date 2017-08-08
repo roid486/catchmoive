@@ -5,45 +5,55 @@
 
 <mapper namespace="javajo">
 
+
+
+	<select id="selectBRe" resultType="boardVo">
+
+		select distinct c_id from board where b_number=#{b_number} 
+	</select>
+
 	<select id="selectAll" resultType="boardVo">
 
-	select * from 
-     	(select rownum rowm, a.* from 
-        (select b_number,b_title,b_content,b_hit,
-        to_char(b_regdate,'YYYY-MM-DD hh24:mm:ss') b_regdate,
-        b_ip,b_b_ref,b_b_level,b_b_step,b_fname,b_fsize,b_type,b.c_id,
-        (select count(*) from reply WHERE b_number=b.b_number) AS b_recnt,
-        c_name
-	from board b, customer c 
-	where b.c_id=c.c_id
-           	<if test="keyword !=null and keyword !=''">
-		where ${searchField} like '%' || #{keyword} || '%'
+		select * from
+		(select rownum rowm, a.* from
+		(select b_number,b_title,b_content,b_hit,
+		to_char(b_regdate,'YYYY-MM-DD hh24:mm:ss') b_regdate,
+		b_ip,b_b_ref,b_b_level,b_b_step,b_fname,b_fsize,b_type,b.c_id,
+		(select count(*) from reply WHERE b_number=b.b_number) AS b_recnt,
+		c_name
+		from board b, customer c
+		where b.c_id=c.c_id
+		<if test="keyword !=null and keyword != ''">
+			and ${searchField} like '%' || #{keyword} || '%'
 		</if>
-		order by b_number desc 
-        )a) 
-    	where rowm between #{start} and #{end}
+		order by b_number desc
+		)a)
+		where rowm between #{start} and #{end}
 	</select>
-	
-	
-	
-	<select id="getTotal" resultType="java.lang.Integer">
-		select nvl(count(*),0) from board
+
+
+
+	<select
+		id="getTotal"
+		resultType="java.lang.Integer">
+		select nvl(count(*),0) from board b, customer c
+		where b.c_id=c.c_id
 		<if test="keyword != null">
-			where ${searchField} like '%' || #{keyword} || '%'
+			and ${searchField} like '%' || #{keyword} || '%'
 		</if>
 	</select>
 
 
-
-
-
-
-	<select id="getNextNo" resultType="java.lang.Integer">
+	<select
+		id="getNextNo"
+		resultType="java.lang.Integer">
 		select nvl(max(b_number),0)+1
 		from board
 	</select>
 
-	<select id="getNextRe" resultType="java.lang.Integer">
+	<select
+		id="getNextRe"
+		resultType="java.lang.Integer">
 		select nvl(max(re_number),0)+1
 		from reply
 	</select>
@@ -52,21 +62,24 @@
 	<insert id="insertBoard">
 		insert into board values(#{b_number},
 		#{b_title},#{b_content}, 0,
-		sysdate, #{b_ip}, 0, 0, 0, #{b_fname},
+		sysdate, #{b_ip}, 0, 0, 0,
+		#{b_fname},
 		#{b_fsize}, #{b_type},#{c_id},0
 		)
 	</insert>
 
-	<select id="getBoard" resultType="boardVo">
+	<select
+		id="getBoard"
+		resultType="boardVo">
 		select
-	b_number,b_title,b_content,b_hit,to_char(b_regdate,'YYYY-MM-DD
-	hh24:mm:ss') b_regdate,b_ip,b_b_ref,b_b_level,b_b_step,b_fname,
-	b_fsize,b_type,b.c_id,
-	(select count(*) from reply WHERE
-	b_number=b.b_number) AS b_recnt,c_name
-	from board b, customer c where
-	b.c_id=c.c_id and b_number = #{b_number} order by b_number desc 
-		
+		b_number,b_title,b_content,b_hit,to_char(b_regdate,'YYYY-MM-DD
+		hh24:mm:ss') b_regdate,b_ip,b_b_ref,b_b_level,b_b_step,b_fname,
+		b_fsize,b_type,b.c_id,
+		(select count(*) from reply WHERE
+		b_number=b.b_number) AS b_recnt,c_name
+		from board b, customer c where
+		b.c_id=c.c_id and b_number = #{b_number} order by b_number desc
+
 	</select>
 
 
@@ -94,10 +107,13 @@
 
 	<!-- REPLY부분 -->
 
-	<select id="selectRe" resultType="replyVo">
+	<select
+		id="selectRe" resultType="replyVo">
 		select
-		re_number,re_content,re_regdate,re_updatedate,b_number,r.c_id,c_name
-		from reply r,customer c where r.c_id=c.c_id and b_number=#{b_number}
+		re_number,re_content,re_regdate,re_updatedate,b_number,r.c_id,re_secretreply,c_name
+		from reply r,customer c
+		where
+		r.c_id=c.c_id and  b_number=#{b_number} 
 		order by re_number
 	</select>
 
@@ -111,7 +127,9 @@
 		delete from reply where re_number=#{re_number}
 	</delete>
 
-	<select id="getReply" resultType="replyVo">
+	<select
+		id="getReply"
+		resultType="replyVo">
 		select * from reply where
 		re_number = #{re_number}
 	</select>
@@ -124,7 +142,9 @@
 
 
 	<!-- Notice 부분 -->
-	<select id="selectNb" resultType="noticeVo">
+	<select
+		id="selectNb"
+		resultType="noticeVo">
 		select nb_number,nb_title,nb_content,to_char(nb_regdate,'YYYY-MM-DD
 		hh24:mm:ss') nb_regdate,nb_hit,nb_fname,nb_fsize
 		from
@@ -145,12 +165,16 @@
 		where a.n between #{start} and #{end}
 	</select>
 
-	<select id="getNextNb" resultType="java.lang.Integer">
+	<select
+		id="getNextNb"
+		resultType="java.lang.Integer">
 		select nvl(max(nb_number),0)+1 from noticeboard
 	</select>
 
 
-	<select id="getTotalNb" resultType="java.lang.Integer">
+	<select
+		id="getTotalNb"
+		resultType="java.lang.Integer">
 		select nvl(count(*),0) from noticeboard
 		<if test="keyword != null">
 			where ${searchField} like '%' || #{keyword} || '%'
@@ -159,7 +183,9 @@
 	<update id="noticeHit">
 		update noticeboard set nb_hit = nb_hit + 1 where nb_number = #{nb_number}
 	</update>
-	<select id="getNotice" resultType="noticeVo">
+	<select
+		id="getNotice"
+		resultType="noticeVo">
 		select * from noticeboard where nb_number = #{nb_number}
 	</select>
 	<insert id="insertNotice">

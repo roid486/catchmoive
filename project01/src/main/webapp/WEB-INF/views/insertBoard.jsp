@@ -9,27 +9,45 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
+<style type="text/css">
+#side {
+	position: absolute; 
+	top:500px;
+	color: #80d4ff;
+}
+#w3-bar-item {
+	font-family: -윤고딕340;
+}
+#bottom {
+
+	position: relative;   background-color:  #e6f3ff; color: black;
+
+}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	<input type="hidden" id="se_id" value="${se_id }">
 	<div class="container">
-		<h1><strong>${head }</strong></h1>
-		<hr>
+		<h1><strong style="color: #8CCBFB">${head }</strong></h1>
+		<hr style="border: solid 1px #A1D6FE;">
 
-		<form class="form-horizonta" action="insertBoard.com" method="post" enctype="multipart/form-data">
-			<div class="form-group">
+		<form class="form-horizontal" action="insertBoard.com" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="c_id" value="${se_id }">
 				<input type="hidden" name="b_number" value="${b_number }">
-				<label class="control-label col-sm-2" for="email">제목:</label>
+			<div class="form-group">
+				<label class="control-label col-sm-2" >제목:</label>
 				<div class="col-sm-5">
 					<input class="form-control" type="text" name="b_title" placeholder="제목을 입력해주세요!!">
 					<br>
 				</div>
 			</div>
+			<br>
+			<br>
+			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="pwd">TYPE:</label>
-				<div class="col-sm-5">
+				<label class="control-label col-sm-2" >TYPE:</label>
+				<div class="col-sm-3">
 					<select class="form-control" name="b_type">
 						<option value="예매문의">예매문의</option>
 						<option value="영화문의">영화문의</option>
@@ -40,7 +58,7 @@
 			</div>
 			<br>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="pwd">내용:</label>
+				<label class="control-label col-sm-2">내용:</label>
 				<br>
 				<div class="col-sm-10">
 					<textarea class="form-control" rows="10" cols="60" name="b_content" placeholder="내용을입력해주세요!"></textarea>
@@ -58,6 +76,9 @@
 				</div>
 			</div>
 		</form>
+	</div>
+	<div id="bottom">
+		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
 	</div>
 </body>
 </html>

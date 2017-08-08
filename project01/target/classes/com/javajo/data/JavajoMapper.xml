@@ -101,10 +101,12 @@
        where t_name like '%'||#{key}||'%'
     </if>
   </select>
-  <select id="tlist" resultType="theaterVo">
-     select * from (select rownum rowm, a.* from (select * from theater
+  <select id="tlist" resultType="theaterVo2">
+     select * from (select rownum rowm, a.* from (
+	select t_number,t_name,t_seat,mt_name from theater t, movietheater mt
+	where t.mt_number=mt.mt_number
      <if test="key != null">
-        where t_name like '%'||#{key}||'%'
+        and t_name like '%'||#{key}||'%'
      </if> order by t_number desc) a) 
     where rowm between #{num1} and #{num2}
   </select>

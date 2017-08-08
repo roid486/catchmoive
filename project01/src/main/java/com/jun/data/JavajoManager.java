@@ -39,6 +39,7 @@ public class JavajoManager {
 		map.put("searchField", searchField);
 		map.put("keyword", keyword);
 		
+		System.out.println("key"+keyword);
 		SqlSession session = factory.openSession();
 		List<BoardVo> list=session.selectList("javajo.selectAll",map);
 		
@@ -266,7 +267,13 @@ public class JavajoManager {
 		return re;
 	}
 
-
+	public static List<BoardVo> listBRe(int b_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		List<BoardVo>listBRe = session.selectList("javajo.selectBRe", b_number);
+		session.close();
+		return listBRe;
+	}
 
 
 

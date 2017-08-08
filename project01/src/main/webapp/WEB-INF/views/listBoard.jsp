@@ -18,17 +18,13 @@
 		 <%-- var id1 = <%= session.getAttribute("se_id")%> --%>
 		<%-- var id2 = "<%= (String)session.getAttribute("customerid2")%>" --%>
 		 var id1 = $("#se_id").val();
-	 	$("#msgdialog").dialog({
-	         autoOpen:false,
-	         modal:true
-	      }); 
 	
 		$("#btn_insert").click(function() {
-			alert("id1  ::   "+id1)
+			
 			if(id1==null || id1=="")
 			{
 				/* $("#msgdialog").dialog("open"); */
-				alert("이삭이 msdialog");
+				alert("로그인을해주세요");
 			}
 			else
 			{
@@ -51,11 +47,7 @@
 	}); 
 </script>
 <style type="text/css">
-#bottom {
-	position: relative;
-	background-color: brown;
-	color: white;
-}
+
 #table {
 	width: 100%;
 	border: 1px solid black;
@@ -66,7 +58,7 @@
 tr, th, td {
 	padding: 10px;
 }
-#menu {
+#side {
 	position: absolute; 
 	top:500px;
 	color: #80d4ff;
@@ -87,25 +79,26 @@ tr, th, td {
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 	
 	<!-- Sidebar -->
-		<div  class="w3-sidebar w3-light-grey w3-bar-block" style="width: 15%; border:1px solid #80d4ff"  id="menu">
+		<div  class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%; border:1px solid #80d4ff"  id="side">
 			<h3 class="w3-bar-item" id="w3-bar-item">Side Bar</h3>
-			<a href="listBoard.com" class="w3-bar-item w3-button">게시판</a>
+			<br>
+			<a href="listBoard.com" class="w3-bar-item w3-button">게시판</a><br>
 			<br><a href="listNotice.com" class="w3-bar-item w3-button">공지사항</a>
 			<br>
 			<br>
 			
 		</div>
 		
-		<div style="margin-left:15%">
+		<div style="margin-left:0%">
 
 	<center>
 		<h1>
 			<strong style="color: #8CCBFB">${title }</strong>
 		</h1>
 	</center>
-	<a href="listNotice.com">임시공지사항이동</a>
 
-	<hr>
+
+	<hr style="border:solid 1px #A1D6FE;">
 	<div class="table-responsive">
 		<div class="container">
 			<table id="table" class="table">
@@ -151,9 +144,9 @@ tr, th, td {
 			<div align="center" class="form-group">
 		
 				<select  class="control-label col-sm-1" name="searchField">
-						<option value=c_id>작성자</option>
-						<option value="b_title">제목</option>
-						<option value="b_content">내용</option>
+						<option value="c.c_id">작성자</option>
+						<option value="b.b_title">제목</option>
+						<option value="b.b_content">내용</option>
 					</select> 
 					 <div class="col-sm-4">          
  					<input  class="form-control" type="text" name="keyword"> 

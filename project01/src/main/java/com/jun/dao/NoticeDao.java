@@ -11,7 +11,7 @@ import com.jun.vo.NoticeVo;
 public class NoticeDao {
 
 	//한 화면에 보여줄 게시물의 수
-	public static int pageSIZE= 3;
+	public static int pageSIZE= 10;
 		
 	//전체 레코드수 
 	public static int totalRecord;
@@ -20,7 +20,7 @@ public class NoticeDao {
 	public static int totalPage;
 		
 	//한 화면에 보여줄 페이지수
-	public static int pageGRUOP=3;
+	public static int pageGRUOP=5;
 
 	public List<NoticeVo> listNb(int start, int end, String searchField, String keyword, String pOrderField)
 	{

@@ -12,10 +12,7 @@
 <script type="text/javascript" src="resources/ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	$("#msgdialog").dialog({
-        autoOpen:false,
-        modal:true
-     }); 
+
 });	
 </script>
 <style type="text/css">
@@ -26,16 +23,23 @@ $(function() {
 	border-left: none;
 	border-bottom: none;
 }
+
 tr, th, td {
 	padding: 10px;
 }
-#menu {
-	position: absolute;
-	top: 500px;
+
+#side {
+	position: absolute; 
+	top:500px;
 	color: #80d4ff;
 }
 #w3-bar-item {
 	font-family: -윤고딕340;
+}
+#bottom {
+
+	position: relative;   background-color:  #e6f3ff; color: black;
+
 }
 </style>
 </head>
@@ -44,13 +48,14 @@ tr, th, td {
 	<jsp:include page="/WEB-INF/views/menubar.jsp"></jsp:include>
 
 	<!-- Sidebar -->
-	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 15%; border: 1px solid #80d4ff" id="menu">
+	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%; border: 1px solid #80d4ff" id="side">
 		<h3 class="w3-bar-item" id="w3-bar-item">Side Bar</h3>
 		<a href="listBoard.com" class="w3-bar-item w3-button">게시판</a> <br> <a href="listNotice.com" class="w3-bar-item w3-button">공지사항</a> <br> <br>
+
 	</div>
 
+	<div style="margin-left: 0%">
 
-	<div style="margin-left: 15%">
 
 
 		<center>
@@ -58,10 +63,37 @@ tr, th, td {
 				<strong style="color: #8CCBFB">공지사항</strong>
 			</h1>
 		</center>
-		<hr>
+
+		<a href="insertNotice.com">등록</a>
+		
 		<div class="table-responsive">
 			<div class="container">
 
+<hr style="border:solid 1px #A1D6FE;">
+
+
+
+				<table id="table" class="table">
+					<tr>
+				
+						<td align="center" bgcolor="#A1D6FE" colspan="2">제목</td>
+						<td align="center" bgcolor="#A1D6FE">작성일</td>
+						<td bgcolor="#A1D6FE">조회</td>
+					</tr>
+					<c:forEach var="n" items="${list }">
+						<tr>
+
+							<td width="15%">${n.nb_number }</td>
+							<td width="50%">
+								<a href="detailNotice.com?nb_number=${n.nb_number }">${n.nb_title }</a>
+							</td>
+							<td width="25%">${n.nb_regdate }</td>
+							<td>${n.nb_hit }</td>
+						</tr>
+					</c:forEach>
+				</table>
+<hr style="border:solid 1px #A1D6FE;">
+				
 				<form action="listNotice.com" method="post">
 					<select name="searchField">
 						<option value="nb_title">제목</option>
@@ -70,49 +102,15 @@ tr, th, td {
 					<input type="text" name="keyword">
 					<input type="submit" value="검색">
 				</form>
-				<hr>
-				
 
 
-				<table id="table" class="table">
-					<tr>
-						<!-- <td>
-								<td align="center" bgcolor="#A1D6FE" >번호</td>	
-									<a href="listNotice.com?orderField=nb_number">번호</a>
-							</td> -->
 
-						<td align="center" bgcolor="#A1D6FE" colspan="2">제목</td>
-						<!-- <a href="listNotice.com?orderField=nb_title"> 제목</a> -->
- 
-
-						<td align="center" bgcolor="#A1D6FE">작성일</td>
-						<!-- <a href="listNotice.com?orderField=nb_regdate"> 작성일</a> -->
-
-						<td bgcolor="#A1D6FE">조회</td>
-					</tr>
-					<c:forEach var="n" items="${list }">
-						<tr>
-						
-							<td width="15%">${n.nb_number }</td>
-							<td width="50%">
-								<a href="detailNotice.com?nb_number=${n.nb_number }">${n.nb_title }</a>
-							</td>
-							<td width="25%">${n.nb_regdate }</td>
-							<td>${n.nb_hit }</td>
-
-						</tr>
-					</c:forEach>
-				</table>
-				
-		
 				<center>${pageStr }</center>
-				<div id="msgdialog">
-					<center>
-						<font color="red">로그인을 하십시오.</font>
-					</center>
-				</div>
 			</div>
 		</div>
+	</div>
+	<div id="bottom">
+		<jsp:include page="/WEB-INF/views/mainbottom.jsp"></jsp:include>
 	</div>
 </body>
 </html>
