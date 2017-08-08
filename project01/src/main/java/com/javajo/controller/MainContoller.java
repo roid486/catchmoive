@@ -206,6 +206,7 @@ public class MainContoller {
 	public ModelAndView mypage(String c_id)
 	{
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("navernum", dao.naver(c_id));
 		mav.addObject("myt", dao.myt(c_id));
 		mav.addObject("myb", dao.myb(c_id));
 		return mav;

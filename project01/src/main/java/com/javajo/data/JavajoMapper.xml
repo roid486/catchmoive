@@ -326,4 +326,7 @@ m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
   <delete id="tkdelete">
   	delete ticket where ticket_number=#{ticket_number}
   </delete>
+  <select id="naver" resultType="java.lang.Integer">
+  	select count(c_age) from customer where c_id=#{c_id}
+  </select>
 </mapper>
