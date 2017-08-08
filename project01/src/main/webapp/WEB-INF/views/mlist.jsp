@@ -46,10 +46,10 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
-	        <th>Number</th>
-	        <th>Title</th>
-	        <th>Director</th>
-	        <th>Actor</th>
+	        <th>영화번호</th>
+	        <th>영화</th>
+	        <th>감독</th>
+	        <th>배우</th>
 	        <th>비고</th>
 	      </tr>
 	    </thead>

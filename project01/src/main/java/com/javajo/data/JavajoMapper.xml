@@ -64,7 +64,7 @@
      select * from (select rownum rowm, a.* from (select * from movietheater
      <if test="key != null">
         where mt_name like '%'||#{key}||'%'
-     </if>) a) 
+     </if> order by mt_number desc) a) 
     where rowm between #{num1} and #{num2}
   </select>
   <select id="mtautonum" resultType="java.lang.Integer">
@@ -92,7 +92,7 @@
      select * from (select rownum rowm, a.* from (select * from movie
      <if test="key != null">
         where m_name like '%'||#{key}||'%'
-     </if>) a) 
+     </if> order by m_number desc) a) 
     where rowm between #{num1} and #{num2}
   </select>
   <select id="ttotal" resultType="java.lang.Integer">
@@ -101,11 +101,13 @@
        where t_name like '%'||#{key}||'%'
     </if>
   </select>
-  <select id="tlist" resultType="theaterVo">
-     select * from (select rownum rowm, a.* from (select * from theater
+  <select id="tlist" resultType="theaterVo2">
+     select * from (select rownum rowm, a.* from (
+	select t_number,t_name,t_seat,mt_name from theater t, movietheater mt
+	where t.mt_number=mt.mt_number
      <if test="key != null">
-        where t_name like '%'||#{key}||'%'
-     </if>) a) 
+        and t_name like '%'||#{key}||'%'
+     </if> order by t_number desc) a) 
     where rowm between #{num1} and #{num2}
   </select>
   <insert id="tinsert">
@@ -138,20 +140,20 @@
    where r.m_number=m.m_number and r.mt_number=mt.mt_number and r.t_number=t.t_number
      <if test="key != null">
         and r_date = to_date(#{key},'yyyy/mm/dd')
-     </if>) a) 
+     </if> order by r_number desc) a) 
     where rowm between #{num1} and #{num2}
   </select>
   <insert id="insertr">
      insert into running values(se_running.nextval,#{t_number},#{m_number},#{mt_number},to_date(#{r_date},'yyyy/mm/dd'),#{r_start})
   </insert>
   <select id="msele" resultType="movieVo_j">
-  	select m_number,m_name from movie where m_isshowing=1
+  	select m_number,m_name from movie where m_isshowing=1 order by m_number desc
   </select>
   <select id="mtsele" resultType="movietheaterVo2">
-     select mt_number,mt_name from movietheater
+     select mt_number,mt_name from movietheater order by mt_number desc
   </select>
   <select id="tsele" resultType="theaterVo">
-     select t_number,t_name from theater where mt_number=#{mt_number}
+     select t_number,t_name from theater where mt_number=#{mt_number} order by t_number desc
   </select>
   <delete id="rdelete">
      delete running where r_number=#{r_number}
@@ -172,7 +174,7 @@
      select * from (select rownum rowm, a.* from (select * from event
      <if test="key != null">
         where e_title like '%'||#{key}||'%'
-     </if>) a) 
+     </if> order by e_number desc) a) 
     where rowm between #{num1} and #{num2}
   </select>
   <insert id="inserte">
@@ -206,7 +208,7 @@
   </select>
   <select id="runninglist" resultType="runningVo3">
      select r.r_number,m.m_name,mt.mt_name,t.t_name,to_char(r_date,'YYYY/MM/DD') r_date,r_start from running r, theater t, movietheater mt, movie m 
-   where r.m_number=m.m_number and r.mt_number=mt.mt_number and r.t_number=t.t_number and r.t_number=#{t_number}
+   where r.m_number=m.m_number and r.mt_number=mt.mt_number and r.t_number=t.t_number and r.t_number=#{t_number} order by r.r_number desc
   </select>
   <update id="hitupdate">
      update event set e_hit=e_hit+1 where e_number=#{e_number}
@@ -241,6 +243,7 @@ m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
            <if test="key != null">
               and b_title like '%'||#{key}||'%'
            </if>
+           order by b_number desc
         )
       a) 
     where rowm between #{num1} and #{num2}
@@ -317,7 +320,7 @@ m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
   	select sum(h_ticket_price) from history
   </select>
   <select id="mprice" resultType="mpriceVo">
-  	select sum(h_ticket_price) m_price,m_name from history h,movie m where h.m_number=m.m_number group by m_name
+  	select sum(h_ticket_price) m_price,m_name from history h,movie m where h.m_number=m.m_number group by m_name order by m_price desc
   </select>
   <update id="stkupdate">
   	update seat set s_ft=#{s_ft}, ticket_number=null where ticket_number=#{ticket_number}
@@ -325,4 +328,7 @@ m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
   <delete id="tkdelete">
   	delete ticket where ticket_number=#{ticket_number}
   </delete>
+  <select id="naver" resultType="java.lang.Integer">
+  	select count(c_age) from customer where c_id=#{c_id}
+  </select>
 </mapper>

@@ -73,7 +73,7 @@ public class UpdateBoardController {
 	
 		
 		
-		mav.setViewName("redirect:/nblist.com");
+		mav.setViewName("redirect:/listBoard.com");
 		return mav;
 	}
 }

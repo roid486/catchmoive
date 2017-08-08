@@ -19,6 +19,7 @@ import com.javajo.vo.RunningVo;
 import com.javajo.vo.RunningVo2;
 import com.javajo.vo.RunningVo3;
 import com.javajo.vo.TheaterVo;
+import com.javajo.vo.TheaterVo2;
 import com.jihye.vo.MovieVo_j;
 import com.jun.vo.BoardVo;
 import com.jun.vo.NoticeVo;
@@ -141,7 +142,7 @@ public class JavajoDao {
 		return JavajoManager.ttotalrecode(key);
 	}
 
-	public List<TheaterVo> tlist(int num1, int num2, String key) {
+	public List<TheaterVo2> tlist(int num1, int num2, String key) {
 		// TODO Auto-generated method stub
 		return JavajoManager.tlist(num1,num2,key);
 	}
@@ -384,6 +385,11 @@ public class JavajoDao {
 	public int tkdelete(int ticket_number) {
 		// TODO Auto-generated method stub
 		return JavajoManager.tkdelete(ticket_number);
+	}
+
+	public int naver(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.naver(c_id);
 	}
 
 }

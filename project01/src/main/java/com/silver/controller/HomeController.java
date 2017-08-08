@@ -69,10 +69,12 @@ public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@Scheduled(cron="0 49 11 * * *")
+	@Scheduled(cron="0 33 15 * * *")
 	public void historyscedule()
 	{//history테이블 insert
 		tdao.historyinsert();
+		System.out.println(tdao.boxoffice());
+		System.out.println("controller 되라");
 	}
 	
 	@RequestMapping("/ticketCheck.com")

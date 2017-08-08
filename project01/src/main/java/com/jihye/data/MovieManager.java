@@ -250,6 +250,8 @@ public class MovieManager {
 			//System.out.println("선택된 장르 갯수 in MFController : "+m_genre.length);
 			for(int i=0;i<m_genre.length;i++){
 				map.put("m_genre"+(i+1), m_genre[i]);
+				
+				System.out.println("장르 i : "+i);
 			}
 			
 		}
@@ -275,7 +277,10 @@ public class MovieManager {
 		int endyear1 = 0;
 		if(startyear!=null && !startyear.equals("")){
 			startyear1 = Integer.parseInt(startyear);
-			map.put("startyear",startyear1);
+			System.out.println("시작 년도 : "+startyear1);
+			
+			map.put("startyear",startyear);
+			map.put("startyear1",startyear1);
 			//System.out.println("매니저 startyear : "+startyear);
 			//System.out.println("map startyear : "+map.put("startyear",startyear1));
 			
@@ -283,12 +288,13 @@ public class MovieManager {
 		
 		if(endyear != null && !endyear.equals("")){
 			endyear1 = Integer.parseInt(endyear);
-			map.put("endyear", endyear1);
-			//System.out.println("매니저 endyear : "+endyear);
+			map.put("endyear", endyear);
+			map.put("endyear1", endyear1);
+			System.out.println("매니저 endyear : "+endyear1);
 		}
 		
 		List<MovieVo_j> list = session.selectList("movieFinder.searchMovie",map);
-	
+		
 		session.close();
 		
 		return list;

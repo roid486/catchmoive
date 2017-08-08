@@ -23,6 +23,7 @@ import com.javajo.vo.RunningVo;
 import com.javajo.vo.RunningVo2;
 import com.javajo.vo.RunningVo3;
 import com.javajo.vo.TheaterVo;
+import com.javajo.vo.TheaterVo2;
 import com.jihye.vo.MovieVo_j;
 import com.jun.vo.BoardVo;
 import com.jun.vo.NoticeVo;
@@ -275,14 +276,14 @@ public class JavajoManager {
 		return re;
 	}
 
-	public static List<TheaterVo> tlist(int num1, int num2, String key) {
+	public static List<TheaterVo2> tlist(int num1, int num2, String key) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("num1", num1);
 		map.put("num2", num2);
 		map.put("key", key);
-		List<TheaterVo> list = session.selectList("javajo.tlist", map);
+		List<TheaterVo2> list = session.selectList("javajo.tlist", map);
 		session.close();
 		return list;
 	}
@@ -763,6 +764,16 @@ public class JavajoManager {
 		map.put("ticket_number", ticket_number);
 		map.put("s_ft", "n");
 		int re = session.update("javajo.stkupdate", map);
+		session.close();
+		return re;
+	}
+
+	public static int naver(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("c_id", c_id);
+		int re = session.selectOne("javajo.naver", map);
 		session.close();
 		return re;
 	}

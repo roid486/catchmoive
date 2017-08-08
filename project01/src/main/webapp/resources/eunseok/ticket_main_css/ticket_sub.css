@@ -82,7 +82,7 @@ body {
 	width: 40%;
 	height: 400px;
 	/* 	left: 40px; */
-	margin-left: -50px;
+	margin-left: -40px;
 	box-shadow: 0.5px 0.5px 2px 4px #000;
 	border-radius: 2px;
 	overflow-x: auto;
@@ -127,9 +127,9 @@ body {
 	position: absolute;
 	border: 1px solid black;
 	top: 440px;
-	left: 160px;
+	left: 170px;
 	width: 95%;
-	height: 120px;
+	height: 113px;
 	margin-left: -144px;
 	box-shadow: 0.5px 0.5px 2px 4px #000;
 	border-radius: 2px;
@@ -169,9 +169,4 @@ body {
 	float: right;
 	width: 11%;
 	text-align: right;
-<<<<<<< HEAD
-}
-=======
-}
 
->>>>>>> branch 'master' of https://github.com/roid486/catchmoive.git

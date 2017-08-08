@@ -10,12 +10,14 @@
 	media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket_sub.css?a=1" />
+	href="resources/eunseok/ticket_main_css/ticket_sub.css?a=14323" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 	var jq3 = jQuery.noConflict();
 </script>
+<link href="resources/eunseok/toast/toastr.scss" rel="stylesheet">
+<script src="resources/eunseok/toast/toastr.js"></script>
 <script type="text/javascript"
 	src="resources/eunseok/jquery-migrate-1.4.1.min.js"></script>
 <script type="text/javascript">
@@ -49,7 +51,7 @@
 					href : "#",
 					id : item.m_number,
 					name : "sub1",
-					idx : item.m_image1
+					idx : item.m_image
 				}).html(item.m_name)
 				$("#sub1_form").append(a1, "<br>");
 			})
@@ -211,14 +213,25 @@
 											+ theater_number
 											+ "&running_number=" + running_number;
 								} else {
-									alert("선택하지 않은 항목이 있습니다.")
+									toas("선택하지 않은 항목이 있습니다.")
 								}
 							}
 							else{
-								alert("로그인 하십시오.");
+								toas("로그인 하십시오.");
 								
 							}
 						})
+						var toas = function(str){
+			toastr.options = {
+                    closeButton: true,
+                    "positionClass": "toast-top-full-width",
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 2000
+                };
+                toastr.error(str);
+
+		}
 	})
 </script>
 </head>

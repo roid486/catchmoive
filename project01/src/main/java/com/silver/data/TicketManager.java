@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.silver.vo.BoxofficeVo;
 import com.silver.vo.MovieVo;
 import com.silver.vo.SeatVo;
 import com.silver.vo.TicketCheckVo;
@@ -123,5 +124,33 @@ public class TicketManager {
 		
 		
 		return info;
+	}
+	public static Object boxoffice() {
+		SqlSession session = factory.openSession(true);
+		int total = session.selectOne("ticket.histotal");
+		List<BoxofficeVo> list = session.selectList("ticket.hislis"); 
+		System.out.println("되라 업데이트 제발1");
+		
+		for(int i=0; i < list.size(); i++)
+		{
+			System.out.println("되라 업데이트 제발2");
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			System.out.println();
+			double box = (list.get(i).getCnt()/(double)total)*100;
+			box = Math.round(box * 10) / 10.0;
+			System.out.println("list.get(i).getCnt()   :"+list.get(i).getCnt()+"  // total :: "+total);
+			System.out.println("box   ::     "+box);
+			
+			map.put("boxoffice", box);
+			map.put("m_number", list.get(i).getM_number());
+			session.update("ticket.updateboxoffice", map);
+			System.out.println("되라 업데이트 제발3");
+		}
+		
+		return 1;
+	}
+	private static double format(String string, double box) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
