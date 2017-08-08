@@ -8,7 +8,7 @@
     select * from movie
     <where>
 	    <!-- 만약 검색어가 왔다면 -->
-	    <if test="keyword != null">
+	    <if test="keyword != null and keyword!=''">
     		${searchField} like '%' || #{keyword} ||'%'
     	</if>
     	
@@ -122,10 +122,10 @@
     		or m_grade like '%' || #{m_grade4} ||'%'
     	</if>
     	
-    	<!-- <if test="startyear!=0 and endyear != 0">
-    	 	and to_char(m_opendate,'yyyy') between #{startyear,jdbcType=INTEGER} and #{endyear,jdbcType=INTEGER}
-    	</if>
-    	 -->
+    	 <if test="startyear!=null and endyear != null and startyear!='' and endyear!=''">
+    	 	and to_char(m_opendate,'yyyy') between #{startyear1} and #{endyear1}
+    	</if> 
+    	 
     	
     	
     	
