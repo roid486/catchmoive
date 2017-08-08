@@ -47,12 +47,11 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
-	        <th>M_number</th>
-	        <th>Mt_number</th>
-	        <th>T_number</th>
-	        <th>r_date</th>
-	        <th>r_start</th>
-	        <th>비고</th>
+	        <th>영화</th>
+	        <th>영화관</th>
+	        <th>상영관</th>
+	        <th>상영날짜</th>
+	        <th>상영시간</th>
 	        <th>비고</th>
 	      </tr>
 	    </thead>

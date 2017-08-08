@@ -45,10 +45,10 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
-	        <th>Number</th>
-	        <th>Name</th>
-	        <th>Seat</th>
-	        <th>Mt_number</th>
+	        <th>상영관 번호</th>
+	        <th>상영관</th>
+	        <th>좌석 수</th>
+	        <th>영화관</th>
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -57,7 +57,7 @@
 	        <td>${tl.t_number }</td>
 	        <td>${tl.t_name }</td>
 	        <td>${tl.t_seat }</td>
-	        <td>${tl.mt_number }</td>
+	        <td>${tl.mt_name }</td>
 	      </tr>
 	    </m:forEach>
 	    </tbody>

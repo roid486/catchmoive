@@ -48,9 +48,9 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
-	        <th>Title</th>
-	        <th>Regdate</th>
-	        <th>Hit</th>
+	        <th>제목</th>
+	        <th>등록날짜</th>
+	        <th>조회수</th>
 	        <th>비고</th>
 	        <th>비고</th>
 	      </tr>
