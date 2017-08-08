@@ -203,6 +203,12 @@
 							}
 							
 							
+							
+							
+							
+							
+							
+							
 							if(!two.is(":disabled")){// 두번째 좌석이 예약좌석이 아니고 선택인원이 2 이상일 때
 								alert("1/ totalNum:"+totalNum )
 								if(two.is(":checked")){
