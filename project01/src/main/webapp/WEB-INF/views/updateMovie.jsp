@@ -26,7 +26,7 @@ $(function(){
 	
 	
 	var showing = $("#m_isshowing").attr("val");
-	alert(showing);
+
 	 $("#m_isshowing").val(showing).text();
 	/* $("select.m_isshowing option[value='"+showing+"']").attr("selected","selected"); */
 	$("#m_isshowing").find("option:"+showing).attr("selected","selected");

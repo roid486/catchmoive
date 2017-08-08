@@ -12,7 +12,7 @@
  </select>
  
  <select id="thirdList" resultType="com.silver.vo.RunningVo">
-select distinct to_char(r_date,'YYYY-MM-DD') r_date from running r,movietheater mt, movie m,theater t where mt.mt_number = t.mt_number and m.m_number = r.m_number and r.t_number = t.t_number and m.m_number = #{movie_number} and mt.mt_number = #{movietheater_number}
+select distinct to_char(r_date,'YYYY-MM-DD') r_date from running r,movietheater mt, movie m,theater t where mt.mt_number = t.mt_number and m.m_number = r.m_number and r.t_number = t.t_number and m.m_number = #{movie_number} and mt.mt_number = #{movietheater_number} order by r_date
 </select>
  
   <select id="fourthList" resultType="com.silver.vo.RunningstartVo">
