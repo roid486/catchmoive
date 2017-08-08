@@ -6,12 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket.css" />
+	href="resources/eunseok/ticket_main_css/ticket.css?a=321" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 	var jq3 = jQuery.noConflict();
 </script>
+<!-- Toastr -->
+<link href="resources/eunseok/toast/toastr.scss" rel="stylesheet">
+<script src="resources/eunseok/toast/toastr.js"></script>
 <script type="text/javascript"
 	src="resources/eunseok/jquery-migrate-1.4.1.min.js"></script>
 <script type="text/javascript">
@@ -25,6 +28,7 @@
 	href="resources/eunseok/fancybox/jquery.fancybox-1.3.4.css"
 	media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
+
 <script type="text/javascript">
 	var totalSum;
 	var totalNum;
@@ -42,7 +46,9 @@
 	
 	jq1(function($) {
 		$("#btn1").click(function() {
-		
+			if(arr!="")
+			{
+			
 		var winHeight = document.body.clientHeight;	// 현재창의 높이
 		var winWidth = document.body.clientWidth;	// 현재창의 너비
 		var winX = window.screenLeft;	// 현재창의 x좌표
@@ -50,6 +56,7 @@
 		var popX = winX + (winWidth - 400)/2;
 		var popY = winY + (winHeight - 650)/2;
 		
+			
 			var str ="";
 			for(i=0;i<arr.length;i++)
 				{
@@ -83,6 +90,9 @@
 					
 				}
 			})
+				}else{
+					toas("좌석을 선택해주세요")
+				}
 		});
 		$("#btn2").click(function() {
 			history.back();
@@ -93,6 +103,7 @@
 		var ynum = 0;
 		var snum = 0;
 		var flag = 0;
+		var flag1 = 0;
 		$.getJSON("theaterseat.com", function(data) {
 			var divrow;
 			$.each(data, function(index, item) {
@@ -130,14 +141,14 @@
 							"background-color" : "#C9C9C9",
 						})
 						if ($(this).text() <= 4 && totalNum >= 2) {
-							if(!$(this).parent().next().find("input[type=checkbox]").is(":checked")){
+							if(!$(this).parent().next().find("input[type=checkbox]").is(":checked") && !$(this).parent().next().find("input[type=checkbox]").is(":disabled")){
 							$(this).parent().next().find("label").css({
 								cursor : "pointer",
 								"background-color" : "#C9C9C9"
 							})
 						}
 						} else if($(this).text() >= 5 && totalNum >= 2){
-							if(!$(this).parent().prev().find("input[type=checkbox]").is(":checked")){
+							if(!$(this).parent().prev().find("input[type=checkbox]").is(":checked") && !$(this).parent().prev().find("input[type=checkbox]").is(":disabled")){
 							$(this).parent().prev().find("label").css({
 								cursor : "pointer",
 								"background-color" : "#C9C9C9"
@@ -169,7 +180,8 @@
 							var one = $(this).parent().find(
 									"input[type=checkbox]");
 							var two;
-							if(totalNum>0){
+							storeNum-=arr.length
+							if(totalNum>=0){//0일때 들어가면 안됨 근데 다시 눌러서 체크 해제할 때는 0이어야 함
 							
 							$(this).css({
 								"background-color" : "#fdfdee"
@@ -189,48 +201,68 @@
 								two = $(this).parent().prev().find(
 								"input[type=checkbox]");		
 							}
-							alert("total "+totalNum +"storeNum "+storeNum)
 							
-							if(!two.is(":disabled") && storeNum >= 2 ){
+							
+							if(!two.is(":disabled")){// 두번째 좌석이 예약좌석이 아니고 선택인원이 2 이상일 때
+								alert("1/ totalNum:"+totalNum )
 								if(two.is(":checked")){
-									alert("해제 부분");
+									
+									alert("해제 부분1");
 									two.prop("checked",false)
 									arr.pop(one.attr("id"))
 									arr.pop(two.attr("id"))
 									totalNum+=2;
 								}
 								else{
+									if(totalNum>0){
+										alert("1_1")
+										alert("totalNum" + totalNum)
 									two.attr("checked",true)
 									arr.push(one.attr("id"))
 									arr.push(two.attr("id"))
 									totalNum-=2;
+									}
+									else{
+										toas('선택인원을 초과하셨습니다.');
+										one.prop("checked",true);
+									}
 								}
 							}
-							else{
-								if(!two.is(":disabled")&&two.is(":checked"))
-									{
-									alert("해제 부분");
-									two.prop("checked",false)
-									arr.pop(one.attr("id"))
-									arr.pop(two.attr("id"))
-									totalNum+=2;
-									}
-								else{
+							else{//두번째가 예약 좌석이고 storeNum이 0 이하일 때
+// 								if(!two.is(":disabled")&&two.is(":checked"))
+// 									{
+// 									alert("해제 부분2");
+// 									two.prop("checked",false)
+// 									arr.pop(one.attr("id"))
+// 									arr.pop(two.attr("id"))
+// 									totalNum+=2;
+// 									}
+// 								else{
+									alert("2")
 								if(one.is(":checked")){
+									alert("해제 부분3");
 									arr.pop(one.attr("id"))
 									totalNum+=1;
 								}else{
+									alert("2_2")
+									if(totalNum>0){
 									arr.push(one.attr("id"))
 									totalNum-=1;
+									}
+									else{
+										toas('선택인원을 초과하셨습니다.');
+										one.prop("checked",true);
+									}
 								}
+							
+// 							}
 							}
-							}
-							 alert("totalNum" + totalNum)
+							 
 							 $("#nseat").html("")
 							 $("#nseat").html(arr)
 							}
 							else{
-								alert("관람인원을 초과하셨습니다.")
+								toas('인원을 선택하세요!!');
 								one.prop("checked",true);
 							}
 						})
@@ -260,33 +292,47 @@
 				snum = eval($(this).text())
 				t3 = "우대"+snum+"명";
 			}
-			
 			totalSum = anum * 10000 + ynum * 7000 + snum * 5000;//총 가격
 			totalNum = anum + ynum + snum;//총 인원
 			storeNum = totalNum;
 			$("#pnum").html(t1+" "+t2+" "+t3);
+			
 		})
 		$("#btn3").click(function(){
 			
-			if(("input[type='checkbox']").is(":disabled"))
-				{
-				alert("ok");
-				}
-			/* $("input[type=checkbox]").prop("checked",false)
-			 */
+			
+			 if($("input[type=checkbox]").not(":disabled")){
+				 $("input[type=checkbox]").prop("checked",false)
+			 }
+			 
 			$("input[type=radio]:input[value=0]").prop("checked",true)
 			anum = 0;
 			ynum = 0;  
 			snum = 0;
 			totalNum = 0; 
 			totalSum = 0;
-			
+			storeNum = 0;
 			arr = [];
+			t1="";
+			t2="";
+			t3="";
 			$("#pnum").html("");
 			$("#nseat").html("");
 			
 		})
+		
 	});
+		var toas = function(str){
+			toastr.options = {
+                    closeButton: true,
+                    "positionClass": "toast-top-full-width",
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 2000
+                };
+                toastr.error(str);
+
+		}
 </script>
 <title>Insert title here</title>
 </head>
@@ -369,7 +415,8 @@
 							<span>SCREEN</span>
 						</div>
 						<div class="ticket_content"></div>
-						<button id="btn3">reset</button>
+						<img src="resources/eunseok/img/reset.png" width="15px"
+							height="15px" id="btn3">
 					</center>
 				</td>
 			</tr>
