@@ -729,25 +729,6 @@ public class JavajoManager {
 		return re;
 	}
 
-	public static int srupdate(String sysday) {
-		// TODO Auto-generated method stub
-		SqlSession session = factory.openSession(true);
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("sysday", sysday);
-		int re = session.update("javajo.srupdate", map);
-		session.close();
-		return re;
-	}
-
-	public static int trupdate(String sysday) {
-		// TODO Auto-generated method stub
-		SqlSession session = factory.openSession(true);
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("sysday", sysday);
-		int re = session.update("javajo.trupdate", map);
-		session.close();
-		return re;
-	}
 
 	public static int totalprice() {
 		// TODO Auto-generated method stub
@@ -763,6 +744,37 @@ public class JavajoManager {
 		List<MpriceVo> list = session.selectList("javajo.mprice");
 		session.close();
 		return list;
+	}
+
+	public static int tkdelete(int ticket_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ticket_number", ticket_number);
+		int re = session.delete("javajo.tkdelete", map);
+		session.close();
+		return re;
+	}
+
+	public static int stkupdate(int ticket_number) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession(true);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ticket_number", ticket_number);
+		map.put("s_ft", "n");
+		int re = session.update("javajo.stkupdate", map);
+		session.close();
+		return re;
+	}
+
+	public static int naver(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("c_id", c_id);
+		int re = session.selectOne("javajo.naver", map);
+		session.close();
+		return re;
 	}
 	
 }

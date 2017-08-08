@@ -92,6 +92,19 @@
 	      <div class="panel-body">
 				<div class="container">          
 				  <table class="table" style="width: 70%;">
+				  	<thead>
+				      <tr>
+				        <th>티켓번호</th>
+				        <th>영화</th>
+				        <th>영화관</th>
+				        <th>상영관</th>
+				        <th>상영날짜</th>
+				        <th>상영시간</th>
+				        <th>상영 인원</th>
+				        <th>가격</th>
+				        <th>비고</th>
+				      </tr>
+				    </thead>
 				    <tbody>
 				    	<m:forEach var="myt" items="${myt }">
 				    		<tr>
@@ -103,6 +116,7 @@
 								<td>${myt.r_start }</td>
 								<td>${myt.ticket_peoplenum }</td>
 								<td>${myt.ticket_price }</td>
+								<td><a href="tkdelete.com?ticket_number=${myt.ticket_number }&&c_id=${se_id }"><button class="btn btn-primary">삭제</button></a></td>
 							</tr>
 				    	</m:forEach>
 				    </tbody>
@@ -115,6 +129,16 @@
 	      <div class="panel-body">
 				<div class="container">          
 				  <table class="table" style="width: 70%;">
+				  	<thead>
+				      <tr>
+				        <th>영화</th>
+				        <th>영화관</th>
+				        <th>상영관</th>
+				        <th>상영날짜</th>
+				        <th>상영 인원</th>
+				        <th>가격</th>
+				      </tr>
+				    </thead>
 				    <tbody>
 				    	<m:forEach var="myh" items="${myh }">
 				    		<tr>

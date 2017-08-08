@@ -6,8 +6,6 @@
 <html lang="en">
 <head>
 <style type="text/css">
-
-
 #w3-bar-item{
 font-family: -윤고딕340;
 }
@@ -30,22 +28,16 @@ font-family: -윤고딕340;
  background: #DFF6FF;
  vertical-align: middle;
 }
-
 #comment{
-
 }
-
-
 #counter {
   /* background:rgba(255,0,0,0.5); */
   border-radius: 0.5em;
   padding: 0 .5em 0 .5em;
   font-size: 10pt;
   position: absolute;
-
   
 }
-
 #cnt{
 position:relative;
 top:-20px;
@@ -71,8 +63,6 @@ float: right;
 	position: relative;   background-color:  #e6f3ff; color: black;
 	width: 100%;
 	}
-
-
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -220,7 +210,6 @@ float: right;
   						$(tr).append(td4,td5); 
   						}
   						
-
 							 
   						$("#re_table").append(tr);
   					});
@@ -262,7 +251,6 @@ float: right;
   				  						alert("내용을 입력하지 않았습니다.");
   				  						  $('#revise_comment').focus();
   				  						  return;
-
   				  						}
   				  					else{
   				  							reviseComment();
@@ -289,7 +277,7 @@ float: right;
 						 no= $(tr).find(".ms_no").attr("idx");	 
 						 //var mid = $("#mnumber").val();
 						 var mid = "${m.m_number}";
-						
+						 alert("mid : "+mid);
 						
 						 if(firm){
 							 
@@ -380,7 +368,6 @@ float: right;
   			if(cheklog == null || cheklog==""){
   				
   				var nonlogin = $("#myModal").modal();
-
   			}
   			else{
   				//alert("로그인했네?");
@@ -422,7 +409,6 @@ float: right;
   			
   		});
   									
-
   									
   	});
   	

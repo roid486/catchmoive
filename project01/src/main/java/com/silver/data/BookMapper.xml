@@ -5,7 +5,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="book">
  <select id="firstList" resultType="com.silver.vo.MovieVo">
-	select * from movie
+	select * from movie where m_isshowing = 1
  </select>
  <select id="secondList" resultType="com.silver.vo.MovietheatersubVo">
 	select distinct mt.mt_name, mt.mt_number from movietheater mt, movie m,running r, theater t where mt.mt_number = t.mt_number and m.m_number = r.m_number and r.t_number = t.t_number and m.m_number =#{movie_number}

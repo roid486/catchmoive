@@ -1,6 +1,6 @@
 @CHARSET "EUC-KR";
 
-body{
+body {
 	font-family: Arial, sans-serif;
 	font-weight: bold;
 	font-size: 14px;
@@ -219,13 +219,13 @@ input[type=radio]:checked+label:BEFORE {
 	line-height: 18px;
 }
 
-#es{
+#es {
 	margin-left: -8px;
 }
+
 input[type=checkbox] {
 	display: none;
 }
-
 
 input[type=checkbox]+label {
 	text-align: center;
@@ -289,4 +289,11 @@ input[type=checkbox]:disabled+label:BEFORE { /*체크 박스에 체크  */
 	border-radius: 1px;
 	box-sizing: border-box;
 	border: 1px solid black;
+	
+}
+#btn3{
+	position: absolute;
+	cursor: pointer;
+	left: 700px;
+	top:150px;
 }

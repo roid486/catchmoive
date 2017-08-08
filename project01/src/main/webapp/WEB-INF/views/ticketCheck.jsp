@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,11 +31,10 @@ width:346px;
 border: 4px solid black;
 border-radius: 0px 0px 10px 10px; 
 }
-
-
 </style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	
 <script type="text/javascript">
 	$(function() {
 		
@@ -45,8 +44,29 @@ border-radius: 0px 0px 10px 10px;
 	
 	var flag = 0;
 	var flag1 = 0;
-		
-		
+	
+	var toas = function(){
+		toastr.options = {
+                closeButton: true,
+                "positionClass": "toast-top-right",
+                progressBar: true,
+                showMethod: 'slideDown',
+                "extendedTimeOut": "2000",
+                timeOut: 5000
+            };
+            toastr.success('20초 뒤에 자동 종료됩니다.');
+	}
+	
+	setTimeout(function(){
+		toas();
+	}, 4000);
+
+	setTimeout(function(){
+		window.close();
+	}, 20000);
+
+
+	
 		$.ajax({
 			url : "weather.jsp",
 			dataType : "json",
@@ -64,7 +84,6 @@ border-radius: 0px 0px 10px 10px;
 					if(flag < 14){
 						time = idx.substring(idx.indexOf("e")+1,idx.indexOf("h"))
 						if(!item.indexOf("S")){
-
 							$("<td></td>").html(time+":00").appendTo("#weather_ti");
 							$("<td></td>").html("<img width='35px' height='30px' src='resources/eunseok/weather_icons/"+item+".png'>").appendTo("#weather_em")
 						}
@@ -76,7 +95,7 @@ border-radius: 0px 0px 10px 10px;
 				})
 				$.each(data2, function(idx, item) {
 					if(flag1 < 7){
-						$("<td></td>").html(item.substring(0,2)+"��C").appendTo("#weather_te")
+						$("<td></td>").html(item.substring(0,2)+"℃").appendTo("#weather_te")
 					}
 					flag1++
 				})
@@ -88,11 +107,15 @@ border-radius: 0px 0px 10px 10px;
 			
 		})
 		
+	
+		
 	})
 </script>
+<link href="resources/eunseok/toast/toastr.scss" rel="stylesheet">
+    <script src="resources/eunseok/toast/toastr.js"></script>
  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=HXDb6FFIbjhAcZeJhqjy&submodules=geocoder"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Ƽ��</title>
+<title>Æ¼ÄÏ</title>
 </head>
 <body>
 <center>
@@ -100,7 +123,7 @@ border-radius: 0px 0px 10px 10px;
 		<tr><td style="width: 10%;" rowspan="4"><img src="resources/upload/${t.m_image }" width="100px" height="130px"></td><td width="*">${t.m_name }</td></tr>
 		<tr><td>${t.mt_name } ${t.t_name }</td></tr>
 		<tr><td>${t.r_date } ${t.r_start }</td></tr>
-		<tr><td>�ο�: ${t.ticket_peoplenum }�� �¼�: ${seat_rc }</td></tr>
+		<tr><td>인원: ${t.ticket_peoplenum }¸날짜: ${seat_rc }</td></tr>
 		</table>
 	<table id="form">
 		<tr id="map"><jsp:include page="map.jsp"><jsp:param name="mx" value="${info.mt_x}"/><jsp:param name="my" value="${info.mt_y}"/></jsp:include></tr>
@@ -110,7 +133,7 @@ border-radius: 0px 0px 10px 10px;
 		<tr id="weather_te" style="text-align: center;"></tr>
 	</table>
 	<br>
-<button type="button" class="btn btn-primary btn-lg active">Ȯ��</button>
+<button type="button" class="btn btn-primary btn-lg active">확인</button>
 	</center>
 </body>
 </html>

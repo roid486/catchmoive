@@ -18,7 +18,6 @@
         center: new naver.maps.LatLng(x, y),
         zoom: 11
     });
-
     var marker = new naver.maps.Marker({
         position: new naver.maps.LatLng(x, y),
         map: map
@@ -55,5 +54,3 @@
       </script>
   </body>
 </html>
-
-       

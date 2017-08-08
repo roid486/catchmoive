@@ -10,7 +10,7 @@
 	media="screen" />
 <link rel="stylesheet" href="resources/eunseok/style.css" />
 <link rel="stylesheet"
-	href="resources/eunseok/ticket_main_css/ticket_sub.css?a=1" />
+	href="resources/eunseok/ticket_main_css/ticket_sub.css?a=14323" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
@@ -51,11 +51,9 @@
 					name : "sub1",
 					idx : item.m_image
 				}).html(item.m_name)
-
 				$("#sub1_form").append(a1, "<br>");
 			})
 		})
-
 		$(document).on(
 				"click",
 				"a",
@@ -106,10 +104,8 @@
 						})
 					}
 				})
-
 		$(document).on("click", " a", function() {
 			var chk = $(this).attr("name");
-
 			if (chk == "sub2") {
 				movietheater_number = $(this).attr("id");
 				var the = $(this).text();
@@ -136,7 +132,6 @@
 				})
 			}
 		})
-
 		$(document).on("click", " a", function() {
 			var chk = $(this).attr("name");
 			if (chk == "sub3") {
@@ -164,10 +159,8 @@
 						})
 					}
 				})
-
 			}
 		})
-
 		$(document).on("click", " a", function() {
 			var chk = $(this).attr("name");
 			if (chk == "sub4") {
@@ -194,7 +187,6 @@
 				})
 			}
 		})
-
 		$("#move_sub2")
 				.click(
 						function() {

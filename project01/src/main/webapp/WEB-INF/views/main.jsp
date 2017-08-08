@@ -14,9 +14,6 @@
 	font-family: 'NanumGothic'; 
 	src: url('font/NanumGothicCoding.ttf').format('truetype'); 
 	}
-
-
-
 #menu {
 	position: relative;
 	z-index: 999;
@@ -44,7 +41,9 @@ display: inline-block;
 	float: left; width: 900px; height: 550px;
 }
 #bottom {
+
 	position: relative;   background-color:  #e6f3ff; color: black;
+
 }
 .table{
 	cursor: pointer;

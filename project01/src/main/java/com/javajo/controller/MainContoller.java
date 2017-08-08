@@ -206,6 +206,7 @@ public class MainContoller {
 	public ModelAndView mypage(String c_id)
 	{
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("navernum", dao.naver(c_id));
 		mav.addObject("myt", dao.myt(c_id));
 		mav.addObject("myb", dao.myb(c_id));
 		return mav;
@@ -220,6 +221,28 @@ public class MainContoller {
 		return mav;
 	}
 	
+	@RequestMapping("/tkdelete.com")
+	public ModelAndView tkdelete(int ticket_number, String c_id)
+	{
+		ModelAndView mav = new ModelAndView();
+		int re = dao.stkupdate(ticket_number);
+		int re2 = dao.tkdelete(ticket_number);
+		System.out.println(re2);
+		mav.setViewName("redirect:/myticket.com?c_id="+c_id);
+		return mav;
+	}
+	
+	/*@RequestMapping("/tdelete.com")
+	public ModelAndView tkdelete(int ticket_number, String c_id)
+	{
+		ModelAndView mav = new ModelAndView();
+		System.out.println(ticket_number+" / "+c_id);
+		int re = dao.stkupdate(ticket_number);
+		int re2 = dao.tkdelete(ticket_number);
+		mav.setViewName("redirect:/myticket.com?c_id="+c_id);
+		return mav;
+	}*/
+	
 	@Scheduled(cron="0 55 23 * * *")
 	public void runningscedule()
 	{
@@ -228,8 +251,6 @@ public class MainContoller {
 		int m = date.getMonth()+1;
 		int d = date.getDay()-1;
 		String sysday = y+"/"+m+"/"+d;
-		int a = dao.srupdate(sysday);
-		int b = dao.trupdate(sysday);
 		int re = dao.runningscedule(sysday);
 	}
 	

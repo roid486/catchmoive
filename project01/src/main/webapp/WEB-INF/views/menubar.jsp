@@ -148,7 +148,6 @@ jq1(function($) {
 		$(".zeta-menu ul li:has(ul)")
 			.find("a:first")
 			.append("<p style='float:right;margin:-3px'>&#9656;</p>");
-
 		$(".zeta-menu li>a").click(function(){
 			var li = $(this).parent();
 			var ul = li.parent()
@@ -189,7 +188,6 @@ jq1(function($) {
       $("#signup").click(function () {
          location.href="signup.com";
       });
-
       $("#listboard").click(function () {
          location.href="listBoard.com";
       });
@@ -264,14 +262,14 @@ jq1(function($) {
          <ul class="zeta-menu">
              <li><a href="#">영화</a>
                 <ul>
-                    <li><a href="listMovie.com">영화 정보</a></li>
+                    <li><a href="listMovie.com">무비 차트</a></li>
                       <li><a href="movieFinder.com">무비 파인더</a></li>
                   </ul>
              </li>
              <li><a rel="fancybox" class="iframe" href="fancy_sub1.com">예매</a></li>
              <li><a href="movietheater.com?mt_number=1">영화관</a></li>
              <li><a href="event.com">이벤트</a></li> 
-             <li><a id="listboard">공지사항</a></li> 
+             <li><a id="listboard">고객센터</a></li> 
          </ul>
       </div>
    </div>

@@ -9,310 +9,324 @@
   <select id="clist" resultType="customerVo">
     select * from (select rownum rowm, a.* from (select * from customer
     <choose>
-    	<when test="key==null">
-    		where c_id!='master'
-    	</when>
-    	<when test="key!=null">
-    		where c_id!='master' and c_id like '%'||#{key}||'%'
-    	</when>
+       <when test="key==null">
+          where c_id!='master'
+       </when>
+       <when test="key!=null">
+          where c_id!='master' and c_id like '%'||#{key}||'%'
+       </when>
     </choose>) a) 
     where rowm between #{num1} and #{num2}
   </select>
   <select id="login" resultType="java.lang.String">
-  	select c_id from customer where c_id=#{c_id} and c_pw=#{c_pw}
+     select c_id from customer where c_id=#{c_id} and c_pw=#{c_pw}
   </select>
   <insert id="signup">
-  	insert into customer values(#{c_id},#{c_pw},#{c_name},#{c_age},#{c_addr},#{c_tel},#{c_email},#{c_gender},#{c_check},#{c_echeck})
+     insert into customer values(#{c_id},#{c_pw},#{c_name},#{c_age},#{c_addr},#{c_tel},#{c_email},#{c_gender},#{c_check},#{c_echeck})
   </insert>
   <select id="serchcust" resultType="java.lang.Integer">
-  	select count(*) from customer where c_name=#{name} and c_email=#{email}
+     select count(*) from customer where c_name=#{name} and c_email=#{email}
   </select>
   <select id="serchid" resultType="java.lang.Integer">
-  	select count(*) from customer where c_id=#{id}
+     select count(*) from customer where c_id=#{id}
   </select>
   <update id="echeckupdate">
-  	update customer set c_echeck=#{yes} where c_email=#{email}
+     update customer set c_echeck=#{yes} where c_email=#{email}
   </update>
   <select id="crecode" resultType="java.lang.Integer">
-  	select count(*) from customer
-  	<if test="key != null">
-    	where c_id like '%'||#{key}||'%'
+     select count(*) from customer
+     <if test="key != null">
+       where c_id like '%'||#{key}||'%'
     </if>
   </select>
   <delete id="cdelete">
-  	delete customer where c_id=#{c_id}
+     delete customer where c_id=#{c_id}
   </delete>
   <select id="scid" resultType="java.lang.String">
-  	select c_id from customer where c_name=#{name} and c_email=#{email}
+     select c_id from customer where c_name=#{name} and c_email=#{email}
   </select>
   <select id="scpw" resultType="java.lang.String">
-  	select c_pw from customer where c_id=#{id} and c_name=#{name} and c_email=#{email}
+     select c_pw from customer where c_id=#{id} and c_name=#{name} and c_email=#{email}
   </select>
   <select id="cdetail" resultType="customerVo">
-  	select * from customer where c_id=#{c_id}
+     select * from customer where c_id=#{c_id}
   </select>
   <update id="cupdate">
-  	update customer set c_pw=#{c_pw}, c_name=#{c_name}, c_age=#{c_age}, c_addr=#{c_addr}, c_tel=#{c_tel}, c_email=#{c_email}, c_gender=#{c_gender}, c_check=#{c_check}, c_echeck=#{c_echeck} where c_id=#{c_id}
+     update customer set c_pw=#{c_pw}, c_name=#{c_name}, c_age=#{c_age}, c_addr=#{c_addr}, c_tel=#{c_tel}, c_email=#{c_email}, c_gender=#{c_gender}, c_check=#{c_check}, c_echeck=#{c_echeck} where c_id=#{c_id}
   </update>
   <select id="mttotalrecode" resultType="java.lang.Integer">
-  	select count(*) from movietheater
-  	<if test="key != null">
-    	where mt_name like '%'||#{key}||'%'
+     select count(*) from movietheater
+     <if test="key != null">
+       where mt_name like '%'||#{key}||'%'
     </if>
   </select>
   <select id="mtl" resultType="movietheaterVo2">
-  	select * from (select rownum rowm, a.* from (select * from movietheater
-  	<if test="key != null">
-  		where mt_name like '%'||#{key}||'%'
-  	</if>) a) 
+     select * from (select rownum rowm, a.* from (select * from movietheater
+     <if test="key != null">
+        where mt_name like '%'||#{key}||'%'
+     </if> order by mt_number desc) a) 
     where rowm between #{num1} and #{num2}
   </select>
   <select id="mtautonum" resultType="java.lang.Integer">
-  	select nvl(max(mt_number),0)+1 from movietheater
+     select nvl(max(mt_number),0)+1 from movietheater
   </select>
   <insert id="insertmt">
-  	insert into movietheater values(#{mt_number},#{mt_name},#{mt_loc},#{mt_img},#{mt_x},#{mt_y})
+     insert into movietheater values(#{mt_number},#{mt_name},#{mt_loc},#{mt_img},#{mt_x},#{mt_y})
   </insert>
   <select id="mtdetail" resultType="movietheaterVo2">
-  	select * from movietheater where mt_number=#{mt_number}
+     select * from movietheater where mt_number=#{mt_number}
   </select>
   <update id="mtupdate">
-  	update movietheater set mt_name=#{mt_name}, mt_loc=#{mt_loc}, mt_img=#{mt_img}, mt_x=#{mt_x}, mt_y=#{mt_y} where mt_number=#{mt_number}
+     update movietheater set mt_name=#{mt_name}, mt_loc=#{mt_loc}, mt_img=#{mt_img}, mt_x=#{mt_x}, mt_y=#{mt_y} where mt_number=#{mt_number}
   </update>
   <delete id="mtdelete">
-  	delete movietheater where mt_number=#{mt_number}
+     delete movietheater where mt_number=#{mt_number}
   </delete>
   <select id="mtotalrecode" resultType="java.lang.Integer">
-  	select count(*) from movie
-  	<if test="key != null">
-    	where m_name like '%'||#{key}||'%'
+     select count(*) from movie
+     <if test="key != null">
+       where m_name like '%'||#{key}||'%'
     </if>
   </select>
   <select id="mlist" resultType="movieVo_j">
-  	select * from (select rownum rowm, a.* from (select * from movie
-  	<if test="key != null">
-  		where m_name like '%'||#{key}||'%'
-  	</if>) a) 
+     select * from (select rownum rowm, a.* from (select * from movie
+     <if test="key != null">
+        where m_name like '%'||#{key}||'%'
+     </if> order by m_number desc) a) 
     where rowm between #{num1} and #{num2}
   </select>
   <select id="ttotal" resultType="java.lang.Integer">
-  	select count(*) from theater
-  	<if test="key != null">
-    	where t_name like '%'||#{key}||'%'
+     select count(*) from theater
+     <if test="key != null">
+       where t_name like '%'||#{key}||'%'
     </if>
   </select>
   <select id="tlist" resultType="theaterVo">
-  	select * from (select rownum rowm, a.* from (select * from theater
-  	<if test="key != null">
-  		where t_name like '%'||#{key}||'%'
-  	</if>) a) 
+     select * from (select rownum rowm, a.* from (select * from theater
+     <if test="key != null">
+        where t_name like '%'||#{key}||'%'
+     </if> order by t_number desc) a) 
     where rowm between #{num1} and #{num2}
   </select>
   <insert id="tinsert">
-  	insert into theater values(se_theater.nextval,#{t_name},#{t_seat},#{mt_number})
+     insert into theater values(se_theater.nextval,#{t_name},#{t_seat},#{mt_number})
   </insert>
   <select id="mlist2" resultType="movietheaterVo2">
-  	select * from movietheater
+     select * from movietheater
   </select>
   <insert id="sinsert">
-  	insert into seat values(se_seat.nextval,#{row},#{col},#{ft},null,#{t_number},#{maxrnum},#{mt_number})
+     insert into seat values(se_seat.nextval,#{row},#{col},#{ft},null,#{t_number},#{maxrnum},#{mt_number})
   </insert>
   <select id="t_num" resultType="java.lang.Integer">
-  	select max(t_number) from theater
+     select max(t_number) from theater
   </select>
   <delete id="tdelete">
-  	delete theater where t_number=#{t_number}
+     delete theater where t_number=#{t_number}
   </delete>
   <delete id="sdelete">
-  	delete seat where t_number=#{t_number}
+     delete seat where t_number=#{t_number}
   </delete>
   <select id="rtotal" resultType="java.lang.Integer">
-  	select count(*) from running
-  	<if test="key != null">
-    	where r_date = to_date(#{key},'yyyy/mm/dd')
+     select count(*) from running
+     <if test="key != null">
+       where r_date = to_date(#{key},'yyyy/mm/dd')
     </if>
   </select>
   <select id="rlist" resultType="runningVo2">
     select * from (select rownum rowm, a.* from (
     select r.r_number,m.m_name,mt.mt_name,t.t_name,r_date,r_start from running r, theater t, movietheater mt, movie m 
-	where r.m_number=m.m_number and r.mt_number=mt.mt_number and r.t_number=t.t_number
-  	<if test="key != null">
-  		and r_date = to_date(#{key},'yyyy/mm/dd')
-  	</if>) a) 
+   where r.m_number=m.m_number and r.mt_number=mt.mt_number and r.t_number=t.t_number
+     <if test="key != null">
+        and r_date = to_date(#{key},'yyyy/mm/dd')
+     </if> order by r_number desc) a) 
     where rowm between #{num1} and #{num2}
   </select>
   <insert id="insertr">
-  	insert into running values(se_running.nextval,#{t_number},#{m_number},#{mt_number},to_date(#{r_date},'yyyy/mm/dd'),#{r_start})
+     insert into running values(se_running.nextval,#{t_number},#{m_number},#{mt_number},to_date(#{r_date},'yyyy/mm/dd'),#{r_start})
   </insert>
   <select id="msele" resultType="movieVo_j">
-  	select m_number,m_name from movie
+  	select m_number,m_name from movie where m_isshowing=1 order by m_number desc
   </select>
   <select id="mtsele" resultType="movietheaterVo2">
-  	select mt_number,mt_name from movietheater
+     select mt_number,mt_name from movietheater order by mt_number desc
   </select>
   <select id="tsele" resultType="theaterVo">
-  	select t_number,t_name from theater where mt_number=#{mt_number}
+     select t_number,t_name from theater where mt_number=#{mt_number} order by t_number desc
   </select>
   <delete id="rdelete">
-  	delete running where r_number=#{r_number}
+     delete running where r_number=#{r_number}
   </delete>
   <select id="rdetail" resultType="runningVo2">
-  	select * from running where r_number=#{r_number}
+     select * from running where r_number=#{r_number}
   </select>
   <update id="rupdate">
-  	update running set t_number=#{t_number},m_number=#{m_number},mt_number=#{mt_number},r_date=to_date(#{r_date},'yyyy/mm/dd'),r_start=#{r_start} where r_number=#{r_number}
+     update running set t_number=#{t_number},m_number=#{m_number},mt_number=#{mt_number},r_date=to_date(#{r_date},'yyyy/mm/dd'),r_start=#{r_start} where r_number=#{r_number}
   </update>
   <select id="etotal" resultType="java.lang.Integer">
-  	select count(*) from event
-  	<if test="key != null">
-    	where e_title like '%'||#{key}||'%'
+     select count(*) from event
+     <if test="key != null">
+       where e_title like '%'||#{key}||'%'
     </if>
   </select>
   <select id="elist" resultType="eventVo">
-  	select * from (select rownum rowm, a.* from (select * from event
-  	<if test="key != null">
-  		where e_title like '%'||#{key}||'%'
-  	</if>) a) 
+     select * from (select rownum rowm, a.* from (select * from event
+     <if test="key != null">
+        where e_title like '%'||#{key}||'%'
+     </if> order by e_number desc) a) 
     where rowm between #{num1} and #{num2}
   </select>
   <insert id="inserte">
-  	insert into event values(se_event.nextval,#{e_title},sysdate,0,#{e_img},#{e_content})
+     insert into event values(se_event.nextval,#{e_title},sysdate,0,#{e_img},#{e_content})
   </insert>
   <select id="celist" resultType="customerVo">
-  	select c_email from customer where c_check='yes'
+     select c_email from customer where c_check='yes'
   </select>
   <delete id="edelete">
-  	delete event where e_number=#{e_number}
+     delete event where e_number=#{e_number}
   </delete>
   <select id="edetail" resultType="eventVo">
-  	select * from event where e_number=#{e_number}
+     select * from event where e_number=#{e_number}
   </select>
   <update id="eupdate">
-  	update event set e_title=#{e_title},e_regdate=sysdate,e_img=#{e_img},e_content=#{e_content} where e_number=#{e_number}
+     update event set e_title=#{e_title},e_regdate=sysdate,e_img=#{e_img},e_content=#{e_content} where e_number=#{e_number}
+
   </update>
+
+
+
   <select id="mslist" resultType="movieVo">  	
 	select rownum,a.* from (select * from movie where m_isshowing=1 order by m_boxoffice desc) a
 	where rownum between 1 and 10
   </select>
   <select id="tseat" resultType="java.lang.Integer">
-  	select t_seat from theater where t_number=#{t_number}
+     select t_seat from theater where t_number=#{t_number}
   </select>
   <select id="maxrnum" resultType="java.lang.Integer">
-  	select nvl(max(r_number),1) from running
+     select nvl(max(r_number),1) from running
   </select>
   <select id="runninglist" resultType="runningVo3">
-  	select r.r_number,m.m_name,mt.mt_name,t.t_name,to_char(r_date,'YYYY/MM/DD') r_date,r_start from running r, theater t, movietheater mt, movie m 
-	where r.m_number=m.m_number and r.mt_number=mt.mt_number and r.t_number=t.t_number and r.t_number=#{t_number}
+     select r.r_number,m.m_name,mt.mt_name,t.t_name,to_char(r_date,'YYYY/MM/DD') r_date,r_start from running r, theater t, movietheater mt, movie m 
+   where r.m_number=m.m_number and r.mt_number=mt.mt_number and r.t_number=t.t_number and r.t_number=#{t_number} order by r.r_number desc
   </select>
   <update id="hitupdate">
-  	update event set e_hit=e_hit+1 where e_number=#{e_number}
+     update event set e_hit=e_hit+1 where e_number=#{e_number}
   </update>
   <select id="myt" resultType="myticketVo">
-  	select ticket_number,m_name,mt_name,t_name,ticket_date,r_start,ticket_peoplenum,ticket_price
+     select ticket_number,m_name,mt_name,t_name,ticket_date,r_start,ticket_peoplenum,ticket_price
 from customer c, movie m, movietheater mt, theater t, ticket tk, running r
 where c.c_id=tk.c_id and t.t_number=tk.t_number and mt.mt_number=tk.mt_number and
 m.m_number=tk.m_number and  r.r_number=tk.r_number and
 tk.c_id=#{c_id} order by ticket_number desc
   </select>
   <select id="myh" resultType="myhistoryVo">
-  	select m_name,mt_name,t_name,h_ticket_date,h_ticket_peoplenum,h_ticket_price
+     select m_name,mt_name,t_name,h_ticket_date,h_ticket_peoplenum,h_ticket_price
 from customer c, movie m, movietheater mt, theater t, history h
 where c.c_id=h.c_id and t.t_number=h.t_number and mt.mt_number=h.mt_number and
 m.m_number=h.m_number and h.c_id=#{c_id} order by h_ticket_date desc
   </select>
   <select id="btotal" resultType="java.lang.Integer">
-  	select count(*) from board
-  	<if test="key != null">
-    	where b_title like '%'||#{key}||'%'
+     select count(*) from board
+     <if test="key != null">
+       where b_title like '%'||#{key}||'%'
     </if>
   </select>
   <select id="blist" resultType="boardVo">
-  	select * from 
-  	(select rownum rowm, a.* from 
-  		(select b_number,b_title,b_content,b_hit,
-		  	to_char(b_regdate,'YYYY-MM-DD hh24:mm:ss') b_regdate,
-		  	b_ip,b_b_ref,b_b_level,b_b_step,b_fname,b_fsize,b_type,b.c_id,
-			(select count(*) from reply WHERE b_number=b.b_number) AS b_recnt,
-			c_name from board b, customer c where b.c_id=c.c_id
-		  	<if test="key != null">
-		  		and b_title like '%'||#{key}||'%'
-  			</if>
-  		)
-  	 a) 
+     select * from 
+     (select rownum rowm, a.* from 
+        (select b_number,b_title,b_content,b_hit,
+           to_char(b_regdate,'YYYY-MM-DD hh24:mm:ss') b_regdate,
+           b_ip,b_b_ref,b_b_level,b_b_step,b_fname,b_fsize,b_type,b.c_id,
+         (select count(*) from reply WHERE b_number=b.b_number) AS b_recnt,
+         c_name from board b, customer c where b.c_id=c.c_id
+           <if test="key != null">
+              and b_title like '%'||#{key}||'%'
+           </if>
+           order by b_number desc
+        )
+      a) 
     where rowm between #{num1} and #{num2}
   </select>
   <select id="nbtotal" resultType="java.lang.Integer">
-  	select count(*) from noticeboard
-  	<if test="key != null">
-    	where nb_title like '%'||#{key}||'%'
+     select count(*) from noticeboard
+     <if test="key != null">
+       where nb_title like '%'||#{key}||'%'
     </if>
   </select>
   <select id="nblist" resultType="noticeboardVo">
-  	select * from (select rownum rowm, a.* from (select * from noticeboard
-  	<if test="key != null">
-  		where nb_title like '%'||#{key}||'%'
-  	</if>) a) 
+     select * from (select rownum rowm, a.* from (select * from noticeboard
+     <if test="key != null">
+        where nb_title like '%'||#{key}||'%'
+     </if>) a) 
     where rowm between #{num1} and #{num2}
   </select>
   <select id="mybtotal" resultType="java.lang.Integer">
-  	select count(*) from board where c_id=#{c_id}
-  	<if test="key != null">
-    	and b_title like '%'||#{key}||'%'
+     select count(*) from board where c_id=#{c_id}
+     <if test="key != null">
+       and b_title like '%'||#{key}||'%'
     </if>
   </select>
   <select id="myblist" resultType="boardVo">
-  	select * from 
-  	(select rownum rowm, a.* from 
-  		(select b_number,b_title,b_content,b_hit,
-		  	to_char(b_regdate,'YYYY-MM-DD hh24:mm:ss') b_regdate,
-		  	b_ip,b_b_ref,b_b_level,b_b_step,b_fname,b_fsize,b_type,b.c_id,
-			(select count(*) from reply WHERE b_number=b.b_number) AS b_recnt,
-			c_name from board b, customer c where b.c_id=c.c_id and b.c_id=#{c_id}
-		  	<if test="key != null">
-		  		and b_title like '%'||#{key}||'%'
-  			</if>
-  		order by b_number desc )
-  	 a) 
+     select * from 
+     (select rownum rowm, a.* from 
+        (select b_number,b_title,b_content,b_hit,
+           to_char(b_regdate,'YYYY-MM-DD hh24:mm:ss') b_regdate,
+           b_ip,b_b_ref,b_b_level,b_b_step,b_fname,b_fsize,b_type,b.c_id,
+         (select count(*) from reply WHERE b_number=b.b_number) AS b_recnt,
+         c_name from board b, customer c where b.c_id=c.c_id and b.c_id=#{c_id}
+           <if test="key != null">
+              and b_title like '%'||#{key}||'%'
+           </if>
+        order by b_number desc )
+      a) 
     where rowm between #{num1} and #{num2}
   </select>
   <select id="myb" resultType="boardVo">
-  	select rownum, a.* from (select * from board where c_id=#{c_id} order by b_number desc) a
-	where rownum between 1 and 5
+     select rownum, a.* from (select * from board where c_id=#{c_id} order by b_number desc) a
+   where rownum between 1 and 5
   </select>
   <delete id="mycdelete">
-  	delete customer where c_id=#{c_id} and c_pw=#{c_pw}
+     delete customer where c_id=#{c_id} and c_pw=#{c_pw}
   </delete>
   <delete id="ticketdelete">
-  	delete ticket where c_id=#{c_id}
+     delete ticket where c_id=#{c_id}
   </delete>
   <delete id="boarddelete">
-  	delete board where c_id=#{c_id}
+     delete board where c_id=#{c_id}
   </delete>
   <delete id="historytdelete">
-  	delete history where c_id=#{c_id}
+     delete history where c_id=#{c_id}
   </delete>
   <delete id="replydelete">
-  	delete reply where c_id=#{c_id}
+     delete reply where c_id=#{c_id}
   </delete>
   <delete id="moviescoredelete">
-  	delete moviescore where ms_custid=#{c_id}
+     delete moviescore where ms_custid=#{c_id}
   </delete>
   <update id="seatupdate">
-  	update seat set ticket_number=null where ticket_number=(select ticket_number from ticket where c_id=#{c_id})
+     update seat set ticket_number=null where ticket_number=(select ticket_number from ticket where c_id=#{c_id})
   </update>
   <delete id="runningscedule">
-  	delete running where r_date=#{sysday}
+     delete running where r_date=#{sysday}
   </delete>
   <update id="srupdate">
-  	update seat set r_number=null where r_number in(select r_number from running where r_date=#{sysday})
+     update seat set r_number=null where r_number in(select r_number from running where r_date=#{sysday})
   </update>
   <update id="trupdate">
-  	update ticket set r_number=null where r_number in(select r_number from running where r_date=#{sysday})
+     update ticket set r_number=null where r_number in(select r_number from running where r_date=#{sysday})
   </update>
   <select id="totalprice" resultType="java.lang.Integer">
   	select sum(h_ticket_price) from history
   </select>
   <select id="mprice" resultType="mpriceVo">
-  	select sum(h_ticket_price) m_price,m_name from history h,movie m where h.m_number=m.m_number group by m_name
+  	select sum(h_ticket_price) m_price,m_name from history h,movie m where h.m_number=m.m_number group by m_name order by m_price desc
+  </select>
+  <update id="stkupdate">
+  	update seat set s_ft=#{s_ft}, ticket_number=null where ticket_number=#{ticket_number}
+  </update>
+  <delete id="tkdelete">
+  	delete ticket where ticket_number=#{ticket_number}
+  </delete>
+  <select id="naver" resultType="java.lang.Integer">
+  	select count(c_age) from customer where c_id=#{c_id}
   </select>
 </mapper>

@@ -13,17 +13,13 @@
 	position: relative;
 	right: 190px;
 }
-
 #menu{
  background-color: #80d4ff;
  color: #80d4ff;
-
 }
-
 #w3-bar-item{
 font-family: -윤고딕340;
 }
-
 #di_index{
 	width: 220px;
 	height: 20;
@@ -35,14 +31,12 @@ font-family: -윤고딕340;
 	color: white;
 	
 }
-
 #div_name{
 	text-align: center;
 	font-size: 12pt;
 	color:black;
 	cursor: pointer;
 }
-
 #side_lab{
 	color: #666666;
 }
@@ -53,7 +47,6 @@ font-family: -윤고딕340;
 	cursor: pointer;
 	color: black;
 }
-
 /* #di_index2{
 	width: 220px;
 	height: 30;
@@ -73,11 +66,7 @@ font-family: -윤고딕340;
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
-
-
 });
-
-
 </script>
 </head>
 <body>

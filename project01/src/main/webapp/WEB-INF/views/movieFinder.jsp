@@ -35,8 +35,6 @@
 <script type="text/javascript">
 $(function(){
 	
-
-
 	
 	$("#btn_search").click(function(){
 		//alert("검색 버튼 클릭!");
@@ -103,7 +101,6 @@ $(function(){
 						
 						idx=(index+1);
 						
-
 						
 						
 					});//each문
@@ -137,8 +134,6 @@ $(function(){
 	
 	
 });
-
-
 </script>
 
 <title>무비파인더>영화|캐치무비</title>
