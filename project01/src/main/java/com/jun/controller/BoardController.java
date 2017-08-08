@@ -44,9 +44,10 @@ public class BoardController {
 		// session.setAttribute("customerid2","비누주스라우");
 
 		String se_id = (String) session.getAttribute("se_id");
+		System.out.println(keyword);
 		System.out.println("se_id     ::   " + se_id);
-		String rSearchField = (String) session.getAttribute("searchField");
-		String rKeyword = (String) session.getAttribute("keyword");
+		String rSearchField=null;/* = (String) session.getAttribute("searchField");*/
+		String rKeyword=null;/* = (String) session.getAttribute("keyword");*/
 
 		// session.setAttribute("customerid","비누주스라우");
 

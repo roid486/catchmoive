@@ -10,6 +10,7 @@ public class ReplyVo {
 	private int b_number;
 	private String c_id;
 	private String c_name;
+	private String b_name;
 	private String re_secretreply;
 	public int getRe_number() {
 		return re_number;
@@ -59,14 +60,19 @@ public class ReplyVo {
 	public void setC_name(String c_name) {
 		this.c_name = c_name;
 	}
+	public String getB_name() {
+		return b_name;
+	}
+	public void setB_name(String b_name) {
+		this.b_name = b_name;
+	}
 	public String getRe_secretreply() {
 		return re_secretreply;
 	}
 	public void setRe_secretreply(String re_secretreply) {
 		this.re_secretreply = re_secretreply;
 	}
-	public ReplyVo(int re_number, String re_content, String re_writer, String re_regdate, String re_updatedate,
-			int b_number, String c_id, String c_name, String re_secretreply) {
+	public ReplyVo(int re_number, String re_content, String re_writer, String re_regdate, String re_updatedate, int b_number, String c_id, String c_name, String b_name, String re_secretreply) {
 		super();
 		this.re_number = re_number;
 		this.re_content = re_content;
@@ -76,6 +82,7 @@ public class ReplyVo {
 		this.b_number = b_number;
 		this.c_id = c_id;
 		this.c_name = c_name;
+		this.b_name = b_name;
 		this.re_secretreply = re_secretreply;
 	}
 	public ReplyVo() {
@@ -84,10 +91,9 @@ public class ReplyVo {
 	}
 	@Override
 	public String toString() {
-		return "ReplyVo [re_number=" + re_number + ", re_content=" + re_content + ", re_writer=" + re_writer
-				+ ", re_regdate=" + re_regdate + ", re_updatedate=" + re_updatedate + ", b_number=" + b_number
-				+ ", c_id=" + c_id + ", c_name=" + c_name + ", re_secretreply=" + re_secretreply + "]";
+		return "ReplyVo [re_number=" + re_number + ", re_content=" + re_content + ", re_writer=" + re_writer + ", re_regdate=" + re_regdate + ", re_updatedate=" + re_updatedate + ", b_number=" + b_number + ", c_id=" + c_id + ", c_name="
+				+ c_name + ", b_name=" + b_name + ", re_secretreply=" + re_secretreply + "]";
 	}
-			
+				
 	
 }

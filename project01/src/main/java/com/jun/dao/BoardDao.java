@@ -14,7 +14,7 @@ import com.jun.vo.BoardVo;
 public class BoardDao {
 
 	// 한 화면에 보여줄 게시물의 수
-	public static int pageSIZE = 5;
+	public static int pageSIZE = 10;
 
 	// 전체 레코드수
 	public static int totalRecord;
@@ -31,6 +31,7 @@ public class BoardDao {
 		totalPage = (int) Math.ceil((double) totalRecord / pageSIZE);
 		System.out.println("totalRecord:" + totalRecord);
 		System.out.println("totalPage:" + totalPage);
+		System.out.println("dao key:"+keyword);
 		return JavajoManager.list(start, end, searchField, keyword);
 	}
 
@@ -110,6 +111,11 @@ public class BoardDao {
 
 		System.out.println("str::::::          "+str);
 		return str;
+	}
+
+	public List<BoardVo> listBRe(int b_number) {
+		// TODO Auto-generated method stub
+		return JavajoManager.listBRe(b_number);
 	}
 
 }

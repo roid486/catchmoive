@@ -17,7 +17,7 @@
 			type : "get",
 			url : "detailReply.com?re_number=" + re_number,
 			success : function(result) {
-				alert("성공!!!!!!!!");
+			
 				$("#modifyReply").html(result);
 				// 태그.css("속성", "값")
 				$("#modifyReply").css("visibility", "visible");
@@ -57,8 +57,9 @@ tr, th, td {
 			<table id="table" class="table">
 				<c:forEach var="row" items="${listRe }">
 					<tr>
-						<td>${row.re_number }&nbsp&nbsp&nbsp${row.c_name}&nbsp&nbsp&nbsp${row.re_regdate}</td>
-						<td>내용:${row.re_content}(비밀여부:${row.re_secretreply})</td>
+						<td width="20%">&nbsp&nbsp&nbsp${row.c_name}&nbsp&nbsp&nbsp${row.re_regdate}</td>
+						<td>${row.re_writer }</td>
+						<td>${row.re_content}</td>
 						<!-- 본인 댓글만 수정버튼 생성되도록 처리 -->
 						<td>
 							<c:if test="${sessionScope.se_id == row.c_id}">

@@ -12,13 +12,12 @@ text/html; charset=UTF-8"
 
 	<%
 
-		response.sendRedirect("main.com"); 
 // 	response.sendRedirect("ticketCheck.com"); 
 
 // 	 response.sendRedirect("test_e.com");
 
 	 
-		//response.sendRedirect("main.com");
+		response.sendRedirect("main.com");
 
 	%>
 </body>
