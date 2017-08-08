@@ -203,17 +203,9 @@
 							}
 							
 							
-							
-							
-							
-							
-							
-							
-							if(!two.is(":disabled")){// 두번째 좌석이 예약좌석이 아니고 선택인원이 2 이상일 때
-								alert("1/ totalNum:"+totalNum )
+							if(!two.is(":disabled") && storeNum >=2){// 두번째 좌석이 예약좌석이 아니고 선택인원이 2 이상일 때
 								if(two.is(":checked")){
 									
-									alert("해제 부분1");
 									two.prop("checked",false)
 									arr.pop(one.attr("id"))
 									arr.pop(two.attr("id"))
@@ -221,8 +213,6 @@
 								}
 								else{
 									if(totalNum>0){
-										alert("1_1")
-										alert("totalNum" + totalNum)
 									two.attr("checked",true)
 									arr.push(one.attr("id"))
 									arr.push(two.attr("id"))
@@ -246,11 +236,9 @@
 // 								else{
 									alert("2")
 								if(one.is(":checked")){
-									alert("해제 부분3");
 									arr.pop(one.attr("id"))
 									totalNum+=1;
 								}else{
-									alert("2_2")
 									if(totalNum>0){
 									arr.push(one.attr("id"))
 									totalNum-=1;
