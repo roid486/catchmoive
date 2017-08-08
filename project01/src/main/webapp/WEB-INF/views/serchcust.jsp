@@ -59,7 +59,7 @@
 	                <span class="input-group-btn" style="width: 50%;">
 	                  <select class="form-control" id="email" name="back_email">
 					    <option value="@naver.com">@naver.com</option>
-					    <option value="@hanmail.com">@hanmail.net</option>
+					    <option value="@hanmail.net">@hanmail.net</option>
 					    <option value="@gmail.com">@gmail.com</option>
 					  </select>
 	                </span>
