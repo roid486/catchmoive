@@ -216,6 +216,7 @@ public class MainContoller {
 	public ModelAndView myticket(String c_id)
 	{
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("navernum", dao.naver(c_id));
 		mav.addObject("myt", dao.myt(c_id));
 		mav.addObject("myh", dao.mth(c_id));
 		return mav;

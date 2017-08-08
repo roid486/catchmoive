@@ -63,7 +63,7 @@ public class MyboardController {
 		ModelAndView mav = new ModelAndView();
 		int num2 = pageNUM*pageSize;
 		int num1 = num2-pageSize+1;
-		mav.addObject("mtlist", dao.mtlist());
+		mav.addObject("navernum", dao.naver(c_id));
 		mav.addObject("clist", dao.myblist(num1,num2,this.key,c_id));
 		mav.addObject("pagenum", pageNUM2);
 		return mav;
@@ -105,7 +105,7 @@ public class MyboardController {
 		ModelAndView mav = new ModelAndView();
 		int num2 = pageNUM*pageSize;
 		int num1 = num2-pageSize+1;
-		mav.addObject("mtlist", dao.mtlist());
+		mav.addObject("navernum", dao.naver(c_id));
 		mav.addObject("clist", dao.myblist(num1,num2,key,c_id));
 		mav.addObject("pagenum", pageNUM2);
 		return mav;
