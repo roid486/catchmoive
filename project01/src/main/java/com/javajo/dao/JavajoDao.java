@@ -386,4 +386,9 @@ public class JavajoDao {
 		return JavajoManager.tkdelete(ticket_number);
 	}
 
+	public int naver(String c_id) {
+		// TODO Auto-generated method stub
+		return JavajoManager.naver(c_id);
+	}
+
 }

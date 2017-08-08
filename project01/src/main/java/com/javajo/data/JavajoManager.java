@@ -766,5 +766,15 @@ public class JavajoManager {
 		session.close();
 		return re;
 	}
+
+	public static int naver(String c_id) {
+		// TODO Auto-generated method stub
+		SqlSession session = factory.openSession();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("c_id", c_id);
+		int re = session.selectOne("javajo.naver", map);
+		session.close();
+		return re;
+	}
 	
 }
