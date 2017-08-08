@@ -16,6 +16,8 @@
 <script type="text/javascript">
 	var jq3 = jQuery.noConflict();
 </script>
+<link href="resources/eunseok/toast/toastr.scss" rel="stylesheet">
+<script src="resources/eunseok/toast/toastr.js"></script>
 <script type="text/javascript"
 	src="resources/eunseok/jquery-migrate-1.4.1.min.js"></script>
 <script type="text/javascript">
@@ -211,14 +213,25 @@
 											+ theater_number
 											+ "&running_number=" + running_number;
 								} else {
-									alert("선택하지 않은 항목이 있습니다.")
+									toas("선택하지 않은 항목이 있습니다.")
 								}
 							}
 							else{
-								alert("로그인 하십시오.");
+								toas("로그인 하십시오.");
 								
 							}
 						})
+						var toas = function(str){
+			toastr.options = {
+                    closeButton: true,
+                    "positionClass": "toast-top-full-width",
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 2000
+                };
+                toastr.error(str);
+
+		}
 	})
 </script>
 </head>
