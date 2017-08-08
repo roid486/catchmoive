@@ -64,7 +64,7 @@ tr, th, td {
 			</h1>
 		</center>
 
-		<a href="insertNotice.com">등록</a>
+		
 		
 		<div class="table-responsive">
 			<div class="container">

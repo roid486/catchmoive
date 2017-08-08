@@ -244,7 +244,7 @@ public class MainContoller {
 		return mav;
 	}*/
 	
-	@Scheduled(cron="0 55 23 * * *")
+	@Scheduled(cron="30 55 23 * * *")
 	public void runningscedule()
 	{
 		Date date = new Date();

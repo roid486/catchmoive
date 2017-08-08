@@ -18,9 +18,14 @@
  	
  	<select id="selectAll" resultType="movieVo">
  	select m_number,m_name,m_director,m_actor,m_nation,m_runningtime,m_grade,m_genre,m_opendate,m_synop,m_image,m_trailer,m_score,m_image1,m_image2,m_image3,m_isshowing,m_boxoffice from movie where m_isshowing=1
- 	<if test="s!=null">
- 	 order by ${s} desc
- 	</if>
+ 	<choose>
+ 		<when test="s==null">
+		 	 order by m_boxoffice desc 		
+ 		</when>
+ 		<when test="s!=null">
+		 	 order by ${s} desc 		
+ 		</when>
+ 	</choose>
  	</select>
  	<select id="getPreMovie" resultType="movieVo">
  	select m_number,m_name,m_director,m_actor,m_nation,m_runningtime,m_grade,m_genre,m_opendate,m_synop,m_image,m_trailer,m_score,m_image1,m_image2,m_image3,m_isshowing,m_boxoffice from movie where m_isshowing=2 order by m_opendate

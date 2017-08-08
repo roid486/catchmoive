@@ -22,11 +22,43 @@ public class MovieVo_j {
 	private String m_image2;
 	private String m_image3;
 	private int m_isshowing;
-	private int m_boxoffice;
+	private double m_boxoffice;
 	private MultipartFile uploadFile;
 	private MultipartFile uploadFile1;
 	private MultipartFile uploadFile2;
 	private MultipartFile uploadFile3;
+	public MovieVo_j() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public MovieVo_j(int m_number, String m_name, String m_director, String m_actor, String m_nation, int m_runningtime,
+			String m_grade, String m_genre, Date m_opendate, String m_synop, String m_image, String m_trailer,
+			double m_score, String m_image1, String m_image2, String m_image3, int m_isshowing, double m_boxoffice,
+			MultipartFile uploadFile, MultipartFile uploadFile1, MultipartFile uploadFile2, MultipartFile uploadFile3) {
+		super();
+		this.m_number = m_number;
+		this.m_name = m_name;
+		this.m_director = m_director;
+		this.m_actor = m_actor;
+		this.m_nation = m_nation;
+		this.m_runningtime = m_runningtime;
+		this.m_grade = m_grade;
+		this.m_genre = m_genre;
+		this.m_opendate = m_opendate;
+		this.m_synop = m_synop;
+		this.m_image = m_image;
+		this.m_trailer = m_trailer;
+		this.m_score = m_score;
+		this.m_image1 = m_image1;
+		this.m_image2 = m_image2;
+		this.m_image3 = m_image3;
+		this.m_isshowing = m_isshowing;
+		this.m_boxoffice = m_boxoffice;
+		this.uploadFile = uploadFile;
+		this.uploadFile1 = uploadFile1;
+		this.uploadFile2 = uploadFile2;
+		this.uploadFile3 = uploadFile3;
+	}
 	public int getM_number() {
 		return m_number;
 	}
@@ -129,10 +161,10 @@ public class MovieVo_j {
 	public void setM_isshowing(int m_isshowing) {
 		this.m_isshowing = m_isshowing;
 	}
-	public int getM_boxoffice() {
+	public double getM_boxoffice() {
 		return m_boxoffice;
 	}
-	public void setM_boxoffice(int m_boxoffice) {
+	public void setM_boxoffice(double m_boxoffice) {
 		this.m_boxoffice = m_boxoffice;
 	}
 	public MultipartFile getUploadFile() {
@@ -161,4 +193,5 @@ public class MovieVo_j {
 	}
 	
 	
+
 }

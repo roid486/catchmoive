@@ -69,7 +69,7 @@ public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@Scheduled(cron="10 18 12 * * *")
+	@Scheduled(cron="0 20 14 * * *")
 	public void historyscedule()
 	{//historyÅ×ÀÌºí insert
 		tdao.historyinsert();

@@ -1,6 +1,7 @@
 package com.jihye.naver;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -92,31 +93,38 @@ public class LoginController {
 	    
 	    //만약 네이버 로그인이 성공한 회원이라면
 	    if(apiResult!=""&apiResult!=null){
-	    	System.out.println("if 조건문 통과");
+	    	
 	    	List<CustomerVo> list = dao.getCustomer();
 	    	
 	    	int idx=0;
 	    	int lsize = list.size();
-	    	if(lsize==0){
-	    		int re = dao.insertNaverMember(c_id, c_email, c_gender);
-    			if(re==1){
-    				str="새멤버 환영해";
-    				System.out.println("네이버회원 멤버테이블 추가 성공");
-    			}
-    			else{
-    				System.out.println("멤버테이블 추가 실패 ㅠㅠ");
-    			}
-	    	}
+//	    	if(lsize==0){
+//	    		int re = dao.insertNaverMember(c_id, c_email, c_gender);
+//    			if(re==1){
+//    				str="새멤버 환영해";
+//    				System.out.println("네이버회원 멤버테이블 추가 성공");
+//    			}
+//    			else{
+//    				System.out.println("멤버테이블 추가 실패 ㅠㅠ");
+//    			}
+//	    	}
 	    	System.out.println("list size= "+lsize);
+	    	String test="";
 	    	for(CustomerVo v : list){
 	    		
 	    		idx++;
 	    		
 	    		String id = v.getC_id();
-	    		System.out.println("list에 존재 하는 id = "+id);
+	    		test += id+"/";
+	    		
 	    		
 	    		if(idx==lsize){ //list가 마지막 사이즈 일때 
-	    			if(!id.equals(c_id)){ //멤버테이블에 회원이 없으면 (가입되어있지않음) 
+	    			System.out.println("list에 존재 하는 id = "+test);
+	    			String t[] = test.split("/");
+	    			
+	    			boolean b = Arrays.asList(t).contains(c_id);
+	    			System.out.println("잇니?"+b);
+	    			if(!b){ //멤버테이블에 회원이 없으면 (가입되어있지않음) 
 		    			int re = dao.insertNaverMember(c_id, c_email, c_gender);
 		    			if(re==1){
 		    				str="새멤버 환영해";
@@ -127,6 +135,9 @@ public class LoginController {
 		    			}
 		    			
 		    		}
+	    			else{
+	    				
+	    			}
 	    		}
 	    	
 	    		

@@ -52,14 +52,14 @@ border-radius: 0px 0px 10px 10px;
                 progressBar: true,
                 showMethod: 'slideDown',
                 "extendedTimeOut": "2000",
-                timeOut: 5000
+                timeOut: 4000
             };
             toastr.success('20초 뒤에 자동 종료됩니다.');
 	}
 	
 	setTimeout(function(){
 		toas();
-	}, 4000);
+	}, 2500);
 
 	setTimeout(function(){
 		window.close();

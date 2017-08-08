@@ -67,7 +67,7 @@ public class InserteController {
 			FileOutputStream fos= new FileOutputStream(path +"/" +fname);
 					fos.write(data);
 			byte[]data2 = file.getBytes();
-			FileOutputStream fos2= new FileOutputStream("C:/lastproject/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/project01/WEB-INF/classes/com/javajo/img/" +fname);
+			FileOutputStream fos2= new FileOutputStream("C:/stsstudy03/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/project01/WEB-INF/classes/com/javajo/img/" +fname);
 			fos2.write(data2);
 			}catch(Exception e)
 			{
